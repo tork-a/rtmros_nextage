@@ -1,0 +1,97 @@
+<?xml version="1.0" ?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="NextageOpen">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="right_arm">
+        <link name="RARM_JOINT0_Link" />
+        <link name="RARM_JOINT1_Link" />
+        <link name="RARM_JOINT2_Link" />
+        <link name="RARM_JOINT3_Link" />
+        <link name="RARM_JOINT4_Link" />
+        <link name="RARM_JOINT5_Link" />
+    </group>
+    <group name="left_arm">
+        <link name="LARM_JOINT0_Link" />
+        <link name="LARM_JOINT1_Link" />
+        <link name="LARM_JOINT2_Link" />
+        <link name="LARM_JOINT3_Link" />
+        <link name="LARM_JOINT4_Link" />
+        <link name="LARM_JOINT5_Link" />
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="left_arm_initial_pose" group="left_arm">
+        <joint name="LARM_JOINT0" value="0.010472" />
+        <joint name="LARM_JOINT1" value="0" />
+        <joint name="LARM_JOINT2" value="-1.74533" />
+        <joint name="LARM_JOINT3" value="-0.26529" />
+        <joint name="LARM_JOINT4" value="0.164061" />
+        <joint name="LARM_JOINT5" value="-0.0558" />
+    </group_state>
+    <group_state name="right_arm_initial_pose" group="right_arm">
+        <joint name="RARM_JOINT0" value="-0.010472" />
+        <joint name="RARM_JOINT1" value="0" />
+        <joint name="RARM_JOINT2" value="-1.74533" />
+        <joint name="RARM_JOINT3" value="0.26529" />
+        <joint name="RARM_JOINT4" value="0.164061" />
+        <joint name="RARM_JOINT5" value="0.055851" />
+    </group_state>
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="virtual_joint" type="fixed" parent_frame="odom" child_link="WAIST_Link" />
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="CHEST_JOINT0_Link" link2="HEAD_JOINT0_Link" reason="Adjacent" />
+    <disable_collisions link1="CHEST_JOINT0_Link" link2="HEAD_JOINT1_Link" reason="Default" />
+    <disable_collisions link1="CHEST_JOINT0_Link" link2="LARM_JOINT0_Link" reason="Adjacent" />
+    <disable_collisions link1="CHEST_JOINT0_Link" link2="RARM_JOINT0_Link" reason="Adjacent" />
+    <disable_collisions link1="CHEST_JOINT0_Link" link2="WAIST_Link" reason="Adjacent" />
+    <disable_collisions link1="HEAD_JOINT0_Link" link2="HEAD_JOINT1_Link" reason="Adjacent" />
+    <disable_collisions link1="HEAD_JOINT0_Link" link2="LARM_JOINT0_Link" reason="Never" />
+    <disable_collisions link1="HEAD_JOINT0_Link" link2="LARM_JOINT1_Link" reason="Never" />
+    <disable_collisions link1="HEAD_JOINT0_Link" link2="LARM_JOINT2_Link" reason="Never" />
+    <disable_collisions link1="HEAD_JOINT0_Link" link2="LARM_JOINT3_Link" reason="Never" />
+    <disable_collisions link1="HEAD_JOINT0_Link" link2="RARM_JOINT0_Link" reason="Never" />
+    <disable_collisions link1="HEAD_JOINT0_Link" link2="RARM_JOINT1_Link" reason="Never" />
+    <disable_collisions link1="HEAD_JOINT0_Link" link2="RARM_JOINT2_Link" reason="Never" />
+    <disable_collisions link1="HEAD_JOINT0_Link" link2="RARM_JOINT3_Link" reason="Never" />
+    <disable_collisions link1="HEAD_JOINT0_Link" link2="WAIST_Link" reason="Never" />
+    <disable_collisions link1="HEAD_JOINT1_Link" link2="LARM_JOINT0_Link" reason="Never" />
+    <disable_collisions link1="HEAD_JOINT1_Link" link2="RARM_JOINT0_Link" reason="Never" />
+    <disable_collisions link1="HEAD_JOINT1_Link" link2="WAIST_Link" reason="Never" />
+    <disable_collisions link1="LARM_JOINT0_Link" link2="LARM_JOINT1_Link" reason="Adjacent" />
+    <disable_collisions link1="LARM_JOINT0_Link" link2="LARM_JOINT2_Link" reason="Never" />
+    <disable_collisions link1="LARM_JOINT0_Link" link2="LARM_JOINT3_Link" reason="Never" />
+    <disable_collisions link1="LARM_JOINT0_Link" link2="RARM_JOINT0_Link" reason="Never" />
+    <disable_collisions link1="LARM_JOINT0_Link" link2="RARM_JOINT1_Link" reason="Never" />
+    <disable_collisions link1="LARM_JOINT0_Link" link2="RARM_JOINT2_Link" reason="Never" />
+    <disable_collisions link1="LARM_JOINT0_Link" link2="RARM_JOINT3_Link" reason="Never" />
+<!--    <disable_collisions link1="LARM_JOINT0_Link" link2="WAIST_Link" reason="Never" /> -->
+    <disable_collisions link1="LARM_JOINT1_Link" link2="LARM_JOINT2_Link" reason="Adjacent" />
+    <disable_collisions link1="LARM_JOINT1_Link" link2="LARM_JOINT3_Link" reason="Never" />
+    <disable_collisions link1="LARM_JOINT1_Link" link2="RARM_JOINT0_Link" reason="Never" />
+    <disable_collisions link1="LARM_JOINT2_Link" link2="LARM_JOINT3_Link" reason="Adjacent" />
+    <disable_collisions link1="LARM_JOINT2_Link" link2="LARM_JOINT4_Link" reason="Never" />
+    <disable_collisions link1="LARM_JOINT2_Link" link2="RARM_JOINT0_Link" reason="Never" />
+    <disable_collisions link1="LARM_JOINT3_Link" link2="LARM_JOINT4_Link" reason="Adjacent" />
+    <disable_collisions link1="LARM_JOINT3_Link" link2="RARM_JOINT0_Link" reason="Never" />
+    <disable_collisions link1="LARM_JOINT4_Link" link2="LARM_JOINT5_Link" reason="Adjacent" />
+<!--    <disable_collisions link1="LARM_JOINT4_Link" link2="WAIST_Link" reason="Default" /> -->
+<!--    <disable_collisions link1="LARM_JOINT5_Link" link2="WAIST_Link" reason="Default" /> -->
+    <disable_collisions link1="RARM_JOINT0_Link" link2="RARM_JOINT1_Link" reason="Adjacent" />
+    <disable_collisions link1="RARM_JOINT0_Link" link2="RARM_JOINT2_Link" reason="Never" />
+    <disable_collisions link1="RARM_JOINT0_Link" link2="RARM_JOINT3_Link" reason="Never" />
+<!--    <disable_collisions link1="RARM_JOINT0_Link" link2="WAIST_Link" reason="Never" /> -->
+    <disable_collisions link1="RARM_JOINT1_Link" link2="RARM_JOINT2_Link" reason="Adjacent" />
+    <disable_collisions link1="RARM_JOINT1_Link" link2="RARM_JOINT3_Link" reason="Never" />
+    <disable_collisions link1="RARM_JOINT2_Link" link2="RARM_JOINT3_Link" reason="Adjacent" />
+    <disable_collisions link1="RARM_JOINT2_Link" link2="RARM_JOINT4_Link" reason="Never" />
+    <disable_collisions link1="RARM_JOINT3_Link" link2="RARM_JOINT4_Link" reason="Adjacent" />
+    <disable_collisions link1="RARM_JOINT4_Link" link2="RARM_JOINT5_Link" reason="Adjacent" />
+<!--    <disable_collisions link1="RARM_JOINT4_Link" link2="WAIST_Link" reason="Default" /> -->
+<!--    <disable_collisions link1="RARM_JOINT5_Link" link2="WAIST_Link" reason="Default" /> -->
+</robot>

@@ -1,0 +1,795 @@
+#VRML V2.0 utf8
+
+PROTO Joint [
+ exposedField     SFVec3f      center              0 0 0
+ exposedField     MFNode       children            []
+ exposedField     MFFloat      llimit              []
+ exposedField     MFFloat      lvlimit             []
+ exposedField     SFRotation   limitOrientation    0 0 1 0
+ exposedField     SFString     name                ""
+ exposedField     SFRotation   rotation            0 0 1 0
+ exposedField     SFVec3f      scale               1 1 1
+ exposedField     SFRotation   scaleOrientation    0 0 1 0
+ exposedField     MFFloat      stiffness           [ 0 0 0 ]
+ exposedField     SFVec3f      translation         0 0 0
+ exposedField     MFFloat      ulimit              []
+ exposedField     MFFloat      uvlimit             []
+ exposedField     SFString     jointType           ""
+ exposedField     SFInt32      jointId             -1
+ exposedField     SFVec3f      jointAxis           0 0 1
+
+ exposedField     SFFloat      gearRatio           1
+ exposedField     SFFloat      rotorInertia        0
+ exposedField     SFFloat      rotorResistor       0
+ exposedField     SFFloat      torqueConst         1
+ exposedField     SFFloat      encoderPulse        1
+]
+{
+   Transform {
+      center           IS center
+      children         IS children
+      rotation         IS rotation
+      scale            IS scale
+      scaleOrientation IS scaleOrientation
+      translation      IS translation
+   }
+}
+
+PROTO Segment [
+ field           SFVec3f     bboxCenter        0 0 0
+ field           SFVec3f     bboxSize          -1 -1 -1
+ exposedField    SFVec3f     centerOfMass      0 0 0
+ exposedField    MFNode      children          [ ]
+ exposedField    SFNode      coord             NULL
+ exposedField    MFNode      displacers        [ ]
+ exposedField    SFFloat     mass              0 
+ exposedField    MFFloat     momentsOfInertia  [ 0 0 0 0 0 0 0 0 0 ]
+ exposedField    SFString    name              ""
+ eventIn         MFNode      addChildren
+ eventIn         MFNode      removeChildren
+]
+{
+   Group {
+      addChildren    IS addChildren
+      bboxCenter     IS bboxCenter
+      bboxSize       IS bboxSize
+      children       IS children
+      removeChildren IS removeChildren
+   }
+}
+
+PROTO Humanoid [
+ field           SFVec3f    bboxCenter            0 0 0
+ field           SFVec3f    bboxSize              -1 -1 -1
+ exposedField    SFVec3f    center                0 0 0
+ exposedField    MFNode     humanoidBody          [ ]
+ exposedField    MFString   info                  [ ]
+ exposedField    MFNode     joints                [ ]
+ exposedField    SFString   name                  ""
+ exposedField    SFRotation rotation              0 0 1 0
+ exposedField    SFVec3f    scale                 1 1 1
+ exposedField    SFRotation scaleOrientation      0 0 1 0
+ exposedField    MFNode     segments              [ ]
+ exposedField    MFNode     sites                 [ ]
+ exposedField    SFVec3f    translation           0 0 0
+ exposedField    SFString   version               "1.1"
+ exposedField    MFNode     viewpoints            [ ]
+]
+{
+   Transform {
+      bboxCenter       IS bboxCenter
+      bboxSize         IS bboxSize
+      center           IS center
+      rotation         IS rotation
+      scale            IS scale
+      scaleOrientation IS scaleOrientation
+      translation      IS translation
+      children [
+	 Group {
+	    children IS viewpoints
+	 }
+	 Group {
+	    children IS humanoidBody 
+	 }
+      ]
+   }
+}
+
+PROTO VisionSensor [
+ exposedField SFVec3f    translation       0 0 0
+ exposedField SFRotation rotation          0 0 1 0
+ exposedField MFNode     children          [ ]
+ exposedField SFFloat    fieldOfView       0.785398
+ exposedField SFString   name              ""
+ exposedField SFFloat    frontClipDistance 0.01
+ exposedField SFFloat    backClipDistance  10.0
+ exposedField SFString   type              "NONE"
+ exposedField SFInt32    sensorId          -1
+ exposedField SFInt32    width             320
+ exposedField SFInt32    height            240
+ exposedField SFFloat    frameRate         30
+]
+{
+   Transform {
+      rotation         IS rotation
+      translation      IS translation
+      children         IS children
+   }
+}
+
+
+PROTO ForceSensor [  
+ exposedField SFVec3f    maxForce    -1 -1 -1
+ exposedField SFVec3f    maxTorque   -1 -1 -1
+ exposedField SFVec3f    translation 0 0 0
+ exposedField SFRotation rotation    0 0 1 0
+ exposedField SFInt32    sensorId    -1
+]
+{
+   Transform {
+      translation IS translation
+      rotation    IS rotation
+   }
+}
+
+PROTO Gyro [
+ exposedField SFVec3f    maxAngularVelocity -1 -1 -1
+ exposedField SFVec3f    translation        0 0 0
+ exposedField SFRotation rotation           0 0 1 0
+ exposedField SFInt32    sensorId           -1
+]
+{
+   Transform {
+      translation IS translation
+      rotation    IS rotation
+   }
+}
+
+PROTO AccelerationSensor [
+ exposedField SFVec3f    maxAcceleration -1 -1 -1
+ exposedField SFVec3f    translation     0 0 0
+ exposedField SFRotation rotation        0 0 1 0
+ exposedField SFInt32    sensorId        -1
+]
+{
+   Transform {
+      translation IS translation
+      rotation    IS rotation
+   }
+}
+
+PROTO PressureSensor [
+  exposedField SFFloat    maxPressure -1
+  exposedField SFVec3f    translation 0 0 0
+  exposedField SFRotation rotation    0 0 1 0
+  exposedField SFInt32    sensorId    -1
+]
+{
+  Transform {
+    translation IS translation
+    rotation    IS rotation
+  }
+}
+
+PROTO PhotoInterrupter [
+  exposedField SFVec3f transmitter 0 0 0
+  exposedField SFVec3f receiver    0 0 0
+  exposedField SFInt32 sensorId    -1
+]
+{
+  Transform{
+    children [
+      Transform{
+        translation IS transmitter
+      }
+      Transform{
+        translation IS receiver
+      }
+    ]
+  }
+}
+
+PROTO CylinderSensorZ [
+    exposedField    SFFloat    maxAngle       -1
+    exposedField    SFFloat    minAngle        0
+    exposedField    MFNode     children        [ ]
+]
+{
+  Transform{
+    rotation 1 0 0 1.5708
+    children [
+      DEF SensorY CylinderSensor{
+        maxAngle IS maxAngle
+        minAngle IS minAngle
+      }
+      DEF AxisY Transform{
+        children [
+          Transform{
+            rotation 1 0 0 -1.5708
+            children IS children
+          }
+        ]
+      }
+    ]
+  }
+  ROUTE SensorY.rotation_changed TO AxisY.set_rotation
+}
+
+PROTO CylinderSensorY [
+    exposedField    SFFloat    maxAngle       -1
+    exposedField    SFFloat    minAngle        0
+    exposedField    MFNode     children        [ ]
+]
+{
+  Transform{
+    rotation 0 1 0 1.5708
+    children [
+      DEF SensorX CylinderSensor{
+        maxAngle IS maxAngle
+        minAngle IS minAngle
+      }
+      DEF AxisX Transform{
+        children [
+          Transform{
+            rotation 0 1 0 -1.5708
+            children IS children
+          }
+        ]
+      }
+    ]
+  }
+  ROUTE SensorX.rotation_changed TO AxisX.set_rotation
+}
+
+PROTO CylinderSensorX [
+    exposedField    SFFloat    maxAngle       -1
+    exposedField    SFFloat    minAngle        0
+    exposedField    MFNode     children        [ ]
+]
+{
+  Transform{
+    rotation 0 0 1 -1.5708
+    children [
+      DEF SensorZ CylinderSensor{
+        maxAngle IS maxAngle
+        minAngle IS minAngle
+      }
+      DEF AxisZ Transform{
+        children [
+          Transform{
+            rotation 0 0 1 1.5708
+            children IS children
+          }
+        ]
+      }
+    ]
+  }
+  ROUTE SensorZ.rotation_changed TO AxisZ.set_rotation
+}
+
+NavigationInfo {
+   avatarSize    0.5
+   headlight     TRUE
+   type  ["EXAMINE", "ANY"]
+}
+
+Background {
+   skyColor 0.4 0.6 0.4
+}
+
+Viewpoint {
+   position    3 0 0.835
+   orientation 0.5770 0.5775 0.5775 2.0935
+}
+
+DEF main_withHands Humanoid{
+   humanoidBody [
+    DEF WAIST Joint {
+       jointType "fixed"
+       translation 0 0 0
+       rotation 0 1 0 0 
+       children [
+	  DEF WAIST_Link Segment{
+	     centerOfMass -3.8809E-4 1.66E-6 0.16466017 
+	     mass 0
+	     momentsOfInertia [ 0.0347318 5.78E-6 -3.341E-5 5.78E-6 0.03474816 6.3E-7 -3.343E-5 6.2E-7 0.00438238 ]
+	     children[
+		Transform {
+		   rotation 0 1 0 0 
+		   children[
+		      Inline { url "BASE.wrl" }
+		   ]
+		}
+	     ]
+	  }
+	  DEF CHEST_JOINT0 Joint {
+	     jointType "rotate"
+	     jointId 0
+	     jointAxis 0.0 0.0 1.0
+	     rotorInertia 0.5
+	     ulimit [  2.8448866807507569 ] #  163 deg
+	     llimit [ -2.8448866807507569 ] # -163 deg
+	     uvlimit [  1.9198621771937625 ] #  110 deg/s
+	     lvlimit [ -1.9198621771937625 ] # -110 deg/s
+	     children [
+		DEF CHEST_JOINT0_Link Segment{
+		   centerOfMass -0.00493378 -9.7682E-4 0.34405202 
+		   mass 0
+		   momentsOfInertia [ 0.06395752 -2.2833E-4 1.1172E-4 -2.2833E-4 0.03108451 6.48E-5 1.1172E-4 6.48E-5 0.05011067 ]
+		   children[
+		      Transform {
+			 translation -0.0049 -0.001 0.3441 
+			 rotation 0 1 0 0 
+			 children[
+			    Shape{
+			       geometry Sphere{
+				  radius 0.0075
+			       }
+			       appearance Appearance{
+				  material Material{
+				     diffuseColor 0.0 2.0 2.0
+				  }
+			       }
+			    }
+			 ]
+		      }
+		      Transform {
+			 rotation 0 1 0 0 
+			 children[
+			    Inline { url "BODY.wrl" }
+			 ]
+		      }
+		   ]
+		}
+		DEF HEAD_JOINT0 Joint {
+		   jointType "rotate"
+		   jointId 1
+		   jointAxis 0.0 0.0 1.0 
+		   translation 0 0 0.5695 
+		   ulimit  [ 1.2217304763960306 ]   # 70 deg
+		   llimit  [-1.2217304763960306 ]  # -70 deg
+		   uvlimit [ 2.6179938779914944 ] #  150 deg/s
+		   lvlimit [-2.6179938779914944 ] # -150 deg/s
+		   rotorInertia 0.5
+		   children[
+		      DEF HEAD_JOINT0_Link Segment{
+			 centerOfMass -2.292E-5 0.00547848 -0.00784016 
+			 mass 0.317929
+			 momentsOfInertia [ 2.7682E-4 3.0E-8 -3.3E-7 3.0E-8 1.3009E-4 -1.092E-5 -3.3E-7 -1.092E-5 2.0954E-4 ]
+			 children[
+			    Transform {
+			       rotation 0 1 0 0 
+			       children[
+				  Inline { url "NY.wrl" }
+			       ]
+			    }
+			 ]
+		      }
+		      DEF HEAD_JOINT1 Joint {
+			 jointType "rotate"
+			 jointId 2
+			 jointAxis 0.0 1.0 0.0 
+			 rotation 0 1 0 0 
+			 ulimit [ 1.2217304763960306 ]  # 70 deg
+			 llimit [-0.3490658503988659 ] # -20 deg
+			 uvlimit [ 4.3633231299858233 ] # 250 deg/s
+			 lvlimit [-4.3633231299858233 ] # 250 deg/s
+			 rotorInertia 0.5
+			 children[
+			    DEF HEAD_JOINT1_Link Segment {
+			       centerOfMass 5.02E-6 -0.01667768 0.01631533 
+			       mass 0.0808593
+			       momentsOfInertia [ 8.07E-5 -3.0E-8 0.0 -3.0E-8 3.025E-5 -1.277E-5 0.0 -1.277E-5 6.637E-5 ]
+			       children[
+				  Transform {
+				     rotation 0 1 0 0 
+				     children[
+					Inline { url "NP.wrl" }
+				     ]
+				  }
+			       ]
+			    }
+		            DEF CAMERA_HEAD_R VisionSensor {
+		              translation 0.059959 -0.069754 0.095
+		              rotation  1.06276295 -0.94833157 -1.26655156 1.90603008901
+		              frontClipDistance 0.05
+		              width  640
+		              height 480
+		              type "COLOR"
+		              sensorId 3
+		              fieldOfView 0.5777
+		            }
+		            DEF CAMERA_HEAD_L VisionSensor {
+		              translation 0.059959 0.069754 0.095
+		              rotation 0.96341555 -1.07966705 -1.3759 1.99673515764
+		              frontClipDistance	0.05
+		              width  640
+		              height 480
+		              type "COLOR"
+		              sensorId 2
+		              fieldOfView 0.5777
+		            }
+			 ]
+		      }
+		   ]
+		}
+		DEF RARM_JOINT0 Joint {
+		   jointType "rotate"
+		   jointId 3
+		   jointAxis 0.0 0.0 1.0 
+		   translation 0 -0.145 0.370296 
+		   rotation 1 0 0 0.261799 
+		   ulimit [ 1.5358897417550099 ] #  88
+		   llimit [-1.5358897417550099 ] # -88
+		   uvlimit [ 3.001966313430247 ] #  172
+		   lvlimit [-3.001966313430247 ] # -172
+		   rotorInertia 0.5
+		   children[
+		      DEF RARM_JOINT0_Link Segment{
+			 centerOfMass -0.00226388 0.00521383 0.01560807 
+			 mass 1.32626
+			 momentsOfInertia [ 0.00207537 -1.1276E-4 8.927E-5 -1.1276E-4 0.00240295 4.57E-5 8.927E-5 4.57E-5 0.00141912 ]
+			 children[
+			    Transform {
+			       rotation 0 1 0 0 
+			       children[
+				  Inline { url "RSY.wrl" }
+			       ]
+			    }
+			 ]
+		      }
+		      DEF RARM_JOINT1 Joint {
+			 jointType "rotate"
+			 jointId 4
+			 jointAxis 0.0 1.0 0.0 
+			 rotorInertia 0.5
+			 ulimit [ 1.0471975511965976 ] #  60
+			 llimit [-2.4434609527920612 ] # -140
+			 uvlimit [ 2.3212879051524582 ] #  133
+			 lvlimit [-2.3212879051524582 ] # -133
+			 children[
+			    DEF RARM_JOINT1_Link Segment{
+			       centerOfMass -5.236E-5 -0.058313380000000005 -0.10706059 
+			       mass 1.14898
+			       momentsOfInertia [ 0.01541678 -9.7E-7 3.52E-6 -9.8E-7 0.01471175 -0.00213705 3.51E-6 -0.00213704 0.00126575 ]
+			       children[
+				  Transform {
+				     rotation 0 1 0 0 
+				     children[
+					Inline { url "RSP.wrl" }
+				     ]
+				  }
+			       ]
+			    }
+			    DEF RARM_JOINT2 Joint {
+			       jointType "rotate"
+			       jointId 5
+			       jointAxis 0.0 1.0 0.0 
+			       translation 0.0 -0.095 -0.250 
+			       ulimit [ 0.0 ] #  0
+			       llimit [-2.7576202181510405 ] # -158
+			       uvlimit [ 3.7524578917878086 ] #  215
+			       lvlimit [-3.7524578917878086 ] # -215
+			       rotorInertia 0.5
+			       children[
+				  DEF RARM_JOINT2_Link Segment{
+				     centerOfMass -2.254E-5 -0.00167107 -0.07151163 
+				     mass 0.577518
+				     momentsOfInertia [ 0.00143966 3.0E-7 1.2E-6 3.0E-7 0.00141763 7.596E-5 1.2E-6 7.596E-5 1.972E-4 ]
+				     children[
+					Transform {
+					   rotation 0 1 0 0 
+					   children[
+					      Inline { url "REP.wrl" }
+					   ]
+					}
+				     ]
+				  }
+				  DEF RARM_JOINT3 Joint {
+				     jointType "rotate"
+				     jointId 6
+				     jointAxis 0.0 0.0 1.0 
+				     translation -0.030 0.0 0.0 
+				     rotorInertia 0.5
+				     ulimit [ 1.8325957145940461 ] #  105
+				     llimit [-2.8797932657906435 ] # -165
+				     uvlimit [ 4.6076692252650300 ] #  264
+				     lvlimit [-4.6076692252650300 ] # -264
+				     children[
+					DEF RARM_JOINT3_Link Segment{
+					   centerOfMass -1.788E-5 0.00395812 -0.2027305 
+					   mass 0.457418
+					   momentsOfInertia [ 6.9205E-4 -3.0E-8 5.2E-7 -3.0E-8 6.8903E-4 1.915E-5 5.2E-7 1.915E-5 1.3509E-4 ]
+					   children[
+					      Transform {
+						 rotation 0 1 0 0 
+						 children[
+						    Inline { url "RWY.wrl" }
+						 ]
+					      }
+					   ]
+					}
+					DEF RARM_JOINT4 Joint {
+					   jointType "rotate"
+					   jointId 7
+					   translation 0.0 0.0 -0.235
+					   jointAxis 0.0 1.0 0.0 
+					   rotorInertia 0.5
+					   ulimit [ 1.7453292519943295 ] #  100
+					   llimit [-1.7453292519943295 ] # -100
+					   uvlimit [ 3.9095375244672983 ] #  224
+					   lvlimit [-3.9095375244672983 ] # -224
+					   children[
+					      DEF RARM_JOINT4_Link Segment{
+						 centerOfMass 0.00243131 -0.00379733 -0.05770359 
+						 mass 0.418434
+						 momentsOfInertia [ 5.2016E-4 -1.69E-6 7.9E-6 -1.69E-6 5.0569E-4 5.377E-5 7.9E-6 5.377E-5 1.4004E-4 ]
+						 children[
+						    Transform {
+						       rotation 0 1 0 0 
+						       children[
+							  Inline { url "RWP.wrl" }
+						       ]
+						    }
+						 ]
+					      }
+					      DEF RARM_JOINT5 Joint {
+						 jointType "rotate"
+						 jointId 8
+						 jointAxis 1.0 0.0 0.0 
+						 #  translation -0.0335 0 -0.09 
+						 #translation 0.0 0.0 -0.090
+						 translation -0.047 0.0 -0.090
+						 ulimit [ 2.8448866807507569 ] #  163
+						 llimit [-2.8448866807507569 ] # -163
+						 uvlimit [ 5.2359877559829888 ] #  300
+						 lvlimit [-5.2359877559829888 ] # -300
+						 rotorInertia 0.5
+						 children[
+						    DEF RARM_JOINT5_Link Segment{
+						       centerOfMass -0.04847597 3.2E-6 -0.03889875 
+						       mass 1.05156
+						       momentsOfInertia [ 0.00194072 -1.1E-7 -4.2482E-4 -1.1E-7 0.00209392 -1.2E-7 -4.2482E-4 -1.2E-7 3.5788E-4 ]
+						       children [
+							  Transform {
+								translation -0.0061  0.0 -0.002
+								children Shape {
+								    appearance Appearance {
+								    material Material {
+									diffuseColor 1.0 1.0 1.0
+								    }
+								}
+								#geometry Sphere {
+								#   radius 0.0075
+								#}
+							    }
+							  }
+
+                                                          Inline { url "WR.wrl" }
+
+						       ]
+						    }
+						 ]
+					      }
+					   ]
+					}
+				     ]
+				  }
+			       ]
+			    }
+			 ]
+		      }
+		   ]
+		}
+		DEF LARM_JOINT0 Joint {
+		   jointType "rotate"
+		   jointId 9
+		   jointAxis 0.0 0.0 1.0 
+		   translation 0 0.145 0.370296 
+		   rotation 1 0 0 -0.261799 
+		   ulimit [ 1.5358897417550099 ] #  88
+		   llimit [-1.5358897417550099 ] # -88
+		   uvlimit [ 3.001966313430247 ] #  172
+		   lvlimit [-3.001966313430247 ] # -172
+		   rotorInertia 0.5
+		   children[
+		      DEF LARM_JOINT0_Link Segment{
+			 centerOfMass -0.00226388 -0.00521383 0.01560807 
+			 mass 1.32626
+			 momentsOfInertia [ 0.00207537 1.1276E-4 8.927E-5 1.1276E-4 0.00240295 -4.57E-5 8.927E-5 -4.57E-5 0.00141912 ]
+			 children[
+			    Transform {
+			       rotation 0 1 0 0 
+			       children[
+				  Inline { url "LSY.wrl" }
+			       ]
+			    }
+			 ]
+		      }
+		      DEF LARM_JOINT1 Joint {
+			 jointType "rotate"
+			 jointId 10
+			 jointAxis 0.0 1.0 0.0 
+			 rotorInertia 0.5
+			 ulimit [ 1.0471975511965976 ] #  60
+			 llimit [-2.4434609527920612 ] # -140
+			 uvlimit [ 2.3212879051524582 ] #  133
+			 lvlimit [-2.3212879051524582 ] # -133
+			 children[
+			    DEF LARM_JOINT1_Link Segment{
+			       centerOfMass -5.236E-5 0.058313380000000005 -0.10706059 
+			       mass 1.14898
+			       momentsOfInertia [ 0.01541678 9.7E-7 3.52E-6 9.8E-7 0.01471175 0.00213705 3.51E-6 0.00213704 0.00126575 ]
+			       children[
+				  Transform {
+				     rotation 0 1 0 0 
+				     children[
+					Inline { url "LSP.wrl" }
+				     ]
+				  }
+			       ]
+			    }
+			    DEF LARM_JOINT2 Joint {
+			       jointType "rotate"
+			       jointId 11
+			       jointAxis 0.0 1.0 0.0 
+			       translation 0.0 0.095 -0.250
+			       ulimit [ 0.0 ] #  0
+			       llimit [-2.7576202181510405 ] # -158
+			       uvlimit [ 3.9968039870670142 ] #  229
+			       lvlimit [-3.9968039870670142 ] # -229
+			       rotorInertia 0.5
+			       children[
+				  DEF LARM_JOINT2_Link Segment{
+				     centerOfMass -2.254E-5 0.00167107 -0.07151163 
+				     mass 0.577518
+				     momentsOfInertia [ 0.00143966 -3.0E-7 1.2E-6 -3.0E-7 0.00141763 -7.596E-5 1.2E-6 -7.596E-5 1.972E-4 ]
+				     children[
+					Transform {
+					   rotation 0 1 0 0 
+					   children[
+					      Inline { url "LEP.wrl" }
+					   ]
+					}
+				     ]
+				  }
+				  DEF LARM_JOINT3 Joint {
+				     jointType "rotate"
+				     jointId 12
+				     jointAxis 0.0 0.0 1.0 
+				     translation -0.030 0.0 0.0 
+				     ulimit [ 2.8797932657906435 ] #  165
+				     llimit [-1.8325957145940461 ] # -105
+				     uvlimit [ 4.6076692252650300 ] #  264
+				     lvlimit [-4.6076692252650300 ] # -264
+				     rotorInertia 0.5
+				     children [
+					DEF LARM_JOINT3_Link Segment {
+					   centerOfMass -1.788E-5 -0.00395812 -0.2027305 
+					   mass 0.457418
+					   momentsOfInertia [ 6.9205E-4 3.0E-8 5.2E-7 3.0E-8 6.8903E-4 -1.915E-5 5.2E-7 -1.915E-5 1.3509E-4 ]
+					   children [
+					      Transform {
+						 rotation 0 1 0 0 
+						 children [
+						    Inline { url "LWY.wrl" }
+						 ]
+					      }
+					   ]
+					}
+					DEF LARM_JOINT4 Joint {
+					   jointType "rotate"
+					   jointId 13
+					   translation 0.0 0.0 -0.235
+					   jointAxis 0.0 1.0 0.0 
+					   ulimit [ 1.7453292519943295 ] #  100
+					   llimit [-1.7453292519943295 ] # -100
+					   uvlimit [ 3.9095375244672983 ] #  224
+					   lvlimit [-3.9095375244672983 ] # -224
+					   rotorInertia 0.5
+					   children[
+					      DEF LARM_JOINT4_Link Segment{
+						 centerOfMass 0.00243131 0.00379733 -0.05770359 
+						 mass 0.418434
+						 momentsOfInertia [ 5.2016E-4 1.69E-6 7.9E-6 1.69E-6 5.0569E-4 -5.377E-5 7.9E-6 -5.377E-5 1.4004E-4 ]
+						 children[
+						    Transform {
+						       rotation 0 1 0 0 
+						       children[
+							  Inline { url "LWP.wrl" }
+						       ]
+						    }
+						 ]
+					      }
+					      DEF LARM_JOINT5 Joint {
+						 jointType "rotate"
+						 jointId 14
+						 jointAxis 1.0 0.0 0.0 
+						 #  translation -0.0335 0 -0.09 
+						 #translation 0.0 0.0 -0.090 
+						 #translation -0.040 0.0 -0.090 
+						 translation  -0.047  0.0 -0.090
+						 ulimit [ 2.8448866807507569 ] #  163
+						 llimit [-2.8448866807507569 ] # -163
+						 uvlimit [ 5.2359877559829888 ] #  300
+						 lvlimit [-5.2359877559829888 ] # -300
+						 rotorInertia 0.5
+						 children[
+						    DEF LARM_JOINT5_Link Segment{
+						       centerOfMass -0.04847597 -3.2E-6 -0.03889875 
+						       mass 1.05156
+						       momentsOfInertia [ 0.00194072 1.1E-7 -4.2482E-4 1.1E-7 0.00209392 1.2E-7 -4.2482E-4 1.2E-7 3.5788E-4 ]
+						       children[
+							  Transform { 
+							     #translation -0.0225  0.010 -0.0301
+							     translation -0.0061  0.0 -0.002
+							     children Shape {
+								appearance Appearance {
+								   material Material {
+								      diffuseColor 1.0 1.0 1.0
+								   }
+								}
+								#geometry Sphere {
+								#   radius 0.0075
+								#}
+							     }
+							  }
+
+							  Inline { url "WR.wrl" } 
+
+						       ]
+						    }
+						 ]
+					      }
+					   ]
+					}
+				     ]
+				  }
+			       ]
+			    }
+			 ]
+		      }
+		   ]
+		}
+	     ]
+	  }
+       ]
+    }
+   ]
+   joints [
+    USE WAIST,
+    USE CHEST_JOINT0,
+    USE HEAD_JOINT0,
+    USE HEAD_JOINT1,
+    USE RARM_JOINT0,
+    USE RARM_JOINT1,
+    USE RARM_JOINT2,
+    USE RARM_JOINT3,
+    USE RARM_JOINT4,
+    USE RARM_JOINT5,
+    USE LARM_JOINT0,
+    USE LARM_JOINT1,
+    USE LARM_JOINT2,
+    USE LARM_JOINT3,
+    USE LARM_JOINT4,
+    USE LARM_JOINT5,
+   ]
+   segments [
+    USE WAIST_Link,
+    USE CHEST_JOINT0_Link,
+    USE HEAD_JOINT0_Link,
+    USE HEAD_JOINT1_Link,
+    USE RARM_JOINT0_Link,
+    USE RARM_JOINT1_Link,
+    USE RARM_JOINT2_Link,
+    USE RARM_JOINT3_Link,
+    USE RARM_JOINT4_Link,
+    USE RARM_JOINT5_Link,
+    USE LARM_JOINT0_Link,
+    USE LARM_JOINT1_Link,
+    USE LARM_JOINT2_Link,
+    USE LARM_JOINT3_Link,
+    USE LARM_JOINT4_Link,
+    USE LARM_JOINT5_Link,
+   ]
+}

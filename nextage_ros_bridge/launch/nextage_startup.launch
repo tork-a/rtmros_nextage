@@ -1,0 +1,9 @@
+<launch>
+  <arg name="GUI" default="true" />
+  <include file="$(find hironx_ros_bridge)/launch/hironx_startup.launch">
+    <arg name="GUI" default="$(arg GUI)" />
+    <arg name="MODEL_FILE" default="$(find nextage_description)/models/main.wrl" />
+    <arg name="PROJECT_FILE" default="$(find nextage_ros_bridge)/conf/nextage_nosim.xml" />
+    <arg name="CONF_FILE" default="$(find nextage_ros_bridge)/conf/nextage.conf" />
+  </include>
+</launch>

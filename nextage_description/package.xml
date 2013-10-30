@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <name>nextage_description</name>
+  <version>0.0.1</version>
+  <description>The nextage_description package</description>
+
+  <maintainer email="iisaito@opensource-robotics.tokyo.jp">Isao Isaac Saito</maintainer>
+  <maintainer email="k-okada@jsk.t.u-tokyo.ac.jp">Kei Okada</maintainer>
+  <author email="k-okada@jsk.t.u-tokyo.ac.jp">Kei Okada</author>
+  <author email="iisaito@opensource-robotics.tokyo.jp">Isao Isaac Saito</author>
+  <author email="w.yasuda@opensource-robotics.tokyo.jp">Wataru Yasuda</author>
+  <license>BSD</license>
+  <url type="website">http://ros.org/wiki/nextage_description</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>urdf</build_depend>
+  <run_depend>urdf</run_depend>
+
+  <export/>
+</package>
