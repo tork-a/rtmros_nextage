@@ -1,24 +1,26 @@
 <package>
-
   <name>nextage_moveit_config</name>
   <version>0.2.0</version>
   <description>
      An automatically generated package with all the configuration and launch files for using the NextageOpen with the MoveIt Motion Planning Framework
   </description>
+  <maintainer email="k-okada@jsk.t.u-tokyo.ac.jp">Kei Okada</maintainer>
+  <maintainer email="iisaito@opensource-robotics.tokyo.jp">Isao Isaac Saito</maintainer>
   <author email="assistant@moveit.ros.org">MoveIt Setup Assistant</author>
-  <maintainer email="assistant@moveit.ros.org">MoveIt Setup Assistant</maintainer>
+  <author>Kei Okada</author>
+  <author>Isao Isaac Saito</author>
 
   <license>BSD</license>
 
+  <url type="website">http://ros.org/wiki/nextage_description</url>
   <url type="website">http://moveit.ros.org/</url>
-  <url type="bugtracker">https://github.com/ros-planning/moveit_setup_assistant/issues</url>
-  <url type="repository">https://github.com/ros-planning/moveit_setup_assistant</url>
+  <url type="bugtracker">https://github.com/tork-a/rtmros_nextage/issues</url>
+  <url type="repository">https://github.com/tork-a/rtmros_nextage</url>
 
   <run_depend>moveit_ros_move_group</run_depend>
   <run_depend>xacro</run_depend>
   <build_depend>nextage_description</build_depend>
   <run_depend>nextage_description</run_depend>
-
 
   <buildtool_depend>catkin</buildtool_depend>
   
