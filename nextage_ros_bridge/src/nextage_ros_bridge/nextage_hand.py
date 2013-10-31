@@ -34,6 +34,31 @@
 #
 # Author: Isaac Isao Saito
 
+import time
+import threading
+
+
+class AirhandReleaseThread(threading.Thread):
+    '''
+    With airhand, to release by blowing air needs to be stopped after certain
+    amount of time. Usually a few seconds, not too short for the air compressor
+    to have ample time for a reaction, is a good idea. This thread is used
+    in order to do so without letting the computer program halt.
+    '''
+    def __init__(self, nhand, hand, sleeptime):
+        '''
+        @type nhand: NextageHand
+        @type hand: str
+        '''
+        threading.Thread.__init__(self)
+        self._nhand = nhand
+        self._hand = hand
+        self._sleeptime = sleeptime
+
+    def run(self):
+        time.sleep(self._sleeptime)
+        self._nhand.use_airhand(self._nhand.AIRHAND_KEEP, self._hand)
+
 
 class NextageHand(object):
     '''
@@ -73,6 +98,8 @@ class NextageHand(object):
     _DIO_VALVE_L_2 = 26
     _DIO_EJECTOR_L_1 = 27
     _DIO_EJECTOR_L_2 = 28
+
+    _SLEEP_POST_RELEASE = 3.0
 
     def __init__(self, parent):
         '''
@@ -263,6 +290,12 @@ class NextageHand(object):
             if self.HAND_R == hand:
                 # dout = [_DIO_EJECTOR_R_1]  #TODO: https://bitbucket.org/tork-a/iros13/issue/37/dio#comment-6611013
                 dout = [self._DIO_EJECTOR_R_2]
+
+                # Create a thread to do KEEP action after the specified amount
+                # of time without stopping the program.
+                thread = AirhandReleaseThread(self, hand,
+                                              self._SLEEP_POST_RELEASE)
+                thread.start()
         else:
             # TODO: Might want to thrown exception?
             print 'nono gripper'
