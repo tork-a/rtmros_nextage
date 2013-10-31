@@ -37,6 +37,8 @@
 import time
 import threading
 
+import rospy
+
 
 class AirhandReleaseThread(threading.Thread):
     '''
@@ -176,8 +178,13 @@ class NextageHand(object):
         # rospy.loginfo('dout={}, mask={}'.format(dout, mask))
         # # With this print formatting, you can copy the output and paste
         # # directly into writeDigitalOutputWithMask method if you wish.
-        print 'dout, mask:\n{},\n{}\n{}'.format(dout, mask, print_index)
-        self._parent.writeDigitalOutputWithMask(dout, mask)
+        rospy.loginfo('dout, mask:\n{},\n{}\n{}'.format(dout, mask,
+                                                        print_index))
+        try:
+            self._parent.writeDigitalOutputWithMask(dout, mask)
+        except AttributeError as e:
+            rospy.logerr('AttributeError from robot.\nTODO: Needs handled.')
+            rospy.logerr('\t{}'.format(e))            
 
     def turn_handlight(self, hand=None, on=True):
         '''
@@ -264,7 +271,7 @@ class NextageHand(object):
                 dout = [self._DIO_VALVE_L_2]
         else:
             # TODO: Might want to thrown exception?
-            print 'nono gripper'
+            rospy.logwarn('No gripper specified. Do nothing.')
             return
         self._dio_writer(dout, mask)
 
@@ -298,7 +305,7 @@ class NextageHand(object):
                 thread.start()
         else:
             # TODO: Might want to thrown exception?
-            print 'nono gripper'
+            rospy.logwarn('No gripper specified. Do nothing.')
             return
         self._dio_writer(dout, mask)
 
