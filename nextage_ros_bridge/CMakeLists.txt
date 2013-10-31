@@ -32,6 +32,10 @@ pkg_check_modules(openhrp3 openhrp3.1 REQUIRED)
 set(OPENHRP3 ${openhrp3_PREFIX}/share/openhrp3)  # for longfloor.wrl
 set(ROBOT_NAME nextage)
 
+if(NOT EXISTS ${hironx_ros_bridge_SOURCE_DIR}/conf)
+  set(hironx_ros_bridge_SOURCE_DIR ${hironx_ros_bridge_PREFIX}/share/hironx_ros_bridge)
+endif()
+
 file(MAKE_DIRECTORY conf)
 configure_file(${hironx_ros_bridge_SOURCE_DIR}/conf/RobotHardware.conf.in       ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.RobotHardware.conf)
 configure_file(${hironx_ros_bridge_SOURCE_DIR}/conf/nosim.RobotHardware.conf.in ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.RobotHardware.conf)
@@ -77,10 +81,10 @@ add_custom_target(${PROJECT_NAME}_model_copy ALL DEPENDS ${PROJECT_SOURCE_DIR}/m
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
-install(DIRECTORY scripts DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION} USE_SOURCE_PERMISSIONS)
+install(DIRECTORY script DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION} USE_SOURCE_PERMISSIONS)
 install(DIRECTORY conf DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION} PATTERN "*.in" EXCLUDE)
 install(DIRECTORY models DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
-install(DIRECTORY test DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION} USE_SOURCE_PERMISSIONS)
+#install(DIRECTORY test DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION} USE_SOURCE_PERMISSIONS)
 
 install(CODE "
   file(GLOB _xml_files \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/share/${PROJECT_SOURCE_DIR}/conf/*.xml)
