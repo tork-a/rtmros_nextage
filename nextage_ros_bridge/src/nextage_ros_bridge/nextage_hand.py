@@ -184,7 +184,7 @@ class NextageHand(object):
             self._parent.writeDigitalOutputWithMask(dout, mask)
         except AttributeError as e:
             rospy.logerr('AttributeError from robot.\nTODO: Needs handled.')
-            rospy.logerr('\t{}'.format(e))            
+            rospy.logerr('\t{}'.format("Device was not found. Maybe you're on simulator?"))            
 
     def turn_handlight(self, hand=None, on=True):
         '''
