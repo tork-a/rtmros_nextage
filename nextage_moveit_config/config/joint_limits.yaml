@@ -1,61 +1,62 @@
 joint_limits:
-  LARM_JOINT0:
-    has_velocity_limits: true
-    max_velocity: 0.5
-    has_acceleration_limits: true
-    max_acceleration: 0.35
-  LARM_JOINT1:
-    has_velocity_limits: true
-    max_velocity: 0.5
-    has_acceleration_limits: true
-    max_acceleration: 0.35
-  RARM_JOINT3:
-    has_velocity_limits: true
-    max_velocity: 0.5
-    has_acceleration_limits: true
-    max_acceleration: 0.35
   RARM_JOINT0:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 2.5
     has_acceleration_limits: true
-    max_acceleration: 0.35
+    max_acceleration: 2.0
   RARM_JOINT1:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 2.5
     has_acceleration_limits: true
-    max_acceleration: 0.35
-  RARM_JOINT4:
-    has_velocity_limits: true
-    max_velocity: 0.5
-    has_acceleration_limits: true
-    max_acceleration: 0.35
+    max_acceleration: 2.0
   RARM_JOINT2:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 2.5
     has_acceleration_limits: true
-    max_acceleration: 0.35
+    max_acceleration: 2.0
+  RARM_JOINT3:
+    has_velocity_limits: true
+    max_velocity: 2.5
+    has_acceleration_limits: true
+    max_acceleration: 2.0
+  RARM_JOINT4:
+    has_velocity_limits: true
+    max_velocity: 2.5
+    has_acceleration_limits: true
+    max_acceleration: 2.0
   RARM_JOINT5:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 2.5
     has_acceleration_limits: true
-    max_acceleration: 0.35
-  LARM_JOINT3:
+    max_acceleration: 2.0
+  LARM_JOINT0:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 2.5
     has_acceleration_limits: true
-    max_acceleration: 0.35
-  LARM_JOINT5:
+    max_acceleration: 2.0
+  LARM_JOINT1:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 2.5
     has_acceleration_limits: true
-    max_acceleration: 0.35
+    max_acceleration: 2.0
   LARM_JOINT2:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 2.5
     has_acceleration_limits: true
-    max_acceleration: 0.35
+    max_acceleration: 2.0
+  LARM_JOINT3:
+    has_velocity_limits: true
+    max_velocity: 2.5
+    has_acceleration_limits: true
+    max_acceleration: 2.0
   LARM_JOINT4:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 2.5
     has_acceleration_limits: true
-    max_acceleration: 0.35
+    max_acceleration: 2.0
+  LARM_JOINT5:
+    has_velocity_limits: true
+    max_velocity: 2.5
+    has_acceleration_limits: true
+    max_acceleration: 2.0
+
