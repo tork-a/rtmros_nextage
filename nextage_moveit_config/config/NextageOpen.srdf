@@ -16,6 +16,12 @@
         <link name="RARM_JOINT3_Link" />
         <link name="RARM_JOINT4_Link" />
         <link name="RARM_JOINT5_Link" />
+        <joint name="RARM_JOINT0" />
+        <joint name="RARM_JOINT1" />
+        <joint name="RARM_JOINT2" />
+        <joint name="RARM_JOINT3" />
+        <joint name="RARM_JOINT4" />
+        <joint name="RARM_JOINT5" />
     </group>
     <group name="left_arm">
         <link name="LARM_JOINT0_Link" />
@@ -24,6 +30,12 @@
         <link name="LARM_JOINT3_Link" />
         <link name="LARM_JOINT4_Link" />
         <link name="LARM_JOINT5_Link" />
+        <joint name="LARM_JOINT0" />
+        <joint name="LARM_JOINT1" />
+        <joint name="LARM_JOINT2" />
+        <joint name="LARM_JOINT3" />
+        <joint name="LARM_JOINT4" />
+        <joint name="LARM_JOINT5" />
     </group>
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
     <group_state name="left_arm_initial_pose" group="left_arm">
@@ -42,6 +54,9 @@
         <joint name="RARM_JOINT4" value="0.164061" />
         <joint name="RARM_JOINT5" value="0.055851" />
     </group_state>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="right_eef" parent_link="RARM_JOINT5_Link" group="right_gripper" parent_group="right_arm" />
+    <end_effector name="left_eef" parent_link="LARM_JOINT5_Link" group="left_gripper" parent_group="left_arm" />
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="virtual_joint" type="fixed" parent_frame="odom" child_link="WAIST_Link" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
