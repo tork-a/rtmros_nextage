@@ -1,6 +1,6 @@
 <package>
   <name>nextage_moveit_config</name>
-  <version>0.2.1</version>
+  <version>0.2.2</version>
   <description>
      An automatically generated package with all the configuration and launch files for using the NextageOpen with the MoveIt Motion Planning Framework
   </description>
