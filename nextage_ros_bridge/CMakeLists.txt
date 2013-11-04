@@ -11,7 +11,7 @@ catkin_python_setup()
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES nextage_ros_bridge
-  CATKIN_DEPENDS hironx_ros_bridge
+  CATKIN_DEPENDS hironx_ros_bridge nextage_description
 #  DEPENDS system_lib
 )
 
@@ -46,6 +46,9 @@ configure_file(${hironx_ros_bridge_SOURCE_DIR}/conf/nosim.conf.in               
 add_custom_target(${PROJECT_NAME}_model_files ALL DEPENDS ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.RobotHardware.conf ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.RobotHardware.conf ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.xml ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.xml ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.conf ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.conf)
 
 #compile_openhrp_model(${nextage_description_SOURCE_DIR}/models/main.wrl)
+if(NOT EXISTS ${nextage_description_SOURCE_DIR}/models/main.dae)
+ set(nextage_description_SOURCE_DIR ${nextage_description_PREFIX}/share/nextage_description)
+endif()
 add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae
   COMMAND ${CMAKE_COMMAND} -E copy ${nextage_description_SOURCE_DIR}/models/main.dae ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae
   DEPENDS ${nextage_description_SOURCE_DIR}/models/main.dae)

@@ -16,7 +16,10 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>hironx_ros_bridge</build_depend>
+  <build_depend>nextage_description</build_depend>
+
   <run_depend>hironx_ros_bridge</run_depend>
+  <run_depend>nextage_description</run_depend>
 
   <export/>
 </package>
