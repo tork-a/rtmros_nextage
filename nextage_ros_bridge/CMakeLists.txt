@@ -4,7 +4,7 @@ project(nextage_ros_bridge)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS hironx_ros_bridge)
+find_package(catkin REQUIRED COMPONENTS hironx_ros_bridge nextage_description)
 
 catkin_python_setup()
 
