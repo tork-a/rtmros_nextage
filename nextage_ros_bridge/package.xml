@@ -2,11 +2,11 @@
 <package>
   <name>nextage_ros_bridge</name>
   <version>0.2.3</version>
-  <description>The nextage_ros_bridge package</description>
+  <description>The nextage_ros_bridge package is a main ROS interface for developers and users of <a href = "http://nextage.kawada.jp/en/">Nextage</a> dual-armed robot from Kawada Robotics Inc. Developers can build their own application that takes control over Nextage via this package. Interface for both ROS and <a href = "http://openrtm.org/">OpenRTM</a> is provided.
+  </description>
 
   <maintainer email="iisaito@opensource-robotics.tokyo.jp">Isao Isaac Saito</maintainer>
   <maintainer email="k-okada@jsk.t.u-tokyo.ac.jp">Kei Okada</maintainer>
-  <author email="k-okada@jsk.t.u-tokyo.ac.jp">Kei Okada</author>
   <author email="iisaito@opensource-robotics.tokyo.jp">Isao Isaac Saito</author>
   <license>BSD</license>
 
