@@ -1,4 +1,4 @@
 <launch>
   <include file="$(find nextage_ros_bridge)/launch/nextage_ros_bridge_simulation.launch" />
-  <include file="$(find nextage_moveit_config)/launch/moveit_planning_exec.launch" />
+  <include file="$(find nextage_moveit_config)/launch/moveit_planning_execution.launch" />
 </launch>

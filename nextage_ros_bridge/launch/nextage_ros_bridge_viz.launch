@@ -10,5 +10,5 @@
     <arg name="COLLADA_FILE" value="$(arg COLLADA_FILE)" />
     <arg name="SIMULATOR_NAME" value="$(arg SIMULATOR_NAME)" />
   </include>
-  <include file="$(find nextage_moveit_config)/launch/moveit_planning_exec.launch" />
+  <include file="$(find nextage_moveit_config)/launch/moveit_planning_execution.launch" />
 </launch>
