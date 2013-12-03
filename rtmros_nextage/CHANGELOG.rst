@@ -2,8 +2,8 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.4 (2013-12-03)
+------------------
 * Bug fixes and refactoring.
 
 0.2.3 (2013-11-05)

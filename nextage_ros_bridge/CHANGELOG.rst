@@ -2,8 +2,8 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.4 (2013-12-03)
+------------------
 * fix same reason that we have in https://code.google.com/p/rtm-ros-robotics/source/detail?r=6039, need to modify .xml/.conf file during install process
 * Change name of a launch file to adjust common practice in rtmros world.
 * rename script (due to discussion in issue `#7 <https://github.com/130s/rtmros_nextage/issues/7>`_)
