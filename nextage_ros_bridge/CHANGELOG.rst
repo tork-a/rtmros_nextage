@@ -2,6 +2,11 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Adjust to the change on hironx
+* Contributors: Isao Isaac Saito
+
 0.2.4 (2013-12-03)
 ------------------
 * fix same reason that we have in https://code.google.com/p/rtm-ros-robotics/source/detail?r=6039, need to modify .xml/.conf file during install process

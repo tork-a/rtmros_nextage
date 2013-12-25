@@ -2,6 +2,11 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Adjust to the change on hironx
+* Contributors: Isao Isaac Saito
+
 0.2.4 (2013-12-03)
 ------------------
 * Bug fixes and refactoring.
