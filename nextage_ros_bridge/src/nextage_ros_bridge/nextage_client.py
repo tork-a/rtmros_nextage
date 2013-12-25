@@ -34,7 +34,7 @@
 #
 # Author: Isaac Isao Saito
 
-from hironx_ros_bridge.hironx import HIRONX
+from hironx_ros_bridge.hironx_client import HIRONX
 
 from nextage_ros_bridge.nextage_hand import NextageHand
 
