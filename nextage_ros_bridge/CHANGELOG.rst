@@ -2,8 +2,8 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.5 (2013-12-25)
+------------------
 * Adjust to the change on hironx
 * Contributors: Isao Isaac Saito
 
