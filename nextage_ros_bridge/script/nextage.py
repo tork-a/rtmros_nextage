@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import argparse
+import rtm
+
 from nextage_ros_bridge import nextage_client
 
-import argparse
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='hiro command line interpreters')
     parser.add_argument('--host', help='corba name server hostname')
