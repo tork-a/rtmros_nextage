@@ -51,6 +51,11 @@ class NextageClient(HIRONX, object):
 
     ''' Overriding a variable in the superclass to set the arms at higher
     positions.'''
+    OffPose = [[0], [0, 0],
+                   [25, -140, -150, 45, 0, 0],
+                   [-25, -140, -150, -45, 0, 0],
+                   [0, 0, 0, 0],
+                   [0, 0, 0, 0]]
     InitialPose = [[0], [0, 0],
                    [-0.6, 0, -140, 15.2, 9.4, 3.2],
                    [0.6, 0, -140, -15.2, 9.4, -3.2],
@@ -149,3 +154,23 @@ class NextageClient(HIRONX, object):
         (if they are turned off the attached tools will fall).
         '''
         self._hand.init_dio()
+
+    #1/15/2014 130s debug
+    def getRTCList(self):
+        '''
+        Overwriting HrpsysConfigurator.getRTCList
+        Returning predefined list of RT components.
+        @rtype [[str]]
+        @rerutrn List of available components. Each element consists of a list
+                 of abbreviated and full names of the component.
+        '''
+        return [
+            ['seq', "SequencePlayer"],
+            ['sh', "StateHolder"],
+            ['fk', "ForwardKinematics"],
+            ['el', "SoftErrorLimiter"],
+#            # ['co', "CollisionDetector"],
+            ['sc', "ServoController"],
+            ['log', "DataLogger"]
+            ]
+
