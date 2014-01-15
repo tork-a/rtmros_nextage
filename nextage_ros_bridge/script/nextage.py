@@ -35,13 +35,12 @@
 #
 # Author: Isaac Isao Saito
 
-import argparse
-
 # This should come earlier than later import. 
 # See http://code.google.com/p/rtm-ros-robotics/source/detail?r=6773
 from nextage_ros_bridge import nextage_client
 
-import rtm
+from hrpsys import rtm
+import argparse
 
 
 if __name__ == '__main__':
