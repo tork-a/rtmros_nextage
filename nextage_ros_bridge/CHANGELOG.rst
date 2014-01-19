@@ -2,8 +2,8 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.7 (2014-01-19)
+------------------
 * (nextage_client.py) Adjust initial poses to what the manufacturing company defines as the standard.
 * (nextage_client.py) Override pose (to more safer one) and method (to allow this class to choose which RT component to load).
 * Improve nextage.py import order and source (based on https://github.com/tork-a/rtmros_nextage/issues/25#issuecomment-32332068)
