@@ -2,6 +2,9 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.2.6 (2014-01-13)
 ------------------
 * (nextage_ros_bridge) Add missiong import
