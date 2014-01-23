@@ -4,10 +4,10 @@
   <version>0.2.7</version>
   <description>The rtmros_nextage package is a ROS interface for <a href = "http://nextage.kawada.jp/en/">Nextage</a> dual-armed robot from Kawada Robotics Inc.
   </description>
-  <maintainer email="iisaito@opensource-robotics.tokyo.jp">Isao Isaac Saito</maintainer>
+  <maintainer email="iisaito@opensource-robotics.tokyo.jp">Isaac Isao Saito</maintainer>
   <maintainer email="k-okada@jsk.t.u-tokyo.ac.jp">Kei Okada</maintainer>
   <author>Kei Okada</author>
-  <author>Isao Isaac Saito</author>
+  <author>Isaac Isao Saito</author>
   <author email="w.yasuda@opensource-robotics.tokyo.jp">Wataru Yasuda</author>
   <license>BSD</license>
   <url type="website">http://ros.org/wiki/rtmros_nextage</url>
