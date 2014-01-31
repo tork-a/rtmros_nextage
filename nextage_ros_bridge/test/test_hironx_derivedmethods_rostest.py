@@ -42,7 +42,7 @@ from hironx_ros_bridge import hironx_client as hironx
 
 _ARMGROUP_TESTED = 'larm'
 _GOINITIAL_TIME_MIDSPEED = 3  # second
-_JOINT_TESTED = 'LARM_JOINT5'
+_JOINT_TESTED = (14, 'LARM_JOINT5')  # (%INDEX_IN_LINKGROUP%, %NAME_JOINT%)
 _PKG = 'nextage_ros_bridge'
 _POSE_LARM_JOINT5 = [-0.0017695671419774017, 0.00019009187609567157,
                      -0.99999841624735, 0.3255751238415409,
@@ -63,7 +63,9 @@ class TestHironxDerivedmethodsFromHrpsys(unittest.TestCase):
 
         $ rosrun nextage_ros_bridge test_hironx_derivedmethods_rostest.py
 
-    #TODO: rostest not passing for some reasons.
+    #TODO: rostest not passing with this script for some reasons.
+
+    #TODO: Merge with the existing unittest scripts in hironx_ros_bridge/test
     '''
 
     @classmethod
@@ -71,18 +73,23 @@ class TestHironxDerivedmethodsFromHrpsys(unittest.TestCase):
         self._robot = hironx.HIRONX()
         self._robot.init()
 
+    @classmethod
+    def tearDownClass(cls):
+        cls._robot.goOffPose()
+        True
+
     def test_getCurrentPose(self):
         self._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
-        pos = self._robot.getCurrentPose(_JOINT_TESTED)
+        pos = self._robot.getCurrentPose(_JOINT_TESTED[1])
         rospy.loginfo('test_getCurrentPose compare pos={},' +
                       '\n\t_POSE_LARM_JOINT5={}'.format(pos, _POSE_LARM_JOINT5))
         self.assertEqual(pos, _POSE_LARM_JOINT5)
 
     def test_getCurrentPosition(self):
         self._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
-        pose = self._robot.getCurrentPose(_JOINT_TESTED)
+        pose = self._robot.getCurrentPose(_JOINT_TESTED[1])
         position_from_getcurrentposition = \
-                                self._robot.getCurrentPosition(_JOINT_TESTED)
+                               self._robot.getCurrentPosition(_JOINT_TESTED[1])
         position_from_pose = [i for j,
                               i in enumerate(pose) if j in _INDICES_POSITION]
         rospy.loginfo('test_getCurrentPosition compare position_from_getcurrentposition={},' +
@@ -90,10 +97,33 @@ class TestHironxDerivedmethodsFromHrpsys(unittest.TestCase):
                          position_from_getcurrentposition, position_from_pose))
         self.assertEqual(position_from_getcurrentposition, position_from_pose)
 
+    def test_getCurrentRotation(self):
+        self._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
+        rot_matrix = self._robot.getCurrentRotation(_JOINT_TESTED[1])
+        #TODO: Come up with ways to assert the returned value.
+
     def test_getCurrentRPY(self):
         self._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
-        rpy = self._robot.getCurrentRPY(_JOINT_TESTED)
-        #TODO: Come up with ways to assert rpy.
+        rpy = self._robot.getCurrentRPY(_JOINT_TESTED[1])
+        #TODO: Come up with ways to assert the returned value.
+
+    def test_getJointAngles(self):
+        self._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
+        joint_angles = self._robot.getJointAngles()
+
+        # TODO: statically assigning LARM_JOINT5
+        self.assertEqual(self._robot.InitialPose[3][5],
+                         joint_angles[_JOINT_TESTED[0]])
+
+    def test_setJointAngle_within_pi(self):
+        # TODO: setJointAngle does not work as expected for me on
+        # hrpsys_simulator. Therefore make this case always fail for now..
+        self.assertFalse(True)
+
+    def test_setJointAngle_beyond_pi(self):
+        # TODO: setJointAngle does not work as expected for me on
+        # hrpsys_simulator. Therefore make this case always fail for now..
+        self.assertFalse(True)
 
 if __name__ == '__main__':
     import rostest
