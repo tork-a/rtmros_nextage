@@ -67,10 +67,14 @@ class BaseToolchangerHands(BaseHands):
 
     def turn_handlight(self, hand=None, on=True):
         '''
+        @param hand: Both hands if None.
         @type on: bool
         @param on: Despite its type, it's handled as str in this method.
         '''
         if self.HAND_L == hand:
             self.handlight_l_command.execute(on)
         elif self.HAND_R == hand:
+            self.handlight_r_command.execute(on)
+        elif not hand:  # both hands
+            self.handlight_l_command.execute(on)
             self.handlight_r_command.execute(on)
