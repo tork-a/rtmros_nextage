@@ -64,7 +64,6 @@ class AbsractHandCommand(object):
     def __init__(self, hands, hand):
         '''
         @type hands: nextage_ros_bridge.base_hands.BaseHands
-        @param dio_writer: the method that writes out to robot's DIO interface.
         @type hand: str
         '''
         self._hands = hands

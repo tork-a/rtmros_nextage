@@ -44,8 +44,8 @@ class HandlightCommand(AbsractHandCommand):
     '''
     # TODO: Unittest is needed!!
 
-    HANDLIGHT_ON = 'True'
-    HANDLIGHT_OFF = 'False'
+    HANDLIGHT_ON = True
+    HANDLIGHT_OFF = False
 
     def __init__(self, hands, hand):
         super(HandlightCommand, self).__init__(hands, hand)
@@ -65,7 +65,7 @@ class HandlightCommand(AbsractHandCommand):
                 dout = mask = [self._DIO_RHAND]
             elif self._hands.HAND_L == self._hand:
                 dout = mask = [self._DIO_LHAND]
-            elif not self._hand:
+            elif not self._hand:  # Both hands
                 dout = mask = [self._DIO_RHAND, self._DIO_LHAND]
         else:  # Turn off the light.
             if self._hands.HAND_R == self._hand:
