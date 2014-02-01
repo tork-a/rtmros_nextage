@@ -41,6 +41,8 @@ class ToolchangerCommand(AbsractHandCommand):
     '''
     Following Command design pattern, this class represents commands for
     a toolchanger of NEXTAGE OPEN.
+
+    NOTE: 1/31/2014 TODO: Only right hand is implemented for now.
     '''
     # TODO: Unittest is needed!!
 
@@ -56,6 +58,7 @@ class ToolchangerCommand(AbsractHandCommand):
         @see abs_hand_command.AbsractHandCommand.execute
         '''
         dout = []
+        # To stop the air when tool is off. we need bits that control gripper.
         mask = [self._DIO_VALVE_L_1, self._DIO_VALVE_L_2]
         if self.GRIPPER_TOOLCHANGE_ON == operation:
             if self._hands.HAND_L == self._hand:
@@ -64,12 +67,14 @@ class ToolchangerCommand(AbsractHandCommand):
             elif self._hands.HAND_R == self._hand:
                 mask = [self._DIO_VALVE5PORT_R]
         elif self.GRIPPER_TOOLCHANGE_OFF == operation:
-            # TODO: Important: Need to stop the air when tool is off.
             if self._hands.HAND_L == self._hand:
                 # 10/29/2013 DIO changed. Now '0' is OFF for both 5PORT Valves.
-                dout = mask = [self._DIO_VALVE5PORT_L]
+                # 1/31/2014 DIO changed. Now '1' is OFF for both 5PORT Valves.
+                mask.append(self._DIO_VALVE5PORT_L)
+                dout = [self._DIO_VALVE5PORT_L]
             elif self._hands.HAND_R == self._hand:
-                dout = mask = [self._DIO_VALVE5PORT_R]
+                mask.append(self._DIO_VALVE5PORT_R)
+                dout = [self._DIO_VALVE5PORT_R]
         self._hands._dio_writer(dout, mask)
 
     def release_ejector(self, hand=None, on=True):
