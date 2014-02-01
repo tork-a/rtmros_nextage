@@ -52,6 +52,12 @@ class BaseHands(object):
     HAND_L = '1'  # '0' is expected to be "Both hands".
     HAND_R = '2'
 
+    _DIO_ASSIGN_ON = 1
+    _DIO_ASSIGN_OFF = 0
+    _DIO_MASK = 0   # Masking value remains "0" regardless the design on the
+                    # robot; masking logic is defined in hrpsys, while robot
+                    # makers can decide DIO logic.
+
     def __init__(self, parent):
         '''
         Since this class operates requires an access to
@@ -65,7 +71,8 @@ class BaseHands(object):
             return  # TODO: Replace with throwing exception
         self._parent = parent
 
-    def _dio_writer(self, digital_out, dio_assignments, padding=1):
+    def _dio_writer(self, digitalout_indices, dio_assignments,
+                    padding=_DIO_ASSIGN_OFF):
         '''
         This private method calls HrpsysConfigurator.writeDigitalOutputWithMask,
         which this class expects to be available via self._parent.
@@ -73,11 +80,14 @@ class BaseHands(object):
         According to the current (Oct 2013) hardware spec, numbering rule
         differs regarding 0 (numeric figure) in dout and mask as follows:
 
-           * 0 is "ON" in the digital output.
-           * 0 is "masked" and not used in mask.
+           * 0 is "OFF" in the digital output.
+             * 2/1/2014 Assignment modified 0:ON --> 0:OFF
+           * 0 is "masked" and not used in mask. Since using '0' is defined in
+             hrpsys and not in the robots side, we'll always use '0' for
+             masking.
 
-        @type digital_out: int[]
-        @param digital_out: Array of indices of digital output that NEED to be
+        @type digitalout_indices: int[]
+        @param digitalout_indices: Array of indices of digital output that NEED to be
                             flagged as 1.
                             eg. If you're targetting on 25 and 26th places in
                                 the DIO array but only 25th is 1, then the
@@ -86,32 +96,40 @@ class BaseHands(object):
         @param dio_assignments: range(32). This number corresponds to the
                                assigned digital pin of the robot.
 
-                               eg. If the target pin are 25 and 26,
+                               eg. If the target pins are 25 and 26,
                                    dio_assignments = [24, 25]
-        @param padding: Either 0 or 1. Signal arrays will be filled with this
-                        value.
+        @param padding: Either 0 or 1. DIO bit array will be populated with
+                        this value.
+                        Usually this method assumes to be called when turning
+                        something "on". Therefore by default this value is ON.
         '''
 
         # 32 bit arrays used in write methods in hrpsys/hrpsys_config.py
-        p = padding
         dout = []
         for i in range(32):
-            dout.append(p)
+            dout.append(padding)
+            # At the end of this loop, dout contains list of 32 'padding's.
+            # eg. [ 0, 0,...,0] if padding == 0
         mask = []
         for i in range(32):
-            mask.append(0)
+            mask.append(self._DIO_MASK)
+            # At the end of this loop, mask contains list of 32 '0's.
 
-        signal_alternate = 0
-        if padding == 0:
-            signal_alternate = 1
-        for i in digital_out:
+        signal_alternate = self._DIO_ASSIGN_ON
+        if padding == self._DIO_ASSIGN_ON:
+            signal_alternate = self._DIO_ASSIGN_OFF
+        rospy.logdebug('digitalout_indices={}'.format(digitalout_indices))
+        # Assign commanded bits
+        for i in digitalout_indices:
             dout[i - 1] = signal_alternate
 
+        # Assign unmasked, effective bits
         for i in dio_assignments:
-            # For masking, alternate symbol is always 1.
+            # For masking, alternate symbol is always 1 regarless the design
+            # on robot's side.
             mask[i - 1] = 1
 
-        # For convenience only; to show array number.
+        # BEGIN; For convenience only; to show array number.
         print_index = []
         for i in range(10):
             # For masking, alternate symbol is always 1.
@@ -122,12 +140,13 @@ class BaseHands(object):
         print_index.extend(print_index)
         print_index.extend(print_index)
         del print_index[-8:]
+        # END; For convenience only; to show array number.
 
         # # For some reason rospy.loginfo not print anything.
-        # rospy.loginfo('dout={}, mask={}'.format(dout, mask))
         # # With this print formatting, you can copy the output and paste
         # # directly into writeDigitalOutputWithMask method if you wish.
-        rospy.loginfo('dout, mask:\n{},\n{}\n{}'.format(dout, mask,
+        print('dout, mask:\n{},\n{}\n{}'.format(dout, mask,
+        #rospy.loginfo('dout, mask:\n{},\n{}\n{}'.format(dout, mask,
                                                         print_index))
         try:
             self._parent.writeDigitalOutputWithMask(dout, mask)
@@ -138,18 +157,20 @@ class BaseHands(object):
 
     def init_dio(self):
         '''
-        Initialize dio. All channels will be set '1' (off), EXCEPT for
+        Initialize dio. All channels will be set '0' (off), EXCEPT for
         tool changers (channel 19 and 24) so that attached tools won't fall.
         '''
         # TODO: The behavior might not be optimized. Ask Hajime-san and
         #       Nagashima-san to take a look.
 
         # 10/24/2013 OUT19, 24 are alternated; When they turned to '1', they
-        # are ON. So they won't fall upon this function call.
+        # are ON. So hands won't fall upon this function call.
+        # 2/1/2014 Due to the change of DIO assingment, OUT19, 24 need to be
+        # alternated;
 
         dout = mask = []
         # Use all slots from 17 to 32.
         for i in range(16, 32):
             mask.append(i)
 
-        self._dio_writer(dout, mask, 0)
+        self._dio_writer(dout, mask, self._DIO_ASSIGN_ON)

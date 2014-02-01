@@ -43,6 +43,8 @@ class GripperCommand(AbsractHandCommand):
     '''
     Following Command design pattern, this class represents an abstract
     command for hand classes of NEXTAGE OPEN.
+
+    NOTE: 1/31/2014 TODO: Only right hand is implemented for now.
     '''
     # TODO: Unittest is needed!!
 
@@ -58,6 +60,7 @@ class GripperCommand(AbsractHandCommand):
         @see abs_hand_command.AbsractHandCommand.execute
         '''
         dout = []
+        #TODO: Implement right arm too!
         mask = [self._DIO_VALVE_L_1, self._DIO_VALVE_L_2]
         if self.GRIPPER_CLOSE == operation:
             if self._hands.HAND_L == self._hand:
