@@ -65,6 +65,9 @@ class AbsractHandCommand(object):
         '''
         @type hands: nextage_ros_bridge.base_hands.BaseHands
         @type hand: str
+        @param hand: Side of hand. Variables that are defined in
+                     nextage_ros_bridge.base_hands.BaseHands can be used
+                     { HAND_L, HAND_R }.
         '''
         self._hands = hands
         self._hand = hand

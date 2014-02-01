@@ -73,11 +73,19 @@ class AirhandCommand(AbsractHandCommand):
     AIRHAND_DRAWIN = 'drawin'
     AIRHAND_KEEP = 'keep'
     AIRHAND_RELEASE = 'release'
+
     ## Might not be necessary. Maybe use only where you have to specify
     ## dangerous situation.AIRHAND_KEEP
     AIRHAND_DANGER = 'danger'
 
     def __init__(self, hands, hand):
+        '''
+        @see nextage_ros_bridge.command.abs_hand_command.AbsractHandCommand
+        @type hands: nextage_ros_bridge.base_hands.BaseHands
+        @type hand: str
+        @param hand: Side of hand. Variables that are defined in
+        nextage_ros_bridge.base_hands.BaseHands can be used { HAND_L, HAND_R }.
+        '''
         super(AirhandCommand, self).__init__(hands, hand)
         self._SLEEP_POST_RELEASE = 3.0
 
@@ -91,10 +99,8 @@ class AirhandCommand(AbsractHandCommand):
         # TODO: Implement for R hand too.
         if self.AIRHAND_DRAWIN == operation:
             if self._hands.HAND_L == self._hand:
-                # dout = [self._DIO_EJECTOR_R_2]  #TODO: https://bitbucket.org/tork-a/iros13/issue/37/dio#comment-6611013
                 dout = [self._DIO_EJECTOR_L_1]
             elif self._hands.HAND_R == self._hand:
-                # dout = [self._DIO_EJECTOR_R_2]  #TODO: https://bitbucket.org/tork-a/iros13/issue/37/dio#comment-6611013
                 dout = [self._DIO_EJECTOR_R_1]
         elif self.AIRHAND_KEEP == operation:
             if self._hands.HAND_L == self._hand:
@@ -103,10 +109,8 @@ class AirhandCommand(AbsractHandCommand):
                 pass  # Do nothing since off for both pins.
         elif self.AIRHAND_RELEASE == operation:
             if self._hands.HAND_L == self._hand:
-                # dout = [_DIO_EJECTOR_R_1]  #TODO: https://bitbucket.org/tork-a/iros13/issue/37/dio#comment-6611013
                 dout = [self._DIO_EJECTOR_L_2]
             elif self._hands.HAND_R == self._hand:
-                # dout = [_DIO_EJECTOR_R_1]  #TODO: https://bitbucket.org/tork-a/iros13/issue/37/dio#comment-6611013
                 dout = [self._DIO_EJECTOR_R_2]
 
             # Create a thread to do KEEP action after the specified amount

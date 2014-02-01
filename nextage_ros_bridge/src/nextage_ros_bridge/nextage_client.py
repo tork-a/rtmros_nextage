@@ -94,19 +94,19 @@ class NextageClient(HIRONX, object):
 
     def handtool_eject_l(self):
         self._hand.toolchanger_l_command.execute(
-                       self._hand.toolchanger_l_command.GRIPPER_TOOLCHANGE_OFF)
+                       self._hand.toolchanger_l_command.HAND_TOOLCHANGE_OFF)
 
     def handtool_eject_r(self):
         self._hand.toolchanger_r_command.execute(
-                       self._hand.toolchanger_r_command.GRIPPER_TOOLCHANGE_OFF)
+                       self._hand.toolchanger_r_command.HAND_TOOLCHANGE_OFF)
 
     def handtool_attach_l(self):
         self._hand.toolchanger_l_command.execute(
-                        self._hand.toolchanger_l_command.GRIPPER_TOOLCHANGE_ON)
+                        self._hand.toolchanger_l_command.HAND_TOOLCHANGE_ON)
 
     def handtool_attach_r(self):
         self._hand.toolchanger_r_command.execute(
-                        self._hand.toolchanger_r_command.GRIPPER_TOOLCHANGE_ON)
+                        self._hand.toolchanger_r_command.HAND_TOOLCHANGE_ON)
 
     def gripper_close_l(self):
         self._hand.gripper_l_command.execute(

@@ -41,14 +41,12 @@ class ToolchangerCommand(AbsractHandCommand):
     '''
     Following Command design pattern, this class represents commands for
     a toolchanger of NEXTAGE OPEN.
-
-    NOTE: 1/31/2014 TODO: Only right hand is implemented for now.
     '''
     # TODO: Unittest is needed!!
 
     # For grippers
-    GRIPPER_TOOLCHANGE_ON = 'toolchange_on'
-    GRIPPER_TOOLCHANGE_OFF = 'toolchange_off'
+    HAND_TOOLCHANGE_ON = 'toolchange_on'
+    HAND_TOOLCHANGE_OFF = 'toolchange_off'
 
     def __init__(self, hands, hand):
         super(ToolchangerCommand, self).__init__(hands, hand)
@@ -58,15 +56,19 @@ class ToolchangerCommand(AbsractHandCommand):
         @see abs_hand_command.AbsractHandCommand.execute
         '''
         dout = []
-        # To stop the air when tool is off. we need bits that control gripper.
+        # Chuck hand uses 2 bits, either of which needs to remain on to keep
+        # grasping position firmly. This becomes an issue when a hand is
+        # detatched after some grasping actions where the air keeps blowing
+        # out. Thus when detatched, air bits for chuck hand need to be turned
+        # off and these 2 bits are included in the masking bit.
         mask = [self._DIO_VALVE_L_1, self._DIO_VALVE_L_2]
-        if self.GRIPPER_TOOLCHANGE_ON == operation:
+        if self.HAND_TOOLCHANGE_ON == operation:
             if self._hands.HAND_L == self._hand:
                 # 10/29/2013 DIO changed. Now '1' is ON for both 5PORT Valves.
                 mask = [self._DIO_VALVE5PORT_L]
             elif self._hands.HAND_R == self._hand:
                 mask = [self._DIO_VALVE5PORT_R]
-        elif self.GRIPPER_TOOLCHANGE_OFF == operation:
+        elif self.HAND_TOOLCHANGE_OFF == operation:
             if self._hands.HAND_L == self._hand:
                 # 10/29/2013 DIO changed. Now '0' is OFF for both 5PORT Valves.
                 # 1/31/2014 DIO changed. Now '1' is OFF for both 5PORT Valves.
