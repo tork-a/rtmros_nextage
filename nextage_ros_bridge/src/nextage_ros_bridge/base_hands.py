@@ -93,7 +93,8 @@ class BaseHands(object):
                                 the DIO array but only 25th is 1, then the
                                 array becomes [24].
         @type dio_assignments: int[]
-        @param dio_assignments: range(32). This number corresponds to the
+        @param dio_assignments: range(32). Also called as "masking bits" or
+                                just "mask". This number corresponds to the
                                assigned digital pin of the robot.
 
                                eg. If the target pins are 25 and 26,
