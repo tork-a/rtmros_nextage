@@ -44,22 +44,20 @@ class AbsractHandCommand(object):
     '''
     # TODO: Unittest is needed!!DIO_V
 
-    # DIO pin numbers
-    _DIO_RHAND = 17
-    _DIO_LHAND = 18
-
-    # DIO pin numbers for toolchangeer.
-    _DIO_EJECTOR_R_1 = 22
-    _DIO_EJECTOR_R_2 = 23
-    _DIO_EJECTOR_L_1 = 27
-    _DIO_EJECTOR_L_2 = 28
-
-    _DIO_VALVE5PORT_R = 19
-    _DIO_VALVE_R_1 = 20  # Not in use since R hand isn't implemented yet.
-    _DIO_VALVE_R_2 = 21
-    _DIO_VALVE5PORT_L = 24
-    _DIO_VALVE_L_1 = 25
-    _DIO_VALVE_L_2 = 26
+    # DIO pin numbers. It's convenient to be overridden and renamed in the
+    # derived classes to represent the specific purpose of each pin.
+    _DIO_17 = 17
+    _DIO_18 = 18
+    _DIO_19 = 19
+    _DIO_20 = 20
+    _DIO_21 = 21
+    _DIO_22 = 22
+    _DIO_23 = 23
+    _DIO_24 = 24
+    _DIO_25 = 25
+    _DIO_26 = 26
+    _DIO_27 = 27
+    _DIO_28 = 28
 
     def __init__(self, hands, hand):
         '''
@@ -71,6 +69,7 @@ class AbsractHandCommand(object):
         '''
         self._hands = hands
         self._hand = hand
+        self._assign_dio_names()
 
     def execute(self, operation):
         '''
@@ -81,6 +80,15 @@ class AbsractHandCommand(object):
 
         @raise exception: HrpsysRosBridgeException
         '''
-        msg = 'AbsractHandCommand not extended.'
+        msg = 'AbsractHandCommand.execute() not extended.'
         rospy.logerr(msg)
         raise NotImplementedError(msg)
+
+    def _assign_dio_names(self):
+        '''
+        It's recommended in the derived classes to re-assign DIO names to
+        better represent the specific purposes of each DIO pin in there.
+        Since doing so isn' mandatory, this method doesn't emit error even when
+        it's not implemented.
+        '''
+        pass

@@ -50,6 +50,13 @@ class HandlightCommand(AbsractHandCommand):
     def __init__(self, hands, hand):
         super(HandlightCommand, self).__init__(hands, hand)
 
+    def _assign_dio_names(self):
+        '''
+        @see abs_hand_command.AbsractHandCommand._assign_dio_names
+        '''
+        self._DIO_RHAND = self._DIO_17
+        self._DIO_LHAND = self._DIO_18
+
     def execute(self, operation):
         '''
         @see abs_hand_command.AbsractHandCommand.execute

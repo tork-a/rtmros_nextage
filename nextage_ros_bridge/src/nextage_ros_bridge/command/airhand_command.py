@@ -66,6 +66,9 @@ class AirhandCommand(AbsractHandCommand):
     '''dio_writer
     Following Command design pattern, this class represents command for
     an Airhand of NEXTAGE OPEN.
+
+    As of 2/1/2014, it's only implemented for a right arm (since there's no
+    testing environment for left arm).
     '''
     # TODO: Unittest is needed!!
 
@@ -89,19 +92,29 @@ class AirhandCommand(AbsractHandCommand):
         super(AirhandCommand, self).__init__(hands, hand)
         self._SLEEP_POST_RELEASE = 3.0
 
+    def _assign_dio_names(self):
+        '''
+        @see abs_hand_command.AbsractHandCommand._assign_dio_names
+        '''
+        #DIO reassignment for the class-specific purpose
+        self._DIO_SUCTION_R_1 = self._DIO_22
+        self._DIO_SUCTION_R_2 = self._DIO_23
+        self._DIO_SUCTION_L_1 = self._DIO_27
+        self._DIO_SUCTION_L_2 = self._DIO_28
+
     def execute(self, operation):
         '''
         @see abs_hand_command.AbsractHandCommand.execute
         '''
         dout = []
-        mask = [self._DIO_EJECTOR_R_1, self._DIO_EJECTOR_R_2]
+        mask = [self._DIO_SUCTION_R_1, self._DIO_SUCTION_R_2]
 
         # TODO: Implement for R hand too.
         if self.AIRHAND_DRAWIN == operation:
             if self._hands.HAND_L == self._hand:
-                dout = [self._DIO_EJECTOR_L_1]
+                dout = [self._DIO_SUCTION_L_1]
             elif self._hands.HAND_R == self._hand:
-                dout = [self._DIO_EJECTOR_R_1]
+                dout = [self._DIO_SUCTION_R_1]
         elif self.AIRHAND_KEEP == operation:
             if self._hands.HAND_L == self._hand:
                 pass  # Do nothing since off for both pins.
@@ -109,9 +122,9 @@ class AirhandCommand(AbsractHandCommand):
                 pass  # Do nothing since off for both pins.
         elif self.AIRHAND_RELEASE == operation:
             if self._hands.HAND_L == self._hand:
-                dout = [self._DIO_EJECTOR_L_2]
+                dout = [self._DIO_SUCTION_L_2]
             elif self._hands.HAND_R == self._hand:
-                dout = [self._DIO_EJECTOR_R_2]
+                dout = [self._DIO_SUCTION_R_2]
 
             # Create a thread to do KEEP action after the specified amount
             # of time without stopping the program.

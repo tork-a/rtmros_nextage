@@ -51,6 +51,17 @@ class ToolchangerCommand(AbsractHandCommand):
     def __init__(self, hands, hand):
         super(ToolchangerCommand, self).__init__(hands, hand)
 
+    def _assign_dio_names(self):
+        '''
+        @see abs_hand_command.AbsractHandCommand._assign_dio_names
+        '''
+        self._DIO_VALVE5PORT_R = self._DIO_19
+        self._DIO_VALVE_R_1 = self._DIO_20
+        self._DIO_VALVE_R_2 = self._DIO_21
+        self._DIO_VALVE5PORT_L = self._DIO_24
+        self._DIO_VALVE_L_1 = self._DIO_25
+        self._DIO_VALVE_L_2 = self._DIO_26
+
     def execute(self, operation):
         '''
         @see abs_hand_command.AbsractHandCommand.execute

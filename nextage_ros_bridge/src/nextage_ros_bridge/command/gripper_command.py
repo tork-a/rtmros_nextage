@@ -55,6 +55,13 @@ class GripperCommand(AbsractHandCommand):
     def __init__(self, hands, hand):
         super(GripperCommand, self).__init__(hands, hand)
 
+    def _assign_dio_names(self):
+        '''
+        @see abs_hand_command.AbsractHandCommand._assign_dio_names
+        '''
+        self._DIO_VALVE_L_1 = self._DIO_25
+        self._DIO_VALVE_L_2 = self._DIO_26
+
     def execute(self, operation):
         '''
         @see abs_hand_command.AbsractHandCommand.execute
