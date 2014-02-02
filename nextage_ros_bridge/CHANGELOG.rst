@@ -2,6 +2,18 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Generalize hands DIO variables, and add a method to reassign them in the derived classes.
+* Fix to issue `#9 <https://github.com/tork-a/rtmros_nextage/issues/9>`_ (https://github.com/tork-a/rtmros_nextage/issues/9)
+* Adjust to the DIO assignment change.
+* (test_hironx_derivedmethods_rostest.py) Tentative fix to enable to connect to real robot. Needs improvement later to port out embedded robot's info.
+* Fixed handlight not function (wrong comparison of bool and str)
+* Add more unittesting. Separate tests for hand since the type of testing for hands I'll write this time will be not necessarily general enough.
+* Add tentative test file that checks cartesian
+* (nextage_ros_bridge) Refactoring to separate modules per hand type, to allow more flexible hand tool combination. Not tested yet on a real robot and on simulation it isn't possible to test as of the moment.
+* Contributors: Isao Isaac Saito
+
 0.2.7 (2014-01-19)
 ------------------
 * (nextage_client.py) Adjust initial poses to what the manufacturing company defines as the standard.
