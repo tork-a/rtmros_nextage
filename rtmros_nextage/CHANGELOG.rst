@@ -2,8 +2,8 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.8 (2014-02-03)
+------------------
 * Generalize hands DIO variables, and add a method to reassign them in the derived classes.
 * Fix to issue `#9 <https://github.com/tork-a/rtmros_nextage/issues/9>`_ (https://github.com/tork-a/rtmros_nextage/issues/9)
 * Adjust to the DIO assignment change.
