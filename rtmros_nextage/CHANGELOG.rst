@@ -2,6 +2,11 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* (nextage_ros_bridge) Fixed installation of missing py files
+* Contributors: Isao Isaac Saito
+
 0.2.8 (2014-02-03)
 ------------------
 * Generalize hands DIO variables, and add a method to reassign them in the derived classes.
