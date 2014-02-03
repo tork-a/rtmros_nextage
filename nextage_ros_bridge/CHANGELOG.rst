@@ -2,8 +2,8 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.9 (2014-02-03)
+------------------
 * Fixed installation of missing py files
 * Contributors: Isao Isaac Saito
 

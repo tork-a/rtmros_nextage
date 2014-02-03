@@ -2,8 +2,8 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.9 (2014-02-03)
+------------------
 * (nextage_ros_bridge) Fixed installation of missing py files
 * Contributors: Isao Isaac Saito
 
