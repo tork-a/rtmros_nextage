@@ -64,8 +64,13 @@ if __name__ == '__main__':
     if len(unknown) >= 2:
         args.robot = unknown[0]
         args.modelfile = unknown[1]
-    nxc = nextage_client.NextageClient()
-    nxc.init(robotname=args.robot, url=args.modelfile)
+    robot = nxc = nextage_client.NextageClient()
+    # Use generic name for the robot instance. This enables users on the
+    # script commandline (eg. ipython) to run the same commands without asking
+    # them to specifically tell what robot they're using (eg. hiro, nxc).
+    # This is backward compatible so that users can still keep using `nxc`.
+    # See http://code.google.com/p/rtm-ros-robotics/source/detail?r=6926
+    robot.init(robotname=args.robot, url=args.modelfile)
 
 # for simulated robot
 # $ ./hironx.py
