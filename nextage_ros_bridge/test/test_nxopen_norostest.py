@@ -37,64 +37,66 @@
 
 # This should come earlier than later import.
 # See http://code.google.com/p/rtm-ros-robotics/source/detail?r=6773
-import unittest
-
-from hrpsys import rtm
 from nextage_ros_bridge import nextage_client
 
-_ARMGROUP_TESTED = 'larm'
-_LINK_TESTED = 'LARM_JOINT5'
-_GOINITIAL_TIME_MIDSPEED = 3  # second
-_NUM_CARTESIAN_ITERATION = 300
-_PKG = 'nextage_ros_bridge'
+from hrpsys import rtm
+import argparse
+
+_ARMGROUP_TESTED = 'rarm'
+_LINK_TESTED = 'RARM_JOINT5'
 
 
-class TestNextageopen(unittest.TestCase):
+class TestNextageNoRostest(object):
     '''
-    Test NextageClient with rostest.
+    Test NextageClient without relying on rostest.
+    This can be upgraded to rostest version that is more ideal/almost required
+    for ROS package.
     '''
 
-    @classmethod
-    def setUpClass(self):
-
-        modelfile = '/opt/jsk/etc/HIRONX/model/main.wrl'
-        rtm.nshost = 'nxc100'
-        robotname = "RobotHardware0"
-
-        self._robot = nextage_client.NextageClient()
-        self._robot.init(robotname=robotname, url=modelfile)
-
-        self._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
+    def __init__(self, nc):
+        '''
+        @type nc: NextageClient
+        '''
+        self._nxc = nc
 
 #    def test_set_relative_x(self):
-    def _set_relative(self, dx=0, dy=0, dz=0):
+    def test_set_relative(self, dx=0, dy=0, dz=0):
         #print('Start moving dx={0}, dy={0}, dz={0}'.format(dx, dy, dz))
-        self._robot.seq_svc.setMaxIKError(0.00001, 0.01)
-        posi_prev = self._robot.getCurrentPosition(_LINK_TESTED)
-        for i in range(_NUM_CARTESIAN_ITERATION):
-            self._robot.setTargetPoseRelative(_ARMGROUP_TESTED,
-                                            _LINK_TESTED, dx, dy, dz, tm=0.15)
+        self._nxc.seq_svc.setMaxIKError(0.00001, 0.01)
+        posi_prev = self._nxc.getCurrentPosition(_LINK_TESTED)
+        for i in range(200):
+            self._nxc.setTargetPoseRelative(_ARMGROUP_TESTED, _LINK_TESTED,
+                                            dx, dy, dz, tm=0.2)
             #print('   joint=', nxc.getJointAngles()[3:9])
-        posi_post = self._robot.getCurrentPosition(_LINK_TESTED)
+        posi_post = self._nxc.getCurrentPosition(_LINK_TESTED)
 
-        diff_result = posi_post
-        for i in range(len(posi_prev)):
-            diff_result[i] = posi_prev[i] - posi_post[i]
-        print('Position diff={}'.format(diff_result))
-        return True
-
-    def test_set_targetpose_relative_dx(self):
-        self._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
-        assert(self._set_relative(dx=0.0001))
-
-    def test_set_targetpose_relative_dy(self):
-        self._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
-        assert(self._set_relative(dy=0.0001))
-
-    def test_set_targetpose_relative_dz(self):
-        self._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
-        assert(self._set_relative(dz=0.0001))
 
 if __name__ == '__main__':
-    import rostest
-    rostest.rosrun(_PKG, 'test_nxopen', TestNextageopen)
+    parser = argparse.ArgumentParser(description='hiro command line interpreters')
+    parser.add_argument('--host', help='corba name server hostname')
+    parser.add_argument('--port', help='corba name server port number')
+    parser.add_argument('--modelfile', help='robot model file nmae')
+    parser.add_argument('--robot', help='robot modlule name (RobotHardware0 for real robot, Robot()')
+    args, unknown = parser.parse_known_args()
+
+    if args.host:
+        rtm.nshost = args.host
+    if args.port:
+        rtm.nsport = args.port
+    if not args.robot:
+        args.robot = "RobotHardware0" if args.host else "HiroNX(Robot)0"
+    if not args.modelfile:
+        args.modelfile = ""
+
+    # support old style format
+    if len(unknown) >= 2:
+        args.robot = unknown[0]
+        args.modelfile = unknown[1]
+    nxc = nextage_client.NextageClient()
+    nxc.init(robotname=args.robot, url=args.modelfile)
+    nxc.goInitial()
+    tnn = TestNextageNoRostest(nxc)
+#    tnn.test_set_relative_x()
+    tnn.test_set_relative(dx=0.0001)
+    tnn.test_set_relative(dy=0.0001)
+    tnn.test_set_relative(dz=0.0001)
