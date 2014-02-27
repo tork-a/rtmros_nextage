@@ -1,0 +1,207 @@
+## For instruction on writing tutorials
+## http://www.ros.org/wiki/WritingTutorials
+####################################
+##FILL ME IN
+####################################
+## for a custom note with links:
+## for the canned note of "This tutorial assumes that you have completed the previous tutorials:" just add the links 
+## note.0=
+## descriptive title for the tutorial
+## title = Install NEXTAGE OPEN software on your machine
+## multi-line description to be displayed in search 
+## description = Installation described here can be applied to both Hironx and NEXTAGE OPEN robots.
+## the next tutorial description (optional)
+## next = Operating Hiro, NEXTAGE OPEN from Client Pograms
+## links to next tutorial (optional)
+## next.0.link= [[rtmros_nextage/Tutorials/Operating Hiro, NEXTAGE OPEN from Client Pograms|Operating Hiro, NEXTAGE OPEN from Client Pograms]]
+## what level user is this tutorial for 
+## level= (BeginnerCategory)
+## keywords = Hiro, Hironx, NEXTAGE OPEN
+####################################
+
+<<IncludeCSTemplate(TutorialCSHeaderTemplate)>>
+<<TableOfContents(4)>>
+
+##begin_howto_install_rtmros_nextage
+== Prerequiste ==
+ * Install ROS. Follow [[ROS/Installation]] to install `ROS` on your machine if you haven't done so yet. For available `ROS` distro, please consult [[rtmros_nextage]] and see what "distro" buttons are there (eg. `groovy`, `hydro`).
+
+ * Finish [[http://wiki.ros.org/ROS/Tutorials|ROS fundamental tutorials]]. Focus on the build tool you would use (`catkin` or `rosbuild`)
+
+ * If you're working with real robots, please contact business representative of the manufacturer to see if your robot is compatible with this set of software.
+
+== Install via debian binary (RECOMMENDED) ==
+`.deb` binary is available only in `ROS` [[groovy]] and later.
+
+Install by downloading via `apt`.
+{{{
+$ apt-get update
+$ apt-get install ros-%YOUR_ROS_DISTRO%-rtmros-nextage ros-%YOUR_ROS_DISTRO%-moveit-ros-visualization ros-%YOUR_ROS_DISTRO%-moveit-planners-ompl
+(eg.)
+$ apt-get install ros-hydro-rtmros-nextage ros-hydro-moveit-ros-visualization ros-hydro-moveit-planners-ompl
+}}}
+
+Doing so will automatically install some dependency including [[openrtm_aist_core]], [[openhrp3]], [[hrpsys]], [[rtmros_common]], and [[rtmros_hironx]] and their sub packages.
+
+=== Adjust to preliminary ROS binary repository ===
+'''NOTE''': This section is advanced. Please go through only at your own risk, or when you're advised to do so. Otherwise move on to the next section.
+
+In `ROS` it takes a little awhile, normally two or three weeks, before the new version of binary files with updates applied becomes available (due to a number of checkings happening on `ROS` "buildfarm" to maintain software quality). If you're in hurry, however, to obtain newer versions, there's a way to do as follows.
+
+ 1. Open `/etc/apt/sources.list.d/ros-latest.list`. If it doesn't exist, create one.
+
+ 2. Comment out any entries that contain `packages.ros.org`
+
+ 3. Add these lines (modify with your `Ubuntu` version):
+  {{{
+  # Shadow-fixed
+  deb http://packages.ros.org/ros-shadow-fixed/ubuntu precise main
+  deb-src http://packages.ros.org/ros-shadow-fixed/ubuntu precise main
+  }}}
+
+ 4. Run on terminal:
+  {{{
+  $ sudo apt-get update 
+  $ sudo apt-get dist-upgrade
+  }}}
+
+  This way, binaries that are already built but have not yet been officially released by ROS team can get installed. This does not necessarilly mean that those binaries are unstable; instead, you're just fetching the binaries that are being tested and awaiting to be released; this is based on the release cycle of ROS debian binary (cf. [[https://github.com/ros/rosdistro/issues/606|this discussion]]).
+
+ 5. Do not forget to revert back the change you just made in `ros-latest.list` once you're done with the newest binary.
+
+*WARNING* because of the nature of the process mentioned above, you should do this only for development purpose and *never ever* use this method on production systems. And as described in the step above, you're encouraged to set back the apt-get configuration.
+
+=== Update binaries ===
+When you know that newer binary version is available,
+
+{{{
+$ sudo apt-get update && sudo apt-get dist-upgrade
+}}}
+
+This will install newer version of what's already installed if available. 
+
+== Install via source ==
+'''NOTE:''' Unless you're a developer who needs to write and build codes for `NEXTAGE OPEN`, you're advised to use binary.
+
+Create directory under your `catkin workspace`.
+
+{{{
+$ mkdir -p catkin_ws/src; cd catkin_ws/src
+}}}
+
+You may notice that we are naming a source folder as `catkin`. Besides that this is just a naming build tool does not care, `catkin` as a convention prefers its work folder as to be called something like "catkin", "workspace". If you're building with `rosbuild` in the following subsection, this folder name is still valid (but if you feel confusing feel free to change it).
+
+The following subsections are separated for you per build tool you use. All ROS `Fuerte` users use `rosbuild`. The `Groovy` users who never used or even heard of a word `catkin` but still have some experience in ROS, you're likely a `rosbuild` user.
+
+=== Source build by rosbuild (rosmake) ===
+If you're on ROS `Groovy` or later where its new build system `catkin` is ready and stable, skip this subsection and goto `catkin`. However, `rosbuild` still sticks around without any problem.
+
+First setup a workspace at `src` dir.
+{{{
+$ rosws init
+}}}
+Then open with your favorite editor `.rosinstall` file that should be created by the previous command. Then add ROS environment info (as [[http://docs.ros.org/independent/api/rosinstall/html/rosws_tutorial.html#adding-ros-to-workspace|noted in tutorial]]):
+
+{{{
+- setup-file:
+    local-name: /opt/ros/%YOUR_ROS_DISTRO%/setup.*sh
+}}}
+
+    For example if you're using Groovy on `bash`,
+    {{{
+    - setup-file:
+        local-name: /opt/ros/groovy/setup.bash
+    }}}
+
+Then update the same file, obtain the source, and setup ROS environment by following:
+{{{
+$ rosws merge https://rtm-ros-robotics.googlecode.com/svn/trunk/rtm-ros-robotics.rosinstall
+$ rosws update
+$ source setup.*sh     (choose either script file that suits your needs)
+}}}
+
+    After `rosws merge`, the `rosinstall` file should look something like:
+    {{{
+    # THIS IS AN AUTOGENERATED FILE, LAST GENERATED USING wstool ON 2013-08-31
+    - setup-file:
+        local-name: /opt/ros/groovy/setup.sh
+    - svn: {local-name: rtm-ros-robotics/openrtm_common, uri: 'https://rtm-ros-robotics.googlecode.com/svn/trunk/openrtm_common'}
+    - svn: {local-name: rtm-ros-robotics/rtmros_common, uri: 'https://rtm-ros-robotics.googlecode.com/svn/trunk/rtmros_common'}
+    - svn: {local-name: rtm-ros-robotics/rtmros_hironx, uri: 'https://rtm-ros-robotics.googlecode.com/svn/trunk/rtmros_hironx'}
+    - svn: {local-name: rtm-ros-robotics/openrtm_apps, uri: 'https://rtm-ros-robotics.googlecode.com/svn/trunk/openrtm_apps'}
+    }}}
+
+Now you're ready to build by:
+{{{
+$ rosmake hironx_ros_bridge
+}}}
+
+Here, if you see rosmake stops with error at a particular package, 
+{{{
+$ cd %PKG_THAT_CAUSED_ERR%
+$ make
+}}}
+
+If this passed then do the same `rosmake` again. 
+Packages that are reported to cause error: hrpsys_ros_bridge, hironx_moveit_config
+
+To vefify that it runs, go on to next section to run simulator.
+
+=== Source build by Catkin ===
+*NOTE*: Many times again, you're encouraged to use binary for many reasons unless you have specific reasons to build from source.
+
+First obtain source. In `src` folder,
+{{{
+$ wstool init
+$ wstool merge https://rtm-ros-robotics.googlecode.com/svn/trunk/rtm-ros-robotics.rosinstall
+$ wstool update
+$ catkin_init_workspace
+}}}
+
+# [[http://www.ros.org/wiki/wstool|wstools]] takes over rosws for catkin workspace. Since we're not building in catkin workspace in this rosbuild section, you can keep using `rosws` if you feel like. The result shouldn't be different.
+
+The above commands downloads necessary codes.
+
+Before you become able to build your `catkin workspace`, you need to make sure that you have all the required dependencies. We use [[http://wiki.ros.org/rosdep|rosdep]] for this:
+{{{
+$ cd ..     (moving back to catkin_ws)
+$ rosdep install --from-paths src --ignore-src --rosdistro groovy -y -r
+}}}
+This will look at all of the packages in the `src` directory and find all of the dependencies they have. Then it will recursively install the dependencies, without stopping at any errors that may or may not occur.
+
+*NOTE*: it's known that the above command using `rosdep` doesn't install all dependency for wet packages (ie. packages that are built using `catkin`) due to the spec of current `rosdep` (Oct 2013, [[http://answers.ros.org/question/99756/rosdep-install-ignores-a-package-thats-actually-missing|Related thread]]). gm130s is writing a patch for it.
+
+Now you're ready to start building:
+{{{
+$ catkin_make
+$ source devel/setup.bash   (or any shell script you would prefer under `/devel`)
+}}}
+
+    NOTE-1; building by `catkin` might fail sometimes and workaround often works is just re-run `catkin_make`.
+
+    NOTE-2; If you updated source (by either downloading from devel repository or modifying by yourself), you should clean your source directories in your workspace by:
+
+    {{{
+$ cd %HOMEDIR_YOUR_CATKIN_WORKSPACE%
+$ rm -fR build devel
+    }}}
+
+In addition, only if you're building both `rosbuild` and `catkin` for whatever purpose, it's necessary for `rtm-ros-robotics` that enables "hybrid" build of both `rosbuild` and `catkin` and thus uses source folders for building work (cleaning your source folder is unusual usage in `catkin` workspace in general).
+{{{
+$ catkin_make clean
+}}}
+
+=== Install ROS and hironx from source (both build system) ===
+If you dare to, or have a reason to install not just hironx but ROS itself too from source, you can still take advantage of `.rosinstall` file to manage all the source repositories you need to obtain sources from. Use [[http://wiki.ros.org/rosinstall_generator|rosinstall_generator]]. 
+
+{{{
+$ rosinstall_generator hironx_ros_bridge --rosdistro groovy --deps --wet-only > groovy-hironx-wet.rosinstall
+}}}
+
+Simple this command creates a `.rosintall` file that has a long list of all source repos.
+
+##end_howto_install_rtmros_nextage
+
+## AUTOGENERATED DO NOT DELETE 
+## TutorialCategory
+## FILL IN THE STACK TUTORIAL CATEGORY HERE
