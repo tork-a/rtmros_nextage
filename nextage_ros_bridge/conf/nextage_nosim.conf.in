@@ -1,0 +1,3 @@
+model: file://@PROJECT_SOURCE_DIR@/models/@ROBOT_NAME@.dae
+dt: 0.005
+

@@ -1,7 +1,7 @@
 <grxui>
  <mode name="Simulation">
   <item class="com.generalrobotix.ui.item.GrxSimulationItem" name="simulationItem">
-   <property name="integrate" value="false"/>
+   <property name="integrate" value="true"/>
    <property name="timeStep" value="0.005"/>
    <property name="totalTime" value="2000000.0"/>
    <property name="method" value="EULER"/>
@@ -14,7 +14,7 @@
    <property name="connection" value="HGcontroller0.dqOut:HiroNX(Robot)0.dqRef"/>
    <property name="connection" value="HGcontroller0.ddqOut:HiroNX(Robot)0.ddqRef"/>
   </item>
-  <item class="com.generalrobotix.ui.item.GrxModelItem" name="nextage" url="/home/n130s/data/Dropbox/ROS/groovy_precise/catkinws/src/tork-a/iros13/rtmros_nextage/nextage_ros_bridge/models/nextage.dae">
+  <item class="com.generalrobotix.ui.item.GrxModelItem" name="nextage" url="@PROJECT_SOURCE_DIR@/models/@ROBOT_NAME@.dae">
    <property name="rtcName" value="HiroNX(Robot)0"/>
    <property name="inport" value="qRef:JOINT_VALUE"/>
    <property name="inport" value="dqRef:JOINT_VELOCITY"/>
@@ -25,7 +25,7 @@
    <property name="WAIST.translation" value="0  0  0"/>
    <property name="WAIST.rotation" value="1 0 0 0"/>
    <property name="WAIST.mode" value="Torque"/>
-   <property name="controller" value="nextage_nosim"/>
+   <property name="controller" value="nextage"/>
    <property name="CHEST_JOINT0.angle" value="0.0"/>
    <property name="CHEST_JOINT0.mode" value="HighGain"/>
    <property name="CHEST_JOINT0.NumOfAABB" value="1"/>
@@ -123,7 +123,7 @@
    <property name="connection" value="HGcontroller0.dqOut:longfloor(Robot)0.dqRef"/>
    <property name="connection" value="HGcontroller0.ddqOut:longfloor(Robot)0.ddqRef"/>
   </item>
-  <item class="com.generalrobotix.ui.item.GrxModelItem" name="longfloor" url="/home/n130s/data/Dropbox/ROS/groovy_precise/catkinws/devel/share/openhrp3/share/OpenHRP-3.1/sample/model/longfloor.wrl">
+  <item class="com.generalrobotix.ui.item.GrxModelItem" name="longfloor" url="@OPENHRP3@/share/OpenHRP-3.1/sample/model/longfloor.wrl">
    <property name="rtcName" value="longfloor(Robot)0"/>
    <property name="inport" value="qRef:JOINT_VALUE"/>
    <property name="inport" value="dqRef:JOINT_VELOCITY"/>
