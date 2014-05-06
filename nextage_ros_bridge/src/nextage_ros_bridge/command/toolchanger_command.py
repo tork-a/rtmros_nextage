@@ -106,7 +106,7 @@ class ToolchangerCommand(AbsractHandCommand):
                 dout = mask = [self._DIO_EJECTOR_L_1, self._DIO_EJECTOR_L_2]
             elif not hand:
                 dout = mask = [self._DIO_EJECTOR_R_1, self._DIO_EJECTOR_R_2,
-                        self._DIO_EJECTOR_L_1, self._DIO_EJECTOR_L_2]
+                               self._DIO_EJECTOR_L_1, self._DIO_EJECTOR_L_2]
         else:
             if self.HAND_R == hand:
                 mask = [self._DIO_EJECTOR_R_1, self._DIO_EJECTOR_R_2]
@@ -114,5 +114,5 @@ class ToolchangerCommand(AbsractHandCommand):
                 mask = [self._DIO_EJECTOR_L_1, self._DIO_EJECTOR_L_2]
             elif not hand:
                 mask = [self._DIO_EJECTOR_R_1, self._DIO_EJECTOR_R_2,
-                               self._DIO_EJECTOR_L_1, self._DIO_EJECTOR_L_2]
+                        self._DIO_EJECTOR_L_1, self._DIO_EJECTOR_L_2]
         self._hands._dio_writer(dout, mask)

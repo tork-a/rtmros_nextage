@@ -52,10 +52,10 @@ class NextageClient(HIRONX, object):
     ''' Overriding a variable in the superclass to set the arms at higher
     positions.'''
     OffPose = [[0], [0, 0],
-                   [25, -140, -150, 45, 0, 0],
-                   [-25, -140, -150, -45, 0, 0],
-                   [0, 0, 0, 0],
-                   [0, 0, 0, 0]]
+               [25, -140, -150, 45, 0, 0],
+               [-25, -140, -150, -45, 0, 0],
+               [0, 0, 0, 0],
+               [0, 0, 0, 0]]
     InitialPose = [[0], [0, 0],
                    [-0, 0, -130, 0, 0, 0],
                    [0, 0, -130, 0, 0, 0],
@@ -94,59 +94,59 @@ class NextageClient(HIRONX, object):
 
     def handtool_eject_l(self):
         self._hand.toolchanger_l_command.execute(
-                       self._hand.toolchanger_l_command.HAND_TOOLCHANGE_OFF)
+            self._hand.toolchanger_l_command.HAND_TOOLCHANGE_OFF)
 
     def handtool_eject_r(self):
         self._hand.toolchanger_r_command.execute(
-                       self._hand.toolchanger_r_command.HAND_TOOLCHANGE_OFF)
+            self._hand.toolchanger_r_command.HAND_TOOLCHANGE_OFF)
 
     def handtool_attach_l(self):
         self._hand.toolchanger_l_command.execute(
-                        self._hand.toolchanger_l_command.HAND_TOOLCHANGE_ON)
+            self._hand.toolchanger_l_command.HAND_TOOLCHANGE_ON)
 
     def handtool_attach_r(self):
         self._hand.toolchanger_r_command.execute(
-                        self._hand.toolchanger_r_command.HAND_TOOLCHANGE_ON)
+            self._hand.toolchanger_r_command.HAND_TOOLCHANGE_ON)
 
     def gripper_close_l(self):
         self._hand.gripper_l_command.execute(
-                                    self._hand.gripper_l_command.GRIPPER_CLOSE)
+            self._hand.gripper_l_command.GRIPPER_CLOSE)
 
     def gripper_close_r(self):
         self._hand.gripper_r_command.execute(
-                                    self._hand.gripper_r_command.GRIPPER_CLOSE)
+            self._hand.gripper_r_command.GRIPPER_CLOSE)
 
     def gripper_open_l(self):
         self._hand.gripper_l_command.execute(
-                                     self._hand.gripper_r_command.GRIPPER_OPEN)
+            self._hand.gripper_r_command.GRIPPER_OPEN)
 
     def gripper_open_r(self):
         self._hand.gripper_r_command.execute(
-                                     self._hand.gripper_r_command.GRIPPER_OPEN)
+            self._hand.gripper_r_command.GRIPPER_OPEN)
 
     def airhand_drawin_l(self):
         self._hand.airhand_l_command.execute(
-                                   self._hand.airhand_l_command.AIRHAND_DRAWIN)
+            self._hand.airhand_l_command.AIRHAND_DRAWIN)
 
     def airhand_drawin_r(self):
         self._hand.airhand_r_command.execute(
-                                   self._hand.airhand_r_command.AIRHAND_DRAWIN)
+            self._hand.airhand_r_command.AIRHAND_DRAWIN)
 
     def airhand_keep_l(self):
         self._hand.airhand_l_command.execute(
-                                     self._hand.airhand_l_command.AIRHAND_KEEP)
+            self._hand.airhand_l_command.AIRHAND_KEEP)
 
     def airhand_keep_r(self):
         self._hand.airhand_r_command.execute(
-                                     self._hand.airhand_r_command.AIRHAND_KEEP)
+            self._hand.airhand_r_command.AIRHAND_KEEP)
 
     def airhand_release_l(self):
         self._hand.airhand_l_command.execute(
-                                  self._hand.airhand_l_command.AIRHAND_RELEASE)
+            self._hand.airhand_l_command.AIRHAND_RELEASE)
 
     def airhand_release_r(self):
         self._hand.airhand_r_command.execute(
-                                  self._hand.airhand_r_command.AIRHAND_RELEASE)
+            self._hand.airhand_r_command.AIRHAND_RELEASE)
 
     def initialize_hand_dio(self):
         '''
@@ -155,7 +155,7 @@ class NextageClient(HIRONX, object):
         '''
         self._hand.init_dio()
 
-    #1/15/2014 130s debug
+    # 1/15/2014 130s debug
     def getRTCList(self):
         '''
         Overwriting HrpsysConfigurator.getRTCList
@@ -169,7 +169,7 @@ class NextageClient(HIRONX, object):
             ['sh', "StateHolder"],
             ['fk', "ForwardKinematics"],
             ['el', "SoftErrorLimiter"],
-#            # ['co', "CollisionDetector"],
+            # ['co', "CollisionDetector"],
             ['sc', "ServoController"],
             ['log', "DataLogger"]
             ]

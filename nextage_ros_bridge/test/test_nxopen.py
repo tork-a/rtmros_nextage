@@ -72,8 +72,8 @@ class TestNextageopen(unittest.TestCase):
         self._robot.seq_svc.setMaxIKError(0.00001, 0.01)
         posi_prev = self._robot.getCurrentPosition(_LINK_TESTED)
         for i in range(_NUM_CARTESIAN_ITERATION):
-            self._robot.setTargetPoseRelative(_ARMGROUP_TESTED,
-                                            _LINK_TESTED, dx, dy, dz, tm=0.15)
+            self._robot.setTargetPoseRelative(
+                _ARMGROUP_TESTED, _LINK_TESTED, dx, dy, dz, tm=0.15)
             #print('   joint=', nxc.getJointAngles()[3:9])
         posi_post = self._robot.getCurrentPosition(_LINK_TESTED)
 

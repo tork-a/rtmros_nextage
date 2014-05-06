@@ -35,7 +35,7 @@
 #
 # Author: Isaac Isao Saito
 
-# This should come earlier than later import. 
+# This should come earlier than later import.
 # See http://code.google.com/p/rtm-ros-robotics/source/detail?r=6773
 from nextage_ros_bridge import nextage_client
 
