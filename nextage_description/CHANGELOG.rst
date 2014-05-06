@@ -2,6 +2,9 @@
 Changelog for package nextage_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.2.11 (2014-03-05)
 -------------------
 

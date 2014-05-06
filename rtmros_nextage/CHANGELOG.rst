@@ -2,11 +2,14 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.2.11 (2014-03-05)
 -------------------
-* fix to https://github.com/tork-a/rtmros_nextage/issues/53
+* Fix `#53 <https://github.com/tork-a/rtmros_nextage/issues/53>`_
 * Add the source text files of tutorials on ROS wiki. These are just a backup and not intended to be updated per every change made on ROS wiki. The location of the source of ROS wiki doc needs to be figured out (discussed in https://github.com/tork-a/rtmros_nextage/issues/12).
-* Fix to `#23 <https://github.com/tork-a/rtmros_nextage/issues/23>`_, `#46 <https://github.com/tork-a/rtmros_nextage/issues/46>`_
+* Fix `#23 <https://github.com/tork-a/rtmros_nextage/issues/23>`_, `#46 <https://github.com/tork-a/rtmros_nextage/issues/46>`_
 * Contributors: Isaac Isao Saito
 
 0.2.10 (2014-02-18)
