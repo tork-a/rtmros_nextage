@@ -107,13 +107,13 @@ class TestHironxDerivedmethodsFromHrpsys(unittest.TestCase):
     def test_getCurrentPosition(self):
         self._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
         pose = self._robot.getCurrentPose(_JOINT_TESTED[1])
-        position_from_getcurrentposition = \
-                               self._robot.getCurrentPosition(_JOINT_TESTED[1])
+        position_from_getcurrentposition = self._robot.getCurrentPosition(
+            _JOINT_TESTED[1])
         position_from_pose = [i for j,
                               i in enumerate(pose) if j in _INDICES_POSITION]
         rospy.loginfo('test_getCurrentPosition compare position_from_getcurrentposition={},' +
                       '\n\tposition_from_pose={}'.format(
-                         position_from_getcurrentposition, position_from_pose))
+                          position_from_getcurrentposition, position_from_pose))
         self.assertEqual(position_from_getcurrentposition, position_from_pose)
 
     def test_getCurrentRotation(self):

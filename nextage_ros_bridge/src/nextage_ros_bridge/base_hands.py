@@ -146,9 +146,8 @@ class BaseHands(object):
         # # For some reason rospy.loginfo not print anything.
         # # With this print formatting, you can copy the output and paste
         # # directly into writeDigitalOutputWithMask method if you wish.
-        print('dout, mask:\n{},\n{}\n{}'.format(dout, mask,
-        #rospy.loginfo('dout, mask:\n{},\n{}\n{}'.format(dout, mask,
-                                                        print_index))
+        print('dout, mask:\n{},\n{}\n{}'.format(dout, mask, print_index))
+
         try:
             self._parent.writeDigitalOutputWithMask(dout, mask)
         except AttributeError as e:
