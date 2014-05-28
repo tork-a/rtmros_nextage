@@ -2,6 +2,11 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix `#15 <https://github.com/tork-a/rtmros_nextage/issues/15>`_
+* Contributors: Isaac IY Saito
+
 0.2.12 (2014-05-06)
 -------------------
 

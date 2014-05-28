@@ -2,6 +2,9 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.2.12 (2014-05-06)
 -------------------
 * Resolves `#48 <https://github.com/tork-a/rtmros_nextage/issues/48>`_
