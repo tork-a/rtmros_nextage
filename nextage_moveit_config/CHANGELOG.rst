@@ -2,8 +2,8 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.13 (2014-05-28)
+-------------------
 * Fix `#15 <https://github.com/tork-a/rtmros_nextage/issues/15>`_
 * Contributors: Isaac IY Saito
 
