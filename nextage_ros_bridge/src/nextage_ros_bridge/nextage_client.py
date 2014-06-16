@@ -56,11 +56,6 @@ class NextageClient(HIRONX, object):
                [-25, -140, -150, -45, 0, 0],
                [0, 0, 0, 0],
                [0, 0, 0, 0]]
-    InitialPose = [[0], [0, 0],
-                   [-0, 0, -130, 0, 0, 0],
-                   [0, 0, -130, 0, 0, 0],
-                   [0, 0, 0, 0],
-                   [0, 0, 0, 0]]
 
     def __init__(self):
         '''
@@ -173,3 +168,12 @@ class NextageClient(HIRONX, object):
             ['sc', "ServoController"],
             ['log', "DataLogger"]
             ]
+
+    def goInitial(self, tm=7, wait=True, init_pose_type=0):
+        '''
+        @see: HIRONX.goInitial
+        '''
+        if not init_pose_type:
+            # Set the pose where eefs level with the tabletop by default.
+            init_pose_type = HIRONX.INITPOS_TYPE_EVEN
+        return HIRONX.goInitial(self, tm, wait, init_pose_type)
