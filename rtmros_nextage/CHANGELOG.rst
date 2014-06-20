@@ -2,8 +2,8 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.14 (2014-06-20)
+-------------------
 * (nextage_client.py) adjust initial position to that of HIRONX, evens it up.
 * Fix (`#73 <https://github.com/tork-a/rtmros_nextage/issues/73>`_)
 * add more run_depends (`#71 <https://github.com/tork-a/rtmros_nextage/issues/71>`_)

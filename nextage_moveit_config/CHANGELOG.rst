@@ -2,8 +2,8 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.14 (2014-06-20)
+-------------------
 * Alphabetically ordering dependency
 * Fix (`#73 <https://github.com/tork-a/rtmros_nextage/issues/73>`_)
 * add more run_depends (`#71 <https://github.com/tork-a/rtmros_nextage/issues/71>`_)
