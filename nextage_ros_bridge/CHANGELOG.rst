@@ -2,6 +2,11 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* (nextage_client.py) adjust initial position to that of HIRONX, evens it up.
+* Contributors: Isaac IY Saito
+
 0.2.13 (2014-05-28)
 -------------------
 

@@ -2,6 +2,13 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Alphabetically ordering dependency
+* Fix (`#73 <https://github.com/tork-a/rtmros_nextage/issues/73>`_)
+* add more run_depends (`#71 <https://github.com/tork-a/rtmros_nextage/issues/71>`_)
+* Contributors: Kei Okada, Isaac IY Saito
+
 0.2.13 (2014-05-28)
 -------------------
 * Fix `#15 <https://github.com/tork-a/rtmros_nextage/issues/15>`_
