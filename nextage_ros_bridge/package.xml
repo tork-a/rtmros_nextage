@@ -15,7 +15,7 @@
   <url type="repository">https://github.com/tork-a/rtmros_nextage</url>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>hironx_ros_bridge</build_depend>
+  <build_depend version_gte="1.0.17">hironx_ros_bridge</build_depend>
   <build_depend>nextage_description</build_depend>
   <build_depend>roslint</build_depend>
   
