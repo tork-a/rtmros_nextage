@@ -4,7 +4,7 @@
   <arg name="MODEL_FILE" default="$(find nextage_description)/models/main.wrl" />
   <arg name="COLLADA_FILE" default="$(find nextage_ros_bridge)/models/nextage.dae" />
   <arg name="SIMULATOR_NAME" default="RobotHardware0" />
-  <include file="$(find nextage_ros_bridge)/launch/nextage_ros_bridge.launch">
+  <include file="$(find hironx_ros_bridge)/launch/hironx_ros_bridge.launch">
     <arg name="nameserver" value="$(arg nameserver)" />
     <arg name="MODEL_FILE" value="$(arg MODEL_FILE)" />
     <arg name="COLLADA_FILE" value="$(arg COLLADA_FILE)" />
