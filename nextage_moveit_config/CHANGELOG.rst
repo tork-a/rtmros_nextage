@@ -2,6 +2,11 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Enable natto-view.
+* Contributors: Isaac IY Saito
+
 0.2.14 (2014-06-20)
 -------------------
 * Alphabetically ordering dependency
