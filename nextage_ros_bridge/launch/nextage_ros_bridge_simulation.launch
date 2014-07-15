@@ -1,12 +1,16 @@
 <launch>
+  <arg name="CONF_FILE_COLLISIONDETECT" default="$(find nextage_ros_bridge)/conf/nextage.conf" />
   <arg name="GUI" default="true" />
   <arg name="MODEL_FILE" default="$(find nextage_description)/models/main.wrl" />
+
   <include file="$(find nextage_ros_bridge)/launch/nextage_startup.launch" >
     <arg name="GUI" default="$(arg GUI)" />
   </include>
-  <include file="$(find nextage_ros_bridge)/launch/nextage_ros_bridge.launch" >
+
+  <include file="$(find hironx_ros_bridge)/launch/hironx_ros_bridge.launch" >
     <arg name="nameserver" value="localhost" />
     <arg name="MODEL_FILE" value="$(arg MODEL_FILE)" />
     <arg name="SIMULATOR_NAME" value="HiroNX(Robot)0" />
+    <arg name="CONF_FILE_COLLISIONDETECT" value="$(arg CONF_FILE_COLLISIONDETECT)" />
   </include>
 </launch>
