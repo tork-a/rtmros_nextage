@@ -18,6 +18,7 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>nextage_description</build_depend>
+  <run_depend>hironx_moveit_config</run_depend>
   <run_depend>moveit_planners</run_depend>
   <run_depend>moveit_ros</run_depend>
   <run_depend>moveit_ros_move_group</run_depend>
