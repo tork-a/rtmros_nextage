@@ -1,16 +1,15 @@
 <launch>
-
   <arg name="debug" default="false" />
   <arg unless="$(arg debug)" name="launch_prefix" value="" />
   <arg     if="$(arg debug)" name="launch_prefix" value="gdb --ex run --args" />
 
+  <arg name="RVIZ_FIXEDFRAME" default="WAIST_Link" />
   <arg name="config" default="false" />
   <arg unless="$(arg config)" name="command_args" value="" />
 
   <!-- Enabling "natto-view". If it's too smelly or sticky for you, comment in moveit.rviz line.
        Note that for natto-view, hironx_moveit_config package, not nextage, is referred to avoid unnecessary redundancy. -->
-<!--  <arg     if="$(arg config)" name="command_args" value="-d $(find nextage_moveit_config)/launch/moveit.rviz" /> --> 
-  <arg     if="$(arg config)" name="command_args" value="-d $(find hironx_moveit_config)/launch/moveit_viewnatto.rviz" /> 
+  <arg if="$(arg config)" name="command_args" value="--fixed-frame $(arg RVIZ_FIXEDFRAME) -d $(find hironx_moveit_config)/launch/moveit_viewnatto.rviz" /> 
   
   <node name="$(anon rviz)" launch-prefix="$(arg launch_prefix)" pkg="rviz" type="rviz" respawn="false"
 	args="$(arg command_args)" output="screen">
