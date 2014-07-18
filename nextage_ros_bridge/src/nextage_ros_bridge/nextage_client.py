@@ -177,3 +177,62 @@ class NextageClient(HIRONX, object):
             # Set the pose where eefs level with the tabletop by default.
             init_pose_type = HIRONX.INITPOS_TYPE_EVEN
         return HIRONX.goInitial(self, tm, wait, init_pose_type)
+
+    def printDin(self, ports, dumpFlag=True):
+        '''
+        Print the currently set values of digital input registry. Print output order is tailored 
+        for the hands' functional group; DIO spec that is disloseable as of 7/17/2014 is:
+
+             Left hand: 
+                  DI26: Tool changer attached or not.
+                  DI22, 23: Fingers.
+                  DI24, 25: Compliance.
+
+             Right hand: 
+                  DI21: Tool changer attached or not.
+                  DI17, 18: Fingers.
+                  DI19, 20: Compliance.
+
+        Example output, for the right hand: 
+
+            No hand attached:
+
+                In [1]: robot.printDin([20, 16, 17, 18, 19])
+                DI21 is 0
+                DI17 is 0
+                DI18 is 0
+                DI19 is 0
+                DI20 is 0
+                Out[1]: [(20, 0), (16, 0), (17, 0), (18, 0), (19, 0)]
+    
+            Hand attached, fingers closed:
+
+                In [1]: robot.printDin([20, 16, 17, 18, 19])
+                DI21 is 1
+                DI17 is 1
+                DI18 is 0
+                DI19 is 0
+                DI20 is 0
+                Out[1]: [(20, 0), (16, 0), (17, 0), (18, 0), (19, 0)]
+    
+        @author: Koichi Nagashima
+        @since: 0.2.16
+        @type ports: int or [int].
+        @param dumpFlag: Print each pin if True.
+        @param ports: A port number or a list of port numbers in D-in registry.
+        '''
+        if isinstance(ports, int):
+            ports = [ports];
+            pass;
+        #din = self.rh_svc.readDigitalInput()[1];
+        ## rh_svc.readDigitalInput() returns tuple, of which 1st element is not needed here.
+        boolret, din = self.readDigitalInput(retRaw=True);
+        resAry=[];
+        for port in ports:
+            byteIdx = port/8;
+            bitIdx = port%8;
+            res = (ord(din[byteIdx]) >> bitIdx) & 1;
+            if (dumpFlag): print("DI%02d is %d"%(port+1,res));
+            resAry.append((port, res));
+            pass;
+        return resAry;
