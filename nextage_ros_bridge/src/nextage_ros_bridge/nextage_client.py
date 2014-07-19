@@ -57,6 +57,12 @@ class NextageClient(HIRONX, object):
                [0, 0, 0, 0],
                [0, 0, 0, 0]]
 
+    # Default digital input groups defined by manufacturer, Kawada, as of
+    # July 2014. This may change per the robot in the future and in then
+    # need modified. See also readDinGroup method.
+    _DI_PORTS_L = [25, 21, 22, 23, 24]
+    _DI_PORTS_R = [20, 16, 17, 18, 19]
+
     def __init__(self):
         '''
         Do not get confused that there is also a method called
@@ -178,7 +184,7 @@ class NextageClient(HIRONX, object):
             init_pose_type = HIRONX.INITPOS_TYPE_EVEN
         return HIRONX.goInitial(self, tm, wait, init_pose_type)
 
-    def readDigitalInputGroup(self, ports, dumpFlag=True):
+    def readDinGroup(self, ports, dumpFlag=True):
         '''
         Print the currently set values of digital input registry. Print output order is tailored 
         for the hands' functional group; DIO spec that is disloseable as of 7/17/2014 is:
@@ -237,3 +243,10 @@ class NextageClient(HIRONX, object):
             resAry.append((port, res));
             pass;
         return resAry;
+
+    def readDinGroupL(self, dumpFlag=True):
+        return self.readDinGroup(self._DI_PORTS_L, dumpFlag)
+
+    def readDinGroupR(self, dumpFlag=True):
+        return self.readDinGroup(self._DI_PORTS_R, dumpFlag)
+

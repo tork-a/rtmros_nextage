@@ -69,7 +69,6 @@ class GripperCommand(AbsractHandCommand):
         @see abs_hand_command.AbsractHandCommand.execute
         '''
         dout = []
-        #TODO: Implement right arm too!
         mask_l = [self._DIO_VALVE_L_1, self._DIO_VALVE_L_2]
         mask_r = [self._DIO_VALVE_R_1, self._DIO_VALVE_R_2]
         if self.GRIPPER_CLOSE == operation:
