@@ -178,7 +178,7 @@ class NextageClient(HIRONX, object):
             init_pose_type = HIRONX.INITPOS_TYPE_EVEN
         return HIRONX.goInitial(self, tm, wait, init_pose_type)
 
-    def printDin(self, ports, dumpFlag=True):
+    def readDigitalInputGroup(self, ports, dumpFlag=True):
         '''
         Print the currently set values of digital input registry. Print output order is tailored 
         for the hands' functional group; DIO spec that is disloseable as of 7/17/2014 is:
@@ -220,18 +220,19 @@ class NextageClient(HIRONX, object):
         @type ports: int or [int].
         @param dumpFlag: Print each pin if True.
         @param ports: A port number or a list of port numbers in D-in registry.
+        @rtype: [(int, int)]
+        @return: List of tuples of port and din value. If the arg ports was an int value, 
+                 this could be a list with single tuple in it.
         '''
         if isinstance(ports, int):
             ports = [ports];
             pass;
         #din = self.rh_svc.readDigitalInput()[1];
         ## rh_svc.readDigitalInput() returns tuple, of which 1st element is not needed here.
-        boolret, din = self.readDigitalInput(retRaw=True);
+        din = self.readDigitalInput();
         resAry=[];
         for port in ports:
-            byteIdx = port/8;
-            bitIdx = port%8;
-            res = (ord(din[byteIdx]) >> bitIdx) & 1;
+            res = din[port]
             if (dumpFlag): print("DI%02d is %d"%(port+1,res));
             resAry.append((port, res));
             pass;
