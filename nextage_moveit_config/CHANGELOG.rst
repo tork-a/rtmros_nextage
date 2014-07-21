@@ -2,6 +2,12 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* (moveit_rviz) Correct fixed frame. This re-enables Interactive Marker to appear.
+* (nextage_moveit_config) Add run_depend on hironx_moveit config (needed after https://github.com/tork-a/rtmros_nextage/commit/aa1c453c4ade5b9f44f94984f270a73e8e8e9376).
+* Contributors: Isaac IY Saito
+
 0.2.15 (2014-07-13)
 -------------------
 * Enable natto-view.
