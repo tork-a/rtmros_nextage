@@ -103,6 +103,8 @@ class BaseHands(object):
                         this value.
                         Usually this method assumes to be called when turning
                         something "on". Therefore by default this value is ON.
+        @rtype: bool
+        @return: True if dout was writtable to the register. False otherwise.
         '''
 
         # 32 bit arrays used in write methods in hrpsys/hrpsys_config.py
@@ -148,12 +150,15 @@ class BaseHands(object):
         # # directly into writeDigitalOutputWithMask method if you wish.
         print('dout, mask:\n{},\n{}\n{}'.format(dout, mask, print_index))
 
+        is_written_dout = False
         try:
-            self._parent.writeDigitalOutputWithMask(dout, mask)
+            is_written_dout = self._parent.writeDigitalOutputWithMask(dout,
+                                                                      mask)
         except AttributeError as e:
             rospy.logerr('AttributeError from robot.\nTODO: Needs handled.')
             rospy.logerr('\t{}'.format("Device was not found. Maybe you're" +
                                        "on simulator?"))
+        return is_written_dout
 
     def init_dio(self):
         '''

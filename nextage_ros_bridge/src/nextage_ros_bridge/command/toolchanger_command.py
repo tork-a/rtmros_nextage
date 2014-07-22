@@ -88,7 +88,7 @@ class ToolchangerCommand(AbsractHandCommand):
             elif self._hands.HAND_R == self._hand:
                 mask.append(self._DIO_VALVE5PORT_R)
                 dout = [self._DIO_VALVE5PORT_R]
-        self._hands._dio_writer(dout, mask)
+        return self._hands._dio_writer(dout, mask)
 
     def release_ejector(self, hand=None, on=True):
         '''
@@ -115,4 +115,4 @@ class ToolchangerCommand(AbsractHandCommand):
             elif not hand:
                 mask = [self._DIO_EJECTOR_R_1, self._DIO_EJECTOR_R_2,
                         self._DIO_EJECTOR_L_1, self._DIO_EJECTOR_L_2]
-        self._hands._dio_writer(dout, mask)
+        return self._hands._dio_writer(dout, mask)

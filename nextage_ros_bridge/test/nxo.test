@@ -1,0 +1,31 @@
+<launch>
+  <arg name="corbaport" default="2809" />
+  <arg name="HRPSYS_PY_NAME" default="nextage.py"/>
+  <arg name="HRPSYS_PY_PKG" default="nextage_ros_bridge"/>
+  <arg name="GUI" default='false' />
+  <arg name="nameserver" default="localhost" />
+  <arg name="ROBOT_NAME" default="HiroNX(Robot)0" />
+  <arg name="ROBOTCLIENT_ARG_OLDSTYLE"
+       default="-ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService" />
+
+  <!-- See https://github.com/start-jsk/rtmros_common/issues/416#issuecomment-46846623 -->
+  <node name="start_omninames" pkg="rtmbuild" type="start_omninames.sh"
+        args="$(arg corbaport)" />
+ 
+  <include file="$(find hironx_ros_bridge)/launch/hironx_startup.launch" >
+    <arg name="corbaport" value="$(arg corbaport)" />
+    <arg name="HRPSYS_PY_NAME" value="$(arg HRPSYS_PY_NAME)"/>
+    <arg name="HRPSYS_PY_PKG" value="$(arg HRPSYS_PY_PKG)"/>
+    <arg name="GUI" value="$(arg GUI)" />
+    <arg name="LAUNCH_HRPSYSPY" value='false' />
+    <arg name="REALTIME" value="false" />
+  </include>
+
+  <test type="test_handlight.py" pkg="nextage_ros_bridge" test-name="test_nxo_handlight"
+        time-limit="1000" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
+  <test type="test_gripper.py" pkg="nextage_ros_bridge" test-name="test_nxo_gripper"
+        time-limit="1000" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
+  <test type="test_airhand.py" pkg="nextage_ros_bridge" test-name="test_nxo_airhand"
+        time-limit="1000" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
+         
+</launch>

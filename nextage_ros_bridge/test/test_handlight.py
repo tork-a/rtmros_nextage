@@ -3,7 +3,7 @@
 
 # Software License Agreement (BSD License)
 #
-# Copyright (c) 2013, Tokyo Opensource Robotics Kyokai Association
+# Copyright (c) 2014, Tokyo Opensource Robotics Kyokai Association
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -33,39 +33,41 @@
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 #
-# Author: Isaac Isao Saito
+# Author: Isaac I.Y. Saito
 
-# This should come earlier than later import.
-# See http://code.google.com/p/rtm-ros-robotics/source/detail?r=6773
 import unittest
 
-#from hrpsys import rtm
+import rostest
+
 from nextage_ros_bridge import nextage_client
 
-_ARMGROUP_TESTED = 'larm'
-_LINK_TESTED = 'LARM_JOINT5'
 _GOINITIAL_TIME_MIDSPEED = 3  # second
-_NUM_CARTESIAN_ITERATION = 300
 _PKG = 'nextage_ros_bridge'
 
 
-class TestNextageopenHand(unittest.TestCase):
+class TestNxoHandlight(unittest.TestCase):
     '''
     Test NextageClient with rostest.
     '''
 
     @classmethod
-    def setUpClass(self):
-        self._robot = nextage_client.NextageClient()
-        self._robot.init()
-        self._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
+    def setUpClass(cls):
+        cls._robot = nextage_client.NextageClient()
+        cls._robot.init()
+        cls._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
 
-    def test_airhand_release_l(self):
-        self._robot.airhand_release_l()
+    @classmethod
+    def tearDownClass(cls):
+        cls._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
 
-    def test_airhand_release_r(self):
-        self._robot.airhand_release_r()
+    def test_handlight_r(self):
+        self.assertTrue(self._robot.handlight_r(is_on=True))
+
+    def test_handlight_l(self):
+        self.assertTrue(self._robot.handlight_l(is_on=True))
+
+    def test_handlight_both(self):
+        self.assertTrue(self._robot.handlight_both(is_on=True))
 
 if __name__ == '__main__':
-    import rostest
-    rostest.rosrun(_PKG, 'test_nxopen_hand', TestNextageopenHand)
+    rostest.rosrun(_PKG, 'test_nxo_handlight', TestNxoHandlight)

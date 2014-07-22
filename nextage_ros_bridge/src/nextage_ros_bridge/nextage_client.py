@@ -78,69 +78,69 @@ class NextageClient(HIRONX, object):
         '''
         HIRONX.init(self, robotname=robotname, url=url)
 
-    def turn_handlight_r(self, is_on=True):
-        self._hand.turn_handlight(self._hand.HAND_R, is_on)
+    def handlight_r(self, is_on=True):
+        return self._hand.turn_handlight(self._hand.HAND_R, is_on)
 
-    def turn_handlight_l(self, is_on=True):
-        self._hand.turn_handlight(self._hand.HAND_L, is_on)
+    def handlight_l(self, is_on=True):
+        return self._hand.turn_handlight(self._hand.HAND_L, is_on)
 
-    def turn_handlight_both(self, is_on=True):
-        self._hand.turn_handlight(None, is_on)
+    def handlight_both(self, is_on=True):
+        return self._hand.turn_handlight(None, is_on)
 
-    def handtool_eject_l(self):
-        self._hand.toolchanger_l_command.execute(
+    def handtool_l_eject(self):
+        return self._hand.toolchanger_l_command.execute(
             self._hand.toolchanger_l_command.HAND_TOOLCHANGE_OFF)
 
-    def handtool_eject_r(self):
-        self._hand.toolchanger_r_command.execute(
+    def handtool_r_eject(self):
+        return self._hand.toolchanger_r_command.execute(
             self._hand.toolchanger_r_command.HAND_TOOLCHANGE_OFF)
 
-    def handtool_attach_l(self):
-        self._hand.toolchanger_l_command.execute(
+    def handtool_l_attach(self):
+        return self._hand.toolchanger_l_command.execute(
             self._hand.toolchanger_l_command.HAND_TOOLCHANGE_ON)
 
-    def handtool_attach_r(self):
-        self._hand.toolchanger_r_command.execute(
+    def handtool_r_attach(self):
+        return self._hand.toolchanger_r_command.execute(
             self._hand.toolchanger_r_command.HAND_TOOLCHANGE_ON)
 
-    def gripper_close_l(self):
-        self._hand.gripper_l_command.execute(
+    def gripper_l_close(self):
+        return self._hand.gripper_l_command.execute(
             self._hand.gripper_l_command.GRIPPER_CLOSE)
 
-    def gripper_close_r(self):
-        self._hand.gripper_r_command.execute(
+    def gripper_r_close(self):
+        return self._hand.gripper_r_command.execute(
             self._hand.gripper_r_command.GRIPPER_CLOSE)
 
-    def gripper_open_l(self):
-        self._hand.gripper_l_command.execute(
+    def gripper_l_open(self):
+        return self._hand.gripper_l_command.execute(
             self._hand.gripper_r_command.GRIPPER_OPEN)
 
-    def gripper_open_r(self):
-        self._hand.gripper_r_command.execute(
+    def gripper_r_open(self):
+        return self._hand.gripper_r_command.execute(
             self._hand.gripper_r_command.GRIPPER_OPEN)
 
-    def airhand_drawin_l(self):
-        self._hand.airhand_l_command.execute(
+    def airhand_l_drawin(self):
+        return self._hand.airhand_l_command.execute(
             self._hand.airhand_l_command.AIRHAND_DRAWIN)
 
-    def airhand_drawin_r(self):
-        self._hand.airhand_r_command.execute(
+    def airhand_r_drawin(self):
+        return self._hand.airhand_r_command.execute(
             self._hand.airhand_r_command.AIRHAND_DRAWIN)
 
-    def airhand_keep_l(self):
-        self._hand.airhand_l_command.execute(
+    def airhand_l_keep(self):
+        return self._hand.airhand_l_command.execute(
             self._hand.airhand_l_command.AIRHAND_KEEP)
 
-    def airhand_keep_r(self):
-        self._hand.airhand_r_command.execute(
+    def airhand_r_keep(self):
+        return self._hand.airhand_r_command.execute(
             self._hand.airhand_r_command.AIRHAND_KEEP)
 
-    def airhand_release_l(self):
-        self._hand.airhand_l_command.execute(
+    def airhand_l_release(self):
+        return self._hand.airhand_l_command.execute(
             self._hand.airhand_l_command.AIRHAND_RELEASE)
 
-    def airhand_release_r(self):
-        self._hand.airhand_r_command.execute(
+    def airhand_r_release(self):
+        return self._hand.airhand_r_command.execute(
             self._hand.airhand_r_command.AIRHAND_RELEASE)
 
     def initialize_hand_dio(self):

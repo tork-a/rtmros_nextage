@@ -77,6 +77,8 @@ class AbsractHandCommand(object):
 
         @type operation: str
         @param operation: name of the operation.
+        @rtype: bool
+        @return: True if dout was writtable to the register. False otherwise.
 
         @raise exception: HrpsysRosBridgeException
         '''
