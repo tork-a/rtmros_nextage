@@ -61,18 +61,28 @@ class GripperCommand(AbsractHandCommand):
         '''
         self._DIO_VALVE_L_1 = self._DIO_25
         self._DIO_VALVE_L_2 = self._DIO_26
+        self._DIO_VALVE_R_1 = self._DIO_20
+        self._DIO_VALVE_R_2 = self._DIO_21
 
     def execute(self, operation):
         '''
         @see abs_hand_command.AbsractHandCommand.execute
         '''
         dout = []
-        #TODO: Implement right arm too!
-        mask = [self._DIO_VALVE_L_1, self._DIO_VALVE_L_2]
+        mask_l = [self._DIO_VALVE_L_1, self._DIO_VALVE_L_2]
+        mask_r = [self._DIO_VALVE_R_1, self._DIO_VALVE_R_2]
         if self.GRIPPER_CLOSE == operation:
             if self._hands.HAND_L == self._hand:
                 dout = [self._DIO_VALVE_L_1]
-        elif self.GRIPPER_OPEN == operation:
-            if self._hands.HAND_L == self._hand:
-                dout = [self._DIO_VALVE_L_2]
+
+            elif self._hands.HAND_R == self._hand:
+                dout = [self._DIO_VALVE_R_1]
+#        elif self.GRIPPER_OPEN == operation:
+#            if self._hands.HAND_L == self._hand:
+#                dout = [self._DIO_VALVE_L_2]
+        mask = None 
+        if self._hands.HAND_L == self._hand:
+            mask = mask_l
+        elif self._hands.HAND_R == self._hand:
+            mask = mask_r
         return self._hands._dio_writer(dout, mask)
