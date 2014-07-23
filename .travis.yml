@@ -2,6 +2,9 @@
 #   Generic MoveIt Travis Continuous Integration Configuration File
 #   Works with all MoveIt! repositories/branches
 #   Author: Dave Coleman, Jonathan Bohren
+
+# Taken from rtmros_hironx. https://github.com/start-jsk/rtmros_hironx/blob/7bc1293cf292ab5351a4521be65bea1731f3f89e/.travis.yml
+
 language:
   - cpp
   - python
@@ -9,44 +12,71 @@ python:
   - "2.7"
 compiler:
   - gcc
+env:
+  - ROS_DISTRO=groovy ROSWS=wstool BUILDER=catkin    USE_DEB=true
+  - ROS_DISTRO=hydro  ROSWS=wstool BUILDER=catkin    USE_DEB=true
+matrix:
+  allow_failures:
+    - env: ROS_DISTRO=groovy ROSWS=wstool BUILDER=catkin    USE_DEB=true
 notifications:
   email:
     recipients:
       - k-okada@jsk.t.u-tokyo.ac.jp
       - iisaito@opensource-robotics.tokyo.jp
-      - emijah.s@gmail.com
     on_success: always #[always|never|change] # default: change
     on_failure: always #[always|never|change] # default: always
 before_install: # Use this to prepare the system to install prerequisites or dependencies
   # Define some config vars
-  - export ROS_DISTRO=hydro
   - export CI_SOURCE_PATH=$(pwd)
   - export REPOSITORY_NAME=${PWD##*/}
   - echo "Testing branch $TRAVIS_BRANCH of $REPOSITORY_NAME"
-  - sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu precise main" > /etc/apt/sources.list.d/ros-latest.list'
+  - sudo sh -c 'echo "deb http://packages.ros.org/ros-shadow-fixed/ubuntu precise main" > /etc/apt/sources.list.d/ros-latest.list'
   - wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
   - sudo apt-get update -qq
-  - sudo apt-get install -qq -y python-catkin-pkg python-rosdep python-wstool ros-$ROS_DISTRO-catkin ros-$ROS_DISTRO-ros
+  - sudo apt-get install -qq -y python-catkin-pkg python-rosdep python-wstool ros-$ROS_DISTRO-catkin
   # MongoDB hack - I don't fully understand this but its for moveit_warehouse
-  - sudo apt-get remove -y mongodb mongodb-10gen
-  - sudo apt-get install -y mongodb-clients mongodb-server -o Dpkg::Options::="--force-confdef" # default actions
+  - sudo apt-get remove -qq -y mongodb mongodb-10gen
+  - sudo apt-get install -qq -y mongodb-clients mongodb-server -o Dpkg::Options::="--force-confdef" # default actions
   # Setup rosdep
   - sudo rosdep init
-  - rosdep update
+  - rosdep update; while [ $? != 0 ]; do sleep 1; rosdep update; done  # Retry "rosdep update" when 1st attempt failed.
+  ##
+  ## install openrtm_aist_python, openhrp3 from deb
+  ##
+  - sudo apt-get install -qq -y ros-$ROS_DISTRO-openhrp3 ros-$ROS_DISTRO-openrtm-aist-python
+  ##
 install: # Use this to install any prerequisites or dependencies necessary to run your build
   # Create workspace
   - mkdir -p ~/ros/ws_$REPOSITORY_NAME/src
   - cd ~/ros/ws_$REPOSITORY_NAME/src
-  - ln -s $CI_SOURCE_PATH . # Link the repo we are testing to the new workspace
+  ##
+  ## due to install openhrp3 from deb
+  ##
+  - ln -s $CI_SOURCE_PATH . # Link the repo we are testing to the catkin workspace we just created and where we are.
   - cd ../
   # Install dependencies for source repos
+  ## - find -L src -name package.xml -exec dirname {} \; | xargs -n 1 -i find {} -name manifest.xml | xargs -n 1 -i mv {} {}.deprecated # rename manifest.xml for rosdep install  # We might not need this since manifest.xml shouldn't exist in this package.
   - rosdep install -r -n --from-paths src --ignore-src --rosdistro $ROS_DISTRO -y
+  ## - find -L src -name manifest.xml.deprecated | xargs -n 1 -i dirname {} | xargs -n 1 -i ln -sf `pwd`/{}/manifest.xml.deprecated `pwd`/{}/manifest.xml # rename manifest.xml for rosdep install
+  #  find . \! -path "*/.*" -type f | xargs egrep -i "(hoge|fuga)" ; if [ $? == 0 ]; then exit 1; fi
+
 before_script: # Use this to prepare your build for testing e.g. copy database configurations, environment variables, etc.
   - source /opt/ros/$ROS_DISTRO/setup.bash
-script: # All commands must exit with code 0 on success. Anything else is considered failure.
-  - find -L . \! -path "*/.*" -type f | xargs egrep -i "(hoge|fuga)" ; if [ $? == 0 ]; then exit 1; fi
-  - catkin_make
-  - catkin_make test
-  - catkin_make install
-  
 
+script: # All commands must exit with code 0 on success. Anything else is considered failure.
+  # for catkin
+  - catkin_make -j8 -l8
+  - export TARGET_PKG=`find build/$REPOSITORY_NAME -name Makefile -print |  sed s@.*/\\\\\([^\/]*\\\\\)/Makefile@\\\1@g`  # This stores the names of the package that are built in `build` folder in a single line delimitted by space.
+  # - if [ $BUILDER == catkin ]; then source devel/setup.sh; export EXIT_STATUS=0; for pkg in $TARGET_PKG; do (roscd $pkg; [ "`find . -iname '*.test'`" == "" ] && echo "[$pkg] No tests ware found!!!"  || find . -iname "*.test" -print0 | xargs -0 -n1 rostest || export EXIT_STATUS=$?;) done; [ $EXIT_STATUS == 0 ] ; fi
+  - export EXIT_STATUS=$?
+  - catkin_make test --pkg $TARGET_PKG -j8 -l8  ; export EXIT_STATUS=$?
+  - if [ $EXIT_STATUS != 0 ]; then find build -name LastTest.log -exec echo "==== {} ====" \; -exec cat {} \;  ; fi
+  - catkin_make -j8 -l8 install
+  - rm -fr devel src build
+  - source install/setup.bash
+  # Run rostest for the found .test files.
+  - export EXIT_STATUS=0; for pkg in $TARGET_PKG; do [ "`find install/share/$pkg -iname '*.test'`" == "" ] && echo "[$pkg] No test was found!!!"  || find install/share/$pkg -iname "*.test" -print0 | xargs -0 -n1 rostest || export EXIT_STATUS=$?; done; [ $EXIT_STATUS == 0 ]
+
+after_failure:
+  - find ${HOME}/.ros/test_results -type f -exec echo "=== {} ===" \; -exec cat {} \;
+  - for file in ${HOME}/.ros/log/rostest-*; do echo "=== $file ==="; cat $file; done
