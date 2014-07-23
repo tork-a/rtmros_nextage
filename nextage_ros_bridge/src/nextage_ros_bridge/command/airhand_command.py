@@ -134,4 +134,4 @@ class AirhandCommand(AbsractHandCommand):
             # TODO: Might want to thrown exception?
             rospy.logwarn('No gripper specified. Do nothing.')
             return
-        self._hands._dio_writer(dout, mask)
+        return self._hands._dio_writer(dout, mask)

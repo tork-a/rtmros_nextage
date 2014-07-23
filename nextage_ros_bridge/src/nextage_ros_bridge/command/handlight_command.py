@@ -81,4 +81,4 @@ class HandlightCommand(AbsractHandCommand):
                 mask = [self._DIO_LHAND]
             elif not self._hand:
                 mask = [self._DIO_RHAND, self._DIO_LHAND]
-        self._hands._dio_writer(dout, mask)
+        return self._hands._dio_writer(dout, mask)

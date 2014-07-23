@@ -1,8 +1,9 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # Software License Agreement (BSD License)
 #
-# Copyright (c) 2013, Tokyo Opensource Robotics Kyokai Association
+# Copyright (c) 2014, Tokyo Opensource Robotics Kyokai Association
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -32,47 +33,50 @@
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 #
-# Author: Isaac Isao Saito
+# Author: Isaac I.Y. Saito
 
-import rospy
+import unittest
 
-from abs_hand_command import AbsractHandCommand
+import rostest
+
+from nextage_ros_bridge import nextage_client
+
+_GOINITIAL_TIME_MIDSPEED = 3  # second
+_PKG = 'nextage_ros_bridge'
 
 
-class GripperCommand(AbsractHandCommand):
+class TestNxoAirhand(unittest.TestCase):
     '''
-    Following Command design pattern, this class represents an abstract
-    command for hand classes of NEXTAGE OPEN.
-
-    NOTE: 1/31/2014 TODO: Only right hand is implemented for now.
+    Test NextageClient with rostest.
     '''
-    # TODO: Unittest is needed!!
 
-    GRIPPER_CLOSE = 'close'
-    GRIPPER_OPEN = 'open'
-    GRIPPER_DANGER = 'danger'
+    @classmethod
+    def setUpClass(cls):
+        cls._robot = nextage_client.NextageClient()
+        cls._robot.init()
+        cls._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
 
-    def __init__(self, hands, hand):
-        super(GripperCommand, self).__init__(hands, hand)
+    @classmethod
+    def tearDownClass(cls):
+        cls._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
 
-    def _assign_dio_names(self):
-        '''
-        @see abs_hand_command.AbsractHandCommand._assign_dio_names
-        '''
-        self._DIO_VALVE_L_1 = self._DIO_25
-        self._DIO_VALVE_L_2 = self._DIO_26
+    def test_airhand_l_release(self):
+        self.assertTrue(self._robot.airhand_l_release())
 
-    def execute(self, operation):
-        '''
-        @see abs_hand_command.AbsractHandCommand.execute
-        '''
-        dout = []
-        #TODO: Implement right arm too!
-        mask = [self._DIO_VALVE_L_1, self._DIO_VALVE_L_2]
-        if self.GRIPPER_CLOSE == operation:
-            if self._hands.HAND_L == self._hand:
-                dout = [self._DIO_VALVE_L_1]
-        elif self.GRIPPER_OPEN == operation:
-            if self._hands.HAND_L == self._hand:
-                dout = [self._DIO_VALVE_L_2]
-        return self._hands._dio_writer(dout, mask)
+    def test_airhand_r_release(self):
+        self.assertTrue(self._robot.airhand_r_release())
+
+    def test_airhand_l_drawin(self):
+        self.assertTrue(self._robot.airhand_l_drawin())
+
+    def test_airhand_r_drawin(self):
+        self.assertTrue(self._robot.airhand_r_drawin())
+
+    def test_airhand_l_keep(self):
+        self.assertTrue(self._robot.airhand_l_keep())
+
+    def test_airhand_r_keep(self):
+        self.assertTrue(self._robot.airhand_r_keep())
+
+if __name__ == '__main__':
+    rostest.rosrun(_PKG, 'test_nxo_airhand', TestNxoAirhand)
