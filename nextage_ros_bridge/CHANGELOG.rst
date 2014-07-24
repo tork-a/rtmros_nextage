@@ -2,8 +2,8 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.16 (2014-07-24)
+-------------------
 * Specify min version of a dependency that are used in launch files.
 * Add natto-view to simulation.
 * Remove nextage_ros_bridge.launch that was only internal to other launch files. Delegate functionality to hironx_ros_bridge.launch
