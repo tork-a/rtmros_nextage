@@ -2,6 +2,9 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.2.16 (2014-07-24)
 -------------------
 * (moveit_rviz) Correct fixed frame. This re-enables Interactive Marker to appear.

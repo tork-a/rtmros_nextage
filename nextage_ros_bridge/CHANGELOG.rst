@@ -2,6 +2,11 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* (nextage_client) Adjusted to DIO spec change. Improve DIO methods. Add unit tests for DIO features.
+* Contributors: Isaac IY Saito
+
 0.2.16 (2014-07-24)
 -------------------
 * Specify min version of a dependency that are used in launch files.
