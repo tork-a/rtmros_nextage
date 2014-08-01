@@ -1,62 +1,62 @@
 joint_limits:
   RARM_JOINT0:
     has_velocity_limits: true
-    max_velocity: 6.0
+    max_velocity: 1.0
     has_acceleration_limits: true
-    max_acceleration: 6.5
+    max_acceleration: 1.5
   RARM_JOINT1:
     has_velocity_limits: true
-    max_velocity: 6.0
+    max_velocity: 1.0
     has_acceleration_limits: true
-    max_acceleration: 6.5
+    max_acceleration: 1.5
   RARM_JOINT2:
     has_velocity_limits: true
-    max_velocity: 6.0
+    max_velocity: 1.0
     has_acceleration_limits: true
-    max_acceleration: 6.5
+    max_acceleration: 1.5
   RARM_JOINT3:
     has_velocity_limits: true
-    max_velocity: 6.0
+    max_velocity: 1.0
     has_acceleration_limits: true
-    max_acceleration: 6.5
+    max_acceleration: 1.5
   RARM_JOINT4:
     has_velocity_limits: true
-    max_velocity: 6.0
+    max_velocity: 1.0
     has_acceleration_limits: true
-    max_acceleration: 6.5
+    max_acceleration: 1.5
   RARM_JOINT5:
     has_velocity_limits: true
-    max_velocity: 6.0
+    max_velocity: 1.0
     has_acceleration_limits: true
-    max_acceleration: 6.5
+    max_acceleration: 1.5
   LARM_JOINT0:
     has_velocity_limits: true
-    max_velocity: 6.0
+    max_velocity: 1.0
     has_acceleration_limits: true
-    max_acceleration: 6.5
+    max_acceleration: 1.5
   LARM_JOINT1:
     has_velocity_limits: true
-    max_velocity: 6.0
+    max_velocity: 1.0
     has_acceleration_limits: true
-    max_acceleration: 6.5
+    max_acceleration: 1.5
   LARM_JOINT2:
     has_velocity_limits: true
-    max_velocity: 6.0
+    max_velocity: 1.0
     has_acceleration_limits: true
-    max_acceleration: 6.5
+    max_acceleration: 1.5
   LARM_JOINT3:
     has_velocity_limits: true
-    max_velocity: 6.0
+    max_velocity: 1.0
     has_acceleration_limits: true
-    max_acceleration: 6.5
+    max_acceleration: 1.5
   LARM_JOINT4:
     has_velocity_limits: true
-    max_velocity: 6.0
+    max_velocity: 1.0
     has_acceleration_limits: true
-    max_acceleration: 6.5
+    max_acceleration: 1.5
   LARM_JOINT5:
     has_velocity_limits: true
-    max_velocity: 6.0
+    max_velocity: 1.0
     has_acceleration_limits: true
-    max_acceleration: 6.5
+    max_acceleration: 1.5
 
