@@ -2,6 +2,11 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* (moveit_config) Default speed now moderately slow.
+* Contributors: Isaac IY Saito
+
 0.2.17 (2014-07-24)
 -------------------
 * (nextage_client) Adjusted to DIO spec change. Improve DIO methods. Add unit tests for DIO features.
