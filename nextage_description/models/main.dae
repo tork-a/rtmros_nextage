@@ -32,7 +32,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	<library_visual_scenes id="vscenes">
 		<visual_scene id="vscene" name="OpenRAVE Visual Scene">
 			<node id="visual1" name="HiroNX" sid="visual1">
-				<node id="v1.node0" name="WAIST_Link" sid="node0">
+				<node id="v1.node0" name="WAIST" sid="node0">
 					<translate>0 0 0.97</translate>
 					<rotate>0 1 0 0</rotate>
 					<instance_geometry url="#g1_0_geom0">
@@ -6127,7 +6127,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						</limits>
 					</revolute>
 				</joint>
-				<link sid="link0" name="WAIST_Link">
+				<link sid="link0" name="WAIST">
 					<translate>0 0 0.97</translate>
 					<rotate>0 1 0 0</rotate>
 					<attachment_full joint="kmodel1/jointsid0">
@@ -7015,7 +7015,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	</library_physics_scenes>
 	<library_physics_models id="pmodels">
 		<physics_model id="pmodel1" name="HiroNX">
-			<rigid_body id="rigid0" sid="rigid0" name="WAIST_Link">
+			<rigid_body id="rigid0" sid="rigid0" name="WAIST">
 				<technique_common>
 					<mass>0</mass>
 					<mass_frame>
@@ -8532,7 +8532,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 					</shape>
 				</technique_common>
 			</rigid_body>
-			<rigid_constraint sid="rigid_constraint0" name="WAIST_Link">
+			<rigid_constraint sid="rigid_constraint0" name="WAIST">
 				<ref_attachment rigid_body="#visual1"/>
 				<attachment rigid_body="#rigid0"/>
 			</rigid_constraint>

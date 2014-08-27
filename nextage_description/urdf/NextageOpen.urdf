@@ -12,7 +12,7 @@
        xmlns:renderable="http://playerstage.sourceforge.net/gazebo/xmlschema/#renderable"
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:physics="http://playerstage.sourceforge.net/gazebo/xmlschema/#physics">
-  <link name="WAIST_Link">
+  <link name="WAIST">
     <visual>
       <origin xyz="0 0 0.97" rpy="0 -0 0"/>
       <geometry>
@@ -317,7 +317,7 @@
     </inertial>
   </link>
   <joint name="CHEST_JOINT0" type="revolute">
-    <parent link="WAIST_Link"/>
+    <parent link="WAIST"/>
     <child  link="CHEST_JOINT0_Link"/>
     <origin xyz="0 0 0" rpy="0 -0 0 "/>
     <axis   xyz="0 0 1"/>

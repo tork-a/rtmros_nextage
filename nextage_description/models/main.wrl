@@ -314,7 +314,7 @@ DEF HiroNX Humanoid{
        translation 0 0 0.97
        rotation 0 1 0 0 
        children [
-	  DEF WAIST_Link Segment{
+	  DEF WAIST Segment{
 	     centerOfMass -3.8809E-4 1.66E-6 0.16466017 
 	     mass 0
 	     momentsOfInertia [ 0.0347318 5.78E-6 -3.341E-5 5.78E-6 0.03474816 6.3E-7 -3.343E-5 6.2E-7 0.00438238 ]
@@ -813,7 +813,7 @@ DEF HiroNX Humanoid{
     USE LARM_JOINT5,
    ]
    segments [
-    USE WAIST_Link,
+    USE WAIST,
     USE CHEST_JOINT0_Link,
     USE HEAD_JOINT0_Link,
     USE HEAD_JOINT1_Link,

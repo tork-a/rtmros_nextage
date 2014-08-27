@@ -58,13 +58,13 @@
     <end_effector name="right_eef" parent_link="RARM_JOINT5_Link" group="right_gripper" parent_group="right_arm" />
     <end_effector name="left_eef" parent_link="LARM_JOINT5_Link" group="left_gripper" parent_group="left_arm" />
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
-    <virtual_joint name="virtual_joint" type="fixed" parent_frame="odom" child_link="WAIST_Link" />
+    <virtual_joint name="virtual_joint" type="fixed" parent_frame="odom" child_link="WAIST" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="CHEST_JOINT0_Link" link2="HEAD_JOINT0_Link" reason="Adjacent" />
     <disable_collisions link1="CHEST_JOINT0_Link" link2="HEAD_JOINT1_Link" reason="Default" />
     <disable_collisions link1="CHEST_JOINT0_Link" link2="LARM_JOINT0_Link" reason="Adjacent" />
     <disable_collisions link1="CHEST_JOINT0_Link" link2="RARM_JOINT0_Link" reason="Adjacent" />
-    <disable_collisions link1="CHEST_JOINT0_Link" link2="WAIST_Link" reason="Adjacent" />
+    <disable_collisions link1="CHEST_JOINT0_Link" link2="WAIST" reason="Adjacent" />
     <disable_collisions link1="HEAD_JOINT0_Link" link2="HEAD_JOINT1_Link" reason="Adjacent" />
     <disable_collisions link1="HEAD_JOINT0_Link" link2="LARM_JOINT0_Link" reason="Never" />
     <disable_collisions link1="HEAD_JOINT0_Link" link2="LARM_JOINT1_Link" reason="Never" />
@@ -74,10 +74,10 @@
     <disable_collisions link1="HEAD_JOINT0_Link" link2="RARM_JOINT1_Link" reason="Never" />
     <disable_collisions link1="HEAD_JOINT0_Link" link2="RARM_JOINT2_Link" reason="Never" />
     <disable_collisions link1="HEAD_JOINT0_Link" link2="RARM_JOINT3_Link" reason="Never" />
-    <disable_collisions link1="HEAD_JOINT0_Link" link2="WAIST_Link" reason="Never" />
+    <disable_collisions link1="HEAD_JOINT0_Link" link2="WAIST" reason="Never" />
     <disable_collisions link1="HEAD_JOINT1_Link" link2="LARM_JOINT0_Link" reason="Never" />
     <disable_collisions link1="HEAD_JOINT1_Link" link2="RARM_JOINT0_Link" reason="Never" />
-    <disable_collisions link1="HEAD_JOINT1_Link" link2="WAIST_Link" reason="Never" />
+    <disable_collisions link1="HEAD_JOINT1_Link" link2="WAIST" reason="Never" />
     <disable_collisions link1="LARM_JOINT0_Link" link2="LARM_JOINT1_Link" reason="Adjacent" />
     <disable_collisions link1="LARM_JOINT0_Link" link2="LARM_JOINT2_Link" reason="Never" />
     <disable_collisions link1="LARM_JOINT0_Link" link2="LARM_JOINT3_Link" reason="Never" />
@@ -85,7 +85,7 @@
     <disable_collisions link1="LARM_JOINT0_Link" link2="RARM_JOINT1_Link" reason="Never" />
     <disable_collisions link1="LARM_JOINT0_Link" link2="RARM_JOINT2_Link" reason="Never" />
     <disable_collisions link1="LARM_JOINT0_Link" link2="RARM_JOINT3_Link" reason="Never" />
-<!--    <disable_collisions link1="LARM_JOINT0_Link" link2="WAIST_Link" reason="Never" /> -->
+<!--    <disable_collisions link1="LARM_JOINT0_Link" link2="WAIST" reason="Never" /> -->
     <disable_collisions link1="LARM_JOINT1_Link" link2="LARM_JOINT2_Link" reason="Adjacent" />
     <disable_collisions link1="LARM_JOINT1_Link" link2="LARM_JOINT3_Link" reason="Never" />
     <disable_collisions link1="LARM_JOINT1_Link" link2="RARM_JOINT0_Link" reason="Never" />
@@ -95,18 +95,18 @@
     <disable_collisions link1="LARM_JOINT3_Link" link2="LARM_JOINT4_Link" reason="Adjacent" />
     <disable_collisions link1="LARM_JOINT3_Link" link2="RARM_JOINT0_Link" reason="Never" />
     <disable_collisions link1="LARM_JOINT4_Link" link2="LARM_JOINT5_Link" reason="Adjacent" />
-<!--    <disable_collisions link1="LARM_JOINT4_Link" link2="WAIST_Link" reason="Default" /> -->
-<!--    <disable_collisions link1="LARM_JOINT5_Link" link2="WAIST_Link" reason="Default" /> -->
+<!--    <disable_collisions link1="LARM_JOINT4_Link" link2="WAIST" reason="Default" /> -->
+<!--    <disable_collisions link1="LARM_JOINT5_Link" link2="WAIST" reason="Default" /> -->
     <disable_collisions link1="RARM_JOINT0_Link" link2="RARM_JOINT1_Link" reason="Adjacent" />
     <disable_collisions link1="RARM_JOINT0_Link" link2="RARM_JOINT2_Link" reason="Never" />
     <disable_collisions link1="RARM_JOINT0_Link" link2="RARM_JOINT3_Link" reason="Never" />
-<!--    <disable_collisions link1="RARM_JOINT0_Link" link2="WAIST_Link" reason="Never" /> -->
+<!--    <disable_collisions link1="RARM_JOINT0_Link" link2="WAIST" reason="Never" /> -->
     <disable_collisions link1="RARM_JOINT1_Link" link2="RARM_JOINT2_Link" reason="Adjacent" />
     <disable_collisions link1="RARM_JOINT1_Link" link2="RARM_JOINT3_Link" reason="Never" />
     <disable_collisions link1="RARM_JOINT2_Link" link2="RARM_JOINT3_Link" reason="Adjacent" />
     <disable_collisions link1="RARM_JOINT2_Link" link2="RARM_JOINT4_Link" reason="Never" />
     <disable_collisions link1="RARM_JOINT3_Link" link2="RARM_JOINT4_Link" reason="Adjacent" />
     <disable_collisions link1="RARM_JOINT4_Link" link2="RARM_JOINT5_Link" reason="Adjacent" />
-<!--    <disable_collisions link1="RARM_JOINT4_Link" link2="WAIST_Link" reason="Default" /> -->
-<!--    <disable_collisions link1="RARM_JOINT5_Link" link2="WAIST_Link" reason="Default" /> -->
+<!--    <disable_collisions link1="RARM_JOINT4_Link" link2="WAIST" reason="Default" /> -->
+<!--    <disable_collisions link1="RARM_JOINT5_Link" link2="WAIST" reason="Default" /> -->
 </robot>

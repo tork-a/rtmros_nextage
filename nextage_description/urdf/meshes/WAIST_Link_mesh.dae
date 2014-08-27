@@ -268,7 +268,7 @@
     <visual_scene id="myScene" name="myScene">
       <node id="base1d_med" name="base1d_med">
         <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
-        <node id="WAIST_Link" name="WAIST_Link">
+        <node id="WAIST" name="WAIST">
           <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
           <instance_geometry url="#meshId0">
             <bind_material>
