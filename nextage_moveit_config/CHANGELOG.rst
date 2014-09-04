@@ -2,8 +2,8 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.4.1 (2014-09-03)
+------------------
 * Remove WAIST_Link to use only WAIST (Fix `#97 <https://github.com/tork-a/rtmros_nextage/issues/97>`_).
 * Contributors: Isaac IY Saito
 
