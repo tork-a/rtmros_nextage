@@ -104,7 +104,7 @@ class BaseHands(object):
                         Usually this method assumes to be called when turning
                         something "on". Therefore by default this value is ON.
         @rtype: bool
-        @return: True if dout was writtable to the register. False otherwise.
+        @return: True if dout was writable to the register. False otherwise.
         '''
 
         # 32 bit arrays used in write methods in hrpsys/hrpsys_config.py

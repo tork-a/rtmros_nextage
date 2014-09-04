@@ -64,6 +64,9 @@ class HandlightCommand(AbsractHandCommand):
         @param operation: param type:
                           - 'True': Turn the light on.
                           - 'False': Turn the light off.
+        @rtype: bool
+        @return: True if digital out was writable to the register.
+                 False otherwise.
         '''
         dout = []
         mask = []
