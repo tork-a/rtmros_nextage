@@ -3,7 +3,7 @@
   <arg unless="$(arg debug)" name="launch_prefix" value="" />
   <arg     if="$(arg debug)" name="launch_prefix" value="gdb --ex run --args" />
 
-  <arg name="RVIZ_FIXEDFRAME" default="WAIST_Link" />
+  <arg name="RVIZ_FIXEDFRAME" default="WAIST" />
   <arg name="config" default="false" />
   <arg unless="$(arg config)" name="command_args" value="" />
 
