@@ -61,13 +61,23 @@ class TestNxoHandlight(unittest.TestCase):
         cls._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
 
     def test_handlight_r(self):
-        self.assertTrue(self._robot.handlight_r(is_on=True))
+        if self._robot.simulation_mode:
+            self.assertTrue(self._robot.handlight_r(is_on=False))
+        else:
+            self.assertTrue(self._robot.handlight_r(is_on=True))
 
     def test_handlight_l(self):
-        self.assertTrue(self._robot.handlight_l(is_on=True))
+        if self._robot.simulation_mode:
+            self.assertTrue(self._robot.handlight_l(is_on=False))
+        else:
+            self.assertTrue(self._robot.handlight_l(is_on=True))
 
     def test_handlight_both(self):
-        self.assertTrue(self._robot.handlight_both(is_on=True))
+        if self._robot.simulation_mode:
+            # Check if checking false works.
+            self.assertTrue(self._robot.handlight_both(is_on=False))
+        else:
+            self.assertTrue(self._robot.handlight_both(is_on=True))
 
 if __name__ == '__main__':
     rostest.rosrun(_PKG, 'test_nxo_handlight', TestNxoHandlight)

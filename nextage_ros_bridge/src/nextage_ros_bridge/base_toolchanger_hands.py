@@ -70,11 +70,15 @@ class BaseToolchangerHands(BaseHands):
         @param hand: Both hands if None.
         @type on: bool
         @param on: Despite its type, it's handled as str in this method.
+        @rtype: bool
+        @return: True if the lights turned. False otherwise.
         '''
+        _result = True
         if self.HAND_L == hand:
-            self.handlight_l_command.execute(on)
+            _result = self.handlight_l_command.execute(on)
         elif self.HAND_R == hand:
-            self.handlight_r_command.execute(on)
+            _result = self.handlight_r_command.execute(on)
         elif not hand:  # both hands
-            self.handlight_l_command.execute(on)
-            self.handlight_r_command.execute(on)
+            _result = self.handlight_l_command.execute(on) and _result
+            _result = self.handlight_r_command.execute(on) and _result
+        return _result
