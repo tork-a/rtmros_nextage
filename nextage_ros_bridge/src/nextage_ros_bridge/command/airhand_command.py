@@ -107,9 +107,18 @@ class AirhandCommand(AbsractHandCommand):
         @see abs_hand_command.AbsractHandCommand.execute
         '''
         dout = []
-        mask = [self._DIO_SUCTION_R_1, self._DIO_SUCTION_R_2]
+        mask = []  # Will be filled depending on the side of the hand.
+        mask_l = [self._DIO_SUCTION_L_1, self._DIO_SUCTION_L_2]
+        mask_r = [self._DIO_SUCTION_R_1, self._DIO_SUCTION_R_2]
 
-        # TODO: Implement for R hand too.
+        # Set masking value per hand.
+        if self._hands.HAND_L == self._hand:
+            mask = mask_l
+        elif self._hands.HAND_R == self._hand:
+            mask = mask_r
+        else:
+            raise RuntimeError('Make sure _hands object, _hand value are set.')
+
         if self.AIRHAND_DRAWIN == operation:
             if self._hands.HAND_L == self._hand:
                 dout = [self._DIO_SUCTION_L_1]
