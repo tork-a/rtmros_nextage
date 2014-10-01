@@ -80,7 +80,7 @@ class AbsractHandCommand(object):
         @rtype: bool
         @return: True if dout was writtable to the register. False otherwise.
 
-        @raise exception: HrpsysRosBridgeException
+        @raise exception: RuntimeError
         '''
         msg = 'AbsractHandCommand.execute() not extended.'
         rospy.logerr(msg)
