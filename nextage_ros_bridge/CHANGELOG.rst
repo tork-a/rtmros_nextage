@@ -2,8 +2,8 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.4.2 (2014-10-01)
+------------------
 * Add a launch file for stereo camera (ueye).
 * (Airhand) Fix wrong dio pin set for left airhand.
 * Contributors: Kei Okada, Isaac IY Saito
