@@ -2,6 +2,12 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add a launch file for stereo camera (ueye).
+* (Airhand) Fix wrong dio pin set for left airhand.
+* Contributors: Kei Okada, Isaac IY Saito
+
 0.4.1 (2014-09-03)
 ------------------
 * Remove WAIST_Link to use only WAIST (Fix "Either Interactive Marker or Natto-view appears, not together." `#97 <https://github.com/tork-a/rtmros_nextage/issues/97>`_).
