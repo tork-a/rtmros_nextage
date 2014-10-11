@@ -44,32 +44,21 @@ class AbsractHandCommand(object):
     '''
     # TODO: Unittest is needed!!DIO_V
 
-    # DIO pin numbers. It's convenient to be overridden and renamed in the
-    # derived classes to represent the specific purpose of each pin.
-    _DIO_17 = 17
-    _DIO_18 = 18
-    _DIO_19 = 19
-    _DIO_20 = 20
-    _DIO_21 = 21
-    _DIO_22 = 22
-    _DIO_23 = 23
-    _DIO_24 = 24
-    _DIO_25 = 25
-    _DIO_26 = 26
-    _DIO_27 = 27
-    _DIO_28 = 28
-
-    def __init__(self, hands, hand):
+    def __init__(self, hands, hand, dio_pins):
         '''
         @type hands: nextage_ros_bridge.base_hands.BaseHands
         @type hand: str
         @param hand: Side of hand. Variables that are defined in
                      nextage_ros_bridge.base_hands.BaseHands can be used
                      { HAND_L, HAND_R }.
+        @type dio_pins: [int]
+        @param dio_pins: List of DIO pins that are used in each HandCommand
+                         class. The order is important; it needs be defined
+                         in subclasses.
         '''
         self._hands = hands
         self._hand = hand
-        self._assign_dio_names()
+        self._assign_dio_names(dio_pins)
 
     def execute(self, operation):
         '''
@@ -86,11 +75,15 @@ class AbsractHandCommand(object):
         rospy.logerr(msg)
         raise NotImplementedError(msg)
 
-    def _assign_dio_names(self):
+    def _assign_dio_names(self, dio_pins):
         '''
         It's recommended in the derived classes to re-assign DIO names to
         better represent the specific purposes of each DIO pin in there.
         Since doing so isn' mandatory, this method doesn't emit error even when
         it's not implemented.
+        @type dio_pins: [int]
+        @param dio_pins: List of DIO pins that are used in each HandCommand
+                         class. The order is important; it needs be defined
+                         in subclasses.
         '''
         pass

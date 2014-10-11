@@ -48,19 +48,15 @@ class ToolchangerCommand(AbsractHandCommand):
     HAND_TOOLCHANGE_ON = 'toolchange_on'
     HAND_TOOLCHANGE_OFF = 'toolchange_off'
 
-    def __init__(self, hands, hand):
-        super(ToolchangerCommand, self).__init__(hands, hand)
+    def __init__(self, hands, hand, dio_pins):
+        super(ToolchangerCommand, self).__init__(hands, hand, dio_pins)
 
-    def _assign_dio_names(self):
+    def _assign_dio_names(self, dio_pins):
         '''
         @see abs_hand_command.AbsractHandCommand._assign_dio_names
         '''
-        self._DIO_VALVE5PORT_R = self._DIO_19
-        self._DIO_VALVE_R_1 = self._DIO_20
-        self._DIO_VALVE_R_2 = self._DIO_21
-        self._DIO_VALVE5PORT_L = self._DIO_24
-        self._DIO_VALVE_L_1 = self._DIO_25
-        self._DIO_VALVE_L_2 = self._DIO_26
+        self._DIO_VALVE5PORT_L = dio_pins[0]
+        self._DIO_VALVE5PORT_R = dio_pins[1]
 
     def execute(self, operation):
         '''
@@ -72,7 +68,7 @@ class ToolchangerCommand(AbsractHandCommand):
         # detatched after some grasping actions where the air keeps blowing
         # out. Thus when detatched, air bits for chuck hand need to be turned
         # off and these 2 bits are included in the masking bit.
-        mask = [self._DIO_VALVE_L_1, self._DIO_VALVE_L_2]
+        mask = []
         if self.HAND_TOOLCHANGE_ON == operation:
             if self._hands.HAND_L == self._hand:
                 # 10/29/2013 DIO changed. Now '1' is ON for both 5PORT Valves.

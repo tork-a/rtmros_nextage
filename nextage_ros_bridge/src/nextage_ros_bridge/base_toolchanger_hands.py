@@ -43,6 +43,9 @@ class BaseToolchangerHands(BaseHands):
     '''
     This class holds methods that are specific to the hands of NEXTAGE OPEN,
     accompanied with toolchanger.
+
+    @deprecated: Since version 0.5.1, the functionality in this class is moved
+                 to other BaseHands subclasses (e.g. Iros13Hands).
     '''
     # TODO: Unittest is needed!!
 

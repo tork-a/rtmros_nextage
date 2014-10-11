@@ -34,13 +34,15 @@
 #
 # Author: Isaac Isao Saito
 
-from nextage_ros_bridge.base_toolchanger_hands import BaseToolchangerHands
+from nextage_ros_bridge.base_hands import BaseHands
 from nextage_ros_bridge.command.airhand_command import AbsractHandCommand
 from nextage_ros_bridge.command.airhand_command import AirhandCommand
 from nextage_ros_bridge.command.gripper_command import GripperCommand
+from nextage_ros_bridge.command.handlight_command import HandlightCommand
+from nextage_ros_bridge.command.toolchanger_command import ToolchangerCommand
 
 
-class Iros13Hands(BaseToolchangerHands):
+class Iros13Hands(BaseHands):
     '''
     This class holds methods to operate the hands of NEXTAGE OPEN in a specific
     configuration where a clipping hand on left and suction hand on right
@@ -66,7 +68,74 @@ class Iros13Hands(BaseToolchangerHands):
         # without the hand class has the interfaces for comamands. But you can
         # always apply (2) approach, which is cleaner.
         super(Iros13Hands, self).__init__(parent)
-        self.airhand_l_command = AirhandCommand(self, self.HAND_L)
-        self.airhand_r_command = AirhandCommand(self, self.HAND_R)
-        self.gripper_l_command = GripperCommand(self, self.HAND_L)
-        self.gripper_r_command = GripperCommand(self, self.HAND_R)
+        _pins_airhand = [self.DIO_27, self.DIO_28, self.DIO_22, self.DIO_23]
+        _pins_gripper = [self.DIO_25, self.DIO_26, self.DIO_20, self.DIO_21]
+        self.airhand_l_command = AirhandCommand(self, self.HAND_L, _pins_airhand)
+        self.airhand_r_command = AirhandCommand(self, self.HAND_R, _pins_airhand)
+        self.gripper_l_command = GripperCommand(self, self.HAND_L, _pins_gripper)
+        self.gripper_r_command = GripperCommand(self, self.HAND_R, _pins_gripper)
+
+        _pins_handlight = [self.DIO_18, self.DIO_17]
+        _pins_toolchanger = [self.DIO_24, self.DIO_25, self.DIO_26,
+                             self.DIO_19, self.DIO_20, self.DIO_21]
+        # The following lines are moved from BaseToolchangerHands
+        self.handlight_l_command = HandlightCommand(self, self.HAND_L, _pins_handlight)
+        self.handlight_r_command = HandlightCommand(self, self.HAND_R, _pins_handlight)
+        self.toolchanger_l_command = ToolchangerCommand(self, self.HAND_L, _pins_toolchanger)
+        self.toolchanger_r_command = ToolchangerCommand(self, self.HAND_R, _pins_toolchanger)
+
+    def airhand_drawin_l(self):
+        self.airhand_l_command.execute(self.airhand_l_command.AIRHAND_DRAWIN)
+
+    def airhand_drawin_r(self):
+        self.airhand_r_command.execute(self.airhand_r_command.AIRHAND_DRAWIN)
+
+    def airhand_keep_l(self):
+        self.airhand_l_command.execute(self.airhand_l_command.AIRHAND_KEEP)
+
+    def airhand_keep_r(self):
+        self.airhand_r_command.execute(self.airhand_r_command.AIRHAND_KEEP)
+
+    def airhand_release_l(self):
+        self.airhand_l_command.execute(self.airhand_l_command.AIRHAND_RELEASE)
+
+    def airhand_release_r(self):
+        self.airhand_r_command.execute(self.airhand_r_command.AIRHAND_RELEASE)
+
+    def gripper_close_l(self):
+        self.gripper_l_command.execute(self.gripper_l_command.GRIPPER_CLOSE)
+
+    def gripper_close_r(self):
+        self.gripper_r_command.execute(self.gripper_r_command.GRIPPER_CLOSE)
+
+    def gripper_open_l(self):
+        self.gripper_l_command.execute(self.gripper_r_command.GRIPPER_OPEN)
+
+    def gripper_open_r(self):
+        self.gripper_r_command.execute(self.gripper_r_command.GRIPPER_OPEN)
+
+    def handtool_eject_l(self):
+        self.toolchanger_l_command.execute(
+            self.toolchanger_l_command.HAND_TOOLCHANGE_OFF)
+
+    def handtool_eject_r(self):
+        self.toolchanger_r_command.execute(
+            self.toolchanger_r_command.HAND_TOOLCHANGE_OFF)
+
+    def handtool_attach_l(self):
+        self.toolchanger_l_command.execute(
+            self.toolchanger_l_command.HAND_TOOLCHANGE_ON)
+
+    def handtool_attach_r(self):
+        self.toolchanger_r_command.execute(
+            self.toolchanger_r_command.HAND_TOOLCHANGE_ON)
+
+    def handlight_r(self, is_on=True):
+        self.handlight_r_command.turn_handlight(self.HAND_R, is_on)
+
+    def handlight_l(self, is_on=True):
+        self.handlight_l_command.turn_handlight(self.HAND_L, is_on)
+
+    def handlight_both(self, is_on=True):
+        self.handlight_l_command.turn_handlight(self.HAND_L, is_on)
+        self.handlight_r_command.turn_handlight(self.HAND_R, is_on)

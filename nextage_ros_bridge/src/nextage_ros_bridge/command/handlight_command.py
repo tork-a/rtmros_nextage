@@ -47,15 +47,15 @@ class HandlightCommand(AbsractHandCommand):
     HANDLIGHT_ON = True
     HANDLIGHT_OFF = False
 
-    def __init__(self, hands, hand):
-        super(HandlightCommand, self).__init__(hands, hand)
+    def __init__(self, hands, hand, dio_pins):
+        super(HandlightCommand, self).__init__(hands, hand, dio_pins)
 
-    def _assign_dio_names(self):
+    def _assign_dio_names(self, dio_pins):
         '''
         @see abs_hand_command.AbsractHandCommand._assign_dio_names
         '''
-        self._DIO_RHAND = self._DIO_17
-        self._DIO_LHAND = self._DIO_18
+        self._DIO_LHAND = dio_pins[0]
+        self._DIO_RHAND = dio_pins[1]
 
     def execute(self, operation):
         '''
@@ -85,3 +85,21 @@ class HandlightCommand(AbsractHandCommand):
             elif not self._hand:
                 mask = [self._DIO_RHAND, self._DIO_LHAND]
         return self._hands._dio_writer(dout, mask)
+
+    def turn_handlight(self, hand=None, on=True):
+        '''
+        @param hand: Both hands if None.
+        @type on: bool
+        @param on: Despite its type, it's handled as str in this method.
+        @rtype: bool
+        @return: True if the lights turned. False otherwise.
+        '''
+        _result = True
+        if self._hands.HAND_L == hand:
+            _result = self.execute(on)
+        elif self._hands.HAND_R == hand:
+            _result = self.execute(on)
+        elif not hand:  # both hands
+            _result = self.execute(on) and _result
+            _result = self.execute(on) and _result
+        return _result

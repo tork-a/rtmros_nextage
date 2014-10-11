@@ -41,9 +41,6 @@ class BaseHands(object):
     '''
     This class provides methods that are generic for the hands of
     Kawada Industries' dual-arm robot called Nextage Open.
-
-    DIO pin numbers are set in
-    nextage_ros_bridge.abs_hand_command.AbsractHandCommand
     '''
     # TODO: Unittest is needed!!
 
@@ -57,6 +54,23 @@ class BaseHands(object):
     _DIO_MASK = 0   # Masking value remains "0" regardless the design on the
                     # robot; masking logic is defined in hrpsys, while robot
                     # makers can decide DIO logic.
+
+    # DIO pin numbers. It's convenient to be overridden and renamed in the
+    # derived classes to represent the specific purpose of each pin.
+    DIO_17 = 17
+    DIO_18 = 18
+    DIO_19 = 19
+    DIO_20 = 20
+    DIO_21 = 21
+    DIO_22 = 22
+    DIO_23 = 23
+    DIO_24 = 24
+    DIO_25 = 25
+    DIO_26 = 26
+    DIO_27 = 27
+    DIO_28 = 28
+
+    _MSG_ERR_NOTIMPLEMENTED = 'The method is not implemented in the derived class'
 
     def __init__(self, parent):
         '''
@@ -179,3 +193,57 @@ class BaseHands(object):
             mask.append(i)
 
         self._dio_writer(dout, mask, self._DIO_ASSIGN_ON)
+
+    # The following are common hand commands set by default.
+    # Depending on the configuration some / all of these don't necessarily
+    # have to be implemented.
+    def airhand_l_drawin(self):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
+
+    def airhand_r_drawin(self):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
+
+    def airhand_l_keep(self):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
+
+    def airhand_r_keep(self):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
+
+    def airhand_l_release(self):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
+
+    def airhand_r_release(self):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
+
+    def gripper_l_close(self):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
+
+    def gripper_r_close(self):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
+
+    def gripper_l_open(self):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
+
+    def gripper_r_open(self):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
+
+    def handlight_r(self, is_on=True):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
+
+    def handlight_l(self, is_on=True):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
+
+    def handlight_both(self, is_on=True):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
+
+    def handtool_l_eject(self):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
+
+    def handtool_r_eject(self):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
+
+    def handtool_l_attach(self):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
+
+    def handtool_r_attach(self):
+        raise NotImplementedError(self._MSG_ERR_NOTIMPLEMENTED)
