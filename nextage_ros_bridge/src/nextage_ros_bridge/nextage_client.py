@@ -109,21 +109,21 @@ class NextageClient(HIRONX, object):
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.turn_handlight(self._hands.HAND_R, is_on)
+        return self._hands.handlight_r(is_on)
 
     def handlight_l(self, is_on=True):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.turn_handlight(self._hands.HAND_L, is_on)
+        return self._hands.handlight_r(is_on)
 
     def handlight_both(self, is_on=True):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.turn_handlight(None, is_on)
+        return self._hands.handlight_both(is_on)
 
     def handtool_l_eject(self):
         '''

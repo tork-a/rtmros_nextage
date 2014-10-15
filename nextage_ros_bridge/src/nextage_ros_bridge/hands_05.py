@@ -85,57 +85,59 @@ class Hands05(BaseHands):
         self._toolchanger_r_command = ToolchangerCommand(self, self.HAND_R, _pins_toolchanger)
 
     def airhand_l_drawin(self):
-        self._airhand_l_command.execute(self._airhand_l_command.AIRHAND_DRAWIN)
+        return self._airhand_l_command.execute(self._airhand_l_command.AIRHAND_DRAWIN)
 
     def airhand_r_drawin(self):
-        self._airhand_r_command.execute(self._airhand_r_command.AIRHAND_DRAWIN)
+        return self._airhand_r_command.execute(self._airhand_r_command.AIRHAND_DRAWIN)
 
     def airhand_l_keep(self):
-        self._airhand_l_command.execute(self._airhand_l_command.AIRHAND_KEEP)
+        return self._airhand_l_command.execute(self._airhand_l_command.AIRHAND_KEEP)
 
     def airhand_r_keep(self):
-        self._airhand_r_command.execute(self._airhand_r_command.AIRHAND_KEEP)
+        return self._airhand_r_command.execute(self._airhand_r_command.AIRHAND_KEEP)
 
     def airhand_l_release(self):
-        self._airhand_l_command.execute(self._airhand_l_command.AIRHAND_RELEASE)
+        return self._airhand_l_command.execute(self._airhand_l_command.AIRHAND_RELEASE)
 
     def airhand_r_release(self):
-        self._airhand_r_command.execute(self._airhand_r_command.AIRHAND_RELEASE)
+        return self._airhand_r_command.execute(self._airhand_r_command.AIRHAND_RELEASE)
 
     def gripper_l_close(self):
-        self._gripper_l_command.execute(self._gripper_l_command.GRIPPER_CLOSE)
+        return self._gripper_l_command.execute(self._gripper_l_command.GRIPPER_CLOSE)
 
     def gripper_r_close(self):
-        self._gripper_r_command.execute(self._gripper_r_command.GRIPPER_CLOSE)
+        return self._gripper_r_command.execute(self._gripper_r_command.GRIPPER_CLOSE)
 
     def gripper_l_open(self):
-        self._gripper_l_command.execute(self._gripper_r_command.GRIPPER_OPEN)
+        return self._gripper_l_command.execute(self._gripper_r_command.GRIPPER_OPEN)
 
     def gripper_r_open(self):
-        self._gripper_r_command.execute(self._gripper_r_command.GRIPPER_OPEN)
+        return self._gripper_r_command.execute(self._gripper_r_command.GRIPPER_OPEN)
 
     def handtool_l_eject(self):
-        self._toolchanger_l_command.execute(
+        return self._toolchanger_l_command.execute(
             self._toolchanger_l_command.HAND_TOOLCHANGE_OFF)
 
     def handtool_r_eject(self):
-        self._toolchanger_r_command.execute(
+        return self._toolchanger_r_command.execute(
             self._toolchanger_r_command.HAND_TOOLCHANGE_OFF)
 
     def handtool_l_attach(self):
-        self._toolchanger_l_command.execute(
+        return self._toolchanger_l_command.execute(
             self._toolchanger_l_command.HAND_TOOLCHANGE_ON)
 
     def handtool_r_attach(self):
-        self._toolchanger_r_command.execute(
+        return self._toolchanger_r_command.execute(
             self._toolchanger_r_command.HAND_TOOLCHANGE_ON)
 
     def handlight_r(self, is_on=True):
-        self._handlight_r_command.turn_handlight(self.HAND_R, is_on)
+        return self._handlight_r_command.turn_handlight(self.HAND_R, is_on)
 
     def handlight_l(self, is_on=True):
-        self._handlight_l_command.turn_handlight(self.HAND_L, is_on)
+        return self._handlight_l_command.turn_handlight(self.HAND_L, is_on)
 
     def handlight_both(self, is_on=True):
-        self._handlight_l_command.turn_handlight(self.HAND_L, is_on)
-        self._handlight_r_command.turn_handlight(self.HAND_R, is_on)
+        result = self._handlight_l_command.turn_handlight(self.HAND_L, is_on)
+        result = result and self._handlight_r_command.turn_handlight(
+                                                            self.HAND_R, is_on)
+        return result

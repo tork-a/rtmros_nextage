@@ -47,7 +47,12 @@ _PKG = 'nextage_ros_bridge'
 
 class TestNxoHandlight(unittest.TestCase):
     '''
-    Test NextageClient with rostest.
+    Test NextageClient with rostest. This does NOT test hardware (i.e. if DIO
+    is connected and functioning); instead, this only verifies if the
+    software works as to the given hardware spec.
+    
+    For tests involving hardware, follow
+    https://github.com/start-jsk/rtmros_hironx/issues/272.
     '''
 
     @classmethod
@@ -56,28 +61,41 @@ class TestNxoHandlight(unittest.TestCase):
         cls._robot.init()
         cls._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
 
+        # For older DIO version robot.
+        cls._robot_04 = nextage_client.NextageClient()
+        cls._robot_04.set_hand_version(version=cls._robot_04.HAND_VER_0_4_2)
+        cls._robot_04.init()
+        cls._robot_04.goInitial(_GOINITIAL_TIME_MIDSPEED)
+
     @classmethod
     def tearDownClass(cls):
         cls._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
+        cls._robot_04.goInitial(_GOINITIAL_TIME_MIDSPEED)        
 
     def test_handlight_r(self):
         if self._robot.simulation_mode:
-            self.assertTrue(self._robot.handlight_r(is_on=False))
+            self.assertTrue(self._robot._hands.handlight_r(is_on=False))
+            self.assertTrue(self._robot_04.handlight_r(is_on=False))
         else:
-            self.assertTrue(self._robot.handlight_r(is_on=True))
+            self.assertTrue(self._robot._hands.handlight_r(is_on=True))
+            self.assertTrue(self._robot_04.handlight_r(is_on=True))
 
     def test_handlight_l(self):
         if self._robot.simulation_mode:
-            self.assertTrue(self._robot.handlight_l(is_on=False))
+            self.assertTrue(self._robot._hands.handlight_l(is_on=False))
+            self.assertTrue(self._robot_04.handlight_l(is_on=False))
         else:
-            self.assertTrue(self._robot.handlight_l(is_on=True))
+            self.assertTrue(self._robot._hands.handlight_l(is_on=True))
+            self.assertTrue(self._robot_04.handlight_l(is_on=True))
 
     def test_handlight_both(self):
         if self._robot.simulation_mode:
             # Check if checking false works.
-            self.assertTrue(self._robot.handlight_both(is_on=False))
+            self.assertTrue(self._robot._hands.handlight_both(is_on=False))
+            self.assertTrue(self._robot_04.handlight_both(is_on=False))
         else:
-            self.assertTrue(self._robot.handlight_both(is_on=True))
+            self.assertTrue(self._robot._hands.handlight_both(is_on=True))
+            self.assertTrue(self._robot_04.handlight_both(is_on=True))
 
 if __name__ == '__main__':
     rostest.rosrun(_PKG, 'test_nxo_handlight', TestNxoHandlight)
