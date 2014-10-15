@@ -47,7 +47,12 @@ _PKG = 'nextage_ros_bridge'
 
 class TestNxoAirhand(unittest.TestCase):
     '''
-    Test NextageClient with rostest.
+    Test NextageClient with rostest. This does NOT test hardware (i.e. if DIO
+    is connected and functioning); instead, this only verifies if the
+    software works as to the given hardware spec.
+    
+    For tests involving hardware, follow
+    https://github.com/start-jsk/rtmros_hironx/issues/272.
     '''
 
     @classmethod
@@ -56,27 +61,40 @@ class TestNxoAirhand(unittest.TestCase):
         cls._robot.init()
         cls._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
 
+        # For older DIO version robot.
+        cls._robot_04 = nextage_client.NextageClient()
+        cls._robot_04.set_hand_version(version=cls._robot_04.HAND_VER_0_4_2)
+        cls._robot_04.init()
+        cls._robot_04.goInitial(_GOINITIAL_TIME_MIDSPEED)
+
     @classmethod
     def tearDownClass(cls):
         cls._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
+        cls._robot_04.goInitial(_GOINITIAL_TIME_MIDSPEED)
 
     def test_airhand_l_release(self):
-        self.assertTrue(self._robot.airhand_l_release())
+        self.assertTrue(self._robot._hands.airhand_l_release())
+        self.assertTrue(self._robot_04.airhand_l_release())
 
     def test_airhand_r_release(self):
-        self.assertTrue(self._robot.airhand_r_release())
+        self.assertTrue(self._robot._hands.airhand_r_release())
+        self.assertTrue(self._robot_04.airhand_r_release())
 
     def test_airhand_l_drawin(self):
-        self.assertTrue(self._robot.airhand_l_drawin())
+        self.assertTrue(self._robot._hands.airhand_l_drawin())
+        self.assertTrue(self._robot_04.airhand_l_drawin())
 
     def test_airhand_r_drawin(self):
-        self.assertTrue(self._robot.airhand_r_drawin())
+        self.assertTrue(self._robot._hands.airhand_r_drawin())
+        self.assertTrue(self._robot_04.airhand_r_drawin())
 
     def test_airhand_l_keep(self):
-        self.assertTrue(self._robot.airhand_l_keep())
+        self.assertTrue(self._robot._hands.airhand_l_keep())
+        self.assertTrue(self._robot_04.airhand_l_keep())
 
     def test_airhand_r_keep(self):
-        self.assertTrue(self._robot.airhand_r_keep())
+        self.assertTrue(self._robot._hands.airhand_r_keep())
+        self.assertTrue(self._robot_04.airhand_r_keep())
 
 if __name__ == '__main__':
     rostest.rosrun(_PKG, 'test_nxo_airhand', TestNxoAirhand)

@@ -37,6 +37,7 @@
 from hironx_ros_bridge.hironx_client import HIRONX
 
 from nextage_ros_bridge.iros13_hands import Iros13Hands
+from nextage_ros_bridge.hands_05 import Hands05
 
 
 class NextageClient(HIRONX, object):
@@ -63,6 +64,9 @@ class NextageClient(HIRONX, object):
     _DI_PORTS_L = [25, 21, 22, 23, 24]
     _DI_PORTS_R = [20, 16, 17, 18, 19]
 
+    HAND_VER_0_4_2 = '0.4.2'
+    HAND_VER_0_5_1 = '0.5.1'
+
     def __init__(self):
         '''
         Do not get confused that there is also a method called
@@ -70,7 +74,7 @@ class NextageClient(HIRONX, object):
         super class as the tradition there.
         '''
         super(NextageClient, self).__init__()
-        self._hand = Iros13Hands(self)
+        self.set_hand_version(self.HAND_VER_0_5_1)
 
     def init(self, robotname="HiroNX(Robot)0", url=""):
         '''
@@ -84,79 +88,165 @@ class NextageClient(HIRONX, object):
         '''
         HIRONX.init(self, robotname=robotname, url=url)
 
+    def get_hand_version(self):
+        '''
+        @rtype: str
+        '''
+        if not self._hand_version:
+            return 'Hand module not set yet.'
+        else:
+            return self._hand_version
+
+    def set_hand_version(self, version=HAND_VER_0_5_1):
+        self._hand_version = version
+        if self.HAND_VER_0_4_2 == self._hand_version:
+            self._hands = Iros13Hands(self)
+        elif self.HAND_VER_0_5_1 == self._hand_version:
+            self._hands = Hands05(self)
+
     def handlight_r(self, is_on=True):
-        return self._hand.turn_handlight(self._hand.HAND_R, is_on)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.handlight_r(is_on)
 
     def handlight_l(self, is_on=True):
-        return self._hand.turn_handlight(self._hand.HAND_L, is_on)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.handlight_r(is_on)
 
     def handlight_both(self, is_on=True):
-        return self._hand.turn_handlight(None, is_on)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.handlight_both(is_on)
 
     def handtool_l_eject(self):
-        return self._hand.toolchanger_l_command.execute(
-            self._hand.toolchanger_l_command.HAND_TOOLCHANGE_OFF)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.toolchanger_l_command.execute(
+            self._hands.toolchanger_l_command.HAND_TOOLCHANGE_OFF)
 
     def handtool_r_eject(self):
-        return self._hand.toolchanger_r_command.execute(
-            self._hand.toolchanger_r_command.HAND_TOOLCHANGE_OFF)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.toolchanger_r_command.execute(
+            self._hands.toolchanger_r_command.HAND_TOOLCHANGE_OFF)
 
     def handtool_l_attach(self):
-        return self._hand.toolchanger_l_command.execute(
-            self._hand.toolchanger_l_command.HAND_TOOLCHANGE_ON)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.toolchanger_l_command.execute(
+            self._hands.toolchanger_l_command.HAND_TOOLCHANGE_ON)
 
     def handtool_r_attach(self):
-        return self._hand.toolchanger_r_command.execute(
-            self._hand.toolchanger_r_command.HAND_TOOLCHANGE_ON)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.toolchanger_r_command.execute(
+            self._hands.toolchanger_r_command.HAND_TOOLCHANGE_ON)
 
     def gripper_l_close(self):
-        return self._hand.gripper_l_command.execute(
-            self._hand.gripper_l_command.GRIPPER_CLOSE)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.gripper_l_command.execute(
+            self._hands.gripper_l_command.GRIPPER_CLOSE)
 
     def gripper_r_close(self):
-        return self._hand.gripper_r_command.execute(
-            self._hand.gripper_r_command.GRIPPER_CLOSE)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.gripper_r_command.execute(
+            self._hands.gripper_r_command.GRIPPER_CLOSE)
 
     def gripper_l_open(self):
-        return self._hand.gripper_l_command.execute(
-            self._hand.gripper_r_command.GRIPPER_OPEN)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.gripper_l_command.execute(
+            self._hands.gripper_r_command.GRIPPER_OPEN)
 
     def gripper_r_open(self):
-        return self._hand.gripper_r_command.execute(
-            self._hand.gripper_r_command.GRIPPER_OPEN)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.gripper_r_command.execute(
+            self._hands.gripper_r_command.GRIPPER_OPEN)
 
     def airhand_l_drawin(self):
-        return self._hand.airhand_l_command.execute(
-            self._hand.airhand_l_command.AIRHAND_DRAWIN)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.airhand_l_command.execute(
+            self._hands.airhand_l_command.AIRHAND_DRAWIN)
 
     def airhand_r_drawin(self):
-        return self._hand.airhand_r_command.execute(
-            self._hand.airhand_r_command.AIRHAND_DRAWIN)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.airhand_r_command.execute(
+            self._hands.airhand_r_command.AIRHAND_DRAWIN)
 
     def airhand_l_keep(self):
-        return self._hand.airhand_l_command.execute(
-            self._hand.airhand_l_command.AIRHAND_KEEP)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.airhand_l_command.execute(
+            self._hands.airhand_l_command.AIRHAND_KEEP)
 
     def airhand_r_keep(self):
-        return self._hand.airhand_r_command.execute(
-            self._hand.airhand_r_command.AIRHAND_KEEP)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.airhand_r_command.execute(
+            self._hands.airhand_r_command.AIRHAND_KEEP)
 
     def airhand_l_release(self):
-        return self._hand.airhand_l_command.execute(
-            self._hand.airhand_l_command.AIRHAND_RELEASE)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.airhand_l_command.execute(
+            self._hands.airhand_l_command.AIRHAND_RELEASE)
 
     def airhand_r_release(self):
-        return self._hand.airhand_r_command.execute(
-            self._hand.airhand_r_command.AIRHAND_RELEASE)
+        '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+        '''
+        return self._hands.airhand_r_command.execute(
+            self._hands.airhand_r_command.AIRHAND_RELEASE)
 
     def initialize_hand_dio(self):
         '''
+        @deprecated: Won't be functional after package version 0.5.1.
+                     Use self._hands.%FUNCTION_NAME% instead.
+
         Reset all DIO channels to "off" state except for toolchanger lockers
         (if they are turned off the attached tools will fall).
         '''
-        self._hand.init_dio()
+        self._hands.init_dio()
 
-    # 1/15/2014 130s debug
     def getRTCList(self):
         '''
         Overwriting HrpsysConfigurator.getRTCList

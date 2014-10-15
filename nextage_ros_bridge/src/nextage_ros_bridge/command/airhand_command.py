@@ -81,7 +81,7 @@ class AirhandCommand(AbsractHandCommand):
     ## dangerous situation.AIRHAND_KEEP
     AIRHAND_DANGER = 'danger'
 
-    def __init__(self, hands, hand):
+    def __init__(self, hands, hand, dio_pins):
         '''
         @see nextage_ros_bridge.command.abs_hand_command.AbsractHandCommand
         @type hands: nextage_ros_bridge.base_hands.BaseHands
@@ -89,18 +89,18 @@ class AirhandCommand(AbsractHandCommand):
         @param hand: Side of hand. Variables that are defined in
         nextage_ros_bridge.base_hands.BaseHands can be used { HAND_L, HAND_R }.
         '''
-        super(AirhandCommand, self).__init__(hands, hand)
+        super(AirhandCommand, self).__init__(hands, hand, dio_pins)
         self._SLEEP_POST_RELEASE = 3.0
 
-    def _assign_dio_names(self):
+    def _assign_dio_names(self, dio_pins):
         '''
         @see abs_hand_command.AbsractHandCommand._assign_dio_names
         '''
         #DIO reassignment for the class-specific purpose
-        self._DIO_SUCTION_R_1 = self._DIO_22
-        self._DIO_SUCTION_R_2 = self._DIO_23
-        self._DIO_SUCTION_L_1 = self._DIO_27
-        self._DIO_SUCTION_L_2 = self._DIO_28
+        self._DIO_SUCTION_L_1 = dio_pins[0]
+        self._DIO_SUCTION_L_2 = dio_pins[1]
+        self._DIO_SUCTION_R_1 = dio_pins[2]
+        self._DIO_SUCTION_R_2 = dio_pins[3]
 
     def execute(self, operation):
         '''
