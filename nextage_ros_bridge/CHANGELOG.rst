@@ -2,6 +2,13 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Increment minor version to 0.5, due to DIO spec update.
+* Add DIO pin config for version 0.5 (Aug 2014. Fix `#113 <https://github.com/tork-a/rtmros_nextage/issues/113>`_)
+* Flexibly configurable DIO pin assignment. 
+* Contributors: Isaac IY Saito
+
 0.4.2 (2014-10-01)
 ------------------
 * Add a launch file for stereo camera (ueye).
