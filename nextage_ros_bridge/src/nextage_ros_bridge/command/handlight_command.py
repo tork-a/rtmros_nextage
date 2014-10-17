@@ -100,6 +100,6 @@ class HandlightCommand(AbsractHandCommand):
         elif self._hands.HAND_R == hand:
             _result = self.execute(on)
         elif not hand:  # both hands
-            _result = self.execute(on) and _result
-            _result = self.execute(on) and _result
+            _result = self.turn_handlight(self._hands.HAND_L)
+            _result = self.turn_handlight(self._hands.HAND_) and _result
         return _result
