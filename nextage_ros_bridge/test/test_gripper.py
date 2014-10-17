@@ -68,20 +68,24 @@ class TestNxoGripper(unittest.TestCase):
         cls._robot_04.goInitial(_GOINITIAL_TIME_MIDSPEED)
 
     def test_gripper_l_close(self):
-        self.assertTrue(self._robot._hands.gripper_l_close())
-        self.assertTrue(self._robot_04.gripper_l_close())
+        result = self._robot._hands.gripper_l_close()
+        result = result and self._robot_04.gripper_l_close()
+        self.assertTrue(result)
 
     def test_gripper_r_close(self):
-        self.assertTrue(self._robot._hands.gripper_r_close())
-        self.assertTrue(self._robot_04.gripper_r_close())
+        result = self._robot._hands.gripper_r_close()
+        result = result and self._robot_04.gripper_r_close()
+        self.assertTrue(result)
 
     def test_gripper_l_open(self):
-        self.assertTrue(self._robot._hands.gripper_l_open())
-        self.assertTrue(self._robot_04.gripper_l_open())
+        result = self._robot._hands.gripper_l_open()
+        result = result and self._robot_04.gripper_l_open() 
+        self.assertTrue(result)
 
     def test_gripper_r_open(self):
-        self.assertTrue(self._robot._hands.gripper_r_open())
-        self.assertTrue(self._robot_04.gripper_r_open())
+        result = self._robot._hands.gripper_r_open()
+        result = result and self._robot_04.gripper_r_open()
+        self.assertTrue(result)
 
 if __name__ == '__main__':
     rostest.rosrun(_PKG, 'test_nxo_gripper', TestNxoGripper)

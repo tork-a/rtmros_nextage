@@ -74,28 +74,34 @@ class TestNxoHandlight(unittest.TestCase):
 
     def test_handlight_r(self):
         if self._robot.simulation_mode:
-            self.assertTrue(self._robot._hands.handlight_r(is_on=False))
-            self.assertTrue(self._robot_04.handlight_r(is_on=False))
+            result = self._robot._hands.handlight_r(is_on=False)
+            result = result and self._robot_04.handlight_r(is_on=False)
+            self.assertTrue(result)
         else:
-            self.assertTrue(self._robot._hands.handlight_r(is_on=True))
-            self.assertTrue(self._robot_04.handlight_r(is_on=True))
+            result = self._robot._hands.handlight_r(is_on=True)
+            result = result and self._robot_04.handlight_r(is_on=True)
+            self.assertTrue(result)
 
     def test_handlight_l(self):
         if self._robot.simulation_mode:
-            self.assertTrue(self._robot._hands.handlight_l(is_on=False))
-            self.assertTrue(self._robot_04.handlight_l(is_on=False))
+            result = self._robot._hands.handlight_l(is_on=False)
+            result = result and self._robot_04.handlight_l(is_on=False)
+            self.assertTrue(result)
         else:
-            self.assertTrue(self._robot._hands.handlight_l(is_on=True))
-            self.assertTrue(self._robot_04.handlight_l(is_on=True))
+            result = self._robot._hands.handlight_l(is_on=True)
+            result = result and self._robot_04.handlight_l(is_on=True)
+            self.assertTrue(result)
 
     def test_handlight_both(self):
         if self._robot.simulation_mode:
             # Check if checking false works.
-            self.assertTrue(self._robot._hands.handlight_both(is_on=False))
-            self.assertTrue(self._robot_04.handlight_both(is_on=False))
+            result = self._robot._hands.handlight_both(is_on=False)
+            result = result and self._robot_04.handlight_both(is_on=False)
+            self.assertTrue(result)
         else:
-            self.assertTrue(self._robot._hands.handlight_both(is_on=True))
-            self.assertTrue(self._robot_04.handlight_both(is_on=True))
+            result = self._robot._hands.handlight_both(is_on=True)
+            result = result and self._robot_04.handlight_both(is_on=True)
+            self.assertTrue(result)
 
 if __name__ == '__main__':
     rostest.rosrun(_PKG, 'test_nxo_handlight', TestNxoHandlight)
