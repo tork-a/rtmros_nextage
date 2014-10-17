@@ -77,9 +77,11 @@ class GripperCommand(AbsractHandCommand):
 
             elif self._hands.HAND_R == self._hand:
                 dout = [self._DIO_VALVE_R_1]
-#        elif self.GRIPPER_OPEN == operation:
-#            if self._hands.HAND_L == self._hand:
-#                dout = [self._DIO_VALVE_L_2]
+        elif self.GRIPPER_OPEN == operation:
+            if self._hands.HAND_L == self._hand:
+                dout = [self._DIO_VALVE_L_2]
+            elif self._hands.HAND_R == self._hand:
+                dout = [self._DIO_VALVE_R_2]
         mask = None 
         if self._hands.HAND_L == self._hand:
             mask = mask_l

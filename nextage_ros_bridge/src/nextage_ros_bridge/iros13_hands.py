@@ -84,49 +84,49 @@ class Iros13Hands(BaseHands):
         self.toolchanger_l_command = ToolchangerCommand(self, self.HAND_L, _pins_toolchanger)
         self.toolchanger_r_command = ToolchangerCommand(self, self.HAND_R, _pins_toolchanger)
 
-    def airhand_drawin_l(self):
+    def airhand_l_drawin(self):
         return self.airhand_l_command.execute(self.airhand_l_command.AIRHAND_DRAWIN)
 
-    def airhand_drawin_r(self):
+    def airhand_r_drawin(self):
         return self.airhand_r_command.execute(self.airhand_r_command.AIRHAND_DRAWIN)
 
-    def airhand_keep_l(self):
+    def airhand_l_keep(self):
         return self.airhand_l_command.execute(self.airhand_l_command.AIRHAND_KEEP)
 
-    def airhand_keep_r(self):
+    def airhand_r_keep(self):
         return self.airhand_r_command.execute(self.airhand_r_command.AIRHAND_KEEP)
 
-    def airhand_release_l(self):
+    def airhand_l_release(self):
         return self.airhand_l_command.execute(self.airhand_l_command.AIRHAND_RELEASE)
 
-    def airhand_release_r(self):
+    def airhand_r_release(self):
         return self.airhand_r_command.execute(self.airhand_r_command.AIRHAND_RELEASE)
 
-    def gripper_close_l(self):
+    def gripper_l_close(self):
         return self.gripper_l_command.execute(self.gripper_l_command.GRIPPER_CLOSE)
 
-    def gripper_close_r(self):
+    def gripper_r_close(self):
         return self.gripper_r_command.execute(self.gripper_r_command.GRIPPER_CLOSE)
 
-    def gripper_open_l(self):
+    def gripper_l_open(self):
         return self.gripper_l_command.execute(self.gripper_r_command.GRIPPER_OPEN)
 
-    def gripper_open_r(self):
+    def gripper_r_open(self):
         return self.gripper_r_command.execute(self.gripper_r_command.GRIPPER_OPEN)
 
-    def handtool_eject_l(self):
+    def handtool_l_eject(self):
         return self.toolchanger_l_command.execute(
             self.toolchanger_l_command.HAND_TOOLCHANGE_OFF)
 
-    def handtool_eject_r(self):
+    def handtool_r_eject(self):
         return self.toolchanger_r_command.execute(
             self.toolchanger_r_command.HAND_TOOLCHANGE_OFF)
 
-    def handtool_attach_l(self):
+    def handtool_l_attach(self):
         return self.toolchanger_l_command.execute(
             self.toolchanger_l_command.HAND_TOOLCHANGE_ON)
 
-    def handtool_attach_r(self):
+    def handtool_r_attach(self):
         return self.toolchanger_r_command.execute(
             self.toolchanger_r_command.HAND_TOOLCHANGE_ON)
 
