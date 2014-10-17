@@ -73,28 +73,34 @@ class TestNxoAirhand(unittest.TestCase):
         cls._robot_04.goInitial(_GOINITIAL_TIME_MIDSPEED)
 
     def test_airhand_l_release(self):
-        self.assertTrue(self._robot._hands.airhand_l_release())
-        self.assertTrue(self._robot_04.airhand_l_release())
+        result = self._robot._hands.airhand_l_release()
+        result = result and self._robot_04.airhand_l_release()
+        self.assertTrue(result)
 
     def test_airhand_r_release(self):
-        self.assertTrue(self._robot._hands.airhand_r_release())
-        self.assertTrue(self._robot_04.airhand_r_release())
+        result = self._robot._hands.airhand_r_release()
+        result = result and self._robot_04.airhand_r_release()
+        self.assertTrue(result)
 
     def test_airhand_l_drawin(self):
-        self.assertTrue(self._robot._hands.airhand_l_drawin())
-        self.assertTrue(self._robot_04.airhand_l_drawin())
+        result = self._robot._hands.airhand_l_drawin()
+        result = result and self._robot_04.airhand_l_drawin()
+        self.assertTrue(result)
 
     def test_airhand_r_drawin(self):
-        self.assertTrue(self._robot._hands.airhand_r_drawin())
-        self.assertTrue(self._robot_04.airhand_r_drawin())
+        result = self._robot._hands.airhand_r_drawin()
+        result = result and self._robot_04.airhand_r_drawin()
+        self.assertTrue(result)
 
     def test_airhand_l_keep(self):
-        self.assertTrue(self._robot._hands.airhand_l_keep())
-        self.assertTrue(self._robot_04.airhand_l_keep())
+        result = self._robot._hands.airhand_l_keep()
+        result = result and self._robot_04.airhand_l_keep()
+        self.assertTrue(result)
 
     def test_airhand_r_keep(self):
-        self.assertTrue(self._robot._hands.airhand_r_keep())
-        self.assertTrue(self._robot_04.airhand_r_keep())
+        result = self._robot._hands.airhand_r_keep()
+        result = result and self._robot_04.airhand_r_keep()
+        self.assertTrue(result)
 
 if __name__ == '__main__':
     rostest.rosrun(_PKG, 'test_nxo_airhand', TestNxoAirhand)
