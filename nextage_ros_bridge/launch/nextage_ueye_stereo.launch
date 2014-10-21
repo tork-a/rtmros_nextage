@@ -9,6 +9,8 @@
     rosrun image_view stereo_view stereo:=/ image:=image_raw _approximate_sync:=True
 
   -->
+  <arg name="binning" default="2" />
+
   <node pkg="nodelet" type="nodelet" name="nodelet_manager" args="manager" output="screen" />
 
   <node pkg="nodelet" type="nodelet" name="ueye_cam_nodelet_master"
@@ -38,7 +40,7 @@
     <param name="image_left" type="int" value="-1" /> <!-- -1: center -->
 
     <param name="subsampling" type="int" value="1" /> <!-- supported by only some UEye cameras -->
-    <param name="binning" type="int" value="2" /> <!-- supported by only some UEye cameras -->
+    <param name="binning" type="int" value="$(arg binning)" /> <!-- supported by only some UEye cameras -->
     <param name="sensor_scaling" type="double" value="1.0" /> <!-- supported by only some UEye cameras -->
 
     <param name="auto_gain" type="bool" value="True" />
@@ -89,7 +91,7 @@
     <param name="image_left" type="int" value="-1" /> <!-- -1: center -->
 
     <param name="subsampling" type="int" value="1" /> <!-- supported by only some UEye cameras -->
-    <param name="binning" type="int" value="2" /> <!-- supported by only some UEye cameras -->
+    <param name="binning" type="int" value="$(arg binning)" /> <!-- supported by only some UEye cameras -->
     <param name="sensor_scaling" type="double" value="1.0" /> <!-- supported by only some UEye cameras -->
 
     <param name="auto_gain" type="bool" value="True" />
