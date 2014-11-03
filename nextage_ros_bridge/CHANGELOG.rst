@@ -2,6 +2,16 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Improvement on camera launch file (add binning arg in nextage_ueye_stereo.launch)
+* DIO 
+
+ * Add DIO pin config for Aug 2014 version. Flexibly configurable DIO pin. Fix `#113 <https://github.com/tork-a/rtmros_nextage/issues/113>`_
+ * Fix wrong test assertion (fix `#116 <https://github.com/tork-a/rtmros_nextage/issues/116>`_).
+ * Add to test cases the check for old spec. Hand05 class returns DIO commands' results.
+* Contributors: Isaac IY Saito, Yutaka Kondo
+
 0.5.1 (2014-10-17)
 ------------------
 * Increment minor version to 0.5, due to DIO spec update.
