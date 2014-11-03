@@ -2,8 +2,8 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.2 (2014-11-03)
+------------------
 * Improvement on camera launch file (add binning arg in nextage_ueye_stereo.launch)
 * DIO 
 
