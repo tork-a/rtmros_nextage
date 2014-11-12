@@ -138,6 +138,5 @@ class Hands05(BaseHands):
 
     def handlight_both(self, is_on=True):
         result = self._handlight_l_command.turn_handlight(self.HAND_L, is_on)
-        result = result and self._handlight_r_command.turn_handlight(
-                                                            self.HAND_R, is_on)
+        result = self._handlight_r_command.turn_handlight(self.HAND_R, is_on) and result
         return result
