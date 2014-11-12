@@ -75,32 +75,32 @@ class TestNxoHandlight(unittest.TestCase):
     def test_handlight_r(self):
         if self._robot.simulation_mode:
             result = self._robot._hands.handlight_r(is_on=False)
-            result = result and self._robot_04.handlight_r(is_on=False)
+            result = self._robot_04.handlight_r(is_on=False) and result
             self.assertTrue(result)
         else:
             result = self._robot._hands.handlight_r(is_on=True)
-            result = result and self._robot_04.handlight_r(is_on=True)
+            result = self._robot_04.handlight_r(is_on=True) and result
             self.assertTrue(result)
 
     def test_handlight_l(self):
         if self._robot.simulation_mode:
             result = self._robot._hands.handlight_l(is_on=False)
-            result = result and self._robot_04.handlight_l(is_on=False)
+            result = self._robot_04.handlight_l(is_on=False) and result
             self.assertTrue(result)
         else:
             result = self._robot._hands.handlight_l(is_on=True)
-            result = result and self._robot_04.handlight_l(is_on=True)
+            result = self._robot_04.handlight_l(is_on=True) and result
             self.assertTrue(result)
 
     def test_handlight_both(self):
         if self._robot.simulation_mode:
             # Check if checking false works.
             result = self._robot._hands.handlight_both(is_on=False)
-            result = result and self._robot_04.handlight_both(is_on=False)
+            result = self._robot_04.handlight_both(is_on=False) and result
             self.assertTrue(result)
         else:
             result = self._robot._hands.handlight_both(is_on=True)
-            result = result and self._robot_04.handlight_both(is_on=True)
+            result = self._robot_04.handlight_both(is_on=True) and result
             self.assertTrue(result)
 
 if __name__ == '__main__':
