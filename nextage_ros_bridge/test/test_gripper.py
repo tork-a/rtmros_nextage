@@ -69,22 +69,22 @@ class TestNxoGripper(unittest.TestCase):
 
     def test_gripper_l_close(self):
         result = self._robot._hands.gripper_l_close()
-        result = result and self._robot_04.gripper_l_close()
+        result = self._robot_04.gripper_l_close() and result
         self.assertTrue(result)
 
     def test_gripper_r_close(self):
         result = self._robot._hands.gripper_r_close()
-        result = result and self._robot_04.gripper_r_close()
+        result = self._robot_04.gripper_r_close() and result
         self.assertTrue(result)
 
     def test_gripper_l_open(self):
         result = self._robot._hands.gripper_l_open()
-        result = result and self._robot_04.gripper_l_open() 
+        result = self._robot_04.gripper_l_open() and result 
         self.assertTrue(result)
 
     def test_gripper_r_open(self):
         result = self._robot._hands.gripper_r_open()
-        result = result and self._robot_04.gripper_r_open()
+        result = self._robot_04.gripper_r_open() and result
         self.assertTrue(result)
 
 if __name__ == '__main__':

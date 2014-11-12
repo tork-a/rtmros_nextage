@@ -74,32 +74,32 @@ class TestNxoAirhand(unittest.TestCase):
 
     def test_airhand_l_release(self):
         result = self._robot._hands.airhand_l_release()
-        result = result and self._robot_04.airhand_l_release()
+        result = self._robot_04.airhand_l_release() and result
         self.assertTrue(result)
 
     def test_airhand_r_release(self):
         result = self._robot._hands.airhand_r_release()
-        result = result and self._robot_04.airhand_r_release()
+        result = self._robot_04.airhand_r_release() and result
         self.assertTrue(result)
 
     def test_airhand_l_drawin(self):
         result = self._robot._hands.airhand_l_drawin()
-        result = result and self._robot_04.airhand_l_drawin()
+        result = self._robot_04.airhand_l_drawin() and result
         self.assertTrue(result)
 
     def test_airhand_r_drawin(self):
         result = self._robot._hands.airhand_r_drawin()
-        result = result and self._robot_04.airhand_r_drawin()
+        result = self._robot_04.airhand_r_drawin() and result
         self.assertTrue(result)
 
     def test_airhand_l_keep(self):
         result = self._robot._hands.airhand_l_keep()
-        result = result and self._robot_04.airhand_l_keep()
+        result = self._robot_04.airhand_l_keep() and result
         self.assertTrue(result)
 
     def test_airhand_r_keep(self):
         result = self._robot._hands.airhand_r_keep()
-        result = result and self._robot_04.airhand_r_keep()
+        result = self._robot_04.airhand_r_keep() and result
         self.assertTrue(result)
 
 if __name__ == '__main__':
