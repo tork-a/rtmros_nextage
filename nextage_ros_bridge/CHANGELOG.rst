@@ -2,8 +2,8 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.3 (2014-11-13)
+------------------
 * (DIO) Fix `#129 <https://github.com/tork-a/rtmros_nextage/issues/129>`_
 * (doc) Move tutorial wiki backup to hironx pkg.
 * Move a python module to call DIO via rosservice.
