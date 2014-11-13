@@ -2,6 +2,13 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* (DIO) Fix `#129 <https://github.com/tork-a/rtmros_nextage/issues/129>`_
+* (doc) Move tutorial wiki backup to hironx pkg.
+* Move a python module to call DIO via rosservice.
+* Contributors: Isaac IY Saito, Akio Ochiai, Daiki Maekawa
+
 0.5.2 (2014-11-03)
 ------------------
 * Improvement on camera launch file (add binning arg in nextage_ueye_stereo.launch)
