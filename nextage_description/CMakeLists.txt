@@ -68,6 +68,24 @@ find_package(catkin REQUIRED COMPONENTS
 #   std_msgs  # Or other packages containing msgs
 # )
 
+## BEGIN: Moved from nextage_ros_bridge/CMakeLists.txt
+# To enable openhrp3
+find_package(PkgConfig)
+pkg_check_modules(openhrp3 openhrp3.1 REQUIRED)
+set(OPENHRP3 ${openhrp3_PREFIX}/share/openhrp3)  # for longfloor.wrl
+set(COLLADA_EXPORTER ${openhrp3_PREFIX}/share/openhrp3/export-collada)
+
+set(ROBOT_NAME nextage)
+message("++ Generate collada file from vrml. nextage_description/models/main.wrl -> ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae")
+add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae
+  #COMMAND `rospack find openhrp3`/export-collada -i ${PROJECT_SOURCE_DIR}/models/main.wrl -o ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae
+  COMMAND ${COLLADA_EXPORTER} -i ${PROJECT_SOURCE_DIR}/models/main.wrl -o ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae
+  #COMMAND /opt/ros/indigo/share/openhrp3/export-collada -i ${PROJECT_SOURCE_DIR}/models/main.wrl -o ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae  # <-- This passes but not ideal
+
+  DEPENDS ${PROJECT_SOURCE_DIR}/models/main.wrl)
+add_custom_target(${PROJECT_NAME}_model_copy ALL DEPENDS ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae)
+## END: Moved from nextage_ros_bridge/CMakeLists.txt
+
 ###################################
 ## catkin specific configuration ##
 ###################################
