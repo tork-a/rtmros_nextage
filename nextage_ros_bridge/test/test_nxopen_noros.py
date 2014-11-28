@@ -37,16 +37,24 @@
 
 # This should come earlier than later import.
 # See http://code.google.com/p/rtm-ros-robotics/source/detail?r=6773
+import numpy
+import threading.Thread
 import unittest
+
+import rospy
+import tf
 
 from hrpsys import rtm
 from nextage_ros_bridge import nextage_client
 
 _ARMGROUP_TESTED = 'larm'
-_LINK_TESTED = 'LARM_JOINT5'
+_JOINT_TESTED = 'LARM_JOINT5'
+_LINK_TESTED = 'LARM_JOINT5_Link'
+_LINK_FOR_TEST = _LINK_TESTED + '_TEMP'
 _GOINITIAL_TIME_MIDSPEED = 3  # second
 _NUM_CARTESIAN_ITERATION = 300
 _PKG = 'nextage_ros_bridge'
+_FRAME_ROOT = 'WAIST'
 
 
 class TestNextageopen(unittest.TestCase):
@@ -67,15 +75,15 @@ class TestNextageopen(unittest.TestCase):
         self._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
 
 #    def test_set_relative_x(self):
-    def _set_relative(self, dx=0, dy=0, dz=0):
+    def _set_relative(self, dx=0.0, dy=0.0, dz=0.0):
         #print('Start moving dx={0}, dy={0}, dz={0}'.format(dx, dy, dz))
         self._robot.seq_svc.setMaxIKError(0.00001, 0.01)
-        posi_prev = self._robot.getCurrentPosition(_LINK_TESTED)
+        posi_prev = self._robot.getCurrentPosition(_JOINT_TESTED)
         for i in range(_NUM_CARTESIAN_ITERATION):
             self._robot.setTargetPoseRelative(
-                _ARMGROUP_TESTED, _LINK_TESTED, dx, dy, dz, tm=0.15)
+                _ARMGROUP_TESTED, _JOINT_TESTED, dx, dy, dz, tm=0.15)
             #print('   joint=', nxc.getJointAngles()[3:9])
-        posi_post = self._robot.getCurrentPosition(_LINK_TESTED)
+        posi_post = self._robot.getCurrentPosition(_JOINT_TESTED)
 
         diff_result = posi_post
         for i in range(len(posi_prev)):
@@ -95,6 +103,7 @@ class TestNextageopen(unittest.TestCase):
         self._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
         assert(self._set_relative(dz=0.0001))
 
+
 if __name__ == '__main__':
     import rostest
-    rostest.rosrun(_PKG, 'test_nxopen', TestNextageopen)
+    rostest.rosrun(_PKG, 'nxopen_noros', TestNextageopen)
