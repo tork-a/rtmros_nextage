@@ -9,9 +9,8 @@
        default="-ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService" />
 
   <!-- See https://github.com/start-jsk/rtmros_common/issues/416#issuecomment-46846623 -->
-  <!-- <node name="start_omninames" pkg="rtmbuild" type="start_omninames.sh" 
+  <node name="start_omninames" pkg="rtmbuild" type="start_omninames.sh" 
         args="$(arg CORBAPORT" />
-  -->
  
   <include file="$(find nextage_ros_bridge)/launch/nextage_ros_bridge_simulation.launch">
     <arg name="CORBAPORT" value="$(arg CORBAPORT)" />
@@ -20,6 +19,6 @@
   </include>
 
   <test type="test_nxopen_withros.py" pkg="$(arg HRPSYS_PY_PKG)"
-        test-name="test_nxo_withros" time-limit="3" />
+        test-name="test_nxo_withros" time-limit="30" />
 
 </launch>
