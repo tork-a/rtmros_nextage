@@ -15,13 +15,12 @@
    <arg name="corbaport" value="$(arg CORBAPORT)" />
   </include>
 
-  <test type="test_nxopen.py" pkg="$(arg HRPSYS_PY_PKG)" test-name="test_nxopen"
+  <test type="test_nxopen_noros.py" pkg="$(arg HRPSYS_PY_PKG)" test-name="nxopen_noros"
         time-limit="1000" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
   <test type="test_handlight.py" pkg="$(arg HRPSYS_PY_PKG)" test-name="test_nxo_handlight"
         time-limit="1000" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
   <test type="test_gripper.py" pkg="$(arg HRPSYS_PY_PKG)" test-name="test_nxo_gripper"
         time-limit="1000" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
-        -->
   <test type="test_airhand.py" pkg="$(arg HRPSYS_PY_PKG)" test-name="test_nxo_airhand"
         time-limit="1000" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
 </launch>
