@@ -6,7 +6,7 @@
   <arg name="NAMESERVER" default="localhost" />
   <arg name="ROBOT_NAME" default="HiroNX(Robot)0" />
   <arg name="ROBOTCLIENT_ARG_OLDSTYLE"
-       default="-ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService" />
+       default="-ORBInitRef NameService=corbaloc:iiop:localhost:$(arg CORBAPORT)/NameService" />
 
  <include file="$(find hironx_ros_bridge)/launch/hironx_startup.launch" >
    <arg name="GUI" value="$(arg GUI)" />
