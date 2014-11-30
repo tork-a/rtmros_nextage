@@ -38,7 +38,6 @@
 # This should come earlier than later import.
 # See http://code.google.com/p/rtm-ros-robotics/source/detail?r=6773
 import numpy
-import threading.Thread
 import unittest
 
 import rospy

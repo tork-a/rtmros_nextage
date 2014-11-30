@@ -45,7 +45,7 @@ import rospy
 import tf
 
 from hrpsys import rtm
-from nextage_ros_bridge import nextage_client
+from hironx_ros_bridge.ros_client import ROS_Client 
 
 _ARMGROUP_TESTED = 'larm'
 _JOINT_TESTED = 'LARM_JOINT5'
@@ -57,36 +57,37 @@ _PKG = 'nextage_ros_bridge'
 _FRAME_ROOT = 'WAIST'
 
 
-class AdditionalTfPubThread(Thread):
-    '''Publish an additional tf frame, in order to test the consistencyof
-    model conversion.    
-    '''
-    def __init__(self, parent, param_name_raw):
-        super(AdditionalTfPubThread, self).__init__()
-        rospy.init_node('tf_publisher')
-        self._tf_broadcaster = tf.TransformBroadcaster()
-
-        self._hiro = nextage_client.NextageClient()
-        self._hiro.init('HiroNX(Robot)0', '')
-
-    def _publish_tf(self):
-        pos = self.hiro.getCurrentPosition(_JOINT_TESTED)
-        pos[2] = pos[2] - self._hiro.getCurrentPosition(_FRAME_ROOT)[2]  # Subtract waist height
-        rpy = self.hiro.getReferenceRPY(_JOINT_TESTED)
-        self._tf_broadcaster.sendTransform((pos[0], pos[1], pos[2]),
-              tf.transformations.quaternion_from_euler(
-                    rpy[0], rpy[1], rpy[2]), rospy.Time.now(),
-                    "LARM_JOINT5_Link_Controller", _FRAME_ROOT)
-
-    def run(self):
-        _rate = rospy.Rate(10.0)
-
-        while not rospy.is_shutdown():
-            self._publish_tf()
-            _rate.sleep()
-#         except rospy.exceptions.ROSException as e:
-#             raise type(e)(e.message +
-#                           "TreenodeQstdItem. Couldn't connect to {}".format(self._param_name_raw))
+# class AdditionalTfPubThread(Thread):
+#     '''Publish an additional tf frame, in order to test the consistencyof
+#     model conversion.    
+#     '''
+#     def __init__(self, parent, param_name_raw):
+#         super(AdditionalTfPubThread, self).__init__()
+#         rospy.init_node('tf_publisher')
+#         self._tf_broadcaster = tf.TransformBroadcaster()
+# 
+#         #self._hiro = nextage_client.NextageClient()
+#         #self._hiro.init('HiroNX(Robot)0', '')
+#         self._hiro = ROS_Client()
+# 
+#     def _publish_tf(self):
+#         pos = self.hiro.getCurrentPosition(_JOINT_TESTED)
+#         pos[2] = pos[2] - self._hiro.getCurrentPosition(_FRAME_ROOT)[2]  # Subtract waist height
+#         rpy = self.hiro.getReferenceRPY(_JOINT_TESTED)
+#         self._tf_broadcaster.sendTransform((pos[0], pos[1], pos[2]),
+#               tf.transformations.quaternion_from_euler(
+#                     rpy[0], rpy[1], rpy[2]), rospy.Time.now(),
+#                     "LARM_JOINT5_Link_Controller", _FRAME_ROOT)
+# 
+#     def run(self):
+#         _rate = rospy.Rate(10.0)
+# 
+#         while not rospy.is_shutdown():
+#             self._publish_tf()
+#             _rate.sleep()
+# #         except rospy.exceptions.ROSException as e:
+# #             raise type(e)(e.message +
+# #                           "TreenodeQstdItem. Couldn't connect to {}".format(self._param_name_raw))
 
 class TestNxoRos(unittest.TestCase):
     '''
@@ -105,15 +106,15 @@ class TestNxoRos(unittest.TestCase):
 
         self._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
 
-    def test_tf_coordinate(self):
+    def temp_test_tf_coordinate(self):
         '''
         Originally added to test:
         https://github.com/start-jsk/rtmros_hironx/issues/287
         '''
 
         # Run a new thread to start additional tf publisher.
-        addition_tf_thread = AdditionalTfPubThread()
-        addition_tf_thread.start()
+#         addition_tf_thread = AdditionalTfPubThread()
+#         addition_tf_thread.start()
         
         # Move left arm to certain pose where RPY is rotated enough to show
         # the 2 tf frames not align when there's an issue. 
