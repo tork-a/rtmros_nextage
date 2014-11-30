@@ -289,8 +289,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						</node>
 						<node id="v1.node4" name="RARM_JOINT0_Link" sid="node4">
 							<translate>0 -0.145 0.370296</translate>
-							<rotate>1 0 0 14.99997778074544</rotate>
 							<rotate sid="node_joint4_axis0">0 0 1 0</rotate>
+							<rotate>1 0 0 14.99997778074544</rotate>
 							<instance_geometry url="#g1_4_geom0">
 								<bind_material>
 									<technique_common>
@@ -529,8 +529,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						</node>
 						<node id="v1.node10" name="LARM_JOINT0_Link" sid="node10">
 							<translate>0 0.145 0.370296</translate>
-							<rotate>1 0 0 -14.99997778074544</rotate>
 							<rotate sid="node_joint10_axis0">0 0 1 0</rotate>
+							<rotate>1 0 0 -14.99997778074544</rotate>
 							<instance_geometry url="#g1_10_geom0">
 								<bind_material>
 									<technique_common>
@@ -6151,8 +6151,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 								<link sid="link4" name="RARM_JOINT0_Link">
 									<attachment_full joint="kmodel1/jointsid4">
 										<translate>0 0 0</translate>
-										<rotate>0 0 1 0</rotate>
 										<link sid="link5" name="RARM_JOINT1_Link">
+										        <rotate>0 0 1 0</rotate>
 											<attachment_full joint="kmodel1/jointsid5">
 												<translate>0 -0.095 -0.25</translate>
 												<rotate>0 0 1 0</rotate>
@@ -6186,8 +6186,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 								<link sid="link10" name="LARM_JOINT0_Link">
 									<attachment_full joint="kmodel1/jointsid10">
 										<translate>0 0 0</translate>
-										<rotate>0 0 1 0</rotate>
 										<link sid="link11" name="LARM_JOINT1_Link">
+        										<rotate>0 0 1 0</rotate>
 											<attachment_full joint="kmodel1/jointsid11">
 												<translate>0 0.095 -0.25</translate>
 												<rotate>0 0 1 0</rotate>
