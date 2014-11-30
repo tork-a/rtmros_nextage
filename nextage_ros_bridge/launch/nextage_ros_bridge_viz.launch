@@ -2,7 +2,10 @@
 <launch>
   <arg name="nameserver" default="localhost" />
   <arg name="MODEL_FILE" default="$(find nextage_description)/models/main.wrl" />
-  <arg name="COLLADA_FILE" default="$(find nextage_ros_bridge)/models/nextage.dae" />
+  <!-- See https://github.com/start-jsk/rtmros_hironx/issues/287#issuecomment-64893372 why this temporary hack is necessary. 
+       If this file used with real robot, this won't be used as noted in the link above. So it's safe to define it here.
+   -->
+  <arg name="COLLADA_FILE" default="$(find nextage_description)/models/main_issue287.dae" />
   <arg name="SIMULATOR_NAME" default="RobotHardware0" />
   <include file="$(find hironx_ros_bridge)/launch/hironx_ros_bridge.launch">
     <arg name="nameserver" value="$(arg nameserver)" />
