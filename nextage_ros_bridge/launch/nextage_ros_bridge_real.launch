@@ -1,7 +1,7 @@
 <launch>
   <arg name="CONF_FILE_COLLISIONDETECT" default="$(find hironx_ros_bridge)/conf/hironx_realrobot_fixedpath.conf" />
   <arg name="corbaport" default="15005" />
-  <arg name="MODEL_FILE" default="/opt/jsk/etc/HIRONX/model/main.wrl" /> <!-- This shouldn't be changed unless you know what you're doing; this is the location of vrml file internal to the robot (on QNX OS). -->
+  <arg name="MODEL_FILE" default="/opt/jsk/etc/NEXTAGE/model/main.wrl" /> <!-- This shouldn't be changed unless you know what you're doing; this is the location of vrml file internal to the robot (on QNX OS). -->
   <arg name="nameserver" default="nextage" /> <!-- Host name of the QNX. -->
   <arg name="USE_SERVOCONTROLLER" default="false" />
 

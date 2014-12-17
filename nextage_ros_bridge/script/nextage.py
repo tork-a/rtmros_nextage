@@ -79,4 +79,4 @@ if __name__ == '__main__':
 # ./hironx.py  --host hiro014
 # ./ipython -i hironx.py --host hiro014
 # for real robot with custom model file
-# ./hironx.py  --host hiro014 --modelfile /opt/jsk/etc/HIRONX/model/main.wrl
+# ./hironx.py  --host hiro014 --modelfile /opt/jsk/etc/NEXTAGE/model/main.wrl
