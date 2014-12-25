@@ -74,7 +74,7 @@ class TestHironxDerivedmethodsFromHrpsys(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         # Robot info tentatively embedded.
-        modelfile = '/opt/jsk/etc/HIRONX/model/main.wrl'
+        modelfile = '/opt/jsk/etc/NEXTAGE/model/main.wrl'
         rtm.nshost = 'nxc100'
         robotname = "RobotHardware0"
 

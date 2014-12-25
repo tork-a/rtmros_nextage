@@ -57,7 +57,7 @@ class TestNextageopen(unittest.TestCase):
     @classmethod
     def setUpClass(self):
 
-        modelfile = '/opt/jsk/etc/HIRONX/model/main.wrl'
+        modelfile = '/opt/jsk/etc/NEXTAGE/model/main.wrl'
         rtm.nshost = 'nxc100'
         robotname = "RobotHardware0"
 
