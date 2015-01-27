@@ -34,8 +34,16 @@ pkg_check_modules(openhrp3 openhrp3.1 REQUIRED)
 set(OPENHRP3 ${openhrp3_PREFIX}/share/openhrp3)  # for longfloor.wrl
 set(ROBOT_NAME nextage)
 
+message("hironx_ros_bridge_SOURCE_DIR => ${hironx_ros_bridge_SOURCE_DIR}")
+message("hironx_ros_bridge_SOURCE_PREFIX => ${hironx_ros_bridge_SOURCE_PREFIX}")
+message("hironx_ros_bridge_PREFIX => ${hironx_ros_bridge_PREFIX}")
+
 if(NOT EXISTS ${hironx_ros_bridge_SOURCE_DIR}/conf)
-  set(hironx_ros_bridge_SOURCE_DIR ${hironx_ros_bridge_PREFIX}/share/hironx_ros_bridge)
+  if (EXISTS ${hironx_ros_bridge_SOURCE_PREFIX}/conf)
+    set(hironx_ros_bridge_SOURCE_DIR ${hironx_ros_bridge_SOURCE_PREFIX})
+  else(EXISTS ${hironx_ros_bridge_SOURCE_PREFIX}/conf)
+    set(hironx_ros_bridge_SOURCE_DIR ${hironx_ros_bridge_PREFIX}/share/hironx_ros_bridge)
+  endif(EXISTS ${hironx_ros_bridge_SOURCE_PREFIX}/conf)
 endif()
 
 file(MAKE_DIRECTORY conf)
@@ -50,7 +58,11 @@ add_custom_target(${PROJECT_NAME}_model_files ALL DEPENDS ${PROJECT_SOURCE_DIR}/
 #compile_openhrp_model(${nextage_description_SOURCE_DIR}/models/main.wrl)
 message("++ nextage_description/models/main.dae -> ${nextage_description_SOURCE_DIR}/models/main.dae")
 if(NOT EXISTS ${nextage_description_SOURCE_DIR}/models/main.dae)
- set(nextage_description_SOURCE_DIR ${nextage_description_PREFIX}/share/nextage_description)
+  if(EXISTS ${nextage_description_SOURCE_PREFIX}/models/main.dae)
+    set(nextage_description_SOURCE_DIR ${nextage_description_SOURCE_PREFIX})
+  else(EXISTS ${nextage_description_SOURCE_PREFIX}/models/main.dae)
+    set(nextage_description_SOURCE_DIR ${nextage_description_PREFIX}/share/nextage_description)
+  endif(EXISTS ${nextage_description_SOURCE_PREFIX}/models/main.dae)
 endif()
 add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae
   COMMAND ${CMAKE_COMMAND} -E copy ${nextage_description_SOURCE_DIR}/models/main.dae ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae
@@ -116,5 +128,5 @@ install(CODE "
 ## Add folders to be run by python nosetests
 #catkin_add_nosetests(test)
 install(DIRECTORY test
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION} 
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   USE_SOURCE_PERMISSIONS)
