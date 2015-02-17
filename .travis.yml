@@ -13,11 +13,11 @@ python:
 compiler:
   - gcc
 env:
-  - ROS_DISTRO=groovy ROSWS=wstool BUILDER=catkin    USE_DEB=true
   - ROS_DISTRO=hydro  ROSWS=wstool BUILDER=catkin    USE_DEB=true
+  - ROS_DISTRO=indigo  ROSWS=wstool BUILDER=catkin    USE_DEB=true
 matrix:
   allow_failures:
-    - env: ROS_DISTRO=groovy ROSWS=wstool BUILDER=catkin    USE_DEB=true
+    - env: ROS_DISTRO=indigo ROSWS=wstool BUILDER=catkin    USE_DEB=true
 notifications:
   email:
     recipients:
@@ -40,11 +40,7 @@ before_install: # Use this to prepare the system to install prerequisites or dep
   # Setup rosdep
   - sudo rosdep init
   - rosdep update; while [ $? != 0 ]; do sleep 1; rosdep update; done  # Retry "rosdep update" when 1st attempt failed.
-  ##
-  ## install openrtm_aist_python, openhrp3 from deb
-  ##
-  - sudo apt-get install -qq -y ros-$ROS_DISTRO-openhrp3 ros-$ROS_DISTRO-openrtm-aist-python
-  ##
+
 install: # Use this to install any prerequisites or dependencies necessary to run your build
   # Create workspace
   - mkdir -p ~/ros/ws_$REPOSITORY_NAME/src
@@ -55,10 +51,7 @@ install: # Use this to install any prerequisites or dependencies necessary to ru
   - ln -s $CI_SOURCE_PATH . # Link the repo we are testing to the catkin workspace we just created and where we are.
   - cd ../
   # Install dependencies for source repos
-  ## - find -L src -name package.xml -exec dirname {} \; | xargs -n 1 -i find {} -name manifest.xml | xargs -n 1 -i mv {} {}.deprecated # rename manifest.xml for rosdep install  # We might not need this since manifest.xml shouldn't exist in this package.
   - rosdep install -r -n --from-paths src --ignore-src --rosdistro $ROS_DISTRO -y
-  ## - find -L src -name manifest.xml.deprecated | xargs -n 1 -i dirname {} | xargs -n 1 -i ln -sf `pwd`/{}/manifest.xml.deprecated `pwd`/{}/manifest.xml # rename manifest.xml for rosdep install
-  #  find . \! -path "*/.*" -type f | xargs egrep -i "(hoge|fuga)" ; if [ $? == 0 ]; then exit 1; fi
 
 before_script: # Use this to prepare your build for testing e.g. copy database configurations, environment variables, etc.
   - source /opt/ros/$ROS_DISTRO/setup.bash
