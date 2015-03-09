@@ -73,7 +73,7 @@ if __name__ == '__main__':
     # See http://code.google.com/p/rtm-ros-robotics/source/detail?r=6926
     robot.init(robotname=args.robot, url=args.modelfile)
 
-    # ROS Client
+    # ROS Client. 
     ros = ROS_Client()
 
 # for simulated robot
