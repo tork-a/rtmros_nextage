@@ -2,8 +2,8 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.1 (2015-03-09)
+------------------
 * Start ROS clinent when the script begins
 * Contributors: Kei Okada
 
