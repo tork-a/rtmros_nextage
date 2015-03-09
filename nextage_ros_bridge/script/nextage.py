@@ -35,6 +35,7 @@
 #
 # Author: Isaac Isao Saito
 
+from hironx_ros_bridge.ros_client import ROS_Client
 # This should come earlier than later import.
 # See http://code.google.com/p/rtm-ros-robotics/source/detail?r=6773
 from nextage_ros_bridge import nextage_client
@@ -71,6 +72,9 @@ if __name__ == '__main__':
     # This is backward compatible so that users can still keep using `nxc`.
     # See http://code.google.com/p/rtm-ros-robotics/source/detail?r=6926
     robot.init(robotname=args.robot, url=args.modelfile)
+
+    # ROS Client.
+    ros = ROS_Client()
 
 # for simulated robot
 # $ ./hironx.py
