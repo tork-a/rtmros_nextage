@@ -7,7 +7,7 @@ Changelog for package nextage_description
 
 0.6.0 (2015-02-03)
 ------------------
-* VRML stored location inside qnx is now NEXTAGE specific.
+* (IMPORTANT) VRML stored location inside qnx has now become NEXTAGE specific. Please see https://github.com/tork-a/rtmros_nextage/issues/153 for possible required actions.
 * (launch) Accept more as an argument. Remove a redundant collada file.
 * Contributors: Isaac IY Saito
 

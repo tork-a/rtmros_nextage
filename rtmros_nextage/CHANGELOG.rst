@@ -9,7 +9,7 @@ Changelog for package rtmros_nextage
 
 0.6.0 (2015-02-03)
 ------------------
-* (IMPORTANT) VRML stored location inside qnx is now NEXTAGE specific. From now on, controller on QNX should be updated. Please open a ticket at https://github.com/tork-a/rtmros_nextage/issues if you have any concern.
+* (IMPORTANT) VRML stored location inside qnx has now become NEXTAGE specific. Please see https://github.com/tork-a/rtmros_nextage/issues/153 for possible required actions.
 * Adjust to catkin build 
 * Contributors: Isaac IY Saito, Ryohei Ueda
 
