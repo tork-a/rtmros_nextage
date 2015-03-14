@@ -79,7 +79,7 @@ class TestNxoHandlight(unittest.TestCase):
     def test_handlight_r_02(self):
         if self._robot.simulation_mode:
             result = self._robot._hands.handlight_r(is_on=False)
-            self.assertFalse(result)
+            self.assertTrue(result)
         else:
             result = self._robot._hands.handlight_r(is_on=True)
             self.assertTrue(result)
@@ -87,7 +87,7 @@ class TestNxoHandlight(unittest.TestCase):
     def test_handlight_r_04(self):
         if self._robot.simulation_mode:
             result = self._robot_04.handlight_r(is_on=False)
-            self.assertFalse(result)
+            self.assertTrue(result)
         else:
             result = self._robot_04.handlight_r(is_on=True)
             self.assertTrue(result)
@@ -103,7 +103,7 @@ class TestNxoHandlight(unittest.TestCase):
     def test_handlight_l_04(self):
         if self._robot.simulation_mode:
             result = self._robot_04.handlight_l(is_on=False)
-            self.assertFalse(result)
+            self.assertTrue(result)
         else:
             result = self._robot_04.handlight_l(is_on=True)
             self.assertTrue(result)
