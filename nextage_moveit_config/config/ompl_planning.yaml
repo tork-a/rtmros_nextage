@@ -51,3 +51,18 @@ left_arm:
     - PRMstarkConfigDefault
   projection_evaluator: joints(LARM_JOINT0,LARM_JOINT1)
   longest_valid_segment_fraction: 0.05
+botharms:
+  planner_configs:
+    - SBLkConfigDefault
+    - ESTkConfigDefault
+    - LBKPIECEkConfigDefault
+    - BKPIECEkConfigDefault
+    - KPIECEkConfigDefault
+    - RRTkConfigDefault
+    - RRTConnectkConfigDefault
+    - RRTstarkConfigDefault
+    - TRRTkConfigDefault
+    - PRMkConfigDefault
+    - PRMstarkConfigDefault
+  projection_evaluator: joints(LARM_JOINT0,LARM_JOINT1)
+  longest_valid_segment_fraction: 0.05
