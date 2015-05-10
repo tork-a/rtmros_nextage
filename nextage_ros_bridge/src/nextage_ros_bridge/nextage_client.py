@@ -34,6 +34,9 @@
 #
 # Author: Isaac Isao Saito
 
+import sys
+
+import rospy
 from hironx_ros_bridge.hironx_client import HIRONX
 
 from nextage_ros_bridge.iros13_hands import Iros13Hands
@@ -104,138 +107,197 @@ class NextageClient(HIRONX, object):
         elif self.HAND_VER_0_5_1 == self._hand_version:
             self._hands = Hands05(self)
 
+    def _print_msg_deprecated_dio_methods(self, name_method=None):
+        '''
+        @type name_method: str
+        @param name_method: Name of the method that calls this method if available.
+        '''
+        rospy.logerr("You're likely to have called a deprecated method." +
+                     " Use self._hands.%S instead", name_method)
+
     def handlight_r(self, is_on=True):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.handlight_r(is_on)
+        try:
+            return self._hands.handlight_r(is_on)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def handlight_l(self, is_on=True):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.handlight_r(is_on)
+        try:
+            return self._hands.handlight_r(is_on)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def handlight_both(self, is_on=True):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.handlight_both(is_on)
+        try:
+            return self._hands.handlight_both(is_on)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def handtool_l_eject(self):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.toolchanger_l_command.execute(
-            self._hands.toolchanger_l_command.HAND_TOOLCHANGE_OFF)
+        try:
+            return self._hands.toolchanger_l_command.execute(
+                     self._hands.toolchanger_l_command.HAND_TOOLCHANGE_OFF)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def handtool_r_eject(self):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.toolchanger_r_command.execute(
-            self._hands.toolchanger_r_command.HAND_TOOLCHANGE_OFF)
+        try:
+            return self._hands.toolchanger_r_command.execute(
+                       self._hands.toolchanger_r_command.HAND_TOOLCHANGE_OFF)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def handtool_l_attach(self):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.toolchanger_l_command.execute(
-            self._hands.toolchanger_l_command.HAND_TOOLCHANGE_ON)
+        try:
+            return self._hands.toolchanger_l_command.execute(
+                self._hands.toolchanger_l_command.HAND_TOOLCHANGE_ON)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def handtool_r_attach(self):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.toolchanger_r_command.execute(
-            self._hands.toolchanger_r_command.HAND_TOOLCHANGE_ON)
+        try:
+            return self._hands.toolchanger_r_command.execute(
+                self._hands.toolchanger_r_command.HAND_TOOLCHANGE_ON)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def gripper_l_close(self):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.gripper_l_command.execute(
-            self._hands.gripper_l_command.GRIPPER_CLOSE)
+        try:
+            return self._hands.gripper_l_command.execute(
+                self._hands.gripper_l_command.GRIPPER_CLOSE)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def gripper_r_close(self):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.gripper_r_command.execute(
-            self._hands.gripper_r_command.GRIPPER_CLOSE)
+        try:
+            return self._hands.gripper_r_command.execute(
+                self._hands.gripper_r_command.GRIPPER_CLOSE)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def gripper_l_open(self):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.gripper_l_command.execute(
-            self._hands.gripper_r_command.GRIPPER_OPEN)
+        try:
+            return self._hands.gripper_l_command.execute(
+                self._hands.gripper_r_command.GRIPPER_OPEN)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def gripper_r_open(self):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.gripper_r_command.execute(
-            self._hands.gripper_r_command.GRIPPER_OPEN)
+        try:
+            return self._hands.gripper_r_command.execute(
+                self._hands.gripper_r_command.GRIPPER_OPEN)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def airhand_l_drawin(self):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.airhand_l_command.execute(
-            self._hands.airhand_l_command.AIRHAND_DRAWIN)
+        try:
+            return self._hands.airhand_l_command.execute(
+                self._hands.airhand_l_command.AIRHAND_DRAWIN)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def airhand_r_drawin(self):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.airhand_r_command.execute(
-            self._hands.airhand_r_command.AIRHAND_DRAWIN)
+        try:
+            return self._hands.airhand_r_command.execute(
+                self._hands.airhand_r_command.AIRHAND_DRAWIN)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def airhand_l_keep(self):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.airhand_l_command.execute(
-            self._hands.airhand_l_command.AIRHAND_KEEP)
+        try:
+            return self._hands.airhand_l_command.execute(
+                self._hands.airhand_l_command.AIRHAND_KEEP)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def airhand_r_keep(self):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.airhand_r_command.execute(
-            self._hands.airhand_r_command.AIRHAND_KEEP)
+        try:
+            return self._hands.airhand_r_command.execute(
+                self._hands.airhand_r_command.AIRHAND_KEEP)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def airhand_l_release(self):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.airhand_l_command.execute(
-            self._hands.airhand_l_command.AIRHAND_RELEASE)
+        try:
+            return self._hands.airhand_l_command.execute(
+                self._hands.airhand_l_command.AIRHAND_RELEASE)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def airhand_r_release(self):
         '''
         @deprecated: Won't be functional after package version 0.5.1.
                      Use self._hands.%FUNCTION_NAME% instead.
         '''
-        return self._hands.airhand_r_command.execute(
-            self._hands.airhand_r_command.AIRHAND_RELEASE)
+        try:
+            return self._hands.airhand_r_command.execute(
+                self._hands.airhand_r_command.AIRHAND_RELEASE)
+        except AttributeError:
+            self._print_msg_deprecated_dio_methods(sys._getframe().f_code.co_name)
 
     def initialize_hand_dio(self):
         '''
