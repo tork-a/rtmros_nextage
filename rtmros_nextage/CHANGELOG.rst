@@ -2,8 +2,8 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.2 (2015-05-12)
+------------------
 * (Doc) Correct changelogs to apply the important announcement.
 * (Feature) Add hands_ueye.launch for bringing up hand's ueye camera nodes.
 * (Fix) [test_handlight.py] fix to pass the test, handlight (writeDigitalOutput always returns True in simulation https://github.com/fkanehiro/hrpsys-base/blob/master/python/hrpsys_config.py#L1284)

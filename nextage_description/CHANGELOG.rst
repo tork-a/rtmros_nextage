@@ -2,8 +2,8 @@
 Changelog for package nextage_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.2 (2015-05-12)
+------------------
 * Correct changelogs to apply the important announcement.
 * Contributors: Isaac IY Saito
 
