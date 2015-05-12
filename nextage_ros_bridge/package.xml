@@ -23,6 +23,7 @@
   
   <run_depend version_gte="1.0.17">hironx_ros_bridge</run_depend>
   <run_depend>nextage_description</run_depend>
+  <run_depend>ueye_cam</run_depend>
 
   <export/>
 </package>
