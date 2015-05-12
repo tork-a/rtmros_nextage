@@ -2,6 +2,12 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* (Feature) Add hands_ueye.launch for bringing up hand's ueye camera nodes.
+* (Fix) [test_handlight.py] fix to pass the test, handlight (writeDigitalOutput always returns True in simulation https://github.com/fkanehiro/hrpsys-base/blob/master/python/hrpsys_config.py#L1284)
+* Contributors: Kei Okada, Ryosuke Tajima
+
 0.6.1 (2015-03-09)
 ------------------
 * Start ROS clinent when the script begins
