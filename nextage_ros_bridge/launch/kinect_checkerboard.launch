@@ -1,0 +1,41 @@
+<launch>
+  <!-- Copied from https://github.com/tork-a/baxter_seminar/blob/master/baxter_seminar_helper/launch/kinect_checkerboard.launch -->
+
+  <arg name="launch_openni" default="true" /> <!-- e.g. On Indigo you may want false here http://goo.gl/wtbYWg -->
+
+  <include file="$(find openni_launch)/launch/openni.launch"
+           if="$(arg launch_openni)">
+    <arg name="depth_registration" value="true"/>
+  </include>
+  <include file="$(find freenect_launch)/launch/freenect.launch"
+           unless="$(arg launch_openni)">
+  </include>
+
+  <!-- checkerboard -->
+  <group ns="/camera/rgb/" >
+    <!-- <param name="single" value="1" /> -->
+    <param name="display" type="int" value="1" />
+    <param name="rect0_size_x" value="0.020" />
+    <param name="rect0_size_y" value="0.020" />
+    <param name="grid0_size_x" value="9" />
+    <param name="grid0_size_y" value="6" />
+    <param name="type0" value="test_object" />
+
+    <node name="checkerboard_detector" pkg="checkerboard_detector"
+          type="checkerboard_detector">
+      <remap from="image" to="/camera/rgb/image_rect_color" />
+      <remap from="camera_info" to="/camera/rgb/camera_info" />
+    </node>
+
+    <node name="objectdetection_tf_publisher"
+          pkg="nextage_ros_bridge"
+          type="objectdetection_tf_publisher.py" >
+      <param name="latest_publish" value="true"/>
+    </node>
+  </group>
+  <!--  right or left(0.1) / up or down (0.0)/ front or back (0.15) -->
+  <node pkg="tf" type="static_transform_publisher" name="base_to_checkerboard" args="0.080 -0.252 0.10 0.0 1.5708 1.5708 /object /WAIST 100" />
+  <node pkg="dynamic_tf_publisher" name="tf_publish" type="tf_publish.py"/>
+
+  <!-- end checkerboard  -->
+</launch>
