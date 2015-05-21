@@ -11,10 +11,17 @@ if __name__ == '__main__':
   
     # move to a random target
     pose_target = geometry_msgs.msg.Pose()
-    pose_target.orientation.y = 1.0
-    pose_target.position.x =  0.8
-    pose_target.position.y = -0.2
-    pose_target.position.z =  0.0
+    pose_target.orientation.y = 0.003
+    #pose_target.position.x =  0.1
+    #pose_target.position.y = -0.2
+    #pose_target.position.z =  -0.05
+    pose_target.position.x = 0.2035
+    pose_target.position.y = -0.5399
+    pose_target.position.z = 0.0709
+    #pose_target.orientation.x = 0.000427
+    #pose_target.orientation.y = 0.000317
+    #pose_target.orientation.z = -0.000384
+    pose_target.orientation.w = 0.999999
     rospy.loginfo("set target to {}".format(pose_target))
     group.set_pose_target(pose_target)
     plan = group.plan()
@@ -22,8 +29,8 @@ if __name__ == '__main__':
     ret = group.go()
     rospy.loginfo("executed ... {}".format(ret))
 
-    pose_target.position.x =  0.5
-    pose_target.position.y = -0.9
+    pose_target.position.x =  0.05
+    pose_target.position.y = -0.09
     rospy.loginfo("set target to {}".format(pose_target))
     group.set_pose_target(pose_target)
     plan = group.plan()
