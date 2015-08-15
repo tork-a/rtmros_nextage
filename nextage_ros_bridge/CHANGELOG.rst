@@ -2,6 +2,9 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.6.2 (2015-05-12)
 ------------------
 * (Feature) Add hands_ueye.launch for bringing up hand's ueye camera nodes.
