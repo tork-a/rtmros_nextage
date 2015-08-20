@@ -1,4 +1,6 @@
 <launch>
+ <arg name="kinematics_conf" default="$(find nextage_moveit_config)/config/kinematics_kdl.yaml" />
+
  # The planning and execution components of MoveIt! configured to 
  # publish the current configuration of the robot (simulated or real)
  # and the current state of the world as seen by the planner.
@@ -8,6 +10,7 @@
  # The visualization component of MoveIt!
  <include file="$(find nextage_moveit_config)/launch/moveit_rviz.launch"> 
     <arg name="config" value="true"/>
+    <arg name="kinematics_conf" value="$(arg kinematics_conf)"/>
  </include>
 
  <include file="$(find nextage_moveit_config)/launch/planning_context.launch">

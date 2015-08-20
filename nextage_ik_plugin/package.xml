@@ -1,0 +1,28 @@
+<package>
+  <name>nextage_ik_plugin</name>
+  <version>0.6.3</version>
+  <description>IKFast package for NEXTAGE Open</description>
+  <maintainer email="support@opensouce-robotics.tokyo.jp">IK Fast Plugin Creater</maintainer>
+  <author email="534o@opensouce-robotics.tokyo.jp">TORK Developer 534o</author>
+  <license>BSD</license>
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>liblapack-dev</build_depend>
+  <build_depend>moveit_core</build_depend>
+  <build_depend>pluginlib</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>tf_conversions</build_depend>
+
+  <run_depend>liblapack-dev</run_depend>
+  <run_depend>moveit_core</run_depend>
+  <run_depend>pluginlib</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>tf_conversions</run_depend>
+
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+    <moveit_core plugin="${prefix}/nextage_left_arm_moveit_ikfast_plugin_description.xml"/>
+    <moveit_core plugin="${prefix}/nextage_right_arm_moveit_ikfast_plugin_description.xml"/>
+  </export>
+
+</package>
