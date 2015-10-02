@@ -2,10 +2,15 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.6.3 (2015-08-15)
 ------------------
+* [feat] Add launch file for AR alvar 
 * [feat] Add `botharms`' MoveIt! group.
-* Contributors: Isaac IY Saito
+* [feat] Add IKFast plugin. Kinematics solver is now selectable in Moveit launch
+* Contributors: TORK 534o, Ryu Yamamoto, Isaac IY Saito
 
 0.6.2 (2015-05-12)
 ------------------

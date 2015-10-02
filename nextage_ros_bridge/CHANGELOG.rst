@@ -2,6 +2,11 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [feat.] Add launch file for AR alvar 
+* Contributors: Ryu Yamamoto
+
 0.6.3 (2015-08-15)
 ------------------
 
