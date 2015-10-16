@@ -20,3 +20,12 @@ controller_list:
       - LARM_JOINT3
       - LARM_JOINT4
       - LARM_JOINT5
+  - name: head_controller
+    action_ns: follow_joint_trajectory_action
+    joints:
+      - HEAD_JOINT0
+      - HEAD_JOINT1
+  - name: torso_controller
+    action_ns: follow_joint_trajectory_action
+    joints:
+      - CHEST_JOINT0
