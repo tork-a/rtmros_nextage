@@ -2,6 +2,9 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.6.4 (2015-10-02)
 ------------------
 * [feat] Add IKFast plugin. Kinematics solver is now selectable in Moveit launch
