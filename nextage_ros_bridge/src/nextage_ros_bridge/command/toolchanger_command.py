@@ -56,7 +56,11 @@ class ToolchangerCommand(AbsractHandCommand):
         @see abs_hand_command.AbsractHandCommand._assign_dio_names
         '''
         self._DIO_VALVE5PORT_L = dio_pins[0]
-        self._DIO_VALVE5PORT_R = dio_pins[1]
+        self._DIO_AIR_DRAWIN_L = dio_pins[1]
+        self._DIO_AIR_RELEASE_L = dio_pins[2]
+        self._DIO_VALVE5PORT_R = dio_pins[3]
+        self._DIO_AIR_DRAWIN_R = dio_pins[4]
+        self._DIO_AIR_RELEASE_R = dio_pins[5]
 
     def execute(self, operation):
         '''
@@ -80,9 +84,11 @@ class ToolchangerCommand(AbsractHandCommand):
                 # 10/29/2013 DIO changed. Now '0' is OFF for both 5PORT Valves.
                 # 1/31/2014 DIO changed. Now '1' is OFF for both 5PORT Valves.
                 mask.append(self._DIO_VALVE5PORT_L)
+                mask.append(self._DIO_AIR_DRAWIN_L)
                 dout = [self._DIO_VALVE5PORT_L]
             elif self._hands.HAND_R == self._hand:
                 mask.append(self._DIO_VALVE5PORT_R)
+                mask.append(self._DIO_AIR_DRAWIN_R)
                 dout = [self._DIO_VALVE5PORT_R]
         return self._hands._dio_writer(dout, mask)
 

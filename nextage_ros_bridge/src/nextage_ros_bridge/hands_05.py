@@ -71,7 +71,8 @@ class Hands05(BaseHands):
         _pins_airhand = [self.DIO_27, self.DIO_28, self.DIO_25, self.DIO_26]
         _pins_gripper = [self.DIO_23, self.DIO_24, self.DIO_21, self.DIO_22]
         _pins_handlight = [self.DIO_18, self.DIO_17]
-        _pins_toolchanger = [self.DIO_20, self.DIO_19]
+        _pins_toolchanger = [self.DIO_20, self.DIO_27, self.DIO_28,  # L-hand
+                             self.DIO_19, self.DIO_25, self.DIO_26]  # R-hand
 
         self._airhand_l_command = AirhandCommand(self, self.HAND_L, _pins_airhand)
         self._airhand_r_command = AirhandCommand(self, self.HAND_R, _pins_airhand)
