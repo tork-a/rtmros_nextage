@@ -2,8 +2,9 @@
     <arg name="marker_size" default="5.5" />
     <arg name="max_new_marker_error" default="0.08" />
     <arg name="max_track_error" default="0.2" />
-    <arg name="cam_image_topic" default="/right_hand_ueye/image_raw" />
-    <arg name="cam_info_topic" default="/right_hand_yeye/camera_info" />
+    <arg name="cam_ns" default="right_hand_ueye" />
+    <arg name="cam_image_topic" default="/$(arg cam_ns)/image_raw" />
+    <arg name="cam_info_topic" default="/$(arg cam_ns)/camera_info" />
     <arg name="output_frame" default="/camera" />
 
     <node name="ar_track_alvar" pkg="ar_track_alvar" type="individualMarkersNoKinect"
