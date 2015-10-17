@@ -1,4 +1,5 @@
 <launch>
+  <arg name="kinematics_conf_file" default="$(find nextage_moveit_config)/config/kinematics_kdl.yaml"/>
 
   <!-- OMPL Plugin for MoveIt! -->
   <arg name="planning_plugin" value="ompl_interface/OMPLPlanner" />
@@ -17,7 +18,7 @@
   <param name="request_adapters" value="$(arg planning_adapters)" />
   <param name="start_state_max_bounds_error" value="$(arg start_state_max_bounds_error)" />
 
-  <rosparam command="load" file="$(find nextage_moveit_config)/config/kinematics.yaml"/>
+  <rosparam command="load" file="$(arg kinematics_conf_file)"/>
   <rosparam command="load" file="$(find nextage_moveit_config)/config/ompl_planning.yaml"/>
 
 </launch>

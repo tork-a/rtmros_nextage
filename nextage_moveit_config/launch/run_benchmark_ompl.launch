@@ -1,4 +1,5 @@
 <launch>
+  <arg name="kinematics_conf_file" default="$(find nextage_moveit_config)/config/kinematics_kdl.yaml"/>
 
   <!-- This argument must specify the list of .cfg files to process for benchmarking -->
   <arg name="cfg" />
@@ -15,7 +16,7 @@
 
   <!-- Start Benchmark Executable -->
   <node name="$(anon moveit_benchmark)" pkg="moveit_ros_benchmarks" type="moveit_run_benchmark" args="$(arg cfg) --benchmark-planners" respawn="false" output="screen">
-    <rosparam command="load" file="$(find nextage_moveit_config)/config/kinematics.yaml"/>
+    <rosparam command="load" file="$(arg kinematics_conf_file)"/>
     <rosparam command="load" file="$(find nextage_moveit_config)/config/ompl_planning.yaml"/>
   </node>
 
