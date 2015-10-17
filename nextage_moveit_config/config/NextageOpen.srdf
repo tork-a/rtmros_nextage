@@ -56,6 +56,11 @@
     <group name="torso">
         <joint name="CHEST_JOINT0" />
     </group>
+    <group name="upperbody">
+        <group name="torso" />
+        <group name="botharms" />
+        <group name="head" />
+    </group>
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
     <group_state name="left_arm_initial_pose" group="left_arm">
         <joint name="LARM_JOINT0" value="0.010472" />
