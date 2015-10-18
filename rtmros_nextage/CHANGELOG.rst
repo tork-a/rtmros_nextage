@@ -2,6 +2,12 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [feat] Add torso, head, and (whole) upperbody Move Group
+* [fix] Correct param file names for OMPL
+* Contributors: Isaac I.Y. Saito
+
 0.6.5 (2015-10-16)
 ------------------
 * [Fix] stop air blows out when tools get ejected (fix `#158 <https://github.com/tork-a/rtmros_nextage/issues/158>`_)
