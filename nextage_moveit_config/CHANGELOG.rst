@@ -2,8 +2,8 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.6 (2015-10-17)
+------------------
 * [feat] Add torso, head, and (whole) upperbody Move Group
 * [fix] Correct param file names for OMPL
 * Contributors: Isaac I.Y. Saito
