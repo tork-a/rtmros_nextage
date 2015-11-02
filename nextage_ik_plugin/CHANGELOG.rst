@@ -2,6 +2,11 @@
 Changelog for package nextage_ik_plugin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [fix] Manually move ikfast.h to package specific location
+* Contributors: Kei Okada
+
 0.7.1 (2015-10-26)
 ------------------
 
