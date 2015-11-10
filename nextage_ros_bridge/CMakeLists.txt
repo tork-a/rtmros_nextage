@@ -4,7 +4,7 @@ project(nextage_ros_bridge)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS hironx_ros_bridge nextage_description roslint)
+find_package(catkin REQUIRED COMPONENTS hironx_ros_bridge nextage_description roslint rostest)
 
 catkin_python_setup()
 
@@ -130,3 +130,5 @@ install(CODE "
 install(DIRECTORY test
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   USE_SOURCE_PERMISSIONS)
+
+add_rostest(test/nxo.test)
