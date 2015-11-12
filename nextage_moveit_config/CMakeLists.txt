@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(nextage_moveit_config)
 
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED rostest)
 
 catkin_package()
 
@@ -17,3 +17,5 @@ endif ("${SETUP_DIRECTORY}" STREQUAL "")
 set(PROJECT_SOURCE_DIR ${PROJECT_SOURCE_DIR})
 configure_file(${PROJECT_SOURCE_DIR}/NextageROS.desktop.in ${SETUP_DIRECTORY}/NextageROS.desktop)
 add_custom_target(desktop ALL DEPENDS ${PROJECT_SOURCE_DIR}/NextageROS.desktop.in)
+
+add_rostest(test/nxo_moveit.test)

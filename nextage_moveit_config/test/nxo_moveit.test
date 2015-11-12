@@ -1,0 +1,41 @@
+<launch>
+  <arg name="corbaport" default="2809" />
+  <arg name="GUI" default='false' />
+  <arg name="ROBOTCLIENT_ARG_OLDSTYLE"
+       default="-ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService" />
+
+  <!-- See https://github.com/start-jsk/rtmros_common/issues/416#issuecomment-46846623 -->
+  <node name="start_omninames" pkg="rtmbuild" type="start_omninames.sh"  args="$(arg corbaport)" />
+
+  <include file="$(find nextage_ros_bridge)/launch/nextage_ros_bridge_simulation.launch" >
+    <arg name="CORBAPORT" value="$(arg corbaport)" />
+    <arg name="GUI" value="$(arg GUI)" />
+  </include>
+  <!-- -->
+
+  <!-- follow the tutorials on  http://wiki.ros.org/rtmros_nextage/Tutorials/Programming_Hiro_NEXTAGE_OPEN_GUI
+       moveit_planning_execution.launch starts rviz so we run launch files except moviet_rviz.launch -->
+  <!-- <include file="$(find nextage_moveit_config)/launch/moveit_planning_execution.launch"> -->
+  <include file="$(find nextage_moveit_config)/launch/move_group.launch">
+    <arg name="publish_monitored_planning_scene" value="true" />
+  </include>
+  <include file="$(find nextage_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="true"/>
+  </include>
+  <!-- -->
+
+  <!-- Check if MoveGroup is running -->
+  <arg name='TESTNAME_MG_STATUS' value='test_move_group' />
+  <test pkg="rostest" type="hztest" test-name="$(arg TESTNAME_MG_STATUS)" name="$(arg TESTNAME_MG_STATUS)" time-limit="60">
+    <param name="topic" value="/move_group/status" />
+    <param name="hz" value="5.0" />
+    <param name="hzerror" value="0.25" />
+    <param name="test_duration" value="10.0" />
+    <param name="wait_time" value="15.0" />
+  </test>  
+  
+  <test pkg="nextage_moveit_config" type="test_moveit.py" test-name="nxo_moveit"
+        time-limit="300"
+        args="" />
+         
+</launch>
