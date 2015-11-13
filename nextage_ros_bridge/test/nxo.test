@@ -22,10 +22,10 @@
   </include>
 
   <test type="test_handlight.py" pkg="nextage_ros_bridge" test-name="test_nxo_handlight"
-        time-limit="1000" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
+        time-limit="150" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
   <test type="test_gripper.py" pkg="nextage_ros_bridge" test-name="test_nxo_gripper"
-        time-limit="1000" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
+        time-limit="150" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
   <test type="test_airhand.py" pkg="nextage_ros_bridge" test-name="test_nxo_airhand"
-        time-limit="1000" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
+        time-limit="150" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
          
 </launch>
