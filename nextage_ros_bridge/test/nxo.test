@@ -5,6 +5,8 @@
   <arg name="GUI" default='false' />
   <arg name="LAUNCH_HRPSYSPY" default="false" />
   <arg name="REALTIME" default="false" />  
+  <arg name="ROBOTCLIENT_ARG_OLDSTYLE"
+       default="-ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService" />
 
   <!-- See https://github.com/start-jsk/rtmros_common/issues/416#issuecomment-46846623 -->
   <node name="start_omninames" pkg="rtmbuild" type="start_omninames.sh"
