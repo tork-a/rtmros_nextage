@@ -3,6 +3,7 @@
   <arg name="GUI" default='false' />
   <arg name="ROBOTCLIENT_ARG_OLDSTYLE"
        default="-ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService" />
+  <arg name="MODEL_FILE" default="$(find nextage_description)/models/main.wrl" />
 
   <!-- See https://github.com/start-jsk/rtmros_common/issues/416#issuecomment-46846623 -->
   <node name="start_omninames" pkg="rtmbuild" type="start_omninames.sh"  args="$(arg corbaport)" />
