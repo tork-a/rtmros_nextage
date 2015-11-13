@@ -1,5 +1,7 @@
 <launch>
-  <arg name="corbaport" default="2809" />
+  <arg name="CONF_FILE_COLLISIONDETECT" default="$(find nextage_ros_bridge)/conf/nextage.conf" />
+  <arg name="CONF_DUAlARM" default="$(find nextage_moveit_config)/test/dualarm.conf" />
+  <arg name="corbaport" default='2809' />
   <arg name="GUI" default='false' />
   <arg name="ROBOTCLIENT_ARG_OLDSTYLE"
        default="-ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService" />
@@ -8,11 +10,11 @@
   <!-- See https://github.com/start-jsk/rtmros_common/issues/416#issuecomment-46846623 -->
   <node name="start_omninames" pkg="rtmbuild" type="start_omninames.sh"  args="$(arg corbaport)" />
 
-  <include file="$(find nextage_ros_bridge)/launch/nextage_ros_bridge_simulation.launch" >
-    <arg name="CORBAPORT" value="$(arg corbaport)" />
+<!-- 
+  <include file="$(find hironx_ros_bridge)/launch/hironx_ros_bridge_simulation.launch" >
+    <arg name="corbaport" value="$(arg corbaport)" />
     <arg name="GUI" value="$(arg GUI)" />
   </include>
-  <!-- -->
 
   <!-- follow the tutorials on  http://wiki.ros.org/rtmros_nextage/Tutorials/Programming_Hiro_NEXTAGE_OPEN_GUI
        moveit_planning_execution.launch starts rviz so we run launch files except moviet_rviz.launch -->
@@ -22,9 +24,7 @@
   </include>
   <include file="$(find nextage_moveit_config)/launch/planning_context.launch">
     <arg name="load_robot_description" value="true"/>
-  </include>
-  <!-- -->
-
+  </include>  
   <!-- Check if MoveGroup is running -->
   <arg name='TESTNAME_MG_STATUS' value='test_move_group' />
   <test pkg="rostest" type="hztest" test-name="$(arg TESTNAME_MG_STATUS)" name="$(arg TESTNAME_MG_STATUS)" time-limit="60">
@@ -35,8 +35,9 @@
     <param name="wait_time" value="15.0" />
   </test>  
   
+  <rosparam param='conf_dualarm' file="$(arg CONF_DUAlARM)" />
   <test pkg="nextage_moveit_config" type="test_moveit.py" test-name="nxo_moveit"
-        time-limit="300"
+        time-limit="100"
         args="" />
          
 </launch>
