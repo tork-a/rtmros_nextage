@@ -9,6 +9,8 @@
   <include file="$(find hironx_ros_bridge)/launch/hironx_startup.launch">
     <arg name="CONF_FILE" value="$(find nextage_ros_bridge)/conf/nextage.conf" />
     <arg name="corbaport" value="$(arg corbaport)" />
+    <arg name="HRPSYS_PY_NAME" value="$(arg HRPSYS_PY_NAME)"/>
+    <arg name="HRPSYS_PY_PKG" value="$(arg HRPSYS_PY_PKG)"/>
     <arg name="GUI" value="$(arg GUI)" />
     <arg name="MODEL_FILE" value="$(arg MODEL_FILE)" />
     <arg name="PROJECT_FILE" value="$(find nextage_ros_bridge)/conf/nextage_nosim.xml" />
