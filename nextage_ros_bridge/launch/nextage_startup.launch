@@ -1,9 +1,17 @@
 <launch>
+  <arg name="corbaport" default="2809" />
+  <arg name="HRPSYS_PY_NAME" default="nextage.py"/>
+  <arg name="HRPSYS_PY_PKG" default="nextage_ros_bridge"/>
   <arg name="GUI" default="true" />
+  <arg name="LAUNCH_HRPSYSPY" default='false' />  
+  <arg name="REALTIME" default="false" />
   <include file="$(find hironx_ros_bridge)/launch/hironx_startup.launch">
+    <arg name="CONF_FILE" default="$(find nextage_ros_bridge)/conf/nextage.conf" />
+    <arg name="corbaport" value="$(arg corbaport)" />
+    <arg name="HRPSYS_PY_NAME" value="$(arg HRPSYS_PY_NAME)"/>
+    <arg name="HRPSYS_PY_PKG" value="$(arg HRPSYS_PY_PKG)"/>
     <arg name="GUI" default="$(arg GUI)" />
     <arg name="MODEL_FILE" default="$(find nextage_description)/models/main.wrl" />
     <arg name="PROJECT_FILE" default="$(find nextage_ros_bridge)/conf/nextage_nosim.xml" />
-    <arg name="CONF_FILE" default="$(find nextage_ros_bridge)/conf/nextage.conf" />
   </include>
 </launch>
