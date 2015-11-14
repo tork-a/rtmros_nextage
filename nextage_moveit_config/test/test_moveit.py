@@ -36,11 +36,8 @@
 
 # Author: Isaac I.Y. Saito
 
-import xml.etree.ElementTree
-import numpy
 import sys
 import unittest
-import yaml
 
 from geometry_msgs.msg import Pose
 from moveit_commander import MoveGroupCommander, MoveItCommanderException, RobotCommander
@@ -49,68 +46,6 @@ import rospy
 
 import math
 from tf.transformations import quaternion_from_euler
-
-class MoveGroupAttr():
-    _mg_name = None
-    _joints = []
-
-    def __init__(self, mg_name, joints):
-        self._mg_name = mg_name
-        self._joints = joints
-
-    def get_joints(self):
-        return self._joints
-
-    def get_mg_name(self):
-        return self._mg_name
-
-
-class DualArmConf():
-    _movegroup_attrs = []
-
-    def __init__(self, dualarm_conf, srdf_xml):
-        '''
-        @param dualarm_conf: YAML format
-        @type dualarm_conf: str
-        @param srdf_xml: XML format
-        @type srdf_xml: str
-        '''
-        self._dualarm_conf_class = self._generate_dualarm_conf(dualarm_conf, srdf_xml)
-
-    def _generate_dualarm_conf(self, dualarm_conf, srdf_xml):
-        class YamlStruct:
-            '''Implements http://stackoverflow.com/a/6866697/577001'''
-            def __init__(self, **entries):
-                self.__dict__.update(entries)
-
-        class YamlObj(object):
-            '''Implements http://stackoverflow.com/a/1305682/577001'''
-            def __init__(self, d):
-                for a, b in d.items():
-                    if isinstance(b, (list, tuple)):
-                        setattr(self, a, [YamlObj(x) if isinstance(x, dict) else x for x in b])
-                    else:
-                        setattr(self, a, YamlObj(b) if isinstance(b, dict) else b)
-
-        # Generate a yaml object for dualarm conf
-        dconf_yamlobj = YamlObj(dualarm_conf)
-
-        # 
-        movegroups_dualarm = ['movegroup_arm_left', 'movegroup_arm_right', 'movegroup_eef_left',
-                              'movegroup_eef_right', 'movegroup_torso']
-        _KEY_MOVEGROUP_NAME = 'movegroup_name'
-        _KEY_MOVEGROUP_TESTPOSE_GOAL = 'test_pose_goal'
-        for mg_key in movegroups_dualarm:
-            mg_name = dconf_yamlobj.mg_key._KEY_MOVEGROUP_NAME
-            testpose_goal = dconf_yamlobj.mg_key._KEY_MOVEGROUP_TESTPOSE_GOAL
-            # Get movegroups from yaml, and then get corresponding values from srdf
-            
-
-    def get_movegroup_attrs(self):
-        '''
-        @rtype: MoveGroupAttr[]
-        '''
-        return self._movegroup_attrs
 
 class TestDualarmMoveit(unittest.TestCase):
     _KINEMATICSOLVER_SAFE = 'RRTConnectkConfigDefault'
@@ -183,19 +118,19 @@ class TestDualarmMoveit(unittest.TestCase):
     def setUpClass(self):
         # Obtain conf yaml and SRDF xml parameters. Test exits if either is unavailable.
         dualarm_conf_file = None
-        srdf_xml = None
+        srdf_xml_text = None
         try:
             dualarm_conf_file = rospy.get_param(self._PARAM_CONF_DUALARM)
         except KeyError:
             rospy.logerr('ROS parameter {} not found. Exiting.'.format(self._PARAM_CONF_DUALARM))
             sys.exit()
         try:
-            srdf_xml = rospy.get_param(self._PARAM_SRDF)
+            srdf_xml_text = rospy.get_param(self._PARAM_SRDF)
         except KeyError:
             rospy.logerr('ROS parameter {} not found. Make sure %YOURPKG_moveit_config%/launch/planning_context.launch is run with `load_robot_description` arg true. Exiting.'.format(self._PARAM_SRDF))
             sys.exit()
 
-        self._dualarm_conf = DualArmConf(dualarm_conf_file, srdf_xml)
+        self._dualarm_conf = DualArmConf(dualarm_conf_file, srdf_xml_text)
         self.robot = RobotCommander()
         # TODO: Read groups from SRDF file ideally.
         self._dualarm_conf.init_movegroups()
