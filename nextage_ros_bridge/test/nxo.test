@@ -3,7 +3,7 @@
   <arg name="HRPSYS_PY_NAME" default="nextage.py"/>
   <arg name="HRPSYS_PY_PKG" default="nextage_ros_bridge"/>
   <arg name="GUI" default='false' />
-  <arg name="LAUNCH_HRPSYSPY" default="false" />
+  <arg name="LAUNCH_HRPSYSPY" default="true" />
   <arg name="REALTIME" default="false" />  
   <arg name="ROBOTCLIENT_ARG_OLDSTYLE"
        default="-ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService" />
