@@ -5,6 +5,8 @@
   <arg name="GUI" default='false' />
   <arg name="LAUNCH_HRPSYSPY" default="false" />
   <arg name="REALTIME" default="false" />  
+  <arg name="ROBOTCLIENT_ARG_OLDSTYLE"
+       default="-ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService" />
 
   <!-- See https://github.com/start-jsk/rtmros_common/issues/416#issuecomment-46846623 -->
   <node name="start_omninames" pkg="rtmbuild" type="start_omninames.sh"
@@ -20,10 +22,10 @@
   </include>
 
   <test type="test_handlight.py" pkg="nextage_ros_bridge" test-name="test_nxo_handlight"
-        time-limit="1000" args="" />
+        time-limit="1000" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
   <test type="test_gripper.py" pkg="nextage_ros_bridge" test-name="test_nxo_gripper"
-        time-limit="1000" args="" />
+        time-limit="1000" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
   <test type="test_airhand.py" pkg="nextage_ros_bridge" test-name="test_nxo_airhand"
-        time-limit="1000" args="" />
+        time-limit="1000" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
          
 </launch>
