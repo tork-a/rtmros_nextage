@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="gazebo_base_link" params="name color">
+    <gazebo reference="${name}">
+      <!-- <material>Gazebo/${color}</material>  -->
+      <kp>100000.0</kp>
+      <kd>10.0</kd>
+      <mu1>1</mu1>
+      <mu2>1</mu2>
+      <fdir1>1 0 0</fdir1>
+      <minDepth>0.003</minDepth>
+      <maxVel>1.0</maxVel>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:macro name="gazebo_nx_link" params="name color">
+    <gazebo reference="${name}">
+      <material>Gazebo/${color}</material>
+    </gazebo>
+  </xacro:macro>
+</robot>
