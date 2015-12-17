@@ -32,7 +32,7 @@ roslint_python()
 find_package(PkgConfig)
 pkg_check_modules(openhrp3 openhrp3.1 REQUIRED)
 set(OPENHRP3 ${openhrp3_PREFIX}/share/openhrp3)  # for longfloor.wrl
-set(ROBOT_NAME nextage)
+set(ROBOT_NAME main)  # Aiming main.dae. Use same file prefix with VRML for intuitition
 
 message("hironx_ros_bridge_SOURCE_DIR => ${hironx_ros_bridge_SOURCE_DIR}")
 message("hironx_ros_bridge_SOURCE_PREFIX => ${hironx_ros_bridge_SOURCE_PREFIX}")
@@ -54,20 +54,6 @@ configure_file(${hironx_ros_bridge_SOURCE_DIR}/conf/nosim.xml.in                
 configure_file(${hironx_ros_bridge_SOURCE_DIR}/conf/conf.in                     ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.conf)
 configure_file(${hironx_ros_bridge_SOURCE_DIR}/conf/nosim.conf.in               ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.conf)
 add_custom_target(${PROJECT_NAME}_model_files ALL DEPENDS ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.RobotHardware.conf ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.RobotHardware.conf ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.xml ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.xml ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.conf ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.conf)
-
-#compile_openhrp_model(${nextage_description_SOURCE_DIR}/models/main.wrl)
-message("++ nextage_description/models/main.dae -> ${nextage_description_SOURCE_DIR}/models/main.dae")
-if(NOT EXISTS ${nextage_description_SOURCE_DIR}/models/main.dae)
-  if(EXISTS ${nextage_description_SOURCE_PREFIX}/models/main.dae)
-    set(nextage_description_SOURCE_DIR ${nextage_description_SOURCE_PREFIX})
-  else(EXISTS ${nextage_description_SOURCE_PREFIX}/models/main.dae)
-    set(nextage_description_SOURCE_DIR ${nextage_description_PREFIX}/share/nextage_description)
-  endif(EXISTS ${nextage_description_SOURCE_PREFIX}/models/main.dae)
-endif()
-add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae
-  COMMAND ${CMAKE_COMMAND} -E copy ${nextage_description_SOURCE_DIR}/models/main.dae ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae
-  DEPENDS ${nextage_description_SOURCE_DIR}/models/main.dae)
-add_custom_target(${PROJECT_NAME}_model_copy ALL DEPENDS ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae)
 
 #############
 ## Install ##
