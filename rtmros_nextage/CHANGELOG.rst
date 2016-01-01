@@ -2,6 +2,14 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [fix] Unnecessarily complicated dependency
+* [test] Add simple tests for MoveIt
+* [sys] clean up .launch and .test files
+* [doc] Fix wrong URL
+* Contributors: Kei Okada, Isaac I.Y. Saito
+
 0.7.2 (2015-11-02)
 ------------------
 * [fix] Manually move ikfast.h to package specific location

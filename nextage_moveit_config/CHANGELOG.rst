@@ -2,6 +2,14 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [fix] Unnecessarily complicated dependency
+* [test] Add simple tests for MoveIt
+* [sys] Minor dependency update
+* [doc] Fix wrong URL
+* Contributors: Isaac I.Y. Saito, Kei Okada
+
 0.7.2 (2015-11-02)
 ------------------
 

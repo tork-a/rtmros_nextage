@@ -2,6 +2,11 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [sys] clean up nxo.test
+* Contributors: Kei Okada, Isaac I.Y. Saito
+
 0.7.2 (2015-11-02)
 ------------------
 
