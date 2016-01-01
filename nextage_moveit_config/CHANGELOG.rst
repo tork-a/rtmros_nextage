@@ -2,8 +2,8 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.7.3 (2015-12-31)
+------------------
 * [fix] Unnecessarily complicated dependency
 * [test] Add simple tests for MoveIt
 * [sys] Minor dependency update

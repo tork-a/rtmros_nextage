@@ -2,8 +2,8 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.7.3 (2015-12-31)
+------------------
 * [fix] Unnecessarily complicated dependency
 * [test] Add simple tests for MoveIt
 * [sys] clean up .launch and .test files
