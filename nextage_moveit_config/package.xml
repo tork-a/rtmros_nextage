@@ -11,8 +11,7 @@
 
   <license>BSD</license>
 
-  <url type="website">http://ros.org/wiki/nextage_description</url>
-  <url type="website">http://moveit.ros.org/</url>
+  <url type="website">http://ros.org/wiki/nextage_moveit_config</url>
   <url type="bugtracker">https://github.com/tork-a/rtmros_nextage/issues</url>
   <url type="repository">https://github.com/tork-a/rtmros_nextage</url>
 
