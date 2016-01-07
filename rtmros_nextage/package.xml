@@ -16,6 +16,7 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <run_depend>nextage_description</run_depend>
+  <run_depend>nextage_gazebo</run_depend>
   <run_depend>nextage_moveit_config</run_depend>
   <run_depend>nextage_ros_bridge</run_depend>
   <export>
