@@ -89,7 +89,6 @@
       <origin xyz="0 0 0.5695" rpy="0 -0 0"/>
       <geometry>
         <mesh filename="package://nextage_description/urdf/meshes/HEAD_JOINT0_Link_mesh.dae" scale="1 1 1" />
-<!--        <mesh filename="~/link/ROS/indigo_trusty/cws_hironxo/src/tork-a/rtmros_nextage/nextage_description/urdf/meshes/HEAD_JOINT_Link_mesh.dae" scale="1 1 1" /> -->
       </geometry>
     </visual>
     <collision>
