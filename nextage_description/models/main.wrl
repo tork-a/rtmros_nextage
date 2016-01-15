@@ -421,6 +421,7 @@ DEF HiroNX Humanoid{
                       frontClipDistance 0.05
                       width  640
                       height 480
+                      name "CAMERA_HEAD_R"
                       type "COLOR"
                       sensorId 0
                       fieldOfView 0.5777
@@ -431,9 +432,21 @@ DEF HiroNX Humanoid{
                       frontClipDistance 0.05
                       width  640
                       height 480
+                      name "CAMERA_HEAD_L"
                       type "COLOR"
                       sensorId 1
                       fieldOfView 0.5777
+                    }
+                    DEF CAMERA_HEAD_D VisionSensor {
+                        translation 0.1 0.0 0.09
+                        rotation      0.4472 -0.4472 -0.7746 1.8235
+                        frontClipDistance 0.05
+                        width 640
+                        height 480
+                        name "CAMERA_HEAD_D"
+                        type "COLOR_DEPTH"
+                        sensorId 2
+                        fieldOfView 1.0
                     }
 			 ]
 		      }
