@@ -5,7 +5,7 @@
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager"
         type="spawner" respawn="false"
-        output="screen" ns="/nextage" args="joint_state_controller
+        output="screen" ns="/NextageOpen" args="joint_state_controller
                                            CHEST_JOINT0_position_controller
                                            HEAD_JOINT0_position_controller
                                            HEAD_JOINT1_position_controller
