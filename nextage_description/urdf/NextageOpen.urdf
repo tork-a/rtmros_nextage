@@ -13,8 +13,13 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:physics="http://playerstage.sourceforge.net/gazebo/xmlschema/#physics"
        xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:include filename="$(find nextage_gazebo)/model/materials.urdf.xacro" />
-  <xacro:include filename="$(find nextage_gazebo)/model/gazebo.xacro" />
+  <xacro:include filename="$(find nextage_description)/urdf/materials.urdf.xacro" />
+
+  <xacro:macro name="gazebo_nx_link" params="name color">
+    <gazebo reference="gazebo_${name}">
+      <material>Gazebo/${color}</material>
+    </gazebo>
+  </xacro:macro>
 
   <!-- Used for fixing robot to Gazebo 'base_link' -->
   <link name="world"/>
