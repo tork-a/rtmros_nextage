@@ -5,23 +5,11 @@
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager"
         type="spawner" respawn="false"
-        output="screen" ns="/nextage" args="joint_state_controller
-                                           CHEST_JOINT0_position_controller
-                                           HEAD_JOINT0_position_controller
-                                           HEAD_JOINT1_position_controller
-                                           LARM_JOINT0_position_controller
-                                           LARM_JOINT1_position_controller
-                                           LARM_JOINT2_position_controller
-                                           LARM_JOINT3_position_controller
-                                           LARM_JOINT4_position_controller
-                                           LARM_JOINT5_position_controller
-                                           RARM_JOINT0_position_controller
-                                           RARM_JOINT1_position_controller
-                                           RARM_JOINT2_position_controller
-                                           RARM_JOINT3_position_controller
-                                           RARM_JOINT4_position_controller
-                                           RARM_JOINT5_position_controller
+        output="screen" ns="/NextageOpen" args="joint_state_controller
                                            L_trajectory_controller
                                            R_trajectory_controller
+                                           H_trajectory_controller
+                                           C_trajectory_controller
                                          "/>
+  <node name="go_initial" pkg="nextage_gazebo"  type="go_initial.py" />
 </launch>
