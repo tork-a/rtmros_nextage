@@ -6,5 +6,5 @@
   </include>
 
   <arg name='TESTNAME_GZ' value='test_gz' />
-  <test pkg="nextage_gazebo" type="test_nxo_gz.py" test-name="$(arg TESTNAME_GZ)" time-limit="300" />
+  <test pkg="nextage_gazebo" type="test_nxo_gz.py" test-name="$(arg TESTNAME_GZ)" time-limit="300" retry="2" />
 </launch>
