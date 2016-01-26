@@ -6,7 +6,6 @@
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
   <arg name="sec_idle" default="1.0" />
-
   <arg name="visualize_laser" default="false" />
   <!--  <arg name="world_file" default="$(find turtlebot_gazebo)/worlds/playground.world" /> -->
   <arg name="world_file" default="worlds/empty.world" />
@@ -26,7 +25,5 @@
   <node pkg="gazebo_ros" type="spawn_model" name="urdf_spawner" respawn="false" output="screen"
         args="$(arg gzpose) -J LARM_JOINT2 -2.0 -J RARM_JOINT2 -2.0 -urdf -model NextageOpen -param robot_description" />
 
-  <!-- Temporarily disable until model issue gets resolved. -->
-  <include file="$(find nextage_gazebo)/launch/nextage_gazebo_control.launch" />
-        
+  <include file="$(find nextage_gazebo)/launch/nextage_gazebo_control.launch" />        
 </launch>
