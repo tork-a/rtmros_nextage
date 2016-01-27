@@ -38,11 +38,10 @@ from control_msgs.msg import FollowJointTrajectoryAction, FollowJointTrajectoryG
 from trajectory_msgs.msg import JointTrajectoryPoint
 
 rospy.init_node('send_motion')
-
-r_client = actionlib.SimpleActionClient('/NextageOpen/R_trajectory_controller/follow_joint_trajectory', FollowJointTrajectoryAction)
-l_client = actionlib.SimpleActionClient('/NextageOpen/L_trajectory_controller/follow_joint_trajectory', FollowJointTrajectoryAction)
-h_client = actionlib.SimpleActionClient('/NextageOpen/H_trajectory_controller/follow_joint_trajectory', FollowJointTrajectoryAction)
-c_client = actionlib.SimpleActionClient('/NextageOpen/C_trajectory_controller/follow_joint_trajectory', FollowJointTrajectoryAction)
+r_client = actionlib.SimpleActionClient('/rarm_controller/follow_joint_trajectory_action', FollowJointTrajectoryAction)
+l_client = actionlib.SimpleActionClient('/larm_controller/follow_joint_trajectory_action', FollowJointTrajectoryAction)
+h_client = actionlib.SimpleActionClient('/head_controller/follow_joint_trajectory_action', FollowJointTrajectoryAction)
+c_client = actionlib.SimpleActionClient('/torso_controller/follow_joint_trajectory_action', FollowJointTrajectoryAction)
 r_client.wait_for_server()
 l_client.wait_for_server()
 h_client.wait_for_server()
