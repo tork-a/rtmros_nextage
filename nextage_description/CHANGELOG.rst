@@ -2,6 +2,16 @@
 Changelog for package nextage_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [gazebo] Add non-zero mass so that links are not ignored
+* NextageOpen.urdf: add transmission and ros_control
+* set depend from nextage_description to nextage_gazebo is not a good idea, nextage_gazbeo should depends on nextage_description
+* HEAD_JOINT1_Link is too small, use default settings http://wiki.ros.org/urdf/Tutorials/Adding%20Physical%20and%20Collision%20Properties%20to%20a%20URDF%20Model
+* [gazebo] Add non-zero mass so that links are not ignored
+* Add Gazebo package. So far model not shown, and model seems to keep falling.
+* Contributors: Isaac I.Y. Saito, Kei Okada
+
 0.7.3 (2015-12-31)
 ------------------
 

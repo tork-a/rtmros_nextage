@@ -1,19 +1,34 @@
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Changelog for package nextage_ik_plugin
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog for package nextage_gazebo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Forthcoming
 -----------
+* need to wait for finishing go_initial.py (https://github.com/tork-a/rtmros_nextage/pull/223/files#diff-16b25951a50b1e80569929d32a09102bR14)
+* pass arg GUI
+* [gz] Retry tests upon failure
+* [gz] Add small unit tests
+* [gz] Minor formatting
+* [gazebo] Add non-zero mass so that links are not ignored
+* update control parameters
+* http://answers.ros.org/question/200777/using-both-jointtrajectorycontroller-and-jointpositioncontroller-at-same-time-in-ros_control, we may not need both position controller and trajectory controller
+* use NextageOpen name space, use robot name. Not sure if this is necessary
+* package.xml: add depends to ros_controllers
+* set depend from nextage_description to nextage_gazebo is not a good idea, nextage_gazbeo should depends on nextage_description
+* [gazebo] Add non-zero mass so that links are not ignored
+* Add Gazebo package. So far model not shown, and model seems to keep falling.
+* Contributors: Isaac I.Y. Saito, Kei Okada
 
 0.7.3 (2015-12-31)
 ------------------
 
 0.7.2 (2015-11-02)
 ------------------
-* [fix] Manually move ikfast.h to package specific location
-* Contributors: Kei Okada
 
 0.7.1 (2015-10-26)
+------------------
+
+0.7.0 (2015-10-21)
 ------------------
 
 0.6.6 (2015-10-17)
@@ -24,8 +39,6 @@ Forthcoming
 
 0.6.4 (2015-10-02)
 ------------------
-* [feat] Add IKFast plugin. Kinematics solver is now selectable in Moveit launch
-* Contributors: Isaac IY Saito
 
 0.6.3 (2015-08-15)
 ------------------
