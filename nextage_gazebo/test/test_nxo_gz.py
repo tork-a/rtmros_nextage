@@ -72,6 +72,9 @@ class TestNxoGazebo(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestNxoGazebo, self).__init__(*args, **kwargs)
         rospy.init_node('test_nxo_gazebo')
+        rospy.loginfo("need to wait for finishing go_initial.py (https://github.com/tork-a/rtmros_nextage/pull/223/files#diff-16b25951a50b1e80569929d32a09102bR14)")
+        rospy.sleep(3+4+3)
+        rospy.loginfo("start test")
         self._subscriber_gz_linkstates = rospy.Subscriber('/gazebo/link_states', LinkStates, self._cb_gz_linkstates)
 
     @classmethod
@@ -91,6 +94,7 @@ class TestNxoGazebo(unittest.TestCase):
         # Assert if joint values are approximate?
         i = 0
         for pose in self._linkstates.pose:
+            rospy.loginfo("check pose " + self.LINKS[i])
             # for coord in pose.position:  # pose.position is an instance of `list`
             # For some reasons, `for coord in pose.position` yields error `'Point' object is not iterable`
             self.assertAlmostEqual(self.POSES_INIT[i][0][0], pose.position.x, places = _ORDER_PERMISSIBLE)
