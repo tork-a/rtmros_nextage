@@ -2,6 +2,9 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.7.4 (2016-01-26)
 ------------------
 

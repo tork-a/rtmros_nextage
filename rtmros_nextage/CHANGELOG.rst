@@ -2,6 +2,11 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [fix] fix namespace so that existing app can operate the robot on Gazebo
+* Contributors: Kei Okada
+
 0.7.4 (2016-01-26)
 ------------------
 * [gazebo] Add non-zero mass so that links are not ignored
