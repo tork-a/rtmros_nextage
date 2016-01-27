@@ -1,0 +1,15 @@
+<launch>
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find nextage_gazebo)/config/nextage_gazebo_control.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager"
+        type="spawner" respawn="false"
+        output="screen" ns="/NextageOpen" args="joint_state_controller
+                                           L_trajectory_controller
+                                           R_trajectory_controller
+                                           H_trajectory_controller
+                                           C_trajectory_controller
+                                         "/>
+  <node name="go_initial" pkg="nextage_gazebo"  type="go_initial.py" />
+</launch>

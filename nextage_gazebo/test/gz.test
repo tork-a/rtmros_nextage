@@ -1,0 +1,10 @@
+<launch>
+  <arg name="GUI" default='false' />
+  <include file="$(find nextage_gazebo)/launch/nextage_world.launch">
+    <arg name="gui" value="$(arg GUI)"/>
+    <arg name="world_file" value="worlds/empty.world" />
+  </include>
+
+  <arg name='TESTNAME_GZ' value='test_gz' />
+  <test pkg="nextage_gazebo" type="test_nxo_gz.py" test-name="$(arg TESTNAME_GZ)" time-limit="300" retry="2" />
+</launch>

@@ -1,0 +1,29 @@
+<launch>
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="gzpose" default="-x 0.01 -y 0.01 -z 1.0" />
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="sec_idle" default="1.0" />
+  <arg name="visualize_laser" default="false" />
+  <!--  <arg name="world_file" default="$(find turtlebot_gazebo)/worlds/playground.world" /> -->
+  <arg name="world_file" default="worlds/empty.world" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="world_name" value="$(arg world_file)"/>
+  </include>
+
+  <!-- Load universal robotic description format (URDF) -->
+  <arg name="model" value="$(find nextage_description)/urdf/NextageOpen.urdf" />
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(arg model)'" />
+  <node pkg="gazebo_ros" type="spawn_model" name="urdf_spawner" respawn="false" output="screen"
+        args="$(arg gzpose) -J LARM_JOINT2 -2.0 -J RARM_JOINT2 -2.0 -urdf -model NextageOpen -param robot_description" />
+
+  <include file="$(find nextage_gazebo)/launch/nextage_gazebo_control.launch" />        
+</launch>
