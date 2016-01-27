@@ -2,8 +2,8 @@
 Changelog for package nextage_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.7.4 (2016-01-26)
+------------------
 * [gazebo] Add non-zero mass so that links are not ignored
 * NextageOpen.urdf: add transmission and ros_control
 * set depend from nextage_description to nextage_gazebo is not a good idea, nextage_gazbeo should depends on nextage_description

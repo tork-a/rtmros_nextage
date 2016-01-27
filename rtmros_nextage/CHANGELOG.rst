@@ -2,8 +2,8 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.7.4 (2016-01-26)
+------------------
 * [gazebo] Add non-zero mass so that links are not ignored
 * Contributors: Isaac I.Y. Saito
 

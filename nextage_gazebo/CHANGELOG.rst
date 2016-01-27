@@ -2,8 +2,8 @@
 Changelog for package nextage_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.7.4 (2016-01-26)
+------------------
 * need to wait for finishing go_initial.py (https://github.com/tork-a/rtmros_nextage/pull/223/files#diff-16b25951a50b1e80569929d32a09102bR14)
 * pass arg GUI
 * [gz] Retry tests upon failure
