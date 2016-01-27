@@ -2,8 +2,8 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.7.5 (2016-01-27)
+------------------
 * [fix] fix namespace so that existing app can operate the robot on Gazebo
 * Contributors: Kei Okada
 
