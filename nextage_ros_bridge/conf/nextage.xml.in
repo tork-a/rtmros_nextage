@@ -131,7 +131,7 @@
    <property name="outport" value="q:JOINT_VALUE"/>
    <property name="outport" value="tau:JOINT_TORQUE"/>
    <property name="WAIST.NumOfAABB" value="1"/>
-   <property name="WAIST.translation" value="0  0  -0.1"/>
+   <property name="WAIST.translation" value="0  0  -1.03"/>
    <property name="WAIST.rotation" value="1 0 0 0"/>
   </item>
   <view class="com.generalrobotix.ui.view.GrxRobotHardwareClientView" name="RobotHardware RTC Client">
@@ -148,7 +148,7 @@
    <property name="showCoMonFloor" value="false"/>
    <property name="showDistance" value="false"/>
    <property name="showIntersection" value="false"/>
-   <property name="eyeHomePosition" value="-0.70711 -0 0.70711 2 0.70711 -0 0.70711 2 0 1 0 0.8 0 0 0 1 "/>
+   <property name="eyeHomePosition" value="-0.70711 -0 0.70711 2 0.70711 -0 0.70711 2 0 1 0 0.1 0 0 0 1 "/>
    <property name="showCollision" value="true"/>
    <property name="showActualState" value="true"/>
    <property name="showScale" value="true"/>
