@@ -2,6 +2,12 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [fix] Use RRT as default planner (workaround/fix `#170 <https://github.com/tork-a/rtmros_nextage/issues/170>`_)
+* [improve] better view for hrpsys-simulator
+* Contributors: Kei Okada, Isaac I.Y. Saito
+
 0.7.5 (2016-01-27)
 ------------------
 * [fix] fix namespace so that existing app can operate the robot on Gazebo

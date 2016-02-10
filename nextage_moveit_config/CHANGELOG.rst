@@ -2,6 +2,11 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [fix] Use RRT as default planner (workaround/fix `#170 <https://github.com/tork-a/rtmros_nextage/issues/170>`_)
+* Contributors: Isaac I.Y. Saito
+
 0.7.5 (2016-01-27)
 ------------------
 

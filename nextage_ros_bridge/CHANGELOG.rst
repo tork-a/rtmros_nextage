@@ -2,6 +2,11 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [improve] better view for hrpsys-simulator
+* Contributors: Kei Okada
+
 0.7.5 (2016-01-27)
 ------------------
 
