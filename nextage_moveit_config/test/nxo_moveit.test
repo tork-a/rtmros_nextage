@@ -37,5 +37,15 @@
   <test pkg="nextage_moveit_config" type="test_moveit.py" test-name="nxo_moveit"
         time-limit="300"
         args="" />
-         
+
+  <!-- Check if InteractiveMarker is running -->
+  <arg name='TESTNAME_IMARKER_STATUS' value='test_interactivemarker_running' />
+  <test pkg="rostest" type="hztest" test-name="$(arg TESTNAME_IMARKER_STATUS)"
+        name="$(arg TESTNAME_IMARKER_STATUS)" time-limit="60">
+    <param name="topic" value="/rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic/update" />
+    <param name="hz" value="2.0" />
+    <param name="hzerror" value="0.25" />
+    <param name="test_duration" value="10.0" />
+    <param name="wait_time" value="120.0" />
+  </test>  
 </launch>

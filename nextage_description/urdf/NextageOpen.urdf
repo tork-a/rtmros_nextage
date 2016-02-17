@@ -34,13 +34,6 @@
     </transmission>
   </xacro:macro>
 
-  <!-- Used for fixing robot to Gazebo 'base_link' -->
-  <link name="world"/>
-  <joint name="fixed" type="fixed">
-    <parent link="world"/>
-    <child link="WAIST"/>
-  </joint>
-
   <xacro:gazebo_nx_link name="WAIST" color="Black" />
   <link name="WAIST">
     <visual>
