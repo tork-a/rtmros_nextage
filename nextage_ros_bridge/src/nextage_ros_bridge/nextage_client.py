@@ -324,6 +324,7 @@ class NextageClient(HIRONX, object):
             ['el', "SoftErrorLimiter"],
             # ['co', "CollisionDetector"],
             # ['sc', "ServoController"],
+            ['ic', "ImpedanceController"],
             ['log', "DataLogger"]
             ]
 
