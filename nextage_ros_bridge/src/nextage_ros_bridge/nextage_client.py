@@ -322,7 +322,7 @@ class NextageClient(HIRONX, object):
             ['sh', "StateHolder"],
             ['fk', "ForwardKinematics"],
             ['el', "SoftErrorLimiter"],
-            # ['co', "CollisionDetector"],
+            ['co', "CollisionDetector"],
             # ['sc', "ServoController"],
             ['log', "DataLogger"]
             ]
