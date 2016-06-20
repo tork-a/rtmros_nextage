@@ -1,0 +1,15 @@
+<launch>
+  <!-- Better test desired. -->
+  <include file="$(find nextage_moveit_config)/launch/joystick_control.launch" />
+
+  <!-- Check if MoveGroup is running -->
+  <arg name='TESTNAME_JOY_STATUS' value='joy_topic_hz' />
+  <test pkg="rostest" type="hztest" test-name="$(arg TESTNAME_JOY_STATUS)" name="$(arg TESTNAME_JOY_STATUS)" time-limit="60">
+    <param name="topic" value="/joy" />
+    <param name="hz" value="40.0" />
+    <param name="hzerror" value="2.00" />
+    <param name="test_duration" value="10.0" />
+    <param name="wait_time" value="15.0" />
+  </test>  
+         
+</launch>
