@@ -1,0 +1,16 @@
+<launch>
+  <!-- See http://docs.ros.org/indigo/api/moveit_ros_visualization/html/doc/joystick.html for documentation -->
+  <arg name="dev" default="/dev/input/js0" />
+
+  <!-- Launch joy node -->
+  <node pkg="joy" type="joy_node" name="joy">
+    <param name="dev" value="$(arg dev)" /> <!-- Customize this to match the location your joystick is plugged in on-->
+    <param name="deadzone" value="0.2" />
+    <param name="autorepeat_rate" value="40" />
+    <param name="coalesce_interval" value="0.025" />
+  </node>
+
+  <!-- Launch python interface -->
+  <node pkg="moveit_ros_visualization" type="moveit_joy.py" output="screen" name="moveit_joy"/>
+        
+</launch>

@@ -18,4 +18,5 @@ set(PROJECT_SOURCE_DIR ${PROJECT_SOURCE_DIR})
 configure_file(${PROJECT_SOURCE_DIR}/NextageROS.desktop.in ${SETUP_DIRECTORY}/NextageROS.desktop)
 add_custom_target(desktop ALL DEPENDS ${PROJECT_SOURCE_DIR}/NextageROS.desktop.in)
 
+add_rostest(test/joy.test)
 add_rostest(test/nxo_moveit.test)

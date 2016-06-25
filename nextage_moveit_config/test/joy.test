@@ -1,0 +1,44 @@
+<launch>
+  <!-- moveit_joy.py requires /move_group -->
+  <!-- follow the tutorials on  http://wiki.ros.org/rtmros_nextage/Tutorials/Programming_Hiro_NEXTAGE_OPEN_GUI
+       moveit_planning_execution.launch starts rviz so we run launch files except moviet_rviz.launch -->
+  <!-- <include file="$(find nextage_moveit_config)/launch/moveit_planning_execution.launch"> -->
+ <arg name="kinematics_conf" default="$(find nextage_moveit_config)/config/kinematics_kdl.yaml" />
+ <!-- for debug -->
+ <!-- <include file="$(find nextage_moveit_config)/launch/moveit_rviz.launch"> -->
+ <!--    <arg name="config" value="true"/> -->
+ <!--    <arg name="kinematics_conf" value="$(arg kinematics_conf)"/> -->
+ <!-- </include> -->
+  <include file="$(find nextage_moveit_config)/launch/move_group.launch">
+    <arg name="publish_monitored_planning_scene" value="true" />
+  </include>
+  <include file="$(find nextage_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="true"/>
+  </include>
+  <!-- -->
+
+  <!-- publish dummy update_full -->
+  <node pkg="rostopic" type="rostopic" name="publish_update_full"
+        args="pub -r 1 /rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic/update_full visualization_msgs/InteractiveMarkerInit '{markers: [{header: {frame_id: /world}, name: &quot;EE:goal_LARM_JOINT5_Link&quot;}]}'" />
+  <!-- Publish dummy /joy moveit_joy need to be button push action : https://github.com/ros-planning/moveit_ros/blob/c6d0edea532048ae7036502ae8f464ae0f92ebb8/visualization/python/moveit_ros_visualization/moveit_joy.py#L585-->
+  <node pkg="rostopic" type="rostopic" name="publish_joy_topic_off"
+        args="pub -r 2 /joy sensor_msgs/Joy '{header: {frame_id: 'WAIST'}, axes: [0,0,0,0,0, 0,0,0],
+             buttons:[0,0,0,0,0, 0,0,0,0,0, 0]}'" />
+  <node pkg="rostopic" type="rostopic" name="publish_joy_topic_on"
+        args="pub -r 3 /joy sensor_msgs/Joy '{header: {frame_id: 'WAIST'}, axes: [0,0,0,0,0, 0,0,0],
+             buttons:[0,0,1,0,0, 0,0,0,0,0, 0]}'" />
+
+  <!-- Launch python interface -->
+  <node pkg="moveit_ros_visualization" type="moveit_joy.py" output="screen" name="moveit_joy"/>
+
+  <!-- Check if moveit_joy is running -->
+  <arg name='TESTNAME_MOVEPLAN_JOY' value='hz_moveplan_joy' />
+  <test pkg="rostest" type="hztest" test-name="$(arg TESTNAME_MOVEPLAN_JOY)" name="$(arg TESTNAME_MOVEPLAN_JOY)" time-limit="60">
+    <param name="topic" value="/rviz/moveit/plan" />
+    <param name="hz" value="5.0" />
+    <param name="hzerror" value="5.00" />
+    <param name="test_duration" value="1.0" />
+    <param name="wait_time" value="10.0" />
+  </test>  
+         
+</launch>
