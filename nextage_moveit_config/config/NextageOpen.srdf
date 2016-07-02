@@ -46,9 +46,18 @@
         <joint name="LARM_JOINT5" />
     </group>
     <group name="botharms">
-        <group name="right_arm" />
-        <group name="left_arm" />
-        <group name="torso" />
+        <joint name="LARM_JOINT0" />
+        <joint name="LARM_JOINT1" />
+        <joint name="LARM_JOINT2" />
+        <joint name="LARM_JOINT3" />
+        <joint name="LARM_JOINT4" />
+        <joint name="LARM_JOINT5" /> 
+        <joint name="RARM_JOINT0" />
+        <joint name="RARM_JOINT1" />
+        <joint name="RARM_JOINT2" />
+        <joint name="RARM_JOINT3" />
+        <joint name="RARM_JOINT4" />
+        <joint name="RARM_JOINT5" />       
     </group>
     <group name="head">
         <joint name="HEAD_JOINT0" />

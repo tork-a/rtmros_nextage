@@ -67,7 +67,7 @@ botharms:
     - TRRTkConfigDefault
     - PRMkConfigDefault
     - PRMstarkConfigDefault
-  projection_evaluator: joints(LARM_JOINT0,LARM_JOINT1)
+  projection_evaluator: joints(LARM_JOINT0,RARM_JOINT0)
   longest_valid_segment_fraction: 0.05
 head:
   default_planner_config: RRTConnectkConfigDefault
