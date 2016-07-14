@@ -5,10 +5,15 @@ find_package(catkin REQUIRED rostest)
 
 catkin_package()
 
+catkin_python_setup()
+
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 install(DIRECTORY config DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 install(DIRECTORY test DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION} USE_SOURCE_PERMISSIONS)
 
+catkin_install_python(PROGRAMS script/sample_nxo_moveit.py # test/test_moveit.py should already be installed by install macro
+                      DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+                      
 # installing .desktop into ~/Desktop
 set(SETUP_DIRECTORY $ENV{XDG_DESKTOP_DIR})
 if ("${SETUP_DIRECTORY}" STREQUAL "")

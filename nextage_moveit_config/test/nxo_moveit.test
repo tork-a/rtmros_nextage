@@ -11,7 +11,6 @@
     <arg name="CORBAPORT" value="$(arg corbaport)" />
     <arg name="GUI" value="$(arg GUI)" />
   </include>
-  <!-- -->
 
   <!-- follow the tutorials on  http://wiki.ros.org/rtmros_nextage/Tutorials/Programming_Hiro_NEXTAGE_OPEN_GUI
        moveit_planning_execution.launch starts rviz so we run launch files except moviet_rviz.launch -->
@@ -22,7 +21,6 @@
   <include file="$(find nextage_moveit_config)/launch/planning_context.launch">
     <arg name="load_robot_description" value="true"/>
   </include>
-  <!-- -->
 
   <!-- Check if MoveGroup is running -->
   <arg name='TESTNAME_MG_STATUS' value='test_move_group' />
@@ -34,7 +32,7 @@
     <param name="wait_time" value="15.0" />
   </test>  
   
-  <test pkg="nextage_moveit_config" type="test_moveit.py" test-name="nxo_moveit"
+  <test pkg="nextage_moveit_config" type="test_moveit.py" test-name="nxo_moveit_groups"
         time-limit="300"
         args="" />
          

@@ -3,7 +3,7 @@
 
 # Software License Agreement (BSD License)
 #
-# Copyright (c) 2015, TORK (Tokyo Opensource Robotics Kyokai Association) 
+# Copyright (c) 2015, TORK (Tokyo Opensource Robotics Kyokai Association)
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -17,8 +17,8 @@
 #    disclaimer in the documentation and/or other materials provided
 #    with the distribution.
 #  * Neither the name of Tokyo Opensource Robotics Kyokai Association
-#    nor the names of its contributors may be used to endorse or promote 
-#    products derived from this software without specific prior written 
+#    nor the names of its contributors may be used to endorse or promote
+#    products derived from this software without specific prior written
 #    permission.
 #
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
@@ -38,9 +38,6 @@
 
 import unittest
 
-from geometry_msgs.msg import Pose
-from moveit_commander import MoveGroupCommander, MoveItCommanderException, RobotCommander
-from moveit_msgs.msg import RobotTrajectory
 import rospy
 
 from sample_moveit import SampleMoveitCommander
@@ -58,8 +55,7 @@ class TestDualarmMoveit(unittest.TestCase):
     @classmethod
     def setUpClass(self):
 
-        rospy.init_node('test_moveit')
-        rospy.sleep(5) # intentinally wait for starting up hrpsys
+        rospy.sleep(5)  # intentinally wait for starting up hrpsys
 
         self.robot = SampleMoveitCommander()
 

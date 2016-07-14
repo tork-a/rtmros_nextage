@@ -38,6 +38,7 @@
 import math
 
 from geometry_msgs.msg import Pose
+from moveit_commander import MoveGroupCommander
 import rospy
 from tf.transformations import quaternion_from_euler
 
@@ -253,3 +254,8 @@ class SampleMoveitCommander():
         pose_r_arbitrary_1.position.z = 0.0
 
         return self.sample_botharms_plango(pose_l_arbitrary_1, pose_r_arbitrary_1)
+
+    def run_samples_all(self):
+        methods = [method for method in dir(self) if callable(getattr(self, method)) and method.startswith('sample')]
+        for method in methods:
+            result = getattr(self, method)()
