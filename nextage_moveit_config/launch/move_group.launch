@@ -15,8 +15,10 @@
   <arg name="jiggle_fraction" default="0.05" />
   <arg name="publish_monitored_planning_scene" default="true"/>
 
+  <arg name="kinematics_conf_file" default="$(find nextage_moveit_config)/config/kinematics_kdl.yaml"/>
   <include ns="move_group" file="$(find nextage_moveit_config)/launch/planning_pipeline.launch">
     <arg name="pipeline" value="ompl" />
+    <arg name="kinematics_conf_file" value="$(arg kinematics_conf_file)"/>
   </include>
 
   <include ns="move_group" file="$(find nextage_moveit_config)/launch/trajectory_execution.launch" if="$(arg allow_trajectory_execution)">
