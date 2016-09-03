@@ -29,7 +29,7 @@
   <test pkg="rostest" type="hztest" test-name="$(arg TESTNAME_MG_STATUS)" name="$(arg TESTNAME_MG_STATUS)" time-limit="60">
     <param name="topic" value="/move_group/status" />
     <param name="hz" value="5.0" />
-    <param name="hzerror" value="0.25" />
+    <param name="hzerror" value="3.00" />
     <param name="test_duration" value="10.0" />
     <param name="wait_time" value="15.0" />
   </test>  

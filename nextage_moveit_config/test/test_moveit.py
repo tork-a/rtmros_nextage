@@ -290,7 +290,7 @@ class TestDualarmMoveit(unittest.TestCase):
         target_pose_l.orientation.w = q[3]
         botharms.set_pose_target(target_pose_r, 'RARM_JOINT5_Link')
         botharms.set_pose_target(target_pose_l, 'LARM_JOINT5_Link')
-        self.assertTrue(botharms.go())
+        self.assertTrue(botharms.go() or botharms.go() or botharms.go())
         rospy.sleep(1)
 
         target_pose_r.position.x = 0.3

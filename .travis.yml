@@ -44,3 +44,5 @@ script:
   - catkin run_tests
   # check test (this only works from indigo onward)
   - catkin_test_results build
+after_failure:
+  - catkin_test_results --verbose build
