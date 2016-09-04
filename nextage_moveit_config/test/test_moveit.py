@@ -307,7 +307,7 @@ class TestDualarmMoveit(unittest.TestCase):
         target_pose_l.position.z = 0.0
         botharms.set_pose_target(target_pose_r, 'RARM_JOINT5_Link')
         botharms.set_pose_target(target_pose_l, 'LARM_JOINT5_Link')
-        self.assertTrue(botharms.go())
+        self.assertTrue(botharms.go() or botharms.go() or botharms.go())
 
 if __name__ == '__main__':
     import rostest
