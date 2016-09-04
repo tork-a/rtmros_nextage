@@ -38,7 +38,7 @@
     <param name="hz" value="5.0" />
     <param name="hzerror" value="5.00" />
     <param name="test_duration" value="5.0" />
-    <param name="wait_time" value="10.0" />
+    <param name="wait_time" value="30.0" />
   </test>  
          
 </launch>
