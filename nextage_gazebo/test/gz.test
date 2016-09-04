@@ -7,4 +7,19 @@
 
   <arg name='TESTNAME_GZ' value='test_gz' />
   <test pkg="nextage_gazebo" type="test_nxo_gz.py" test-name="$(arg TESTNAME_GZ)" time-limit="300" retry="2" />
+
+  <!-- follow the tutorials on  http://wiki.ros.org/rtmros_nextage/Tutorials/Programming_Hiro_NEXTAGE_OPEN_GUI
+       moveit_planning_execution.launch starts rviz so we run launch files except moviet_rviz.launch -->
+  <!-- <include file="$(find nextage_moveit_config)/launch/moveit_planning_execution.launch"> -->
+  <include file="$(find nextage_moveit_config)/launch/move_group.launch">
+    <arg name="publish_monitored_planning_scene" value="true" />
+  </include>
+  <include file="$(find nextage_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="false"/>
+  </include>
+  <!-- -->
+
+  <test pkg="nextage_moveit_config" type="test_moveit.py" test-name="nxo_moveit"
+        time-limit="300"
+        args="" />
 </launch>

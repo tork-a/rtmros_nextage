@@ -129,5 +129,5 @@ install(DIRECTORY config launch model test
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
 
-add_rostest(test/gz.test)
-add_rostest(test/gz_moveit.test)
+add_rostest(test/gz.test) # important to have one gz.test files, becuase running gazebo parallely makes trouble on port settings
+
