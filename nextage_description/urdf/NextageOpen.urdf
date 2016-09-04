@@ -34,13 +34,6 @@
     </transmission>
   </xacro:macro>
 
-  <!-- Used for fixing robot to Gazebo 'base_link' -->
-  <link name="world"/>
-  <joint name="fixed" type="fixed">
-    <parent link="world"/>
-    <child link="WAIST"/>
-  </joint>
-
   <xacro:gazebo_nx_link name="WAIST" color="Black" />
   <link name="WAIST">
     <visual>
@@ -56,9 +49,9 @@
       </geometry>
     </collision>
     <inertial>
-      <mass value="30.0" />
+      <mass value="1000" />
       <origin xyz="0 0 0" rpy="0 -0 0"/>
-      <inertia ixx="0.0347318" ixy="5.78001e-06" ixz="-3.34135e-05" iyy="0.0347482" iyz="6.35727e-07" izz="0.00438238"/>
+      <inertia ixx="20" ixy="0" ixz="0" iyy="20" iyz="0" izz="20"/>
     </inertial>
   </link>
 
@@ -399,7 +392,7 @@
     <child  link="LARM_JOINT0_Link"/>
     <origin xyz="0 0.145 0.370296" rpy="-0.261799 0 0 "/>
     <axis   xyz="0 0 1"/>
-    <limit lower="-1.53589" upper="1.53589" effort="100" velocity="0.5" />
+    <limit lower="-1.53589" upper="1.53589" effort="150" velocity="0.5" />
     <dynamics damping="0.2" friction="0" />
   </joint>
   <xacro:transmission_nx_joint name="LARM_JOINT1" />
@@ -408,7 +401,7 @@
     <child  link="LARM_JOINT1_Link"/>
     <origin xyz="0 0 0" rpy="0 -0 0 "/>
     <axis   xyz="0 1 0"/>
-    <limit lower="-2.44346" upper="1.0472" effort="100" velocity="0.5" />
+    <limit lower="-2.44346" upper="1.0472" effort="200" velocity="0.5" />
     <dynamics damping="0.2" friction="0" />
   </joint>
   <xacro:transmission_nx_joint name="LARM_JOINT2" />
@@ -453,7 +446,7 @@
     <child  link="RARM_JOINT0_Link"/>
     <origin xyz="0 -0.145 0.370296" rpy="0.261799 -0 0 "/>
     <axis   xyz="0 0 1"/>
-    <limit lower="-1.53589" upper="1.53589" effort="100" velocity="0.5" />
+    <limit lower="-1.53589" upper="1.53589" effort="150" velocity="0.5" />
     <dynamics damping="0.2" friction="0" />
   </joint>
   <xacro:transmission_nx_joint name="RARM_JOINT1" />
@@ -462,7 +455,7 @@
     <child  link="RARM_JOINT1_Link"/>
     <origin xyz="0 0 0" rpy="0 -0 0 "/>
     <axis   xyz="0 1 0"/>
-    <limit lower="-2.44346" upper="1.0472" effort="100" velocity="0.5" />
+    <limit lower="-2.44346" upper="1.0472" effort="200" velocity="0.5" />
     <dynamics damping="0.2" friction="0" />
   </joint>
   <xacro:transmission_nx_joint name="RARM_JOINT2" />

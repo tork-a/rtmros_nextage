@@ -1,14 +1,25 @@
 <launch>
+  <arg name="gui" default="false" />
   <!-- moveit_joy.py requires /move_group -->
   <!-- follow the tutorials on  http://wiki.ros.org/rtmros_nextage/Tutorials/Programming_Hiro_NEXTAGE_OPEN_GUI
        moveit_planning_execution.launch starts rviz so we run launch files except moviet_rviz.launch -->
   <!-- <include file="$(find nextage_moveit_config)/launch/moveit_planning_execution.launch"> -->
  <arg name="kinematics_conf" default="$(find nextage_moveit_config)/config/kinematics_kdl.yaml" />
- <!-- for debug -->
- <!-- <include file="$(find nextage_moveit_config)/launch/moveit_rviz.launch"> -->
- <!--    <arg name="config" value="true"/> -->
- <!--    <arg name="kinematics_conf" value="$(arg kinematics_conf)"/> -->
- <!-- </include> -->
+  <!-- for debug -->
+  <group if="$(arg gui)" >
+    <include file="$(find nextage_moveit_config)/launch/moveit_rviz.launch" >
+      <arg name="config" value="true"/>
+      <arg name="kinematics_conf" value="$(arg kinematics_conf)"/>
+    </include>
+  </group>
+  <!-- -->
+  <node pkg="tf" type="static_transform_publisher" name="virtual_joint_broadcaster_0" args="0 0 0 0 0 0 world WAIST 100" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="/use_gui" value="false"/>
+  </node>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+
   <include file="$(find nextage_moveit_config)/launch/move_group.launch">
     <arg name="publish_monitored_planning_scene" value="true" />
   </include>
@@ -36,7 +47,7 @@
   <test pkg="rostest" type="hztest" test-name="$(arg TESTNAME_MOVEPLAN_JOY)" name="$(arg TESTNAME_MOVEPLAN_JOY)" time-limit="120" retry="3" >
     <param name="topic" value="/rviz/moveit/plan" />
     <param name="hz" value="5.0" />
-    <param name="hzerror" value="5.00" />
+    <param name="hzerror" value="4.00" />
     <param name="test_duration" value="5.0" />
     <param name="wait_time" value="30.0" />
   </test>  

@@ -116,6 +116,7 @@ install(PROGRAMS
 ## Mark other files for installation (e.g. launch and bag files, etc.)
 install(DIRECTORY config launch model test
    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+   USE_SOURCE_PERMISSIONS
 )
 
 #############
@@ -128,4 +129,5 @@ install(DIRECTORY config launch model test
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
 
-add_rostest(test/gz.test)
+add_rostest(test/gz.test) # important to have one gz.test files, becuase running gazebo parallely makes trouble on port settings
+
