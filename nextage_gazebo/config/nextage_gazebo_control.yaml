@@ -80,12 +80,12 @@ larm_controller:
     - LARM_JOINT5
   constraints:
     goal_time: 0.5                   # Override default
-    stopped_velocity_tolerance: 0.02 # Override default
+    stopped_velocity_tolerance: 0.50 # Override default
     LARM_JOINT0:
-      trajectory: 0.05               # Not enforced if unspecified
+      trajectory: 0.10               # Not enforced if unspecified
       goal: 0.02                     # Not enforced if unspecified
     LARM_JOINT1:
-      trajectory: 0.05               # Not enforced if unspecified
+      trajectory: 0.10               # Not enforced if unspecified
       goal: 0.02                     # Not enforced if unspecified
     LARM_JOINT2:
       trajectory: 0.05               # Not enforced if unspecified
@@ -101,9 +101,9 @@ larm_controller:
       goal: 0.02                     # Not enforced if unspecified
 
   gains: # Required because we're controlling an effort interface
-    LARM_JOINT0: {p: 1500, i: 5, d: 1}
-    LARM_JOINT1: {p: 1500, i: 5, d: 1}
-    LARM_JOINT2: {p: 1500, i: 5, d: 1}
+    LARM_JOINT0: {p: 5000, i: 5, d: 1}
+    LARM_JOINT1: {p: 10000, i: 5, d: 1}
+    LARM_JOINT2: {p: 5000, i: 5, d: 1}
     LARM_JOINT3: {p: 1500, i: 5, d: 1}
     LARM_JOINT4: {p: 1500, i: 5, d: 1}
     LARM_JOINT5: {p: 1500, i: 5, d: 1}
@@ -124,12 +124,12 @@ rarm_controller:
     - RARM_JOINT5
   constraints:
     goal_time: 0.5                   # Override default
-    stopped_velocity_tolerance: 0.02 # Override default
+    stopped_velocity_tolerance: 0.50 # Override default
     RARM_JOINT0:
-      trajectory: 0.05               # Not enforced if unspecified
+      trajectory: 0.10               # Not enforced if unspecified
       goal: 0.02                     # Not enforced if unspecified
     RARM_JOINT1:
-      trajectory: 0.05               # Not enforced if unspecified
+      trajectory: 0.10               # Not enforced if unspecified
       goal: 0.02                     # Not enforced if unspecified
     RARM_JOINT2:
       trajectory: 0.05               # Not enforced if unspecified
@@ -145,9 +145,9 @@ rarm_controller:
       goal: 0.02                     # Not enforced if unspecified
 
   gains: # Required because we're controlling an effort interface
-    RARM_JOINT0: {p: 1500, i: 5, d: 1}
-    RARM_JOINT1: {p: 1500, i: 5, d: 1}
-    RARM_JOINT2: {p: 1500, i: 5, d: 1}
+    RARM_JOINT0: {p: 5000, i: 5, d: 1}
+    RARM_JOINT1: {p: 10000, i: 5, d: 1}
+    RARM_JOINT2: {p: 5000, i: 5, d: 1}
     RARM_JOINT3: {p: 1500, i: 5, d: 1}
     RARM_JOINT4: {p: 1500, i: 5, d: 1}
     RARM_JOINT5: {p: 1500, i: 5, d: 1}
@@ -164,7 +164,7 @@ head_controller:
     - HEAD_JOINT1
   constraints:
     goal_time: 0.5                   # Override default
-    stopped_velocity_tolerance: 0.02 # Override default
+    stopped_velocity_tolerance: 0.50 # Override default
     HEAD_JOINT0:
       trajectory: 0.05               # Not enforced if unspecified
       goal: 0.02                     # Not enforced if unspecified
@@ -187,7 +187,7 @@ torso_controller:
     - CHEST_JOINT0
   constraints:
     goal_time: 0.5                   # Override default
-    stopped_velocity_tolerance: 0.02 # Override default
+    stopped_velocity_tolerance: 0.50 # Override default
     CHEST_JOINT0:
       trajectory: 0.05               # Not enforced if unspecified
       goal: 0.02                     # Not enforced if unspecified
