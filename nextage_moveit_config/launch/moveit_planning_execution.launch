@@ -6,6 +6,7 @@
  # and the current state of the world as seen by the planner.
  <include file="$(find nextage_moveit_config)/launch/move_group.launch">
   <arg name="publish_monitored_planning_scene" value="true" />
+  <arg name="kinematics_conf_file" value="$(arg kinematics_conf)"/>
  </include>
  # The visualization component of MoveIt!
  <include file="$(find nextage_moveit_config)/launch/moveit_rviz.launch"> 

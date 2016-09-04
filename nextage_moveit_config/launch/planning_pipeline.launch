@@ -4,7 +4,9 @@
        It is assumed that all planning pipelines are named XXX_planning_pipeline.launch  -->  
 
   <arg name="pipeline" default="ompl" />
+  <arg name="kinematics_conf_file" default="$(find nextage_moveit_config)/config/kinematics_kdl.yaml"/>
 
-  <include file="$(find nextage_moveit_config)/launch/$(arg pipeline)_planning_pipeline.launch" />
-
+  <include file="$(find nextage_moveit_config)/launch/$(arg pipeline)_planning_pipeline.launch">
+    <arg name="kinematics_conf_file" value="$(arg kinematics_conf_file)"/>
+  </include>
 </launch>
