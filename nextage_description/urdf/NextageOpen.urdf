@@ -401,7 +401,7 @@
     <child  link="LARM_JOINT1_Link"/>
     <origin xyz="0 0 0" rpy="0 -0 0 "/>
     <axis   xyz="0 1 0"/>
-    <limit lower="-2.44346" upper="1.0472" effort="100" velocity="0.5" />
+    <limit lower="-2.44346" upper="1.0472" effort="200" velocity="0.5" />
     <dynamics damping="0.2" friction="0" />
   </joint>
   <xacro:transmission_nx_joint name="LARM_JOINT2" />
@@ -455,7 +455,7 @@
     <child  link="RARM_JOINT1_Link"/>
     <origin xyz="0 0 0" rpy="0 -0 0 "/>
     <axis   xyz="0 1 0"/>
-    <limit lower="-2.44346" upper="1.0472" effort="100" velocity="0.5" />
+    <limit lower="-2.44346" upper="1.0472" effort="200" velocity="0.5" />
     <dynamics damping="0.2" friction="0" />
   </joint>
   <xacro:transmission_nx_joint name="RARM_JOINT2" />
