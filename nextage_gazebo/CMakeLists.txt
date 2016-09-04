@@ -129,3 +129,4 @@ install(DIRECTORY config launch model test
 # endif()
 
 add_rostest(test/gz.test)
+add_rostest(test/gz_moveit.test)
