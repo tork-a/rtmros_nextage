@@ -33,11 +33,11 @@
 
   <!-- Check if moveit_joy is running -->
   <arg name='TESTNAME_MOVEPLAN_JOY' value='hz_moveplan_joy' />
-  <test pkg="rostest" type="hztest" test-name="$(arg TESTNAME_MOVEPLAN_JOY)" name="$(arg TESTNAME_MOVEPLAN_JOY)" time-limit="60">
+  <test pkg="rostest" type="hztest" test-name="$(arg TESTNAME_MOVEPLAN_JOY)" name="$(arg TESTNAME_MOVEPLAN_JOY)" time-limit="120" retry="3" >
     <param name="topic" value="/rviz/moveit/plan" />
     <param name="hz" value="5.0" />
     <param name="hzerror" value="5.00" />
-    <param name="test_duration" value="1.0" />
+    <param name="test_duration" value="5.0" />
     <param name="wait_time" value="10.0" />
   </test>  
          
