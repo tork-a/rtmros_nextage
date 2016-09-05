@@ -4,7 +4,7 @@ project(nextage_ros_bridge)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS hironx_ros_bridge nextage_description roslint rostest)
+find_package(catkin REQUIRED COMPONENTS hironx_ros_bridge nextage_description roslint)
 
 catkin_python_setup()
 
@@ -38,12 +38,12 @@ message("hironx_ros_bridge_SOURCE_DIR => ${hironx_ros_bridge_SOURCE_DIR}")
 message("hironx_ros_bridge_SOURCE_PREFIX => ${hironx_ros_bridge_SOURCE_PREFIX}")
 message("hironx_ros_bridge_PREFIX => ${hironx_ros_bridge_PREFIX}")
 
-if(NOT EXISTS ${hironx_ros_bridge_SOURCE_DIR}/conf)
-  if (EXISTS ${hironx_ros_bridge_SOURCE_PREFIX}/conf)
+if(NOT EXISTS "${hironx_ros_bridge_SOURCE_DIR}/conf")
+  if (EXISTS "${hironx_ros_bridge_SOURCE_PREFIX}/conf")
     set(hironx_ros_bridge_SOURCE_DIR ${hironx_ros_bridge_SOURCE_PREFIX})
-  else(EXISTS ${hironx_ros_bridge_SOURCE_PREFIX}/conf)
+  else()
     set(hironx_ros_bridge_SOURCE_DIR ${hironx_ros_bridge_PREFIX}/share/hironx_ros_bridge)
-  endif(EXISTS ${hironx_ros_bridge_SOURCE_PREFIX}/conf)
+  endif()
 endif()
 
 file(MAKE_DIRECTORY conf)
@@ -65,12 +65,12 @@ add_custom_target(${PROJECT_NAME}_model_files ALL DEPENDS ${PROJECT_SOURCE_DIR}/
 
 #compile_openhrp_model(${nextage_description_SOURCE_DIR}/models/main.wrl)
 message("++ nextage_description/models/main.dae -> ${nextage_description_SOURCE_DIR}/models/main.dae")
-if(NOT EXISTS ${nextage_description_SOURCE_DIR}/models/main.dae)
-  if(EXISTS ${nextage_description_SOURCE_PREFIX}/models/main.dae)
+if(NOT EXISTS "${nextage_description_SOURCE_DIR}/models/main.dae")
+  if(EXISTS "${nextage_description_SOURCE_PREFIX}/models/main.dae")
     set(nextage_description_SOURCE_DIR ${nextage_description_SOURCE_PREFIX})
-  else(EXISTS ${nextage_description_SOURCE_PREFIX}/models/main.dae)
+  else()
     set(nextage_description_SOURCE_DIR ${nextage_description_PREFIX}/share/nextage_description)
-  endif(EXISTS ${nextage_description_SOURCE_PREFIX}/models/main.dae)
+  endif()
 endif()
 add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae
   COMMAND ${CMAKE_COMMAND} -E copy ${nextage_description_SOURCE_DIR}/models/main.dae ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae
@@ -139,4 +139,7 @@ install(DIRECTORY test
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   USE_SOURCE_PERMISSIONS)
 
-add_rostest(test/nxo.test)
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  add_rostest(test/nxo.test)
+endif()
