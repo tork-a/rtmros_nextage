@@ -53,7 +53,15 @@ configure_file(${hironx_ros_bridge_SOURCE_DIR}/conf/xml.in                      
 configure_file(${hironx_ros_bridge_SOURCE_DIR}/conf/nosim.xml.in                ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.xml)
 configure_file(${hironx_ros_bridge_SOURCE_DIR}/conf/conf.in                     ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.conf)
 configure_file(${hironx_ros_bridge_SOURCE_DIR}/conf/nosim.conf.in               ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.conf)
-add_custom_target(${PROJECT_NAME}_model_files ALL DEPENDS ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.RobotHardware.conf ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.RobotHardware.conf ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.xml ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.xml ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.conf ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.conf)
+add_custom_target(${PROJECT_NAME}_model_files ALL DEPENDS ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.RobotHardware.conf ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.RobotHardware.conf ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.xml ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.xml ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.conf ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.conf
+  COMMAND sed -i 's@property name="WAIST.translation" value="0  0  -0.1"@property name="WAIST.translation" value="0  0  -1.03"@' ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.xml
+  COMMAND sed -i 's@property name="WAIST.translation" value="0  0  -0.1"@property name="WAIST.translation" value="0  0  -1.03"@' ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.xml
+  COMMAND sed -i 's@property name="eyeHomePosition" value="-0.70711 -0 0.70711 2 0.70711 -0 0.70711 2 0 1 0 0.8 0 0 0 1 "@property name="eyeHomePosition" value="-0.707107 -0.183013 0.683013 2 0.707107 -0.183013 0.683013 2 0 0.965926 0.258819 0.8 "@' ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.xml
+  COMMAND sed -i 's@property name="eyeHomePosition" value="-0.70711 -0 0.70711 2 0.70711 -0 0.70711 2 0 1 0 0.8 0 0 0 1 "@property name="eyeHomePosition" value="-0.707107 -0.183013 0.683013 2 0.707107 -0.183013 0.683013 2 0 0.965926 0.258819 0.8 "@' ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.xml
+  COMMAND sed -i 's@property name="showScale" value="true"@property name="showScale" value="false"@' ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}.xml
+  COMMAND sed -i 's@property name="showScale" value="true"@property name="showScale" value="false"@' ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.xml
+  )
+
 
 #compile_openhrp_model(${nextage_description_SOURCE_DIR}/models/main.wrl)
 message("++ nextage_description/models/main.dae -> ${nextage_description_SOURCE_DIR}/models/main.dae")
