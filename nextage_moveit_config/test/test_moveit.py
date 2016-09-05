@@ -237,7 +237,7 @@ class TestDualarmMoveit(unittest.TestCase):
         rarm.set_pose_target(target_pose_r)
 
         print "=" * 10," plan1 ..."
-        self.assertTrue(rarm.go())
+        self.assertTrue(rarm.go() or rarm.go() or rarm.go())
         rospy.sleep(1)
 
         target_pose_l = [
@@ -252,7 +252,7 @@ class TestDualarmMoveit(unittest.TestCase):
         larm.set_pose_target(target_pose_l)
 
         print "=" * 10," plan2 ..."
-        self.assertTrue(larm.go())
+        self.assertTrue(larm.go() or larm.go() or larm.go())
         rospy.sleep(1)
 
         #Clear pose
@@ -269,14 +269,14 @@ class TestDualarmMoveit(unittest.TestCase):
         rarm.set_pose_target(target_pose_r)
 
         print "=" * 10, " plan3..."
-        self.assertTrue(rarm.go())
+        self.assertTrue(rarm.go() or rarm.go() or rarm.go())
         rospy.sleep(1)
 
         print "=" * 10,"Initial pose ..."
         rarm.set_pose_target(rarm_initial_pose)
         larm.set_pose_target(larm_initial_pose)
-        self.assertTrue(rarm.go())
-        self.assertTrue(larm.go())
+        self.assertTrue(rarm.go() or rarm.go() or rarm.go())
+        self.assertTrue(larm.go() or larm.go() or larm.go())
 
     def test_botharms_plan(self):
         botharms = self._MOVEGROUP_ATTR_BOTHARMS[2]
