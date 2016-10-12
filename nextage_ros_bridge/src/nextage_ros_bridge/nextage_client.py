@@ -80,7 +80,7 @@ class NextageClient(HIRONX, object):
         '''
         if rospy.has_param('/gazebo'):
             self.use_gazebo = True
-            print("\033[32m[INFO] Assming Gazebo Siulator, so do not connect to CORBA systmes\033[0m")
+            print("\033[32m[INFO] Assuming Gazebo Simulator, so do not connect to CORBA systmes\033[0m")
 
         if not self.use_gazebo:
             super(NextageClient, self).__init__()
