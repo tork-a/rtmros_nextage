@@ -78,9 +78,16 @@ class NextageClient(HIRONX, object):
         'init' (without trailing underscores) that is succeeded from the
         super class as the tradition there.
         '''
-        if rospy.has_param('/gazebo'):
-            self.use_gazebo = True
-            print("\033[32m[INFO] Assming Gazebo Siulator, so do not connect to CORBA systmes\033[0m")
+        try:
+            if rospy.has_param('/gazebo'):
+                self.use_gazebo = True
+                print("\033[32m[INFO] Assuming Gazebo Simulator, so do not connect to CORBA systmes\033[0m")
+        # When there's no ros master running, underlining code,
+        # socket.create_connection more specifically, returns the simplest
+        # 'error' that is hard to be explicitly caught at exception block.
+        # See https://github.com/tork-a/rtmros_nextage/issues/262#issue-182487549
+        except:
+            print("ROS Master not found running. If you intended to use it (either for rosbridge or for Gazebo purposes, make sure you run necessary nodes.")
 
         if not self.use_gazebo:
             super(NextageClient, self).__init__()
