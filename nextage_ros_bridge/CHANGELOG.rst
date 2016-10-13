@@ -2,6 +2,14 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [fix][nxo client] `#262 <https://github.com/tork-a/rtmros_nextage/issues/262>`_ by catching error when ros master is not running
+* [fix] nextage_clinet with gazebo under no rtm environment.
+* [capability] Activate ImpedanceController RTC. `#261 <https://github.com/tork-a/rtmros_nextage/issues/261>`_
+* [improve] better initial hrpsys view
+* Contributors: Kei Okada, Isaac I.Y. Saito
+
 0.7.8 (2016-07-01)
 ------------------
 

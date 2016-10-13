@@ -2,6 +2,16 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [fix] test_moveit.py is very unstalble, run go 3 times
+* [fix] NextageROS.desktop.in : now rtmlaunch is installed in global bin
+* [fix][test] Better utilization of tests. test/test_moveit.py : botharms.go is very unstable
+* [fix][joy.test] fix again, it seems they did not publish joint state publisher, so question is why it passed the test?
+* [fix] remove torso from group, that outputs "Group 'torso' is not a chain" ERROR
+* [fix] kinematics_ikfast.yaml : no ik fast plugin for head and torso
+* Contributors: Kei Okada
+
 0.7.8 (2016-07-01)
 ------------------
 * [feat] Add joystick launch (https://groups.google.com/d/msg/moveit-users/lbUwNqiMuP8/DZX2Fn0EAQAJ).

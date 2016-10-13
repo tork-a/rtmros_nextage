@@ -2,6 +2,27 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [fix][nxo client] `#262 <https://github.com/tork-a/rtmros_nextage/issues/262>`_ by catching error when ros master is not running
+* [fix] nextage_clinet with gazebo under no rtm environment.
+* [fix] test_moveit.py is very unstalble, run go 3 times
+* [fix] NextageROS.desktop.in : now rtmlaunch is installed in global bin
+* [fix][test] Better utilization of tests. test/test_moveit.py : botharms.go is very unstable
+* [fix][joy.test] fix again, it seems they did not publish joint state publisher, so question is why it passed the test?
+* [fix] remove torso from group, that outputs "Group 'torso' is not a chain" ERROR
+* [fix] kinematics_ikfast.yaml : no ik fast plugin for head and torso
+* [fix][test] gz.test must be one file to avoid collsion on gazebo master uri
+* [fix] Missing installation
+* [fix] : test/test_nxo_gz.py, because of changeing contorller parameter?
+* [fix] do not have to fix /WAIST to /world, if you want run static_transform_publisher, see `#235 <https://github.com/tork-a/rtmros_nextage/issues/235>`_
+* [capability] Activate ImpedanceController RTC. `#261 <https://github.com/tork-a/rtmros_nextage/issues/261>`_
+* [improve] better initial hrpsys view
+* [improve] tune pid parameter for gazebo
+* [improve] set ARM_JOINT0 max effor to 150, ARM_JOINT1 max effor to 200, may be this is larget than real robot
+* [improve] set mass of base link to super heavy
+* Contributors: Kei Okada, Isaac I.Y. Saito
+
 0.7.8 (2016-07-01)
 ------------------
 * [feat] Add joystick launch (https://groups.google.com/d/msg/moveit-users/lbUwNqiMuP8/DZX2Fn0EAQAJ).

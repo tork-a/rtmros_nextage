@@ -2,6 +2,14 @@
 Changelog for package nextage_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [fix][test] gz.test must be one file to avoid collsion on gazebo master uri
+* [fix] Missing installation
+* [fix] : test/test_nxo_gz.py, because of changeing contorller parameter?
+* [improve] tune pid parameter for gazebo
+* Contributors: Kei Okada
+
 0.7.8 (2016-07-01)
 ------------------
 
