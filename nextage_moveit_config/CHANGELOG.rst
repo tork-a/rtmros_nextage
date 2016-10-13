@@ -2,8 +2,8 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.7.9 (2016-10-13)
+------------------
 * [fix] test_moveit.py is very unstalble, run go 3 times
 * [fix] NextageROS.desktop.in : now rtmlaunch is installed in global bin
 * [fix][test] Better utilization of tests. test/test_moveit.py : botharms.go is very unstable

@@ -2,8 +2,8 @@
 Changelog for package nextage_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.7.9 (2016-10-13)
+------------------
 * [fix] do not have to fix /WAIST to /world, if you want run static_transform_publisher, see `#235 <https://github.com/tork-a/rtmros_nextage/issues/235>`_
 * [improve] set ARM_JOINT0 max effor to 150, ARM_JOINT1 max effor to 200, may be this is larget than real robot
 * [improve] set mass of base link to super heavy

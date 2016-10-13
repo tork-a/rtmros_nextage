@@ -2,8 +2,8 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.7.9 (2016-10-13)
+------------------
 * [fix][nxo client] `#262 <https://github.com/tork-a/rtmros_nextage/issues/262>`_ by catching error when ros master is not running
 * [fix] nextage_clinet with gazebo under no rtm environment.
 * [capability] Activate ImpedanceController RTC. `#261 <https://github.com/tork-a/rtmros_nextage/issues/261>`_
