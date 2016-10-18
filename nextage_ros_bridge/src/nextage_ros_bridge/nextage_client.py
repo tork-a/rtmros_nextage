@@ -330,20 +330,18 @@ class NextageClient(HIRONX, object):
         '''
         Overwriting HrpsysConfigurator.getRTCList
         Returning predefined list of RT components.
+
+        As of March 2016, this method internally calls HIRONX.getRTCList() and
+        returns what it returns. Although we could simply remove this method
+        from NextageClient, we still keep it; it'd be easier
+        to modify an existing method than to add a new overridden method,
+        in case we might want to define RTC return list differently from HIRONX.
+
         @rtype [[str]]
         @rerutrn List of available components. Each element consists of a list
                  of abbreviated and full names of the component.
         '''
-        return [
-            ['seq', "SequencePlayer"],
-            ['sh', "StateHolder"],
-            ['fk', "ForwardKinematics"],
-            ['el', "SoftErrorLimiter"],
-            # ['co', "CollisionDetector"],
-            # ['sc', "ServoController"],
-            ['ic', "ImpedanceController"],
-            ['log', "DataLogger"]
-            ]
+        return HIRONX.getRTCList(self)
 
     def goInitial(self, tm=7, wait=True, init_pose_type=0):
         '''
