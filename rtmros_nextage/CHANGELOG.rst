@@ -2,8 +2,8 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.7.10 (2016-10-19)
+-------------------
 * [improve] getRTCList now inherits the behavior from the super class, HIRONX, to avoid duplicate.
 * [improve] moderate Interactive Marker size.
 * Contributors: Isaac I.Y. Saito

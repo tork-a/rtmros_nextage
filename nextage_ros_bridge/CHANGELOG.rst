@@ -2,8 +2,8 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.7.10 (2016-10-19)
+-------------------
 * [improve] getRTCList now inherits the behavior from the super class, HIRONX, to avoid duplicate.
 * Contributors: Isaac I.Y. Saito
 
