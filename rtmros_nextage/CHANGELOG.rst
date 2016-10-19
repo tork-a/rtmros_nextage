@@ -2,6 +2,12 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [improve] getRTCList now inherits the behavior from the super class, HIRONX, to avoid duplicate.
+* [improve] moderate Interactive Marker size.
+* Contributors: Isaac I.Y. Saito
+
 0.7.9 (2016-10-13)
 ------------------
 * [fix][nxo client] `#262 <https://github.com/tork-a/rtmros_nextage/issues/262>`_ by catching error when ros master is not running

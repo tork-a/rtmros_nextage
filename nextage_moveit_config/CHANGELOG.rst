@@ -2,6 +2,11 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [improve] moderate Interactive Marker size.
+* Contributors: Isaac I.Y. Saito
+
 0.7.9 (2016-10-13)
 ------------------
 * [fix] test_moveit.py is very unstalble, run go 3 times

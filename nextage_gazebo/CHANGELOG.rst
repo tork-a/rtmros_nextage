@@ -2,6 +2,9 @@
 Changelog for package nextage_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.7.9 (2016-10-13)
 ------------------
 * [fix][test] gz.test must be one file to avoid collsion on gazebo master uri

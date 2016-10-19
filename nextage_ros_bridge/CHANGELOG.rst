@@ -2,6 +2,11 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [improve] getRTCList now inherits the behavior from the super class, HIRONX, to avoid duplicate.
+* Contributors: Isaac I.Y. Saito
+
 0.7.9 (2016-10-13)
 ------------------
 * [fix][nxo client] `#262 <https://github.com/tork-a/rtmros_nextage/issues/262>`_ by catching error when ros master is not running
