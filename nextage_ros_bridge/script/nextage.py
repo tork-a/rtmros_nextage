@@ -59,7 +59,7 @@ if __name__ == '__main__':
     if not args.robot:
         args.robot = "RobotHardware0" if args.host else "HiroNX(Robot)0"
     if not args.modelfile:
-        args.modelfile = ""
+        args.modelfile = "/opt/jsk/etc/NEXTAGE/model/main.wrl" if args.host else "" 
 
     # support old style format
     if len(unknown) >= 2:

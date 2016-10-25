@@ -338,7 +338,7 @@ class NextageClient(HIRONX, object):
         in case we might want to define RTC return list differently from HIRONX.
 
         @rtype [[str]]
-        @rerutrn List of available components. Each element consists of a list
+        @return List of available components. Each element consists of a list
                  of abbreviated and full names of the component.
         '''
         return HIRONX.getRTCList(self)
