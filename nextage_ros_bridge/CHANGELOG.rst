@@ -2,8 +2,8 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.7.11 (2016-11-05)
+-------------------
 * [improve][nextage.py] Setting default model file location for the real robot so that you'll never need to pass arg from commandline.
 * [improve] Add convenient launch file for NXO with hrpsys older than 315.2.7 (related: https://github.com/tork-a/rtmros_nextage/issues/153).
 * Contributors: Isaac I.Y. Saito
