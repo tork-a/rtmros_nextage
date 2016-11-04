@@ -1,0 +1,12 @@
+<launch>
+  <arg name="COLLADA_FILE" default="$(find nextage_description)/models/main.dae" /> 
+  <arg name="CONF_FILE_COLLISIONDETECT" default="$(find nextage_ros_bridge)/conf/realrobot_fixedpath.conf" />
+  <arg name="corbaport" default="15005" />
+  <arg name="MODEL_FILE" default="/opt/jsk/etc/HIRONX/model/main.wrl" /> <!-- This MUST NOT be changed. -->
+  <arg name="nameserver" default="nextage" /> <!-- Host name of the QNX. -->
+  <arg name="USE_SERVOCONTROLLER" default="false" />
+
+  <env name="RTCTREE_NAMESERVERS" value="$(arg nameserver):$(arg corbaport)" />
+
+  <include file="$(find nextage_ros_bridge)/launch/nextage_ros_bridge_real.launch" pass_all_args="true" />
+</launch>
