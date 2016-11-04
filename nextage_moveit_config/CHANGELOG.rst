@@ -2,6 +2,9 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.7.10 (2016-10-19)
 -------------------
 * [improve] moderate Interactive Marker size.

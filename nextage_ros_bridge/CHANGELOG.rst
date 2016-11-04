@@ -2,6 +2,12 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [improve][nextage.py] Setting default model file location for the real robot so that you'll never need to pass arg from commandline.
+* [improve] Add convenient launch file for NXO with hrpsys older than 315.2.7 (related: https://github.com/tork-a/rtmros_nextage/issues/153).
+* Contributors: Isaac I.Y. Saito
+
 0.7.10 (2016-10-19)
 -------------------
 * [improve] getRTCList now inherits the behavior from the super class, HIRONX, to avoid duplicate.
