@@ -50,7 +50,7 @@ class TestNxoAirhand(unittest.TestCase):
     Test NextageClient with rostest. This does NOT test hardware (i.e. if DIO
     is connected and functioning); instead, this only verifies if the
     software works as to the given hardware spec.
-    
+
     For tests involving hardware, follow
     https://github.com/start-jsk/rtmros_hironx/issues/272.
     '''

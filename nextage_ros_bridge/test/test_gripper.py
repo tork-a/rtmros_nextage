@@ -50,7 +50,7 @@ class TestNxoGripper(unittest.TestCase):
     Test NextageClient with rostest. This does NOT test hardware (i.e. if DIO
     is connected and functioning); instead, this only verifies if the
     software works as to the given hardware spec.
-    
+
     For tests involving hardware, follow
     https://github.com/start-jsk/rtmros_hironx/issues/272.
     '''
@@ -79,7 +79,7 @@ class TestNxoGripper(unittest.TestCase):
 
     def test_gripper_l_open(self):
         result = self._robot._hands.gripper_l_open()
-        result = self._robot_04.gripper_l_open() and result 
+        result = self._robot_04.gripper_l_open() and result
         self.assertTrue(result)
 
     def test_gripper_r_open(self):
