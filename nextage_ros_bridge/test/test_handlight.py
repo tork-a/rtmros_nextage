@@ -50,14 +50,14 @@ class TestNxoHandlight(unittest.TestCase):
     Test NextageClient with rostest. This does NOT test hardware (i.e. if DIO
     is connected and functioning); instead, this only verifies if the
     software works as to the given hardware spec.
-    
+
     For tests involving hardware, follow
     https://github.com/start-jsk/rtmros_hironx/issues/272.
     '''
 
     @classmethod
     def setUpClass(cls):
-        cls._robot = nextage_client.NextageClient()
+        cls._robot = nextage_client.NextageClient()  # Latest (v0.5 or newer)
         cls._robot.init()
         cls._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
 
@@ -70,13 +70,14 @@ class TestNxoHandlight(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
-        cls._robot_04.goInitial(_GOINITIAL_TIME_MIDSPEED)        
+        cls._robot_04.goInitial(_GOINITIAL_TIME_MIDSPEED)
 
     # On simulator, return of DIO methods should fail no matter what
     # argument is passed. So assertFalse doesn't do much...it works
     # to verify that the tested methods "run without error".
-            
-    def test_handlight_r_02(self):
+
+    def test_handlight_r_05(self):
+        '''Testing software version 0.5 or newer'''
         if self._robot.simulation_mode:
             result = self._robot._hands.handlight_r(is_on=False)
             self.assertTrue(result)
@@ -92,7 +93,8 @@ class TestNxoHandlight(unittest.TestCase):
             result = self._robot_04.handlight_r(is_on=True)
             self.assertTrue(result)
 
-    def test_handlight_l_02(self):
+    def test_handlight_l_05(self):
+        '''Testing software version 0.5 or newer'''
         if self._robot.simulation_mode:
             result = self._robot._hands.handlight_l(is_on=False)
             self.assertFalse(result)
@@ -108,7 +110,8 @@ class TestNxoHandlight(unittest.TestCase):
             result = self._robot_04.handlight_l(is_on=True)
             self.assertTrue(result)
 
-    def test_handlight_both_02(self):
+    def test_handlight_both_05(self):
+        '''Testing software version 0.5 or newer'''
         if self._robot.simulation_mode:
             # Check if checking false works.
             result = self._robot._hands.handlight_both(is_on=False)

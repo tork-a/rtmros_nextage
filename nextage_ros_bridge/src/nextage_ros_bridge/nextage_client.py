@@ -130,7 +130,7 @@ class NextageClient(HIRONX, object):
         @param name_method: Name of the method that calls this method if available.
         '''
         rospy.logerr("You're likely to have called a deprecated method." +
-                     " Use self._hands.%S instead", name_method)
+                     " Use self._hands.{} instead".format(name_method))
 
     def handlight_r(self, is_on=True):
         '''
