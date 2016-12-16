@@ -40,7 +40,7 @@ import unittest
 
 import rospy
 
-from sample_moveit import SampleMoveitCommander
+from nextage_moveit_config.sample_moveit import SampleMoveitCommander
 
 
 class TestDualarmMoveit(unittest.TestCase):
