@@ -3,29 +3,10 @@
 	<asset>
 		<contributor>
 			<authoring_tool>OpenHRP3 Collada Writer</authoring_tool>
-			<comments>openhrp3/export-collada -i main.wrl -o main.dae </comments>
+			<comments>/opt/ros/indigo/lib/openhrp3/export-collada -i main.wrl -o main.dae </comments>
 		</contributor>
-		<created>2013-10-26T13:54:38.000000</created>
-		<modified>2013-10-26T13:54:38.000000</modified>
-                <copyright>
-Copyright (c) 2013, Kawada Robotics Corp., Kawada Industries, Inc. All rights reserved.
-
-1) Copy, packaging, redistribution of 3D model as is, are exploited without permission
-
-2) Redistoribution of modified or derivative work, is not exploited without permission of copyright holder
-
-THIS 3D MODEL IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-                </copyright>
+		<created>2016-12-24T16:09:26.000000</created>
+		<modified>2016-12-24T16:09:26.000000</modified>
 		<unit/>
 		<up_axis>Z_UP</up_axis>
 	</asset>
@@ -6424,6 +6405,26 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 					</frame_origin>
 				</technique>
 			</extra>
+			<extra name="CAMERA_HAND_R" type="attach_sensor">
+				<technique profile="OpenRAVE">
+					<instance_sensor url="#sensor3"/>
+					<frame_origin link="kmodel1/link9">
+						<translate>-0.07000000000000001 0 -0.08</translate>
+						<rotate>-0.1294279597735375 0.9831056944488314 -0.1294279597735375 90.97595758425751</rotate>
+						<rotate>1 0 0 180</rotate>
+					</frame_origin>
+				</technique>
+			</extra>
+			<extra name="CAMERA_HAND_L" type="attach_sensor">
+				<technique profile="OpenRAVE">
+					<instance_sensor url="#sensor4"/>
+					<frame_origin link="kmodel1/link15">
+						<translate>-0.07000000000000001 0 -0.08</translate>
+						<rotate>0.1294279597735375 0.9831056944488314 0.1294279597735375 90.97595758425751</rotate>
+						<rotate>1 0 0 180</rotate>
+					</frame_origin>
+				</technique>
+			</extra>
 			<extra name="WAIST" type="attach_actuator">
 				<technique profile="OpenRAVE">
 					<instance_actuator url="#actuator1"/>
@@ -7020,9 +7021,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 					<mass>0</mass>
 					<mass_frame>
 						<translate>0 0 0</translate>
-						<rotate>0.6277011112753175 0.4594848282686442 -0.6283828510507478 130.6929762223485</rotate>
+						<rotate>0.6277011112753679 0.4594848282685087 -0.6283828510507963 130.6929762223613</rotate>
 					</mass_frame>
-					<inertia>0.004382343185677796 0.0347299977963848 0.03474999901793741</inertia>
+					<inertia>0.0043823431856778 0.0347299977963848 0.0347499990179374</inertia>
 					<shape>
 						<instance_geometry url="#g1_0_geom0"/>
 						<translate>0 0 0.97</translate>
@@ -7067,9 +7068,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						<translate>0 0 0</translate>
 						<rotate>0 0 1 0</rotate>
 						<translate>0 0 0</translate>
-						<rotate>0.9999859299348262 -0.003471561449766394 0.004011009035346545 179.8009452111606</rotate>
+						<rotate>0.9999859299348262 -0.003471561449766387 0.004011009035346542 179.8009452111606</rotate>
 					</mass_frame>
-					<inertia>0.06395999980594821 0.03108269815004685 0.050110002044005</inertia>
+					<inertia>0.06395999980594821 0.03108269815004682 0.05011000204400499</inertia>
 					<shape>
 						<instance_geometry url="#g1_1_geom0"/>
 						<translate>0 0 0.97</translate>
@@ -7243,7 +7244,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						<translate>0 0 0.5695</translate>
 						<rotate>0 0 1 0</rotate>
 						<translate>-2.292e-05 0.00547848 -0.007840160000000001</translate>
-						<rotate>0.001861754358221269 -0.7529033031590012 0.6581285208551403 179.8061196434085</rotate>
+						<rotate>0.001861754358221269 -0.7529033031590011 0.6581285208551403 179.8061196434085</rotate>
 					</mass_frame>
 					<inertia>0.0002768216667357223 0.0002110119029032075 0.00012861643036107</inertia>
 					<shape>
@@ -7303,7 +7304,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						<translate>0 0 0</translate>
 						<rotate>0 1 0 0</rotate>
 						<translate>5.02e-06 -0.01667768 0.01631533</translate>
-						<rotate>0.9999943707446832 -0.002589875394667328 -0.002133313006834333 17.63190455859039</rotate>
+						<rotate>0.9999943707446832 -0.002589875394667327 -0.002133313006834316 17.63190455859039</rotate>
 					</mass_frame>
 					<inertia>8.07000230354499e-05 2.619129381280191e-05 7.042868315174815e-05</inertia>
 					<shape>
@@ -7408,7 +7409,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						<translate>0 -0.145 0.370296</translate>
 						<rotate>1 0 0 14.99997778074544</rotate>
 						<translate>-0.00226388 0.00521383 0.01560807</translate>
-						<rotate>-0.8029974238945446 0.5947130179723155 -0.03887883065352336 172.329254872712</rotate>
+						<rotate>-0.8029974238945445 0.5947130179723157 -0.03887883065352342 172.329254872712</rotate>
 					</mass_frame>
 					<inertia>0.002438306781506304 0.002055629887167789 0.001403503331325911</inertia>
 					<shape>
@@ -7512,9 +7513,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						<translate>0 0 0</translate>
 						<rotate>0 0 1 0</rotate>
 						<translate>-5.236e-05 -0.05831338 -0.10706059</translate>
-						<rotate>0.5443907610196465 -0.547071814281057 0.6358860977688402 114.9291256834413</rotate>
+						<rotate>0.5443907610196466 -0.5470718142810567 0.6358860977688403 114.9291256834414</rotate>
 					</mass_frame>
-					<inertia>0.0009342690767806944 0.01541678680416239 0.01504322411905692</inertia>
+					<inertia>0.0009342690767806926 0.01541678680416238 0.01504322411905692</inertia>
 					<shape>
 						<instance_geometry url="#g1_5_geom0"/>
 						<translate>0 0 0.97</translate>
@@ -7582,9 +7583,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						<translate>0 -0.095 -0.25</translate>
 						<rotate>0 0 1 0</rotate>
 						<translate>-2.254e-05 -0.00167107 -0.07151163000000001</translate>
-						<rotate>-0.560237717203337 -0.573780362363676 -0.5974192798936124 117.3109794820537</rotate>
+						<rotate>-0.5602377172033368 -0.5737803623636767 -0.5974192798936121 117.3109794820537</rotate>
 					</mass_frame>
-					<inertia>0.0001924892818221113 0.001439669172682298 0.001422331545495591</inertia>
+					<inertia>0.0001924892818221116 0.001439669172682298 0.001422331545495591</inertia>
 					<shape>
 						<instance_geometry url="#g1_6_geom0"/>
 						<translate>0 0 0.97</translate>
@@ -7784,9 +7785,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						<translate>0 0 -0.235</translate>
 						<rotate>0 0 1 0</rotate>
 						<translate>0.00243131 -0.00379733 -0.05770359</translate>
-						<rotate>0.5813623967310788 -0.6354425033298285 0.5081639387333742 122.8133322419153</rotate>
+						<rotate>0.5813623967310789 -0.6354425033298285 0.5081639387333742 122.8133322419153</rotate>
 					</mass_frame>
-					<inertia>0.0001321294905513025 0.0005203704967530646 0.0005133900126956322</inertia>
+					<inertia>0.0001321294905513026 0.0005203704967530648 0.0005133900126956324</inertia>
 					<shape>
 						<instance_geometry url="#g1_8_geom0"/>
 						<translate>0 0 0.97</translate>
@@ -7903,9 +7904,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						<translate>-0.047 0 -0.09</translate>
 						<rotate>0 0 1 0</rotate>
 						<translate>-0.04847597 3.2e-06 -0.03889875</translate>
-						<rotate>-0.6714863088941908 -0.5244412537426537 -0.5235145731882628 112.1530396484887</rotate>
+						<rotate>-0.6714863088941907 -0.5244412537426534 -0.523514573188263 112.1530396484887</rotate>
 					</mass_frame>
-					<inertia>0.0002510697016967079 0.00204753015797131 0.002093920140331985</inertia>
+					<inertia>0.0002510697016967079 0.00204753015797131 0.002093920140331986</inertia>
 					<shape>
 						<instance_geometry url="#g1_9_geom0"/>
 						<translate>0 0 0.97</translate>
@@ -7980,7 +7981,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						<translate>0 0.145 0.370296</translate>
 						<rotate>1 0 0 -14.99997778074544</rotate>
 						<translate>-0.00226388 -0.00521383 0.01560807</translate>
-						<rotate>0.8029974238945446 0.5947130179723155 0.03887883065352336 172.329254872712</rotate>
+						<rotate>0.8029974238945445 0.5947130179723157 0.03887883065352342 172.329254872712</rotate>
 					</mass_frame>
 					<inertia>0.002438306781506304 0.002055629887167789 0.001403503331325911</inertia>
 					<shape>
@@ -8073,9 +8074,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						<translate>0 0 0</translate>
 						<rotate>0 0 1 0</rotate>
 						<translate>-5.236e-05 0.05831338 -0.10706059</translate>
-						<rotate>-0.5443907610196465 -0.547071814281057 -0.6358860977688402 114.9291256834413</rotate>
+						<rotate>-0.5443907610196466 -0.5470718142810567 -0.6358860977688403 114.9291256834414</rotate>
 					</mass_frame>
-					<inertia>0.0009342690767806944 0.01541678680416239 0.01504322411905692</inertia>
+					<inertia>0.0009342690767806926 0.01541678680416238 0.01504322411905692</inertia>
 					<shape>
 						<instance_geometry url="#g1_11_geom0"/>
 						<translate>0 0 0.97</translate>
@@ -8143,9 +8144,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						<translate>0 0.095 -0.25</translate>
 						<rotate>0 0 1 0</rotate>
 						<translate>-2.254e-05 0.00167107 -0.07151163000000001</translate>
-						<rotate>0.560237717203337 -0.573780362363676 0.5974192798936124 117.3109794820537</rotate>
+						<rotate>0.5602377172033368 -0.5737803623636767 0.5974192798936121 117.3109794820537</rotate>
 					</mass_frame>
-					<inertia>0.0001924892818221113 0.001439669172682298 0.001422331545495591</inertia>
+					<inertia>0.0001924892818221116 0.001439669172682298 0.001422331545495591</inertia>
 					<shape>
 						<instance_geometry url="#g1_12_geom0"/>
 						<translate>0 0 0.97</translate>
@@ -8345,9 +8346,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						<translate>0 0 -0.235</translate>
 						<rotate>0 0 1 0</rotate>
 						<translate>0.00243131 0.00379733 -0.05770359</translate>
-						<rotate>-0.5813623967310788 -0.6354425033298285 -0.5081639387333742 122.8133322419153</rotate>
+						<rotate>-0.5813623967310789 -0.6354425033298285 -0.5081639387333742 122.8133322419153</rotate>
 					</mass_frame>
-					<inertia>0.0001321294905513025 0.0005203704967530646 0.0005133900126956322</inertia>
+					<inertia>0.0001321294905513026 0.0005203704967530648 0.0005133900126956324</inertia>
 					<shape>
 						<instance_geometry url="#g1_14_geom0"/>
 						<translate>0 0 0.97</translate>
@@ -8464,9 +8465,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						<translate>-0.047 0 -0.09</translate>
 						<rotate>0 0 1 0</rotate>
 						<translate>-0.04847597 -3.2e-06 -0.03889875</translate>
-						<rotate>0.6714863088941908 -0.5244412537426537 0.5235145731882628 112.1530396484887</rotate>
+						<rotate>0.6714863088941907 -0.5244412537426534 0.523514573188263 112.1530396484887</rotate>
 					</mass_frame>
-					<inertia>0.0002510697016967079 0.00204753015797131 0.002093920140331985</inertia>
+					<inertia>0.0002510697016967079 0.00204753015797131 0.002093920140331986</inertia>
 					<shape>
 						<instance_geometry url="#g1_15_geom0"/>
 						<translate>0 0 0.97</translate>
@@ -8685,6 +8686,20 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 				<measurement_time>0.033333</measurement_time>
 			</sensor>
 			<sensor id="sensor2" sid="1" type="base_pinhole_camera">
+				<focal_length>0.050000</focal_length>
+				<intrinsic>1076.85803578395 0 320 0 807.643526837964 240</intrinsic>
+				<format>uint8</format>
+				<image_dimensions>640 480 3</image_dimensions>
+				<measurement_time>0.033333</measurement_time>
+			</sensor>
+			<sensor id="sensor3" sid="2" type="base_pinhole_camera">
+				<focal_length>0.020000</focal_length>
+				<intrinsic>1076.85803578395 0 320 0 807.643526837964 240</intrinsic>
+				<format>uint8</format>
+				<image_dimensions>640 480 3</image_dimensions>
+				<measurement_time>0.033333</measurement_time>
+			</sensor>
+			<sensor id="sensor4" sid="3" type="base_pinhole_camera">
 				<focal_length>0.050000</focal_length>
 				<intrinsic>1076.85803578395 0 320 0 807.643526837964 240</intrinsic>
 				<format>uint8</format>
