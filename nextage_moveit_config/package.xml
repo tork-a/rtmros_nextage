@@ -4,8 +4,7 @@
   <description>An automatically generated package with all the configuration and launch files for using the NextageOpen with the MoveIt Motion Planning Framework.
   </description>
   <maintainer email="k-okada@jsk.t.u-tokyo.ac.jp">Kei Okada</maintainer>
-  <maintainer email="iisaito@opensource-robotics.tokyo.jp">Isaac Isao Saito</maintainer>
-  <author email="assistant@moveit.ros.org">MoveIt Setup Assistant</author>
+  <maintainer email="dev@opensource-robotics.tokyo.jp">TORK</maintainer>
   <author>Kei Okada</author>
   <author>Isaac Isao Saito</author>
 
