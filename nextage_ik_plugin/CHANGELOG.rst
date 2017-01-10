@@ -2,6 +2,11 @@
 Changelog for package nextage_ik_plugin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [capability] Release nextage_ik_plugin `#281 <https://github.com/tork-a/rtmros_nextage/pull/281>`_
+* Contributors: Isaac I.Y. Saito
+
 0.7.11 (2016-11-05)
 -------------------
 

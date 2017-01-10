@@ -2,6 +2,16 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [fix][nxo client] Fix wrong string print that could stop the script to work. `#276 <https://github.com/tork-a/rtmros_nextage/pull/276>`_
+* [capability] Release nextage_ik_plugin `#281 <https://github.com/tork-a/rtmros_nextage/pull/281>`_
+* [enhance] Add simple rviz.launch that can be run without extra processes (e.g. moveit) to be running. `#282 <https://github.com/tork-a/rtmros_nextage/pull/282>`_
+* [enhance][nextage.py script] users with older dio spec robot can specify dio version upon starting the script (enhance for `#274 <https://github.com/tork-a/rtmros_nextage/issues/274>`_).
+* [maintenance] clean up for catkin lint `#283 <https://github.com/tork-a/rtmros_nextage/pull/283>`_
+* [maintenance][fix][test] Correct api version number for dio.
+* Contributors: Kei Okada, Isaac I.Y. Saito
+
 0.7.11 (2016-11-05)
 -------------------
 * [improve][nextage.py] Setting default model file location for the real robot so that you'll never need to pass arg from commandline.
