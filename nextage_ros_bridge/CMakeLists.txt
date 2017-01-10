@@ -32,7 +32,7 @@ roslint_python()
 find_package(PkgConfig)
 pkg_check_modules(openhrp3 openhrp3.1 REQUIRED)
 set(OPENHRP3 ${openhrp3_PREFIX}/share/openhrp3)  # for longfloor.wrl
-set(ROBOT_NAME nextage)
+set(ROBOT_NAME main)  # Aiming main.dae. Use same file prefix with VRML for intuitition
 
 message("hironx_ros_bridge_SOURCE_DIR => ${hironx_ros_bridge_SOURCE_DIR}")
 message("hironx_ros_bridge_SOURCE_PREFIX => ${hironx_ros_bridge_SOURCE_PREFIX}")
@@ -62,20 +62,6 @@ add_custom_target(${PROJECT_NAME}_model_files ALL DEPENDS ${PROJECT_SOURCE_DIR}/
   COMMAND sed -i 's@property name="showScale" value="true"@property name="showScale" value="false"@' ${PROJECT_SOURCE_DIR}/conf/${ROBOT_NAME}_nosim.xml
   )
 
-
-#compile_openhrp_model(${nextage_description_SOURCE_DIR}/models/main.wrl)
-message("++ nextage_description/models/main.dae -> ${nextage_description_SOURCE_DIR}/models/main.dae")
-if(NOT EXISTS ${nextage_description_SOURCE_DIR}/models/main.dae)
-  if(EXISTS ${nextage_description_SOURCE_PREFIX}/models/main.dae)
-    set(nextage_description_SOURCE_DIR ${nextage_description_SOURCE_PREFIX})
-  else(EXISTS ${nextage_description_SOURCE_PREFIX}/models/main.dae)
-    set(nextage_description_SOURCE_DIR ${nextage_description_PREFIX}/share/nextage_description)
-  endif(EXISTS ${nextage_description_SOURCE_PREFIX}/models/main.dae)
-endif()
-add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae
-  COMMAND ${CMAKE_COMMAND} -E copy ${nextage_description_SOURCE_DIR}/models/main.dae ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae
-  DEPENDS ${nextage_description_SOURCE_DIR}/models/main.dae)
-add_custom_target(${PROJECT_NAME}_model_copy ALL DEPENDS ${PROJECT_SOURCE_DIR}/models/${ROBOT_NAME}.dae)
 
 #############
 ## Install ##
@@ -109,7 +95,6 @@ add_custom_target(${PROJECT_NAME}_model_copy ALL DEPENDS ${PROJECT_SOURCE_DIR}/m
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 install(DIRECTORY script DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION} USE_SOURCE_PERMISSIONS)
 install(DIRECTORY conf DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION} PATTERN "*.in" EXCLUDE)
-install(DIRECTORY models DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 #install(DIRECTORY test DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION} USE_SOURCE_PERMISSIONS)
 
 install(CODE "
@@ -140,3 +125,4 @@ install(DIRECTORY test
   USE_SOURCE_PERMISSIONS)
 
 add_rostest(test/nxo.test)
+add_rostest(test/ros_model.test)

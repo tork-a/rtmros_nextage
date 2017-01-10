@@ -1,0 +1,29 @@
+<launch>
+  <!-- This .test is to check joint status, which indirectly ensures if model is successfully loaded. -->
+
+  <arg name="COLLADA_FILE" default="$(find nextage_description)/models/main.dae" />
+  <arg name="corbaport" default="2809" />
+  <arg name="GUI" default='false' />
+  <arg name="VRML_FILE" default="$(find nextage_description)/models/main.wrl" />
+
+  <!-- Define name for testing model availability at runtime -->
+  <arg name="TESTNAME_ENSURE_MODEL" default="hz_joints" />       
+
+  <!-- See https://github.com/start-jsk/rtmros_common/issues/416#issuecomment-46846623 -->
+  <node name="start_omninames" pkg="rtmbuild" type="start_omninames.sh"
+        args="$(arg corbaport)" />
+ 
+  <include file="$(find nextage_ros_bridge)/launch/nextage_ros_bridge_simulation.launch" >
+    <arg name="COLLADA_FILE" value="$(arg COLLADA_FILE)" />
+    <arg name="CORBAPORT" value="$(arg corbaport)" />
+    <arg name="GUI" value="$(arg GUI)" />
+    <arg name="MODEL_FILE" value="$(arg VRML_FILE)" />
+  </include>         
+
+  <param name="$(arg TESTNAME_ENSURE_MODEL)/hz" value="200.0" />
+  <param name="$(arg TESTNAME_ENSURE_MODEL)/hzerror" value="30.0" />
+  <param name="$(arg TESTNAME_ENSURE_MODEL)/test_duration" value="10.0" />
+  <param name="$(arg TESTNAME_ENSURE_MODEL)/topic" value="joint_states" />
+  <param name="$(arg TESTNAME_ENSURE_MODEL)/wait_time" value="180.0" />
+  <test pkg="rostest" type="hztest" name="$(arg TESTNAME_ENSURE_MODEL)" test-name="test_$(arg TESTNAME_ENSURE_MODEL)" />   
+</launch>
