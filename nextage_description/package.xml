@@ -5,7 +5,7 @@
   <description>As a part of rtmros_nextage package that is a ROS interface for <a href = "http://nextage.kawada.jp/en/">Nextage</a> dual-armed robot from Kawada Robotics Inc, this package provides its 3D model that can be used in simulation and <a href = "http://ros.org/wiki/moveit">MoveIt!</a>-based motion planning tasks.
   </description>
   <maintainer email="k-okada@jsk.t.u-tokyo.ac.jp">Kei Okada</maintainer>
-  <maintainer email="iisaito@opensource-robotics.tokyo.jp">Isaac Isao Saito</maintainer>
+  <maintainer email="dev@opensource-robotics.tokyo.jp">TORK</maintainer>
   <author>Kei Okada</author>
   <author>Isaac Isao Saito</author>
   <author email="w.yasuda@opensource-robotics.tokyo.jp">Wataru Yasuda</author>
