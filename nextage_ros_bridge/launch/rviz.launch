@@ -1,0 +1,13 @@
+<!-- Took nextage_moveit_config/launch/moveit_rviz.launch as an example. -->
+<launch> 
+  <arg name="RVIZ_FIXEDFRAME" default="WAIST" />
+  <arg name="command_args" value="--fixed-frame $(arg RVIZ_FIXEDFRAME) -d $(find nextage_ros_bridge)/launch/nxo.rviz" />
+  
+  <!-- Passing true to `debug` allows you to run this launch on gdb. -->
+  <arg name="debug" default="false" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+  <arg     if="$(arg debug)" name="launch_prefix" value="gdb --ex run --args" />
+
+  <node name="$(anon rviz)" launch-prefix="$(arg launch_prefix)" pkg="rviz" type="rviz" respawn="false"
+	    args="$(arg command_args)" output="screen" />
+</launch>
