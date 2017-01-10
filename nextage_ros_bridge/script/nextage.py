@@ -50,6 +50,9 @@ if __name__ == '__main__':
     parser.add_argument('--port', help='corba name server port number')
     parser.add_argument('--modelfile', help='robot model file nmae')
     parser.add_argument('--robot', help='robot modlule name (RobotHardware0 for real robot, Robot()')
+    parser.add_argument('--dio_ver', help="Version of digital I/O. Only users "
+                        "whose robot was shipped before Aug 2014 need to "
+                        "define this, and the value should be '0.4.2'.")
     args, unknown = parser.parse_known_args()
 
     if args.host:
@@ -72,6 +75,9 @@ if __name__ == '__main__':
     # This is backward compatible so that users can still keep using `nxc`.
     # See http://code.google.com/p/rtm-ros-robotics/source/detail?r=6926
     robot.init(robotname=args.robot, url=args.modelfile)
+
+    if args.dio_ver:
+        robot.set_hand_version(args.dio_ver)
 
     # ROS Client.
     ros = ROS_Client()
