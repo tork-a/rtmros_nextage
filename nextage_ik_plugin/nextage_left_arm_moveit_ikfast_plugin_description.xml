@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <library path="lib/libnextage_left_arm_moveit_ikfast_plugin">
-  <class name="nextage_left_arm_kinematics/IKFastKinematicsPlugin" type="ikfast_kinematics_plugin::IKFastKinematicsPlugin" base_class_type="kinematics::KinematicsBase">
+  <class name="nextage_left_arm_kinematics/IKFastKinematicsPlugin" type="nextage_left_arm_ikfast_kinematics_plugin::IKFastKinematicsPlugin" base_class_type="kinematics::KinematicsBase">
     <description>IKFast61 plugin for closed-form kinematics</description>
   </class>
 </library>
