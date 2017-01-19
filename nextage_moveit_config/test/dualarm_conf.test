@@ -1,0 +1,15 @@
+<launch>
+  <!-- Tests for dualarm config setting. -->
+  <arg name="CONF_DUAlARM" default="$(find nextage_moveit_config)/test/dualarm.conf" />
+  <arg name="SRDF" default="$(find nextage_moveit_config)/models/main.wrl" />
+
+  <!-- Launch this to load srdf -->
+  <include file="$(find nextage_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="true"/>
+  </include>
+  <rosparam param='conf_dualarm' file="$(arg CONF_DUAlARM)" />
+    
+  <test pkg="nextage_moveit_config" type="test_dualarm_conf.py" test-name="dualarm_conf"
+        time-limit="100" args="" />
+         
+</launch>
