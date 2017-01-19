@@ -21,3 +21,4 @@ add_custom_target(desktop ALL DEPENDS ${PROJECT_SOURCE_DIR}/NextageROS.desktop.i
 
 add_rostest(test/joy.test)
 add_rostest(test/nxo_moveit.test)
+add_rostest(test/moveit_trackik.test)
