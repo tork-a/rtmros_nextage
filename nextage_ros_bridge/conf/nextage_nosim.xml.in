@@ -21,6 +21,10 @@
    <property name="inport" value="ddqRef:JOINT_ACCELERATION"/>
    <property name="outport" value="q:JOINT_VALUE"/>
    <property name="outport" value="tau:JOINT_TORQUE"/>
+   <property name="outport" value="CAMERA_HEAD_R:CAMERA_HEAD_R:VISION_SENSOR"/>
+   <property name="outport" value="CAMERA_HEAD_L:CAMERA_HEAD_L:VISION_SENSOR"/>
+   <property name="outport" value="CAMERA_HAND_R:CAMERA_HAND_R:VISION_SENSOR"/>
+   <property name="outport" value="CAMERA_HAND_L:CAMERA_HAND_L:VISION_SENSOR"/>
    <property name="WAIST.NumOfAABB" value="1"/>
    <property name="WAIST.translation" value="0  0  0"/>
    <property name="WAIST.rotation" value="1 0 0 0"/>
