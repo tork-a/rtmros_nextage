@@ -2,6 +2,11 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [capability] Add config for trac_ik.
+* Contributors: Isaac I.Y. Saito
+
 0.7.12 (2017-01-10)
 -------------------
 

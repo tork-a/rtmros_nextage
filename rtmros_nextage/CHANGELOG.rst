@@ -2,6 +2,12 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [fix] Left arm position issue with IKFast `#277 <https://github.com/tork-a/rtmros_nextage/issues/277>`_
+* [capability] Add config for trac_ik.
+* Contributors: Kei Okada, Isaac I.Y. Saito
+
 0.7.12 (2017-01-10)
 -------------------
 * [fix][nxo client] Fix wrong string print that could stop the script to work. `#276 <https://github.com/tork-a/rtmros_nextage/pull/276>`_

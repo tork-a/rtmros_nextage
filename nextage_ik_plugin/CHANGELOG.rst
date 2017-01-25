@@ -2,6 +2,11 @@
 Changelog for package nextage_ik_plugin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [fix] Left arm position issue with IKFast `#277 <https://github.com/tork-a/rtmros_nextage/issues/277>`_
+* Contributors: Kei Okada
+
 0.7.12 (2017-01-10)
 -------------------
 * [capability] Release nextage_ik_plugin `#281 <https://github.com/tork-a/rtmros_nextage/pull/281>`_
