@@ -21,4 +21,7 @@
     <arg name="SIMULATOR_NAME" value="HiroNX(Robot)0" />
     <arg name="CONF_FILE_COLLISIONDETECT" value="$(arg CONF_FILE_COLLISIONDETECT)" />
   </include>
+
+<!--  <include file="$(find nextage_ros_bridge)/launch/vision_bridge.launch">-->
+  <include file="$(find hironx_ros_bridge)/launch/hironx_kinect.launch" />
 </launch>
