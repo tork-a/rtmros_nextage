@@ -38,6 +38,6 @@
   </test>  
   
   <test pkg="nextage_moveit_config" type="test_moveit.py" test-name="nxo_moveit"
-        time-limit="600" args="" />
+        time-limit="600" args="" retry = "3" />
          
 </launch>

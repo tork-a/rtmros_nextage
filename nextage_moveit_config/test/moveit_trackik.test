@@ -1,5 +1,5 @@
 <launch>
-  <arg name="kinematics_conf" default="$(find nextage_moveit_config)/config/kinematics_tracik.yaml" />
+  <arg name="kinematics_conf_file" default="$(find nextage_moveit_config)/config/kinematics_tracik.yaml" />
 
-  <include file="$(find nextage_ros_bridge)/test/nxo_moveit.test" pass_all_args="true" />
+  <include file="$(find nextage_moveit_config)/test/nxo_moveit.test" pass_all_args="true" />
 </launch>
