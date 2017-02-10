@@ -601,6 +601,19 @@ DEF HiroNX Humanoid{
                                                           }
 						       ]
 						    }
+
+                                                          DEF CAMERA_HAND_R VisionSensor {
+                                                              translation -0.070 0 -0.08
+                                                              # (rotation-angle (m* (rotation-matrix pi/2 #f(0 1 0)) (rotation-matrix -0.261799 #f(0 0 1))))
+                                                              rotation -0.129428 0.983106 -0.129428 1.58783
+                                                              frontClipDistance 0.02
+                                                              width  640
+                                                              height 480
+                                                              type "COLOR"
+                                                              sensorId 2
+                                                              fieldOfView 0.5777
+                                                          }
+
 						 ]
 					      }
 					   ]
@@ -766,7 +779,6 @@ DEF HiroNX Humanoid{
 								#}
 							     }
 							  }
-
 							  Inline { url "WR.wrl" } 
 							  Inline { url "ToolChanger.wrl" } 
                                                           Transform {
@@ -777,6 +789,19 @@ DEF HiroNX Humanoid{
                                                           }
 						       ]
 						    }
+
+                                                          DEF CAMERA_HAND_L VisionSensor {
+                                                              translation -0.070 0 -0.08
+                                                              # (rotation-angle (m* (rotation-matrix pi/2 #f(0 1 0)) (rotation-matrix 0.261799 #f(0 0 1))))
+                                                              rotation 0.129428 0.983106 0.129428 1.58783
+                                                              frontClipDistance 0.05
+                                                              width  640
+                                                              height 480
+                                                              type "COLOR"
+                                                              sensorId 3
+                                                              fieldOfView 0.5777
+                                                          }
+
 						 ]
 					      }
 					   ]
