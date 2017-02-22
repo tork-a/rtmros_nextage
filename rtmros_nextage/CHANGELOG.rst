@@ -2,6 +2,11 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [capability] hand camera now available on hrpsys simulator.
+* Contributors: Kei Okada, Isaac I.Y. Saito
+
 0.7.13 (2017-01-24)
 -------------------
 * [fix] Left arm position issue with IKFast `#277 <https://github.com/tork-a/rtmros_nextage/issues/277>`_

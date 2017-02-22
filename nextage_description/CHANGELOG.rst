@@ -2,6 +2,11 @@
 Changelog for package nextage_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [capability] hand camera now available on hrpsys simulator.
+* Contributors: Kei Okada
+
 0.7.13 (2017-01-24)
 -------------------
 
