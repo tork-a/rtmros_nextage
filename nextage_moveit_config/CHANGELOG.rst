@@ -2,8 +2,8 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.7.14 (2017-02-21)
+-------------------
 * [Maintenance] Enable tests for track_ik.
 * Contributors: Isaac I.Y. Saito
 
