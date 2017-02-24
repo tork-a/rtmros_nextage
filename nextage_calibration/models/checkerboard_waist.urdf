@@ -10,12 +10,12 @@
   <link name="checkerboard_waist_base_link">
     <visual>
       <geometry>
-        <mesh filename="package://xtion_calibration/models/checkerboard_waist.dae"/>
+        <mesh filename="package://nextage_calibration/models/checkerboard_waist.dae"/>
       </geometry>
     </visual>
     <collision>
       <geometry>
-<!--        <mesh filename="package://xtion_calibration/models/checkerboard_waist.dae"/> -->
+<!--        <mesh filename="package://nextage_calibration/models/checkerboard_waist.dae"/> -->
       </geometry>
     </collision>
     <inertial>

@@ -10,12 +10,12 @@
   <link name="checkerboard_base_link">
     <visual>
       <geometry>
-        <mesh filename="package://xtion_calibration/models/checkerboard_horizontal.dae"/>
+        <mesh filename="package://nextage_calibration/models/checkerboard_horizontal.dae"/>
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://xtion_calibration/models/checkerboard_horizontal.dae"/>
+        <mesh filename="package://nextage_calibration/models/checkerboard_horizontal.dae"/>
       </geometry>
     </collision>
     <inertial>
