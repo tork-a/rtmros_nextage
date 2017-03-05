@@ -5,8 +5,27 @@
 			<authoring_tool>OpenHRP3 Collada Writer</authoring_tool>
 			<comments>/opt/ros/indigo/lib/openhrp3/export-collada -i main.wrl -o main.dae </comments>
 		</contributor>
-		<created>2016-12-24T16:09:26.000000</created>
+		<created>2013-10-26T13:54:38.000000</created>
 		<modified>2016-12-24T16:09:26.000000</modified>
+                <copyright>
+Copyright (c) 2013, Kawada Robotics Corp., Kawada Industries, Inc. All rights reserved.
+
+1) Copy, packaging, redistribution of 3D model as is, are exploited without permission
+
+2) Redistoribution of modified or derivative work, is not exploited without permission of copyright holder
+
+THIS 3D MODEL IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+                </copyright>
 		<unit/>
 		<up_axis>Z_UP</up_axis>
 	</asset>
