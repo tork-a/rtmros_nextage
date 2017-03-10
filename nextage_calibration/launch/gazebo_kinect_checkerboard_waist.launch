@@ -1,0 +1,32 @@
+<launch>
+
+  <param name="sensor_description"
+         type="str"
+         command="$(find xacro)/xacro.py '$(find nextage_calibration)/models/sensor_kinect.xacro'"
+         />
+
+  <node pkg="gazebo_ros"
+        name="spawn_sensor_kinect"
+        type="spawn_model" 
+        args="-urdf -param sensor_description -model sensor_kinect
+              -reference_frame HEAD_JOINT1_Link -P 1.5708 -x -0.15 -z 0.05"
+        />
+
+  <node pkg="robot_state_publisher"
+        type="robot_state_publisher"
+        name="sensor_kinect_state_publisher" >
+    <remap from="robot_description" to="sensor_description" />
+  </node>
+
+  <node pkg="joint_state_publisher"
+        type="joint_state_publisher"
+        name="sensor_kinect_joint_state_publisher" >
+    <remap from="robot_description" to="sensor_description" />
+  </node>
+
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+        args="-file $(find nextage_calibration)/models/checkerboard_waist.urdf
+        -urdf -model checkerboard_waist
+        -reference_frame WAIST" />
+
+</launch>

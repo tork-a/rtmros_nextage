@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package>
+  <name>nextage_calibration</name>
+  <version>0.7.14</version>
+  <description>This package provides .launch files and other tools for
+  calibrating the head-mount cameras to the NEXTAGE Open robot.
+  As of version 0.7.15/March 2017, only Kinect/Xtion is capable (i.e. Ueye
+  cameras, the ones the robot comes with on this head by default, are not yet
+  handled).  
+  </description>
+  <maintainer email="dev@opensource-robotics.tokyo.jp">TORK</maintainer>
+  <author>Yosuke Yamamoto</author>
+  <author>TORK</author>
+  <license>BSD</license>
+  <url type="website">http://ros.org/wiki/nextage_calibration</url>
+  <url type="bugtracker">https://github.com/tork-a/rtmros_nextage/issues</url>
+  <url type="repository">https://github.com/tork-a/rtmros_nextage</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>checkerboard_detector</run_depend>
+  <run_depend>dynamic_tf_publisher</run_depend>
+  <run_depend>gazebo_ros</run_depend>
+  <run_depend>joint_state_publisher</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>openni2_launch</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>urdf</run_depend>
+
+  <export />
+</package>

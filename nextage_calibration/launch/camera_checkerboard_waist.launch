@@ -1,0 +1,48 @@
+<launch>
+  <arg name="launch_openni2" default="true" />
+
+  <include file="$(find openni2_launch)/launch/openni2.launch"
+           if="$(arg launch_openni2)">
+    <arg name="depth_registration" value="true"/>
+    <arg name="rgb_camera_info_url" value="file://${ROS_HOME}/camera_info/rgb_PS1080_PrimeSense.yaml" />
+  </include>
+  <include file="$(find freenect_launch)/launch/freenect.launch"
+           unless="$(arg launch_openni2)">
+    <arg name="depth_registration" value="true"/>
+  </include>
+
+  <!-- checkerboard -->
+  <group ns="/camera/rgb/" >
+    <!-- <param name="single" value="1" /> -->
+    <param name="display" type="int" value="1" />
+    <param name="rect0_size_x" value="0.025" />
+    <param name="rect0_size_y" value="0.025" />
+    <param name="grid0_size_x" value="8" />
+    <param name="grid0_size_y" value="5" />
+    <param name="type0" value="test_object" />
+
+    <node name="checkerboard_detector" 
+          pkg="checkerboard_detector"
+          type="checkerboard_detector">
+      <remap from="image" to="/camera/rgb/image_rect_color" />
+      <remap from="camera_info" to="/camera/rgb/camera_info" />
+    </node>
+
+    <node name="objectdetection_tf_publisher"
+          pkg="checkerboard_detector"
+          type="objectdetection_tf_publisher.py" >
+      <param name="latest_publish" value="true"/>
+    </node>
+  </group>
+
+
+  <node pkg="tf" 
+        type="static_transform_publisher" 
+        name="waist_to_checkerboard"
+        args="0.0875 -0.0903 0.0145 1.5708 0.0 3.1415 /object /WAIST 100" />
+
+  <node pkg="dynamic_tf_publisher" name="tf_publish" type="tf_publish.py"/>
+
+  <!-- end checkerboard  -->
+
+</launch>
