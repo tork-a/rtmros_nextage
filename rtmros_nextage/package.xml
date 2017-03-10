@@ -15,6 +15,7 @@
   <url type="repository">https://github.com/tork-a/rtmros_nextage</url>
 
   <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>nextage_calibration</run_depend>
   <run_depend>nextage_description</run_depend>
   <run_depend>nextage_gazebo</run_depend>
   <run_depend>nextage_ik_plugin</run_depend>
