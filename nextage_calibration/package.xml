@@ -1,58 +1,30 @@
 <?xml version="1.0"?>
 <package>
   <name>nextage_calibration</name>
-  <version>0.0.0</version>
-  <description>The nextage_calibration package</description>
-
-  <!-- One maintainer tag required, multiple allowed, one person per tag --> 
-  <!-- Example:  -->
-  <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="todo@todo.todo">TODO</maintainer>
-
-
-  <!-- One license tag required, multiple allowed, one license per tag -->
-  <!-- Commonly used license strings: -->
-  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <version>0.7.14</version>
+  <description>This package provides .launch files and other tools for
+  calibrating the head-mount cameras to the NEXTAGE Open robot.
+  As of version 0.7.15/March 2017, only Kinect/Xtion is capable (i.e. Ueye
+  cameras, the ones the robot comes with on this head by default, are not yet
+  handled).  
+  </description>
+  <maintainer email="dev@opensource-robotics.tokyo.jp">TORK</maintainer>
+  <author>Yosuke Yamamoto</author>
+  <author>TORK</author>
   <license>BSD</license>
+  <url type="website">http://ros.org/wiki/nextage_calibration</url>
+  <url type="bugtracker">https://github.com/tork-a/rtmros_nextage/issues</url>
+  <url type="repository">https://github.com/tork-a/rtmros_nextage</url>
 
-
-  <!-- Url tags are optional, but multiple are allowed, one per tag -->
-  <!-- Optional attribute type can be: website, bugtracker, or repository -->
-  <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/nextage_calibration</url> -->
-
-
-  <!-- Author tags are optional, multiple are allowed, one per tag -->
-  <!-- Authors do not have to be maintainers, but could be -->
-  <!-- Example: -->
-  <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
-
-
-  <!-- The *_depend tags are used to specify dependencies -->
-  <!-- Dependencies can be catkin packages or system dependencies -->
-  <!-- Examples: -->
-  <!-- Use build_depend for packages you need at compile time: -->
-  <!--   <build_depend>message_generation</build_depend> -->
-  <!-- Use buildtool_depend for build tool packages: -->
-  <!--   <buildtool_depend>catkin</buildtool_depend> -->
-  <!-- Use run_depend for packages you need at runtime: -->
-  <!--   <run_depend>message_runtime</run_depend> -->
-  <!-- Use test_depend for packages you need only for testing: -->
-  <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>roscpp</build_depend>
-  <build_depend>rospy</build_depend>
-  <build_depend>std_msgs</build_depend>
-  <run_depend>roscpp</run_depend>
-  <run_depend>rospy</run_depend>
-  <run_depend>std_msgs</run_depend>
-
-  <build_depend>urdf</build_depend>
+  <run_depend>checkerboard_detector</run_depend>
+  <run_depend>dynamic_tf_publisher</run_depend>
+  <run_depend>gazebo_ros</run_depend>
+  <run_depend>joint_state_publisher</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>openni2_launch</run_depend>
+  <run_depend>tf</run_depend>
   <run_depend>urdf</run_depend>
 
-  <!-- The export tag contains other, unspecified, tags -->
-  <export>
-    <!-- Other tools can request additional information be placed here -->
-
-  </export>
+  <export />
 </package>
