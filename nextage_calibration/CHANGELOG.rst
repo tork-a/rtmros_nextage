@@ -2,8 +2,8 @@
 Changelog for package nextage_calibration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.7.15 (2017-03-11)
+-------------------
 * [capability] add package nextage_calibration
 * Contributors: Yamamoto Yosuke Design
 

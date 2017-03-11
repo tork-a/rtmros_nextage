@@ -1,6 +1,6 @@
 <package>
   <name>nextage_ik_plugin</name>
-  <version>0.7.14</version>
+  <version>0.7.15</version>
   <description>IKFast package for NEXTAGE Open</description>
   <maintainer email="support@opensouce-robotics.tokyo.jp">IK Fast Plugin Creater</maintainer>
   <author email="534o@opensouce-robotics.tokyo.jp">TORK Developer 534o</author>
