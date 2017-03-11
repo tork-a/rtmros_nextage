@@ -2,8 +2,8 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.7.15 (2017-03-11)
+-------------------
 * [capability] add package nextage_calibration
 * [fix] Model file copyrights.
 * Contributors: Yamamoto Yosuke Design, Isaac I.Y. Saito
