@@ -5,7 +5,7 @@
   
   <arg name="TF_COORD_XYZ" default="0.062367406594775215 0.07536259323525744 0.12330820494245931" />
   <arg name="TF_COORD_RPY" default="-0.03346088258363324 0.1383150116022393 -0.014468436806528857" />
-  <arg name="TF_COORD" default ="$(arg TF_COORD_XYZ) $(arg TF_COORD_RPY)" />
+  <arg name="TF_COORD" default="$(arg TF_COORD_XYZ) $(arg TF_COORD_RPY)" />
 
   <include file="$(find openni2_launch)/launch/openni2.launch"
            if="$(arg launch_openni2)">
