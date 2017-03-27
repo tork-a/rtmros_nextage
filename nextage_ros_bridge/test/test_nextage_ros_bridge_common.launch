@@ -1,0 +1,18 @@
+<launch>
+  <!-- TODO In the future this launch file can be removed as long as we
+       modify hironx_ros_bridge)/test/test-hironx-ros-bridge-common.launch so
+       that it accepts nextage_ros_bridge_simulation.launch as an arg.
+   -->
+
+  <arg name="corbaport" default="2809" />
+  <arg name="GUI" default="false" />
+  
+  <!-- See https://github.com/start-jsk/rtmros_common/issues/416#issuecomment-46846623 -->
+  <node pkg="rtmbuild" type="start_omninames.sh" args="$(arg corbaport)"
+        name="start_omninames"  />
+  
+  <include file="$(find nextage_ros_bridge)/launch/nextage_ros_bridge_simulation.launch" >
+    <arg name="GUI" value="$(arg GUI)" />
+    <arg name="corbaport" value="$(arg corbaport)" />
+  </include>
+</launch>

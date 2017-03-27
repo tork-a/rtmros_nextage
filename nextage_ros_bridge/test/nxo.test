@@ -21,5 +21,4 @@
         time-limit="1000" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
   <test type="test_airhand.py" pkg="nextage_ros_bridge" test-name="test_nxo_airhand"
         time-limit="1000" args="$(arg ROBOTCLIENT_ARG_OLDSTYLE)" />
-         
 </launch>
