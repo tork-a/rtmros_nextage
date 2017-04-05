@@ -88,7 +88,7 @@ if __name__ == '__main__':
     try:
         ros = ROS_Client()
     except ROSInitException as e:
-        print("\033[31m%s\n%s\033[0m" % (e))
+        print('[nextage.py] {}'.format(e))
     except socket.error as e: 
         print("\033[31m%s\n%s\033[0m" % (e.strerror, errormsg_noros))
 
