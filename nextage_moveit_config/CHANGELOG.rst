@@ -2,6 +2,11 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.7.1 (2015-10-26)
+------------------
+* [feat] Add torso to botharm Move Group (address `#198 <https://github.com/tork-a/rtmros_nextage/issues/198>`_)
+* Contributors: Isaac I.Y. Saito
+
 0.6.6 (2015-10-17)
 ------------------
 * [feat] Add torso, head, and (whole) upperbody Move Group
