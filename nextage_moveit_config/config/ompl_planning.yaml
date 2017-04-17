@@ -23,11 +23,6 @@ planner_configs:
     type: geometric::PRMstar
 right_arm:
   planner_configs:
-    - SBLkConfigDefault
-    - ESTkConfigDefault
-    - LBKPIECEkConfigDefault
-    - BKPIECEkConfigDefault
-    - KPIECEkConfigDefault
     - RRTkConfigDefault
     - RRTConnectkConfigDefault
     - RRTstarkConfigDefault
@@ -38,11 +33,6 @@ right_arm:
   longest_valid_segment_fraction: 0.05
 left_arm:
   planner_configs:
-    - SBLkConfigDefault
-    - ESTkConfigDefault
-    - LBKPIECEkConfigDefault
-    - BKPIECEkConfigDefault
-    - KPIECEkConfigDefault
     - RRTkConfigDefault
     - RRTConnectkConfigDefault
     - RRTstarkConfigDefault
@@ -53,11 +43,6 @@ left_arm:
   longest_valid_segment_fraction: 0.05
 botharms:
   planner_configs:
-    - SBLkConfigDefault
-    - ESTkConfigDefault
-    - LBKPIECEkConfigDefault
-    - BKPIECEkConfigDefault
-    - KPIECEkConfigDefault
     - RRTkConfigDefault
     - RRTConnectkConfigDefault
     - RRTstarkConfigDefault
@@ -68,11 +53,6 @@ botharms:
   longest_valid_segment_fraction: 0.05
 head:
   planner_configs:
-    - SBLkConfigDefault
-    - ESTkConfigDefault
-    - LBKPIECEkConfigDefault
-    - BKPIECEkConfigDefault
-    - KPIECEkConfigDefault
     - RRTkConfigDefault
     - RRTConnectkConfigDefault
     - RRTstarkConfigDefault
@@ -83,11 +63,6 @@ head:
   longest_valid_segment_fraction: 0.05
 torso:
   planner_configs:
-    - SBLkConfigDefault
-    - ESTkConfigDefault
-    - LBKPIECEkConfigDefault
-    - BKPIECEkConfigDefault
-    - KPIECEkConfigDefault
     - RRTkConfigDefault
     - RRTConnectkConfigDefault
     - RRTstarkConfigDefault
@@ -98,11 +73,6 @@ torso:
   longest_valid_segment_fraction: 0.05
 upperbody:
   planner_configs:
-    - SBLkConfigDefault
-    - ESTkConfigDefault
-    - LBKPIECEkConfigDefault
-    - BKPIECEkConfigDefault
-    - KPIECEkConfigDefault
     - RRTkConfigDefault
     - RRTConnectkConfigDefault
     - RRTstarkConfigDefault
