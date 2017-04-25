@@ -35,14 +35,20 @@
 #
 # Author: Isaac Isao Saito
 
+import socket
+
 from hironx_ros_bridge.ros_client import ROS_Client
 # This should come earlier than later import.
 # See http://code.google.com/p/rtm-ros-robotics/source/detail?r=6773
 from nextage_ros_bridge import nextage_client
+from rospy import ROSInitException
 
 from hrpsys import rtm
 import argparse
 
+errormsg_noros = 'No ROS Master found. Without it, you cannot use ROS from' \
+                 ' this script, but can use RTM. To use ROS, do not forget' \
+                 ' to run rosbridge. How to do so? --> http://wiki.ros.org/rtmros_nextage/Tutorials/Operating%20Hiro%2C%20NEXTAGE%20OPEN'
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='hiro command line interpreters')
@@ -79,8 +85,12 @@ if __name__ == '__main__':
     if args.dio_ver:
         robot.set_hand_version(args.dio_ver)
 
-    # ROS Client.
-    ros = ROS_Client()
+    try:
+        ros = ROS_Client()
+    except ROSInitException as e:
+        print('[nextage.py] {}'.format(e))
+    except socket.error as e: 
+        print("\033[31m%s\n%s\033[0m" % (e.strerror, errormsg_noros))
 
 # for simulated robot
 # $ ./hironx.py
