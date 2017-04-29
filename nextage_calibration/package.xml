@@ -20,6 +20,7 @@
   <run_depend>checkerboard_detector</run_depend>
   <run_depend>dynamic_tf_publisher</run_depend>
   <run_depend>freenect_stack</run_depend>
+  <run_depend>gazebo_plugins</run_depend>
   <run_depend>gazebo_ros</run_depend>
   <run_depend>joint_state_publisher</run_depend>
   <run_depend>robot_state_publisher</run_depend>
