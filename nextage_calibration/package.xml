@@ -27,6 +27,7 @@
   <run_depend>openni2_launch</run_depend>
   <run_depend>tf</run_depend>
   <run_depend>urdf</run_depend>
+  <run_depend>turtlebot_description</run_depend>  <!-- TODO This needs better solution https://github.com/tork-a/rtmros_nextage/issues/314 -->
 
   <export />
 </package>
