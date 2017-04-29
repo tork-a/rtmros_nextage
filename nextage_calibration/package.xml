@@ -28,6 +28,6 @@
   <run_depend>tf</run_depend>
   <run_depend>urdf</run_depend>
   <run_depend>turtlebot_description</run_depend>  <!-- TODO This needs better solution https://github.com/tork-a/rtmros_nextage/issues/314 -->
-
+  <test_depend>nextage_gazebo</test_depend> 
   <export />
 </package>

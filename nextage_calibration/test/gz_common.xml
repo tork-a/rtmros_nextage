@@ -1,0 +1,20 @@
+<launch>
+  <!-- NOTE: Don't launch this by itself.
+       Intended to be included from children launch files only. -->
+
+  <arg name='TESTNAME_CHECKERBOARDDETECT_STATUS' default='test_checkerboard_detect' />
+
+  <include file="$(find nextage_gazebo)/launch/nextage_world.launch">
+    <arg name="gui" value="false"/>
+    <arg name="world_file" value="worlds/empty.world" />
+  </include>
+
+  <test pkg="rostest" type="hztest" name="$(arg TESTNAME_CHECKERBOARDDETECT_STATUS)" 
+        test-name="$(arg TESTNAME_CHECKERBOARDDETECT_STATUS)" time-limit="60">
+    <param name="topic" value="/camera/rgb/image_rect_color" />
+    <param name="hz" value="9.0" />
+    <param name="hzerror" value="4.00" />
+    <param name="test_duration" value="5.0" />
+    <param name="wait_time" value="30.0" />
+  </test>
+</launch>
