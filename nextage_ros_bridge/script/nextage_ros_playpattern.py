@@ -46,6 +46,23 @@ import nextage_rtm_playpattern as nxtpp
 
 
 def setTargetPoseSequenceMoveIt(limb, pos_list, rpy_list, tm_list):
+    '''
+    Create a array of limb joint angles for the each waypoints
+    from data of the end effector postions and postures
+    using MoveIt!.
+    
+    @type  limb     : str
+    @param limb     : limb to create a pattern, right arm 'rarm' or left arm 'larm'
+    @type  pos_list : [[float,float,float],[float,float,float],...]
+    @param pos_list : Array of end effector positions (x,y,z) [m]
+    @type  rpy_list : [[float,float,float],[float,float,float],...]
+    @param rpy_list : Array of end effector postures (r,p,y) [m]
+    @type  tm_list  : [float,float,...]
+    @param tm_list  : Array of motion time lengths of the each pose [s]
+    
+    @rtype  : RobotTrajectory, float
+    @return : Plan of limb waypoints motion and fraction of the path achieved as described by the waypoints
+    '''
     wpose = geometry_msgs.msg.Pose()
     waypoints = []
     
@@ -69,6 +86,10 @@ def setTargetPoseSequenceMoveIt(limb, pos_list, rpy_list, tm_list):
 
 
 if __name__ == '__main__':
+    '''
+    Main sequence for moving at waypoints
+    using MoveIt!.
+    '''
     rospy.init_node('commander_example', anonymous=True)
 
     limb_name = "left_arm"  # Limb 'right_arm', 'left_arm'

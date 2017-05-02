@@ -40,6 +40,21 @@ import math
 ###
 
 def circularPositions(center=[0.3, 0.2, 0.1], radius=0.1 ,steps=12):
+    '''
+    Create a array of circular position coordinates
+    from a center position and a radius divided by steps.
+    
+    @type  center : [float, float, float]
+    @param center : Position (x,y,z) [m] coordinates of a circle center
+    @type  radius : float
+    @param radius : Radius length [m]
+    @type  steps  : int
+    @param steps  : Number of steps for dividing a circle
+    
+    @rtype  : [ [float, float, float], [float, float, float], ...]
+    @return : Array of circular position coordinates (x,y,z) [m]
+              Length of steps+1 (including an end position same as the start position)
+    '''
     positions_xyz = []
     step_rad = 2 * math.pi / steps
     for i in range(steps+1):
@@ -53,6 +68,19 @@ def circularPositions(center=[0.3, 0.2, 0.1], radius=0.1 ,steps=12):
 
 
 def rectangularPositions(dp_a=[0.25, 0.0, 0.1], dp_b=[0.45, 0.2, 0.1]):
+    '''
+    Create a array of rectangular position coordinates
+    from diagonal points of A and B.
+    
+    @type  dp_a : [float, float, float]
+    @param dp_a : Position (x,y,z) [m] coordinates of a diagonal point A
+    @type  dp_a : [float, float, float]
+    @param dp_a : Position (x,y,z) [m] coordinates of a diagonal point B
+    
+    @rtype  : [ [float, float, float], [float, float, float], ...]
+    @return : Array of rectangular position coordinates (x,y,z) [m]
+              Length of 5 (including an end position same as the start position)
+    '''
     positions_xyz = [
                      [ dp_a[0], dp_a[1], dp_a[2] ],
                      [ dp_a[0], dp_b[1], dp_a[2] ],
@@ -65,6 +93,19 @@ def rectangularPositions(dp_a=[0.25, 0.0, 0.1], dp_b=[0.45, 0.2, 0.1]):
     
 
 def samePostureRPY(rpy, pat_length):
+    '''
+    Create a array of the same posture Roll, Pitch, Yaw angles
+    from one set of Roll Pitch Yaw angles.
+    
+    @type  rpy        : [float, float, float]
+    @param rpy        : Posture angle Roll, Pitch, Yaw (r,p,y) [rad] to copy
+    @type  pat_length : int
+    @param pat_length : Array length of pat_length for the same posture angles
+    
+    @rtype  : [ [float, float, float], [float, float, float], ...]
+    @return : Array of the same posture angles (r,p,y) [rad]
+              Length of pat_length
+    '''
     posture_rpy = []
     for i in range(pat_length):
         posture_rpy.append(rpy)
@@ -73,6 +114,19 @@ def samePostureRPY(rpy, pat_length):
 
 
 def equalTimeList(whole_tm, pat_length):
+    '''
+    Create a array of the same time length
+    from whole motion time.
+    
+    @type  whole_tm   : float
+    @param whole_tm   : Whole time [s]
+    @type  pat_length : int
+    @param pat_length : Number to divide the whole time
+    
+    @rtype  : [ float, float, float, ... ]
+    @return : Array of the equally divided whole time [s]
+              Length of pat_length
+    '''
     tm_list = []
     tm = whole_tm / pat_length
     for i in range(pat_length):
@@ -82,6 +136,23 @@ def equalTimeList(whole_tm, pat_length):
 
 
 def setTargetPoseSequence(limb, pos_list, rpy_list, tm_list):
+    '''
+    Create a array of limb joint angles for the each waypoints
+    from data of the end effector postions and postures
+    using robot moving using RTM interface.
+    
+    @type  limb     : str
+    @param limb     : limb to create a pattern, right arm 'rarm' or left arm 'larm'
+    @type  pos_list : [[float,float,float],[float,float,float],...]
+    @param pos_list : Array of end effector positions (x,y,z) [m]
+    @type  rpy_list : [[float,float,float],[float,float,float],...]
+    @param rpy_list : Array of end effector postures (r,p,y) [m]
+    @type  tm_list  : [float,float,...]
+    @param tm_list  : Array of motion time lengths of the each pose [s]
+    
+    @rtype  : [[float,float,...],[float,float,...],...]
+    @return : Array of limb joint angles [rad]
+    '''
     pattern_arm = []
     for pos, rpy, tm in zip(pos_list, rpy_list, tm_list):
         robot.setTargetPose(limb, pos, rpy, tm)
@@ -100,6 +171,10 @@ def setTargetPoseSequence(limb, pos_list, rpy_list, tm_list):
 from nextage_ros_bridge import nextage_client
 
 if __name__ == '__main__':
+    '''
+    Main sequence for moving at waypoints
+    using RTM interface.
+    '''
     robot = nextage_client.NextageClient()
     # #robot.init(robotname=robotname, url=modelfile)
     robot.init(robotname="HiroNX(Robot)0")#, url=modelfile)

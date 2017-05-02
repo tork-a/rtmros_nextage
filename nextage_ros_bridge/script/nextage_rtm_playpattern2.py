@@ -46,7 +46,24 @@ from moveit_msgs.msg import PositionIKRequest
 import nextage_rtm_playpattern as nxtpp
 
 
-def setTargetPoseSequenceMoveIt(limb, pos_list, rpy_list, tm_list):
+def setTargetPoseSequenceRTM(limb, pos_list, rpy_list, tm_list):
+    '''
+    Create a array of limb joint angles for the each waypoints
+    from data of the end effector postions and postures
+    using robot moving using RTM interface.
+    
+    @type  limb     : str
+    @param limb     : limb to create a pattern, right arm 'rarm' or left arm 'larm'
+    @type  pos_list : [[float,float,float],[float,float,float],...]
+    @param pos_list : Array of end effector positions (x,y,z) [m]
+    @type  rpy_list : [[float,float,float],[float,float,float],...]
+    @param rpy_list : Array of end effector postures (r,p,y) [m]
+    @type  tm_list  : [float,float,...]
+    @param tm_list  : Array of motion time lengths of the each pose [s]
+    
+    @rtype  : [[float,float,...],[float,float,...],...]
+    @return : Array of limb joint angles [rad]
+    '''
     pattern_arm = []
     for pos, rpy, tm in zip(pos_list, rpy_list, tm_list):
         robot.setTargetPose(limb, pos, rpy, tm)
@@ -61,6 +78,23 @@ def setTargetPoseSequenceMoveIt(limb, pos_list, rpy_list, tm_list):
     return pattern_arm
 
 def setTargetPoseSequenceMoveIt(limb, pos_list, rpy_list, tm_list):
+    '''
+    Create a array of limb joint angles for the each waypoints
+    from data of the end effector postions and postures
+    using MoveIt! IK for computing joint angles.
+    
+    @type  limb     : str
+    @param limb     : limb to create a pattern, right arm 'rarm' or left arm 'larm'
+    @type  pos_list : [[float,float,float],[float,float,float],...]
+    @param pos_list : Array of end effector positions (x,y,z) [m]
+    @type  rpy_list : [[float,float,float],[float,float,float],...]
+    @param rpy_list : Array of end effector postures (r,p,y) [m]
+    @type  tm_list  : [float,float,...]
+    @param tm_list  : Array of motion time lengths of the each pose [s]
+    
+    @rtype  : [[float,float,...],[float,float,...],...]
+    @return : Array of limb joint angles [rad]
+    '''
     pattern_arm = []
     wpose = geometry_msgs.msg.Pose()
 
@@ -95,6 +129,10 @@ def setTargetPoseSequenceMoveIt(limb, pos_list, rpy_list, tm_list):
     return pattern_arm
 
 if __name__ == '__main__':
+    '''
+    Main sequence for moving at waypoints with RTM interface
+    using MoveIt! IK for computing joint angles.
+    '''
     robot = nextage_client.NextageClient()
     # #robot.init(robotname=robotname, url=modelfile)
     robot.init(robotname="HiroNX(Robot)0")#, url=modelfile)
