@@ -14,9 +14,9 @@
   <arg name='TESTNAME_CAMERA_IMAGE' value='test_gazebo_image' />
   <test pkg="rostest" type="hztest" name="$(arg TESTNAME_CAMERA_IMAGE)"
         test-name="$(arg TESTNAME_CAMERA_IMAGE)" time-limit="30" retry="3" >
-    <param name="topic" value="/camera/rgb/image_rect_color" />
-    <param name="hz" value="10.0" />
-    <param name="hzerror" value="9.0" />
+    <param name="topic" value="/camera/rgb/image_raw" />
+    <param name="hz" value="20.0" />
+    <param name="hzerror" value="19.0" />
     <param name="test_duration" value="3.0" />
   </test>
 
