@@ -1,0 +1,14 @@
+<launch>
+  <include file="$(find nextage_calibration)/test/gz_common.xml">
+    <arg name="TESTNAME_CHECKERBOARDDETECT_STATUS" value="test_checkerboarddetect_chest"/>
+  </include>
+
+  <!-- Spawn checkerboard at chest and run calibration -->
+  <include file="$(find nextage_calibration)/launch/gazebo_kinect_checkerboard_chest.launch" />
+  <include file="$(find nextage_calibration)/launch/camera_checkerboard_chest.launch">
+    <arg name="launch_openni2" value="false"/>
+  </include>
+
+  <test pkg="nextage_calibration" type="test_calib_chest.py"
+        test-name="nxo_calib" time-limit="60" args="" retry = "3" />
+</launch>
