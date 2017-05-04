@@ -24,9 +24,9 @@
     <remap from="robot_description" to="sensor_description" />
   </node>
 
-  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+  <node name="spawn_checkerboard_chest" pkg="gazebo_ros" type="spawn_model"
         args="-file $(find nextage_calibration)/models/checkerboard_horizontal.urdf
         -urdf -model checkerboard_horizontal
-        -reference_frame WAIST" />
+        -reference_frame WAIST -wait" />
 
 </launch>

@@ -1,0 +1,25 @@
+<launch>
+  <arg name="GUI" default='false' />
+  <include file="$(find nextage_gazebo)/launch/nextage_world.launch">
+    <arg name="gui" value="$(arg GUI)"/>
+    <arg name="world_file" value="worlds/empty.world" />
+  </include>
+
+  <!-- Spawn checkerboard at chest and run calibration -->
+  <include file="$(find nextage_calibration)/launch/gazebo_kinect_checkerboard_chest.launch" />
+  <include file="$(find nextage_calibration)/launch/camera_checkerboard_chest.launch">
+    <arg name="launch_openni2" value="false"/>
+  </include>
+
+  <arg name='TESTNAME_CAMERA_IMAGE' value='test_gazebo_image' />
+  <test pkg="rostest" type="hztest" name="$(arg TESTNAME_CAMERA_IMAGE)"
+        test-name="$(arg TESTNAME_CAMERA_IMAGE)" time-limit="30" retry="3" >
+    <param name="topic" value="/camera/rgb/image_raw" />
+    <param name="hz" value="20.0" />
+    <param name="hzerror" value="19.0" />
+    <param name="test_duration" value="3.0" />
+  </test>
+
+  <test pkg="nextage_calibration" type="test_calib_chest.py"
+        test-name="nxo_calib" time-limit="60" args="" retry = "3" />
+</launch>

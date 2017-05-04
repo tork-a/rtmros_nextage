@@ -19,6 +19,13 @@ notifications:
       - dev@opensource-robotics.tokyo.jp
     on_success: always #[always|never|change] # default: change
     on_failure: always #[always|never|change] # default: always
+before_install:
+  # use host xserver
+  - sudo apt-get -y -qq install xvfb mesa-utils
+  - export DISPLAY=:99
+  - Xvfb  $DISPLAY -ac -screen 0 1024x768x24 &
+  - sleep 3 # wait x server up
+  - glxinfo
 install:
   - sudo sh -c "echo \"deb ${DEB_REPOSITORY} `lsb_release -cs` main\" > /etc/apt/sources.list.d/ros-latest.list"
   - wget http://packages.ros.org/ros.key -O - | sudo apt-key add -

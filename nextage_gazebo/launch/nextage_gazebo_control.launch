@@ -5,7 +5,8 @@
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager"
         type="spawner" respawn="false"
-        output="screen" args="joint_state_controller
+        output="screen" args="--shutdown-timeout 0.1
+                                           joint_state_controller
                                            larm_controller
                                            rarm_controller
                                            head_controller
