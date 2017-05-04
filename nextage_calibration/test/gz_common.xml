@@ -11,10 +11,10 @@
 
   <test pkg="rostest" type="hztest" name="$(arg TESTNAME_CHECKERBOARDDETECT_STATUS)" 
         test-name="$(arg TESTNAME_CHECKERBOARDDETECT_STATUS)" time-limit="60">
-    <param name="topic" value="/camera/rgb/image_rect_color" />
-    <param name="hz" value="9.0" />
-    <param name="hzerror" value="4.00" />
+    <param name="topic" value="/camera/rgb/image_color" />
+    <param name="hz" value="19.0" />
+    <param name="hzerror" value="15.00" />
     <param name="test_duration" value="5.0" />
-    <param name="wait_time" value="30.0" />
+    <param name="wait_time" value="20.0" />
   </test>
 </launch>
