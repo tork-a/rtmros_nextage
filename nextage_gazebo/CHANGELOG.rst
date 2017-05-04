@@ -2,6 +2,12 @@
 Changelog for package nextage_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [enhance] nextage_gazebo/launch/nextage_gazebo_control.launch : add --shutdown-timeout
+* [enhance] nextage_gazebo/test/gz.test: add retry=2
+* Contributors: Isaac I.Y. Saito, Kei Okada
+
 0.7.15 (2017-03-11)
 -------------------
 

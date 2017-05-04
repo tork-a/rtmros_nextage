@@ -2,6 +2,12 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [fix] Temporary revert getRTCList calling from the parent class, HIRONX `#317 <https://github.com/tork-a/rtmros_nextage/pull/317>`_
+* [enhance][ros_bridge] Improve error message when no running ROS found. `#309 <https://github.com/tork-a/rtmros_nextage/pull/309>`_
+* Contributors: Isaac I.Y. Saito
+
 0.7.15 (2017-03-11)
 -------------------
 

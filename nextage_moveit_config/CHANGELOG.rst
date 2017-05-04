@@ -2,8 +2,15 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.7.15 (2017-03-11)
 -------------------
+* test_move_group/hztest time-limit 60->12, retry 3
+* 0.7.15
+* changelog for 0.7.15.
+* Contributors: Isaac I.Y. Saito, Kei Okada
 
 0.7.14 (2017-02-21)
 -------------------

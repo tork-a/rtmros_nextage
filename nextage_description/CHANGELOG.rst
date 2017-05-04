@@ -2,9 +2,13 @@
 Changelog for package nextage_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.7.15 (2017-03-11)
 -------------------
 * [fix] Model file copyrights.
+* Contributors: Isaac I.Y. Saito
 
 0.7.14 (2017-02-21)
 -------------------

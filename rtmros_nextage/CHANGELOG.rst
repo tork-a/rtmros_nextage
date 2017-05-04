@@ -2,6 +2,14 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [fix][nextage_ros_bridge] Temporary revert getRTCList calling from the parent class, HIRONX `#317 <https://github.com/tork-a/rtmros_nextage/pull/317>`_
+* [enhance][nextage_ros_bridge] Improve error message when no running ROS found. `#309 <https://github.com/tork-a/rtmros_nextage/pull/309>`_
+* [fix][nextage_calibration] error "libgazebo_ros_openni_kinect.so: cannot open shared object file" `#324 <https://github.com/tork-a/rtmros_nextage/pull/324>`_
+* [maintenance][nextage_calibration] Add simple testcases.
+* Contributors: Kei Okada, Yamamoto Yosuke, Isaac I.Y. Saito
+
 0.7.15 (2017-03-11)
 -------------------
 * [capability] add package nextage_calibration
