@@ -2,11 +2,6 @@
 <launch> 
   <arg name="RVIZ_FIXEDFRAME" default="WAIST" />
   <arg name="command_args" default="--fixed-frame $(arg RVIZ_FIXEDFRAME) -d $(find hironx_ros_bridge)/launch/hironxo.rviz" />
-  
-  <!-- Passing true to `debug` allows you to run this launch on gdb. -->
-  <arg name="debug" default="false" />
-  <arg unless="$(arg debug)" name="launch_prefix" value="" />
-  <arg     if="$(arg debug)" name="launch_prefix" value="gdb --ex run --args" />
-
+  <arg name="debug" default="false" doc="Passing true to `debug` allows you to run this launch on gdb." />
   <include file="$(find hironx_ros_bridge)/launch/rviz.launch" pass_all_args="true" />
 </launch>
