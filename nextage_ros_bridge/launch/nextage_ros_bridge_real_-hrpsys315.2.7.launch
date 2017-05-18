@@ -1,4 +1,6 @@
 <launch>
+  <!-- This file is targeted for the robot that runs on hrpsys older than the version 315.2.7.
+       For those on newer version use nextage_ros_bridge_real.launch. -->
   <arg name="COLLADA_FILE" default="$(find nextage_description)/models/main.dae" /> 
   <arg name="CONF_FILE_COLLISIONDETECT" default="$(find nextage_ros_bridge)/conf/realrobot_fixedpath.conf" />
   <arg name="corbaport" default="15005" />
