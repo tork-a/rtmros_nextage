@@ -1,0 +1,39 @@
+<!-- Took nextage_moveit_config/launch/moveit_rviz.launch as an example. -->
+<launch>
+  <arg name="debug" default="false" doc="Passing true to `debug` allows you to run this launch on gdb."/>
+  <arg name="extra_gazebo_args" default=""/>
+  <arg name="gui" default="true"/>
+  <arg name="gzpose" default="-x 0.01 -y 0.01 -z 1.0" />
+  <arg name="headless" default="false"/>
+  <arg name="paused" default="false"/>
+  <arg name="physics" default="ode"/>
+  <arg name="sec_idle" default="1.0" />
+  <arg name="use_sim_time" default="true"/>
+  <arg name="verbose" default="false"/>
+  <arg name="visualize_laser" default="false" />
+  <!--  <arg name="world_file" default="$(find turtlebot_gazebo)/worlds/playground.world" /> -->
+  <arg name="world_file" default="worlds/empty.world" />
+
+  <arg name="RVIZ_FIXEDFRAME" default="WAIST" />
+  <arg name="command_args" default="-d $(find nextage_gazebo)/launch/gz.rviz --fixed-frame $(arg RVIZ_FIXEDFRAME)" />
+  
+  <include file="$(find nextage_gazebo)/launch/nextage_world.launch">
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="extra_gazebo_args" value="$(arg extra_gazebo_args)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="gzpose" value="$(arg gzpose)" />
+    <arg name="headless" value="$(arg headless)" />
+    <arg name="paused" value="$(arg paused)" />
+    <arg name="physics" value="$(arg physics)" />
+    <arg name="sec_idle" value="$(arg sec_idle)" />
+    <arg name="use_sim_time" value="$(arg use_sim_time)" />
+    <arg name="verbose" value="$(arg verbose)" />
+    <arg name="visualize_laser" value="$(arg visualize_laser)" />
+    <arg name="world_file" value="$(arg world_file)" />
+  </include>
+
+  <include file="$(find nextage_gazebo)/launch/rviz.launch" if="$(arg gui)">
+    <arg name="RVIZ_FIXEDFRAME" value="$(arg RVIZ_FIXEDFRAME)" />
+    <arg name="command_args" value="$(arg command_args)" />  
+  </include>
+</launch>

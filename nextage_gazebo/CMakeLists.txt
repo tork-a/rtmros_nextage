@@ -1,12 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(nextage_gazebo)
 
-find_package(catkin REQUIRED COMPONENTS
-  gazebo_ros
-  gazebo_ros_control
-  nextage_description
-  rostest
-)
+find_package(catkin REQUIRED COMPONENTS)
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES nextage_gazebo
