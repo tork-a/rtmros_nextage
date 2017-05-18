@@ -11,11 +11,6 @@
   <url type="website">http://wiki.ros.org/nextage_gazebo</url>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>gazebo_ros</build_depend>
-  <build_depend>gazebo_ros_control</build_depend>
-  <build_depend>nextage_description</build_depend>
-  <build_depend>nextage_moveit_config</build_depend>
-  <build_depend>ros_controllers</build_depend>
   <run_depend>gazebo_ros</run_depend>
   <run_depend>gazebo_ros_control</run_depend>
   <run_depend>nextage_description</run_depend>
