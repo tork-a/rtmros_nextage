@@ -22,4 +22,15 @@
   <test pkg="nextage_moveit_config" type="test_moveit.py" test-name="nxo_moveit"
         time-limit="300" retry="2"
         args="" />
+
+  <!-- Check if cameras publish image topics. -->
+  <arg name='TESTNAME_CAMERA_TOPICS' value='test_camera_topics' />
+  <test pkg="rostest" type="hztest" test-name="$(arg TESTNAME_CAMERA_TOPICS)"
+        name="$(arg TESTNAME_CAMERA_TOPICS)" time-limit="10" retry="3" >
+    <param name="topic" value="/L_HEADMOUNT_CAMERA/image_raw" />
+    <param name="hz" value="30.0" />
+    <param name="hzerror" value="3.00" />
+    <param name="test_duration" value="5.0" />
+    <param name="wait_time" value="30.0" />
+  </test>  
 </launch>
