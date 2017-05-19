@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="NextageOpenGz"
+<robot name="NextageOpen"
        xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:include filename="$(find nextage_description)/urdf/NextageOpen.urdf" />
