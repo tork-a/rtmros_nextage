@@ -25,7 +25,6 @@
     <arg name="MODEL_FILE" value="$(arg MODEL_FILE)" />
     <arg name="SIMULATOR_NAME" value="HiroNX(Robot)0" />
     <arg name="CONF_FILE_COLLISIONDETECT" value="$(arg CONF_FILE_COLLISIONDETECT)" />
-    <arg name="USE_IMPEDANCECONTROLLER" value="$(arg USE_IMPEDANCE)" />
   </include>
 
   <!-- camera image -->
