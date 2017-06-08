@@ -577,6 +577,13 @@ DEF HiroNX Humanoid{
 						       mass 1.05156
 						       momentsOfInertia [ 0.00194072 -1.1E-7 -4.2482E-4 -1.1E-7 0.00209392 -1.2E-7 -4.2482E-4 -1.2E-7 3.5788E-4 ]
 						       children [
+                                   DEF rhsensor ForceSensor {
+                                       # translation 0 0 0
+							           translation -0.035 0 0
+                                       # rotation 0.57737 0.57735 0.57735 2.0944
+							           rotation 0 1 0 -1.570796327
+                                       sensorId 0
+                                   }
 							  Transform {
 								translation -0.0061  0.0 -0.002
 								children Shape {
@@ -765,6 +772,12 @@ DEF HiroNX Humanoid{
 						       mass 1.05156
 						       momentsOfInertia [ 0.00194072 1.1E-7 -4.2482E-4 1.1E-7 0.00209392 1.2E-7 -4.2482E-4 1.2E-7 3.5788E-4 ]
 						       children[
+                                   DEF lhsensor ForceSensor {
+                                       translation -0.035 0 0
+                                       # rotation 0.57737 0.57735 0.57735 2.0944
+							           rotation 0 1 0 -1.570796327
+                                       sensorId 1
+                                   }
 							  Transform { 
 							     #translation -0.0225  0.010 -0.0301
 							     translation -0.0061  0.0 -0.002
