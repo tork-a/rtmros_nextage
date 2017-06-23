@@ -5,27 +5,8 @@
 			<authoring_tool>OpenHRP3 Collada Writer</authoring_tool>
 			<comments>/opt/ros/indigo/lib/openhrp3/export-collada -i main.wrl -o main.dae </comments>
 		</contributor>
-		<created>2013-10-26T13:54:38.000000</created>
-		<modified>2016-12-24T16:09:26.000000</modified>
-                <copyright>
-Copyright (c) 2013, Kawada Robotics Corp., Kawada Industries, Inc. All rights reserved.
-
-1) Copy, packaging, redistribution of 3D model as is, are exploited without permission
-
-2) Redistoribution of modified or derivative work, is not exploited without permission of copyright holder
-
-THIS 3D MODEL IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-                </copyright>
+		<created>2017-06-12T18:00:48.000000</created>
+		<modified>2017-06-12T18:00:48.000000</modified>
 		<unit/>
 		<up_axis>Z_UP</up_axis>
 	</asset>
@@ -6424,41 +6405,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 					</frame_origin>
 				</technique>
 			</extra>
-			<extra name="CAMERA_HAND_R" type="attach_sensor">
+			<extra name="rhsensor" type="attach_sensor">
 				<technique profile="OpenRAVE">
 					<instance_sensor url="#sensor3"/>
 					<frame_origin link="kmodel1/link9">
-						<translate>-0.07000000000000001 0 -0.08</translate>
-						<rotate>-0.1294279597735375 0.9831056944488314 -0.1294279597735375 90.97595758425751</rotate>
-						<rotate>1 0 0 180</rotate>
-					</frame_origin>
-				</technique>
-			</extra>
-			<extra name="CAMERA_HAND_L" type="attach_sensor">
-				<technique profile="OpenRAVE">
-					<instance_sensor url="#sensor4"/>
-					<frame_origin link="kmodel1/link15">
-						<translate>-0.07000000000000001 0 -0.08</translate>
-						<rotate>0.1294279597735375 0.9831056944488314 0.1294279597735375 90.97595758425751</rotate>
-						<rotate>1 0 0 180</rotate>
+						<translate>-0.035 0 0</translate>
+						<rotate>0 1 0 -90.00000001175157</rotate>
 					</frame_origin>
 				</technique>
 			</extra>
 			<extra name="lhsensor" type="attach_sensor">
 				<technique profile="OpenRAVE">
-					<instance_sensor url="#sensor5"/>
+					<instance_sensor url="#sensor4"/>
 					<frame_origin link="kmodel1/link15">
-						<translate>0 0 0</translate>
-						<rotate>0.57737 0.57735 0.57735 2.0944</rotate>
-					</frame_origin>
-				</technique>
-			</extra>
-			<extra name="rhsensor" type="attach_sensor">
-				<technique profile="OpenRAVE">
-					<instance_sensor url="#sensor6"/>
-					<frame_origin link="kmodel1/link9">
-						<translate>0 0 0</translate>
-						<rotate>0.57737 0.57735 0.57735 2.0944</rotate>
+						<translate>-0.035 0 0</translate>
+						<rotate>0 1 0 -90.00000001175157</rotate>
 					</frame_origin>
 				</technique>
 			</extra>
@@ -8729,25 +8690,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 				<image_dimensions>640 480 3</image_dimensions>
 				<measurement_time>0.033333</measurement_time>
 			</sensor>
-			<sensor id="sensor3" sid="2" type="base_pinhole_camera">
-				<focal_length>0.020000</focal_length>
-				<intrinsic>1076.85803578395 0 320 0 807.643526837964 240</intrinsic>
-				<format>uint8</format>
-				<image_dimensions>640 480 3</image_dimensions>
-				<measurement_time>0.033333</measurement_time>
-			</sensor>
-			<sensor id="sensor4" sid="3" type="base_pinhole_camera">
-				<focal_length>0.050000</focal_length>
-				<intrinsic>1076.85803578395 0 320 0 807.643526837964 240</intrinsic>
-				<format>uint8</format>
-				<image_dimensions>640 480 3</image_dimensions>
-				<measurement_time>0.033333</measurement_time>
-			</sensor>
-			<sensor id="sensor5" sid="0" type="base_force6d">
+			<sensor id="sensor3" sid="0" type="base_force6d">
 				<load_range_force>-1.000000 -1.000000 -1.000000</load_range_force>
 				<load_range_torque>-1.000000 -1.000000 -1.000000</load_range_torque>
 			</sensor>
-			<sensor id="sensor6" sid="1" type="base_force6d">
+			<sensor id="sensor4" sid="1" type="base_force6d">
 				<load_range_force>-1.000000 -1.000000 -1.000000</load_range_force>
 				<load_range_torque>-1.000000 -1.000000 -1.000000</load_range_torque>
 			</sensor>

@@ -328,22 +328,32 @@ class NextageClient(HIRONX, object):
 
     def getRTCList(self):
         '''
-        Overwriting HrpsysConfigurator.getRTCList
-        Returning predefined list of RT components.
+        @see: HrpsysConfigurator.getRTCList
+
         @rtype [[str]]
-        @return List of available components. Each element consists of a list
+        @rerutrn List of available components. Each element consists of a list
                  of abbreviated and full names of the component.
         '''
-        return [
+        rtclist = [
             ['seq', "SequencePlayer"],
             ['sh', "StateHolder"],
             ['fk', "ForwardKinematics"],
+            ['ic', "ImpedanceController"],
             ['el', "SoftErrorLimiter"],
             # ['co', "CollisionDetector"],
-            # ['sc', "ServoController"],
-            ['ic', "ImpedanceController"],
-            ['log', "DataLogger"]
+            ['sc', "ServoController"],
+            ['log', "DataLogger"],
             ]
+        if hasattr(self, 'rmfo'):
+            self.ms.load("RemoveForceSensorLinkOffset")
+            self.ms.load("AbsoluteForceSensor")
+            if "RemoveForceSensorLinkOffset" in self.ms.get_factory_names():
+                rtclist.append(['rmfo', "RemoveForceSensorLinkOffset"])
+            elif "AbsoluteForceSensor" in self.ms.get_factory_names():
+                rtclist.append(['rmfo', "AbsoluteForceSensor"])
+            else:
+                print "Component rmfo is not loadable."
+        return rtclist
 
     def goInitial(self, tm=7, wait=True, init_pose_type=0):
         '''

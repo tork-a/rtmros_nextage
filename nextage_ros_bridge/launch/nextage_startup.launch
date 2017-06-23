@@ -14,6 +14,6 @@
     <arg name="LAUNCH_HRPSYSPY" value='$(arg LAUNCH_HRPSYSPY)' />
     <arg name="GUI" value="$(arg GUI)" />
     <arg name="MODEL_FILE" value="$(arg MODEL_FILE)" />
-    <arg name="PROJECT_FILE" value="$(find nextage_ros_bridge)/conf/nextage_nosim.xml" />
+    <arg name="PROJECT_FILE" value="$(find nextage_ros_bridge)/conf/nextage.xml" />
   </include>
 </launch>
