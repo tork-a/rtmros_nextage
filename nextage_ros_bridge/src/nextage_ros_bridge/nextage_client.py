@@ -368,7 +368,19 @@ class NextageClient(HIRONX, object):
         if not init_pose_type:
             # Set the pose where eefs level with the tabletop by default.
             init_pose_type = HIRONX.INITPOS_TYPE_EVEN
-        return HIRONX.goInitial(self, tm, wait, init_pose_type)
+        ret = HIRONX.goInitial(self, tm, wait, init_pose_type)
+        if wait and self.ic and self.rmfo_svc and self.rh_svc:
+            i = 0
+            forces = self.rh_svc.getStatus().force
+            for sensor in ['rhsensor', 'lhsensor']:
+                force = forces[i]
+                (result, p) = self.rmfo_svc.getForceMomentOffsetParam(sensor)
+                p.force_offset=[force[0], force[1], force[2]]
+                p.moment_offset=[force[3], force[4], force[5]]
+                print(self.configurator_name + "Remove force offset {} with {}".format(sensor, force))
+                self.rmfo_svc.setForceMomentOffsetParam(sensor, p)
+                i = i + 1
+        return ret
 
     def readDinGroup(self, ports, dumpFlag=True):
         '''
