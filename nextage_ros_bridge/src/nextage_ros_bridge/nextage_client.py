@@ -334,7 +334,7 @@ class NextageClient(HIRONX, object):
         @return List of available components. Each element consists of a list
                  of abbreviated and full names of the component.
         '''
-        return [
+        rtclist = [
             ['seq', "SequencePlayer"],
             ['sh', "StateHolder"],
             ['fk', "ForwardKinematics"],
@@ -344,6 +344,22 @@ class NextageClient(HIRONX, object):
             ['ic', "ImpedanceController"],
             ['log', "DataLogger"]
             ]
+        if hasattr(self, 'rmfo'):
+            self.ms.load("RemoveForceSensorLinkOffset")
+            self.ms.load("AbsoluteForceSensor")
+            if "RemoveForceSensorLinkOffset" in self.ms.get_factory_names():
+                rtclist.append(['rmfo', "RemoveForceSensorLinkOffset"])
+            elif "AbsoluteForceSensor" in self.ms.get_factory_names():
+                rtclist.append(['rmfo', "AbsoluteForceSensor"])
+            else:
+                print "Component rmfo is not loadable."
+        # check if forcesensor iexists
+        if self.rh.port("lhsensor") or self.rh.port("rhsensor") :
+            print(self.configurator_name + "Setup with ImpedanceController")
+        else:
+            rtclist = [rtc for rtc in rtclist if not rtc[0] in ['ic', 'rmfo']]
+            print(self.configurator_name + "Setup without ImpedanceController")
+        return rtclist
 
     def goInitial(self, tm=7, wait=True, init_pose_type=0):
         '''
