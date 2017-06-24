@@ -6,6 +6,7 @@
   <arg name="MODEL_FILE" default="$(find nextage_description)/models/main.wrl" />
   <arg name="NAMESERVER" default="localhost" />
   <arg name="LAUNCH_HRPSYSPY" default='true' />
+  <arg name="USE_IMPEDANCECONTROLLER" default="true"/>
 
   <include file="$(find nextage_ros_bridge)/launch/nextage_startup.launch" >
     <arg name="corbaport" value="$(arg CORBAPORT)" />
@@ -20,6 +21,7 @@
     <arg name="MODEL_FILE" value="$(arg MODEL_FILE)" />
     <arg name="SIMULATOR_NAME" value="HiroNX(Robot)0" />
     <arg name="CONF_FILE_COLLISIONDETECT" value="$(arg CONF_FILE_COLLISIONDETECT)" />
+    <arg name="USE_IMPEDANCECONTROLLER" value="$(arg USE_IMPEDANCECONTROLLER)"/>
   </include>
 
   <!-- camera image -->
