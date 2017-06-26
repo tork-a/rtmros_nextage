@@ -341,7 +341,7 @@ class NextageClient(HIRONX, object):
             ['ic', "ImpedanceController"],
             ['el', "SoftErrorLimiter"],
             # ['co', "CollisionDetector"],
-            ['sc', "ServoController"],
+            # ['sc', "ServoController"],
             ['log', "DataLogger"],
             ]
         if hasattr(self, 'rmfo'):
