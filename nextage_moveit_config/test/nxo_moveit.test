@@ -29,12 +29,12 @@
 
   <!-- Check if MoveGroup is running -->
   <arg name='TESTNAME_MG_STATUS' value='test_move_group' />
-  <test pkg="rostest" type="hztest" test-name="$(arg TESTNAME_MG_STATUS)" name="$(arg TESTNAME_MG_STATUS)" time-limit="120" retry="3" >
+  <test pkg="rostest" type="hztest" test-name="$(arg TESTNAME_MG_STATUS)" name="$(arg TESTNAME_MG_STATUS)" time-limit="200" retry="3" >
     <param name="topic" value="/move_group/status" />
     <param name="hz" value="5.0" />
     <param name="hzerror" value="3.00" />
     <param name="test_duration" value="10.0" />
-    <param name="wait_time" value="15.0" />
+    <param name="wait_time" value="150.0" />
   </test>  
   
   <test pkg="nextage_moveit_config" type="test_moveit.py" test-name="nxo_moveit"
