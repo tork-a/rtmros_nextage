@@ -28,6 +28,13 @@ export DISPLAY=:99
 Xvfb  $DISPLAY -ac -screen 0 1024x768x24 &
 sleep 3 # wait x server up
 glxinfo
+####### https://github.com/ros-planning/moveit/pull/581
+if [ "$CI_ROS_DISTRO" == "kinetic" ]; then
+    apt-get install -y python-pyassimp
+    sed -i 's@load, load_mem, release, dll@load, release, dll@' /usr/lib/python2.7/dist-packages/pyassimp/core.py
+    cat -n /usr/lib/python2.7/dist-packages/pyassimp/core.py
+fi
+#######
 ## install:
 sudo sh -c "echo \"deb ${DEB_REPOSITORY} `lsb_release -cs` main\" > /etc/apt/sources.list.d/ros-latest.list"
 wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
