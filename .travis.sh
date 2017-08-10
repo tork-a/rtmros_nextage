@@ -36,7 +36,7 @@ sudo apt-get install -qq -y python-rosdep python-catkin-tools
 sudo rosdep init
 rosdep update
   # Use rosdep to install all dependencies (including ROS itself)
-rosdep install --from-paths ./ -i -y --rosdistro $CI_ROS_DISTRO
+rosdep install --from-paths ./ -i -y -q --rosdistro $CI_ROS_DISTRO
 ## script:
 source /opt/ros/$CI_ROS_DISTRO/setup.bash
 mkdir -p $CATKIN_WS_SRC
