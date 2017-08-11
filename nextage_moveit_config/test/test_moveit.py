@@ -125,6 +125,10 @@ class TestDualarmMoveit(unittest.TestCase):
             mg = MoveGroupCommander(mg_attr[0])
             # Temporary workaround of planner's issue similar to https://github.com/tork-a/rtmros_nextage/issues/170
             mg.set_planner_id(self._KINEMATICSOLVER_SAFE)
+            # Allow replanning to increase the odds of a solution
+            mg.allow_replanning(True)
+            # increase planning time
+            mg.set_planning_time(15.0)
             # Append MoveGroup instance to the MoveGroup attribute list.
             mg_attr.append(mg)
 
