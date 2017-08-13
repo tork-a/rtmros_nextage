@@ -59,7 +59,7 @@ catkin build --limit-status-rate 0.1 --no-notify --make-args tests
   # Run tests
 ####### kinteic has problem on runnning gazebo with image on headless mode????
 if [ "$CI_ROS_DISTRO" == "kinetic" ]; then
-  touch src/nextage_calibration/CATKIN_IGNORE
+  touch src/rtmros_nextage/nextage_calibration/CATKIN_IGNORE
 fi
 #######
 catkin run_tests
