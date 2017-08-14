@@ -160,7 +160,7 @@ class TestDualarmMoveit(unittest.TestCase):
         pose_target = self._set_sample_pose()
         self._mvgroup.set_pose_target(pose_target)
         plan = self._mvgroup.plan()
-        rospy.loginfo('  plan: '.format(plan))
+        rospy.loginfo('  plan: {}'.format(plan))
         return plan
 
     def test_list_movegroups(self):
@@ -191,7 +191,7 @@ class TestDualarmMoveit(unittest.TestCase):
 
         movegroup.set_pose_target(pose_target)
         plan = movegroup.plan()  # TODO catch exception
-        rospy.loginfo('Plan: '.format(plan))
+        rospy.loginfo('Plan: {}'.format(plan))
         return plan
 
     def test_plan_success(self):
