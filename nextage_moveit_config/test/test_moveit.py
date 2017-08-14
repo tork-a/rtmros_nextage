@@ -128,7 +128,7 @@ class TestDualarmMoveit(unittest.TestCase):
             # Allow replanning to increase the odds of a solution
             mg.allow_replanning(True)
             # increase planning time
-            mg.set_planning_time(15.0)
+            mg.set_planning_time(30.0)
             # Append MoveGroup instance to the MoveGroup attribute list.
             mg_attr.append(mg)
 
