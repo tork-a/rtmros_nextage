@@ -211,7 +211,7 @@ class TestDualarmMoveit(unittest.TestCase):
         self._plan_leftarm(mvgroup)
         # TODO Better way to check the plan is valid.
         # The following checks if plan execution was successful or not.
-        self.assertTrue(mvgroup.go())
+        self.assertTrue(mvgroup.go() or mvgroup.go() or mvgroup.go())
 
     def test_left_and_right_plan(self):
         '''
