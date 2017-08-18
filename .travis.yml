@@ -13,6 +13,11 @@ env:
   matrix:
     - CI_ROS_DISTRO="indigo" DEB_REPOSITORY=http://packages.ros.org/ros/ubuntu
     - CI_ROS_DISTRO="indigo" DEB_REPOSITORY=http://packages.ros.org/ros-shadow-fixed/ubuntu
+    - CI_ROS_DISTRO="kinetic" DEB_REPOSITORY=http://packages.ros.org/ros/ubuntu
+    - CI_ROS_DISTRO="kinetic" DEB_REPOSITORY=http://packages.ros.org/ros-shadow-fixed/ubuntu
+matrix:
+  allow_failures:
+    - env: CI_ROS_DISTRO="kinetic" DEB_REPOSITORY=http://packages.ros.org/ros/ubuntu
 notifications:
   email:
     recipients:
@@ -20,36 +25,10 @@ notifications:
     on_success: always #[always|never|change] # default: change
     on_failure: always #[always|never|change] # default: always
 before_install:
-  # use host xserver
-  - sudo apt-get -y -qq install xvfb mesa-utils
-  - export DISPLAY=:99
-  - Xvfb  $DISPLAY -ac -screen 0 1024x768x24 &
-  - sleep 3 # wait x server up
-  - glxinfo
-install:
-  - sudo sh -c "echo \"deb ${DEB_REPOSITORY} `lsb_release -cs` main\" > /etc/apt/sources.list.d/ros-latest.list"
-  - wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq -y python-rosdep python-catkin-tools
-  - sudo rosdep init
-  - rosdep update
-  # Use rosdep to install all dependencies (including ROS itself)
-  - rosdep install --from-paths ./ -i -y --rosdistro $CI_ROS_DISTRO
+  - case $CI_ROS_DISTRO in "hydro") export DISTRO=precise;; "indigo") export DISTRO=trusty;; "kinetic") export DISTRO=xenial;; esac;
+  - export DOCKER_IMAGE=ubuntu:$DISTRO
+  - export CI_SOURCE_PATH=$(pwd)
+  - export REPOSITORY_NAME=${PWD##*/}
+  - docker images
 script:
-  - source /opt/ros/$CI_ROS_DISTRO/setup.bash
-  - mkdir -p $CATKIN_WS_SRC
-  - ln -s $TRAVIS_BUILD_DIR $CATKIN_WS_SRC
-  - cd $CATKIN_WS
-  - catkin init
-  # Enable install space
-  - catkin config --install
-  # Build [and Install] packages
-  - catkin build --limit-status-rate 0.1 --no-notify -DCMAKE_BUILD_TYPE=Release
-  # Build tests
-  - catkin build --limit-status-rate 0.1 --no-notify --make-args tests
-  # Run tests
-  - catkin run_tests
-  # check test (this only works from indigo onward)
-  - catkin_test_results build
-after_failure:
-  - catkin_test_results --verbose build
+  - docker run -v $HOME:$HOME -e CI_SOURCE_PATH -e REPOSITORY_NAME -e HOME -e DISTRO -e CI_ROS_DISTRO -e DEB_REPOSITORY -e CI_SOURCE_PATH -e CATKIN_WS -e CATKIN_WS_SRC -e TRAVIS_BUILD_DIR $DOCKER_IMAGE bash -c 'cd $CI_SOURCE_PATH; source .travis.sh'

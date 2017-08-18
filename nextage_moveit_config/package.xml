@@ -25,7 +25,7 @@
   <run_depend>moveit_ros_planning_interface</run_depend>
   <run_depend>moveit_ros_visualization</run_depend>
   <run_depend>nextage_ros_bridge</run_depend>
-  <run_depend>pr2_moveit_plugins</run_depend>
+  <run_depend>moveit_simple_controller_manager</run_depend>
   <run_depend>trac_ik_kinematics_plugin</run_depend>
 
   <test_depend>rostest</test_depend>

@@ -48,7 +48,7 @@
     <group name="botharms">
         <group name="right_arm" />
         <group name="left_arm" />
-        <group name="torso" />
+        <!-- <group name="torso" /> -->
     </group>
     <group name="head">
         <joint name="HEAD_JOINT0" />

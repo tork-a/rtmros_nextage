@@ -83,7 +83,8 @@ class TestDualarmMoveit(unittest.TestCase):
     _MOVEGROUP_ATTR_HEAD = [_MOVEGROUP_NAME_HEAD, _JOINTNAMES_HEAD]
 
     _MOVEGROUP_NAME_BOTHARMS = 'botharms'
-    _JOINTNAMES_BOTHARMS = _JOINTNAMES_TORSO +_JOINTNAMES_LEFTARM + _JOINTNAMES_RIGHTARM
+    ## _JOINTNAMES_BOTHARMS = _JOINTNAMES_TORSO +_JOINTNAMES_LEFTARM + _JOINTNAMES_RIGHTARM
+    _JOINTNAMES_BOTHARMS = _JOINTNAMES_LEFTARM + _JOINTNAMES_RIGHTARM
     _MOVEGROUP_ATTR_BOTHARMS = [_MOVEGROUP_NAME_BOTHARMS, _JOINTNAMES_BOTHARMS]
 
     _MOVEGROUP_NAME_UPPERBODY = 'upperbody'
@@ -125,6 +126,10 @@ class TestDualarmMoveit(unittest.TestCase):
             mg = MoveGroupCommander(mg_attr[0])
             # Temporary workaround of planner's issue similar to https://github.com/tork-a/rtmros_nextage/issues/170
             mg.set_planner_id(self._KINEMATICSOLVER_SAFE)
+            # Allow replanning to increase the odds of a solution
+            mg.allow_replanning(True)
+            # increase planning time
+            mg.set_planning_time(30.0)
             # Append MoveGroup instance to the MoveGroup attribute list.
             mg_attr.append(mg)
 
@@ -156,7 +161,7 @@ class TestDualarmMoveit(unittest.TestCase):
         pose_target = self._set_sample_pose()
         self._mvgroup.set_pose_target(pose_target)
         plan = self._mvgroup.plan()
-        rospy.loginfo('  plan: '.format(plan))
+        rospy.loginfo('  plan: {}'.format(plan))
         return plan
 
     def test_list_movegroups(self):
@@ -187,7 +192,7 @@ class TestDualarmMoveit(unittest.TestCase):
 
         movegroup.set_pose_target(pose_target)
         plan = movegroup.plan()  # TODO catch exception
-        rospy.loginfo('Plan: '.format(plan))
+        rospy.loginfo('Plan: {}'.format(plan))
         return plan
 
     def test_plan_success(self):
@@ -207,7 +212,7 @@ class TestDualarmMoveit(unittest.TestCase):
         self._plan_leftarm(mvgroup)
         # TODO Better way to check the plan is valid.
         # The following checks if plan execution was successful or not.
-        self.assertTrue(mvgroup.go())
+        self.assertTrue(mvgroup.go() or mvgroup.go() or mvgroup.go())
 
     def test_left_and_right_plan(self):
         '''
