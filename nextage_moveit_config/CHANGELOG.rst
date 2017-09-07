@@ -2,8 +2,8 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.8.0 (2017-09-07)
+------------------
 * Fix for kinetic (`#347 <https://github.com/tork-a/rtmros_nextage/issues/347>`_)
   *  fix .travis.yaml to run both indigo/kinetic with docker
   * set trajectory_execution/allowed_execution_duration_scaling to 2.0, see https://answers.ros.org/question/196586/how-do-i-disable-execution_duration_monitoring/

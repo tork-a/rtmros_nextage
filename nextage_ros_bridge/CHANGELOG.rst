@@ -2,8 +2,8 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.8.0 (2017-09-07)
+------------------
 * Fix for kinetic (`#347 <https://github.com/tork-a/rtmros_nextage/issues/347>`_)
   * fix .travis.yaml to run both indigo/kinetic with docker
   * fix install(CODE for kintic
