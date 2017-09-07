@@ -2,6 +2,20 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix for kinetic (`#347 <https://github.com/tork-a/rtmros_nextage/issues/347>`_)
+  * fix .travis.yaml to run both indigo/kinetic with docker
+  * fix install(CODE for kintic
+* [ros_bridge] Missing dependency for using stereo vision. (`#331 <https://github.com/tork-a/rtmros_nextage/issues/331>`_ )
+  * [ros_bridge] Missing dependency for using stereo vision.
+    This dependency won't be necessary unless stereo vision is in use, but the advantage of having necessary pkg installed without the need for worrying surpasses disadvantage.
+* [ros_bridge] Fix a launch file name to appropriately indicate "older than" 315.2.7. (`#328 <https://github.com/tork-a/rtmros_nextage/issues/328>`_)
+    Hyphen here is used to indicate the file is intended for the mentioned version or larger/smaller.
+  "*version-.launch" sounds like the launch is targeted for the version or larger while in fact we wanted to mean the opposite.
+* add comments to functions in playPattern example codes (`#323 <https://github.com/tork-a/rtmros_nextage/issues/323>`_)
+* Contributors: Isaac I.Y. Saito, Kei Okada, Yosuke Yamamoto
+
 0.7.16 (2017-05-04)
 -------------------
 * [fix] Temporary revert getRTCList calling from the parent class, HIRONX `#317 <https://github.com/tork-a/rtmros_nextage/pull/317>`_

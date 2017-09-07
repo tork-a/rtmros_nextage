@@ -2,6 +2,9 @@
 Changelog for package nextage_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.7.16 (2017-05-04)
 -------------------
 * [enhance] nextage_gazebo/launch/nextage_gazebo_control.launch : add --shutdown-timeout

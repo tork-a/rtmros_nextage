@@ -2,6 +2,12 @@
 Changelog for package nextage_ik_plugin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix for kinetic (`#347 <https://github.com/tork-a/rtmros_nextage/issues/347>`_)
+  * enable c++-11
+* Contributors: Kei Okada
+
 0.7.16 (2017-05-04)
 -------------------
 
