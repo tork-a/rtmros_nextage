@@ -52,7 +52,7 @@
 
 
   <!-- Load universal robotic description format (URDF) -->
-  <arg name="model" value="$(find nextage_description)/urdf/NextageOpen.urdf" />
+  <arg name="model" value="$(find nextage_description)/urdf/nxo_gz.xacro" />
   <param name="robot_description" command="$(find xacro)/xacro.py '$(arg model)'" />
   <node pkg="gazebo_ros" type="spawn_model" name="urdf_spawner" respawn="false" output="screen"
         args="$(arg gzpose) -J LARM_JOINT2 -2.0 -J RARM_JOINT2 -2.0 -urdf -model NextageOpen -param robot_description" />
