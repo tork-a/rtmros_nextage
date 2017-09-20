@@ -20,14 +20,14 @@
              so that other developers and users can use (and possible improve).
   -->
   <xacro:camera_joint_link_gzplugin
-         camera_name="L_HEADMOUNT_CAMERA" link_parent="HEAD_JOINT1_Link"
+         camera_name="CAMERA_HEAD_L" link_parent="HEAD_JOINT1_Link"
          jnt_displacement_x="${jnt_head_camera_displacement_x}" jnt_displacement_y="${jnt_head_camera_displacement_y}" jnt_displacement_z="${jnt_head_camera_displacement_z}"
          jnt_rotation_x="0" jnt_rotation_y="${jnt_head_camera_rot_y}" jnt_rotation_z="0"
          link_displacement_x="0.0325" link_displacement_y="0" link_displacement_z="0"
          link_rotation_x="0" link_rotation_y="${M_PI/2}" link_rotation_z="-${link_head_camera_rot_z}" />
 
   <xacro:camera_joint_link_gzplugin
-         camera_name="R_HEADMOUNT_CAMERA" link_parent="HEAD_JOINT1_Link"
+         camera_name="CAMERA_HEAD_R" link_parent="HEAD_JOINT1_Link"
          jnt_displacement_x="${jnt_head_camera_displacement_x}" jnt_displacement_y="-${jnt_head_camera_displacement_y}" jnt_displacement_z="${jnt_head_camera_displacement_z}"
          jnt_rotation_x="0" jnt_rotation_y="${jnt_head_camera_rot_y}" jnt_rotation_z="0"
          link_displacement_x="0.0325" link_displacement_y="0" link_displacement_z="0"

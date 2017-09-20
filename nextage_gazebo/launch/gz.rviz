@@ -100,7 +100,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        L_HEADMOUNT_CAMERA_Link:
+        CAMERA_HEAD_L_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -136,7 +136,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        R_HEADMOUNT_CAMERA_Link:
+        CAMERA_HEAD_R_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -154,7 +154,7 @@ Visualization Manager:
       Visual Enabled: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /L_HEADMOUNT_CAMERA/image_raw
+      Image Topic: /CAMERA_HEAD_L/image_raw
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -190,7 +190,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /R_HEADMOUNT_CAMERA/image_raw
+      Image Topic: /CAMERA_HEAD_R/image_raw
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -223,7 +223,7 @@ Visualization Manager:
           Value: true
         LARM_JOINT5_Link:
           Value: true
-        L_HEADMOUNT_CAMERA_Link:
+        CAMERA_HEAD_L_Link:
           Value: true
         RARM_JOINT0_Link:
           Value: true
@@ -237,7 +237,7 @@ Visualization Manager:
           Value: true
         RARM_JOINT5_Link:
           Value: true
-        R_HEADMOUNT_CAMERA_Link:
+        CAMERA_HEAD_R_Link:
           Value: true
         WAIST:
           Value: true
@@ -251,9 +251,9 @@ Visualization Manager:
           CHEST_JOINT0_Link:
             HEAD_JOINT0_Link:
               HEAD_JOINT1_Link:
-                L_HEADMOUNT_CAMERA_Link:
+                CAMERA_HEAD_L_Link:
                   {}
-                R_HEADMOUNT_CAMERA_Link:
+                CAMERA_HEAD_R_Link:
                   {}
             LARM_JOINT0_Link:
               LARM_JOINT1_Link:
