@@ -85,7 +85,7 @@ ipython>>> robot.goInitial()
 ipython>>> robot.goOffPose()
 ```
 
-- システムの再起動・シャットダウン時の前にはこのコマンドを実行してください．
+- システムの再起動・シャットダウン時の前にはこのコマンドを実行してください．
 
 サーボを入れるコマンドです．
 
@@ -110,7 +110,7 @@ ipython>>> robot.servoOff()
 
 #### RTM Python インタフェースの利用
 
-iPython の初期化時にロボットのクライアントインタフェースクラスである HIRONX/NextageClient が iPython ターミナル上で `robot` ととしてインスタンス化されます．
+iPython の初期化時にロボットのクライアントインタフェースクラスである HIRONX/NextageClient が iPython ターミナル上で `robot` ととしてインスタンス化されます．
 
 `robot` において何ができるのかを見てみます．
 
