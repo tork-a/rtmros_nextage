@@ -32,6 +32,7 @@ HIRO / NEXTAGE OPEN の座標系は下の図のようになっています．
   - X軸: 正 - 前方 / 負 - 後方
   - Y軸: 正 - 左側 / 負 - 右側
   - Z軸: 正 - 上方 / 負 - 下方
+
 ![Nextage Open - Coordinate Sys / Base WAIST](images/nxo_base-coordinate-sys.png)
 
 各フレームの座標系は次のようになっています．
@@ -40,6 +41,7 @@ HIRO / NEXTAGE OPEN の座標系は下の図のようになっています．
   - X軸: Red
   - Y軸: Green
   - Z軸: Blue
+
 ![Nextage Open - Coordinate Sys / All Frames](images/nxo_frame-coodinate-sys.png)
 
 

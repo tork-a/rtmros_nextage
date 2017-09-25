@@ -457,12 +457,15 @@ ar_headcamera.launch
 を行います．
 
 MoveIt! - ar_demo.py 実行前
+
 ![MoveIt! - Head Camera L to ar_marker_4](images/nxo_moveit_ar_head-camera-l.png)
 
 MoveIt! - ar_demo.py 実行後
+
 ![MoveIt! - Right Hand over ar_marker_4](images/nxo_moveit_ar_head-camera-l_r-hand-on-ar-marker.png)
 
 Gazebo - ar_demo.py 実行後
+
 ![Gazebo - Right Hand over ar_marker_4](images/nxo_gazebo_r-hand-on-ar-marker.png)
 
 

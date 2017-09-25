@@ -43,6 +43,7 @@ MoveIt! にて動作計画が作成されたときにはその動作アニメー
 2. Loop Animation のすぐ下にある Show Trail のチェックボックスを ON
 
 MoveIt! でのアニメーションと軌跡の表示の様子（画像はアニメーションの途中をキャプチャ）
+
 ![MoveIt! - Loop Animaiton / Show Trail](images/nxo_moveit_loop-animation_show-trail_pllar.png)
 
 #### 動作計画上の各経過姿勢の確認
@@ -132,9 +133,11 @@ MoveIt! 内に次の手順により障害物モデルファイルの読込み
   - ソースURL:  https://github.com/tork-a/rtmros_nextage/blob/indigo-devel/nextage_moveit_config/models/nxo_pillar.scene
 
 Import From Text<br>
+
 ![MoveIt! - Import From Text](images/nxo_moveit_scene-object_import-from-text.png)
 
 Publish Current Scene<br>
+
 ![MoveIt! - Publish Current Scene](images/nxo_moveit_context_publish-current-scene.png)
 
 シーンファイル nxo_pillar.scene の内容
@@ -168,9 +171,11 @@ box
 
 
 障害物を回避する動作計画の例
+
 ![MoveIt! Planning with Pillar](images/nxo_moveit-planning_pillar.png)
 
 障害物が無い場合の動作計画の例
+
 ![MoveIt! Planning without Pillar](images/nxo_moveit-planning_no-pillar.png)
 
 
@@ -197,6 +202,7 @@ STL / COLLADA(DAE) モデルファイルを用いた場合も
 MoveIt! で障害物を回避する動作計画を作成できます．
 
 Motion Planning - tsubo.dae
+
 ![MoveIt! tsubo.dae Motion Planning](images/nxo_moveit_plan_show-trail-2_tsubo-dae.png)
 
 
