@@ -18,6 +18,7 @@
     <param name="hz" value="20.0" />
     <param name="hzerror" value="19.0" />
     <param name="test_duration" value="3.0" />
+    <param name="wait_time" value="30.0" />
   </test>
 
   <test pkg="nextage_calibration" type="test_calib_chest.py"
