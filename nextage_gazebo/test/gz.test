@@ -26,7 +26,7 @@
   <!-- Check if cameras publish image topics. -->
   <arg name='TESTNAME_CAMERA_TOPICS' value='test_camera_topics' />
   <test pkg="rostest" type="hztest" test-name="$(arg TESTNAME_CAMERA_TOPICS)"
-        name="$(arg TESTNAME_CAMERA_TOPICS)" time-limit="10" retry="3" >
+        name="$(arg TESTNAME_CAMERA_TOPICS)" time-limit="120" retry="3" >
     <param name="topic" value="/CAMERA_HEAD_L/image_raw" />
     <param name="hz" value="30.0" />
     <!-- As long as a topic is published no matter how slow/fast, let the test
