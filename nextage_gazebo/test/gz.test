@@ -1,6 +1,7 @@
 <launch>
   <arg name="GUI" default='false' />
   <include file="$(find nextage_gazebo)/launch/nextage_world.launch">
+    <arg name="verbose" value="true"/>
     <arg name="gui" value="$(arg GUI)"/>
     <arg name="world_file" value="worlds/empty.world" />
   </include>
