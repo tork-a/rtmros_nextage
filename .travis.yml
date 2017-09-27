@@ -25,10 +25,20 @@ notifications:
     on_success: always #[always|never|change] # default: change
     on_failure: always #[always|never|change] # default: always
 before_install:
-  - case $CI_ROS_DISTRO in "hydro") export DISTRO=precise;; "indigo") export DISTRO=trusty;; "kinetic") export DISTRO=xenial;; esac;
-  - export DOCKER_IMAGE=ubuntu:$DISTRO
   - export CI_SOURCE_PATH=$(pwd)
   - export REPOSITORY_NAME=${PWD##*/}
+  # use host xserver
+  - sudo apt-get update -q || echo Ignore error of apt-get update
+  - sudo apt-get -y -qq install mesa-utils x11-xserver-utils xserver-xorg-video-dummy
+  - export DISPLAY=:0
+  - sudo Xorg -noreset +extension GLX +extension RANDR +extension RENDER -logfile /tmp/xorg.log -config $CI_SOURCE_PATH/.xorg.conf $DISPLAY &
+  - sleep 3 # wait x server up
+  - glxinfo | grep GLX
+  - export QT_X11_NO_MITSHM=1 # http://wiki.ros.org/docker/Tutorials/GUI
+  - xhost +local:root
+  # docekr setup
+  - case $CI_ROS_DISTRO in "hydro") export DISTRO=precise;; "indigo") export DISTRO=trusty;; "kinetic") export DISTRO=xenial;; esac;
+  - export DOCKER_IMAGE=ubuntu:$DISTRO
   - docker images
 script:
-  - docker run -v $HOME:$HOME -e CI_SOURCE_PATH -e REPOSITORY_NAME -e HOME -e DISTRO -e CI_ROS_DISTRO -e DEB_REPOSITORY -e CI_SOURCE_PATH -e CATKIN_WS -e CATKIN_WS_SRC -e TRAVIS_BUILD_DIR $DOCKER_IMAGE bash -c 'cd $CI_SOURCE_PATH; source .travis.sh'
+  - docker run -v $HOME:$HOME -v /tmp/.X11-unix:/tmp/.X11-unix -e QT_X11_NO_MITSHM -e DISPLAY -e CI_SOURCE_PATH -e REPOSITORY_NAME -e HOME -e DISTRO -e CI_ROS_DISTRO -e DEB_REPOSITORY -e CI_SOURCE_PATH -e CATKIN_WS -e CATKIN_WS_SRC -e TRAVIS_BUILD_DIR $DOCKER_IMAGE bash -c 'cd $CI_SOURCE_PATH; source .travis.sh'
