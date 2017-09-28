@@ -69,6 +69,6 @@ if [ "$CI_ROS_DISTRO" == "kinetic" ]; then
   touch src/rtmros_nextage/nextage_calibration/CATKIN_IGNORE
 fi
 #######
-catkin run_tests
+catkin run_tests -j1 -p1
   # check test (this only works from indigo onward)
 catkin_test_results build
