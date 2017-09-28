@@ -3,7 +3,7 @@
 
 ## ロボット諸元
 
-詳しくはカワダロボティクスのサイト内にある NEXTAGE 製品使用を参照してください．
+詳しくはカワダロボティクスのサイト内にある NEXTAGE 製品仕様を参照してください．
 
 - Kawada Robotics NEXTAGE - 製品仕様
   - メーカサイト
@@ -95,16 +95,6 @@ ROS API でも ROS インタフェース と MoveIt! インタフェースに分
 それぞれの API が Python や C++ などのプログラミング言語で利用することができます．
 
 下図にそれら API の構成図を示します．
-
-<!--
-Hironx/Nextage Open には API として複数のインタフェースがあり，
-インタフェースとしては HIRONX よりも ROS の方が多いです．
-
-HIRONX は Hiro(Open) と Nextage Open の両方において
-主要な RTMベース の Python API として機能し，
-このロボットの中で最も特色のあるインタフェースとなっています．
-ROS インタフェースも積極的に開発されています．
--->
 
 ![API Diagram](https://docs.google.com/drawings/d/1H1GLYfBmZ7JRnBhKubCrptav34fCfZzn3W9PEO_5pgI/pub?w=960&h=720)
 

@@ -4,7 +4,7 @@
 ## MoveIt! - ROS の動作計画ソフトウェア
 
 ROS の動作計画アプリケーションの代表的なソフトウェアパッケージが MoveIt! です．
-HIRO / NEXTAGE OPEN においても rtm_ros_bridge があるので
+HIRO / NEXTAGE OPEN においても rtm_ros_bridge がありますので
 MoveIt! の動作計画機能を利用することができます．
 
 
@@ -16,7 +16,7 @@ MoveIt! の動作計画機能を利用することができます．
 
 HIRO / NEXTAGE OPEN において MoveIt! を起動したときは
 デフォルトで右手の InteractiveMarker が操作できる状態になっています．
-これを左手を操作して左腕の動作計画を作成するには次の手順にて MoveIt! の設定を変更します．
+これを左手を操作して左腕の動作計画を作成するには，次の手順にて MoveIt! の設定を変更します．
 
 1. 子ウィンドウ Displays 内の MotionPlanning → Plannning Request → Planning Group で left_arm を選択
 2. 右手と同様に InteractiveMarker を操作して [ Plan and Execute ]
@@ -34,8 +34,8 @@ MoveIt! の GUI: RViz 上では 次のように選択します．
 #### 動作計画のループアニメーションと軌跡の表示
 
 MoveIt! にて動作計画が作成されたときにはその動作アニメーションが1度表示されます．
-動作計画をより確認しやすくするためにその動作アニメーションを繰り返し表示や
-その軌跡表示をすることができます．
+動作計画をより確認しやすくするためにその動作アニメーションの繰り返し表示や
+その軌跡表示を行うことができます．
 
 次の手順で MoveIt! の設定を変更します．
 
