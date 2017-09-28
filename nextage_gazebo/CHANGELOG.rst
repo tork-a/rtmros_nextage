@@ -2,6 +2,22 @@
 Changelog for package nextage_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add files for manuals and tutorials / Changes for Gazebo head camera emulation (`#350 <https://github.com/tork-a/rtmros_nextage/issues/350>`_)
+  * increase retry time
+  * gz.test: set verbose to launch nextage_world.launch
+  * time-limit 10 is too small for hz test
+  * move ar marker model files to nextage_gazebo/models from nextage_moveit_config/models
+  * mod name CAMERA_HEAD_R/L, remove CATKIN_IGNORE (forgot to add/rm them)
+  * [Gazebo] Missing dependency for using camera plugin.
+  * [Gazebo] Unwind the frequency test.
+    hz requirement for Gazebo sensor plugin on Travis CI needs to be generous. There's a known issue about Gazebo's sensor frequency https://bitbucket.org/osrf/gazebo/pull-requests/2502/make-sure-cameras-fps-is-strictly-applied/diff and with the lack of GPU or higher CPU, the sensor output is significantly slow on Travis CI.
+  * [gazebo] Add headmount cameras.
+  * [gazebo] Remove a redundant model file that was added by mistake in https://github.com/tork-a/rtmros_nextage/pull/223.
+  * [gazebo] Cleanup CMakeLists.txt, package.xml.
+* Contributors: Isaac Saito, Kei Okada, Yosuke Yamamoto
+
 0.8.0 (2017-09-07)
 ------------------
 
