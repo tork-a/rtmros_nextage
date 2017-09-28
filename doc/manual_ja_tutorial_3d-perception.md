@@ -25,7 +25,7 @@ ROS のドライバがあるものについては使用することができま�
 既に ROS のドライバが存在しているカメラの情報は次のリンク先で知ることができます．
 
 - Sensors/Cameras - ROS Wiki
-  - http://wiki.ros.org/Sensors/Cameras
+  - [http://wiki.ros.org/Sensors/Cameras](http://wiki.ros.org/Sensors/Cameras)
   - 注意: 手作業で更新されているので全ての情報を網羅するものではありません．
 
 ユーザによっては Kinect や Xtion カメラをロボット頭部に搭載して利用したりしています．
@@ -58,7 +58,7 @@ $ rostopic echo right/image_raw
 ステレオカメラを利用する前にはキャリブレーション作業が必要です．
 
 - How to Calibrate a Stereo Camera - ROS Wiki
-  - http://wiki.ros.org/camera_calibration/Tutorials/StereoCalibration
+  - [http://wiki.ros.org/camera_calibration/Tutorials/StereoCalibration](http://wiki.ros.org/camera_calibration/Tutorials/StereoCalibration)
 
 次のコマンドでステレオカメラのキャリブレーションを行います．
 
@@ -300,7 +300,7 @@ TF で取得した AR マーカフレームの位置と計算されたターゲ�
 Enter キーが押されるとターゲット取得ループから抜けて
 右腕のエンドエフェクタを AR マーカ `/ar_marker_4` の真上に右手を動かします．
 
-まず，エンドエフェクタをターゲットの 0.3 [m] 上方に動くように位置を再計算してから，
+まず，エンドエフェクタをターゲットの 0.3 [m] 上方に動くように位置のZ座標を再計算してから，
 右腕の Group に対して目標姿勢として設定します．
 
 ```python
@@ -379,7 +379,7 @@ $ cp -r MarkerBox-60mm/ ~/.gazebo/model/
 - AR マーカモデルフォルダ
   - /opt/ros/indigo/nextage_gazebo/models/MarkerBox-60mm
   - もしくは Catkin ワークスペース内 CATKIN_WORKSPACE/src/rtmros_nextage/nextage_gazebo/models/MarkerBox-60mm
-  - ソースURL:  https://github.com/tork-a/rtmros_nextage/blob/indigo-devel/nextage_gazebo/models/MarkerBox-60mm
+  - ソースURL:  [https://github.com/tork-a/rtmros_nextage/blob/indigo-devel/nextage_gazebo/models/MarkerBox-60mm](https://github.com/tork-a/rtmros_nextage/blob/indigo-devel/nextage_gazebo/models/MarkerBox-60mm)
 
 コピーしたモデル MarkerBox-60mm を Gazebo に読み込みます．
 

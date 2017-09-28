@@ -2,7 +2,7 @@
 ## Xtion/Kinect カメラの TF キャリブレーション
 
 3次元深度カメラの Xtion や Kinect を利用してロボット環境情報を取得する場合において，
-得られた環境空間情報とロボットとの相対位置・姿勢が分らなければ意味がありません．
+得られた環境空間情報とロボットとの相対位置・姿勢が分からなければ意味がありません．
 
 そのためにはカメラがロボットに対してどのような位置・姿勢で設置されているかを知る必要があります．
 具体的にはカメラを設置するリンクもしくはワールド空間に対するカメラの TF を取得します．
@@ -184,7 +184,7 @@ Xtion カメラにおいては画像のキャリブレーション情報を取�
 画像キャリブレーションの作業手順は下記のサイトを参照ください．
 
 - ROS Wiki - How to Calibrate a Monocular Camera
-  - http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration
+  - [http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration](http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration)
 
 
 ### Gazebo を用いた Xtion/Kinect TF 取得シミュレーション
