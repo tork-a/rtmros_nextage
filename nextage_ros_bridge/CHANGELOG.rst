@@ -2,8 +2,8 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.8.1 (2017-09-28)
+------------------
 * Add files for manuals and tutorials / Changes for Gazebo head camera emulation (`#350 <https://github.com/tork-a/rtmros_nextage/issues/350>`_)
   * add nextage_moveit_sample.py of ryu yamamoto
   * mod name CAMERA_HEAD_R/L, remove CATKIN_IGNORE (forgot to add/rm them)

@@ -2,8 +2,8 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.8.1 (2017-09-28)
+------------------
 * Add files for manuals and tutorials / Changes for Gazebo head camera emulation (`#350 <https://github.com/tork-a/rtmros_nextage/issues/350>`_)
   * move ar marker model files to nextage_gazebo/models from nextage_moveit_config/models
   * add nextage_moveit_confin/models with stl/dae/scene models and ar marker box model
