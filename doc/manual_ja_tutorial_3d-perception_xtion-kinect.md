@@ -184,7 +184,7 @@ Xtion カメラにおいては画像のキャリブレーション情報を取�
 画像キャリブレーションの作業手順は下記のサイトを参照ください．
 
 - ROS Wiki - How to Calibrate a Monocular Camera
-  - http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration
+  - [http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration](http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration)
 
 
 ### Gazebo を用いた Xtion/Kinect TF 取得シミュレーション

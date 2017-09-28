@@ -308,11 +308,11 @@ In : robot.goOffPose()
 hrpsys-based API は次のリンク先にソースとドキュメントがあります．
 
 - 多くのコマンドは hrpsys_config.HrpsysConfigurator のペアレントクラスに定義されています．
-  - http://fkanehiro.github.io/hrpsys-base/df/d98/classpython_1_1hrpsys__config_1_1HrpsysConfigurator.html
+  - [http://fkanehiro.github.io/hrpsys-base/df/d98/classpython_1_1hrpsys__config_1_1HrpsysConfigurator.html](http://fkanehiro.github.io/hrpsys-base/df/d98/classpython_1_1hrpsys__config_1_1HrpsysConfigurator.html)
 - HIRO: hironx_ros_bridge/scripts/
-  - https://github.com/start-jsk/rtmros_hironx/blob/hydro-devel/hironx_ros_bridge/scripts/hironx.py
+  - [https://github.com/start-jsk/rtmros_hironx/blob/hydro-devel/hironx_ros_bridge/scripts/hironx.py](https://github.com/start-jsk/rtmros_hironx/blob/hydro-devel/hironx_ros_bridge/scripts/hironx.py)
 - NEXTAGE OPEN: nextage_ros_bridge/scripts/
-  - https://github.com/tork-a/rtmros_nextage/blob/hydro-devel/nextage_ros_bridge/src/nextage_ros_bridge/nextage_client.py
+  - [https://github.com/tork-a/rtmros_nextage/blob/hydro-devel/nextage_ros_bridge/src/nextage_ros_bridge/nextage_client.py](https://github.com/tork-a/rtmros_nextage/blob/hydro-devel/nextage_ros_bridge/src/nextage_ros_bridge/nextage_client.py)
 
 
 ### RTM Python インタフェースプログラミング
@@ -341,7 +341,7 @@ Acceptance Test (RTM) のコードを参考に RTM Python インタフェース�
 
 `AcceptancetestRTM` について見てみます．コードの全体は次のようになっています．
 
-- https://raw.githubusercontent.com/start-jsk/rtmros_hironx/a7a43e5baf4dcd48e34b94f9781defadfbca03d0/hironx_ros_bridge/src/hironx_ros_bridge/testutil/acceptancetest_rtm.py
+- [https://raw.githubusercontent.com/start-jsk/rtmros_hironx/a7a43e5baf4dcd48e34b94f9781defadfbca03d0/hironx_ros_bridge/src/hironx_ros_bridge/testutil/acceptancetest_rtm.py](https://raw.githubusercontent.com/start-jsk/rtmros_hironx/a7a43e5baf4dcd48e34b94f9781defadfbca03d0/hironx_ros_bridge/src/hironx_ros_bridge/testutil/acceptancetest_rtm.py)
 
 ```python
 1 # -*- coding: utf-8 -*-
@@ -600,7 +600,7 @@ RTM API の HIRONX もしくは NextageClient クラスがインポートされ�
 ```python
 def hironx_ros_bridge.hironx_client.HIRONX.goInitial(self, tm = 7, wait = True, init_pose_type = 0)
 ```
-- http://docs.ros.org/hydro/api/hironx_ros_bridge/html/classhironx__ros__bridge_1_1hironx__client_1_1HIRONX.html#a295b0b4950cb580273b224dc659c8a23
+- [http://docs.ros.org/hydro/api/hironx_ros_bridge/html/classhironx__ros__bridge_1_1hironx__client_1_1HIRONX.html#a295b0b4950cb580273b224dc659c8a23](http://docs.ros.org/hydro/api/hironx_ros_bridge/html/classhironx__ros__bridge_1_1hironx__client_1_1HIRONX.html#a295b0b4950cb580273b224dc659c8a23)
 
 更に例を挙げると次の部分です．
 
@@ -653,7 +653,7 @@ iPython インタフェースを終了するときは `Ctrl-d` にてエスケ�
 
 - 注意: 本コードを改変する場合はまずシミュレーションでその動作を確認してから実機で動作させてください．
 
-[NEXTAGE OPEN] Robots hands drawing circles: https://www.youtube.com/watch?v=OVae1xa5Rak
+[NEXTAGE OPEN] Robots hands drawing circles: [https://www.youtube.com/watch?v=OVae1xa5Rak](https://www.youtube.com/watch?v=OVae1xa5Rak)
 
 変数 `robot` は何らかの方法でユーザの HIRONX/NextageClient クラスのインスタンスに置き換える必要があります．
 
@@ -763,7 +763,7 @@ hcf.playPatternOfGroup('LARM',
 
 hrpsys 315.6.0 以降では `setJointAnglesSequenceOfGroup` も利用することができます．
 
-- https://github.com/fkanehiro/hrpsys-base/blob/3eab14b836dea11386dbdb7d0ab90a0ed9521237/python/hrpsys_config.py#L1018
+- [https://github.com/fkanehiro/hrpsys-base/blob/3eab14b836dea11386dbdb7d0ab90a0ed9521237/python/hrpsys_config.py#L1018](https://github.com/fkanehiro/hrpsys-base/blob/3eab14b836dea11386dbdb7d0ab90a0ed9521237/python/hrpsys_config.py#L1018)
 
 #### 相対姿勢指示による動作
 
@@ -794,7 +794,7 @@ In [2]: robot.setTargetPoseRelative('rarm', 'RARM_JOINT5', dx=0.1, tm=3)
 それは大部分のコードを複製するというのはソフトウェア開発においては悪い実践法であるからです．
 例えば [hrpsys_tools/hrpsys_tools_config.py](https://github.com/start-jsk/rtmros_common/blob/master/hrpsys_tools/scripts/hrpsys_tools_config.py) は
 この目的に役立つことを意図して作られています．
-  - 参考: 作成時のディスカッション - https://github.com/start-jsk/rtmros_common/issues/340
+  - 参考: 作成時のディスカッション - [https://github.com/start-jsk/rtmros_common/issues/340](https://github.com/start-jsk/rtmros_common/issues/340)
 
 
 ### デジタルI/O の利用（NEXTAGE OPEN）
@@ -804,8 +804,8 @@ In [2]: robot.setTargetPoseRelative('rarm', 'RARM_JOINT5', dx=0.1, tm=3)
 DIO 操作で利用できるメソッドの全体については利用可能なメソッドが集約されている API ドキュメント，
 特にデフォルトで利用可能なメソッドが集められている `NextageClient` クラスを参照してください。
 
-- APIドキュメント: http://docs.ros.org/hydro/api/nextage_ros_bridge/html/annotated.html
-- NextageClient: http://docs.ros.org/hydro/api/nextage_ros_bridge/html/classnextage__ros__bridge_1_1nextage__client_1_1NextageClient.html
+- APIドキュメント: [http://docs.ros.org/hydro/api/nextage_ros_bridge/html/annotated.html](http://docs.ros.org/hydro/api/nextage_ros_bridge/html/annotated.html)
+- NextageClient: [http://docs.ros.org/hydro/api/nextage_ros_bridge/html/classnextage__ros__bridge_1_1nextage__client_1_1NextageClient.html](http://docs.ros.org/hydro/api/nextage_ros_bridge/html/classnextage__ros__bridge_1_1nextage__client_1_1NextageClient.html)
 
 #### RTM クライアントからのインタラクティブな操作
 
@@ -838,10 +838,10 @@ robot._hands.airhand_l_keep     robot._hands.airhand_r_drawin   robot._hands.air
 - ハンドへのツールの接続
   - ツールチェンジャの先端にあるソレノイドバルブが閉じている必要があります．
     - イジェクトツールコマンドでバルブを閉じることができます．
-    - http://docs.ros.org/hydro/api/nextage_ros_bridge/html/classnextage__ros__bridge_1_1nextage__client_1_1NextageClient.html#a1702a5edb90cf8d6e67164760e2d6e91
+    - [http://docs.ros.org/hydro/api/nextage_ros_bridge/html/classnextage__ros__bridge_1_1nextage__client_1_1NextageClient.html#a1702a5edb90cf8d6e67164760e2d6e91](http://docs.ros.org/hydro/api/nextage_ros_bridge/html/classnextage__ros__bridge_1_1nextage__client_1_1NextageClient.html#a1702a5edb90cf8d6e67164760e2d6e91)
 - ハンドからツールの取り外し
   - ツールが落ちてきますので気をつけてください．
-    - http://docs.ros.org/hydro/api/nextage_ros_bridge/html/classnextage__ros__bridge_1_1nextage__client_1_1NextageClient.html#ac562d5f65e6e994692e17c499d0ff745
+    - [http://docs.ros.org/hydro/api/nextage_ros_bridge/html/classnextage__ros__bridge_1_1nextage__client_1_1NextageClient.html#ac562d5f65e6e994692e17c499d0ff745](http://docs.ros.org/hydro/api/nextage_ros_bridge/html/classnextage__ros__bridge_1_1nextage__client_1_1NextageClient.html#ac562d5f65e6e994692e17c499d0ff745)
 
 他のよく使われるメソッドについてはその名前自体から大体の機能は類推できるかと思います．
 
@@ -850,7 +850,7 @@ robot._hands.airhand_l_keep     robot._hands.airhand_r_drawin   robot._hands.air
 
 サンプルとしてハンドDIOのシステムテストツールも参考にしてください．
 
-- https://github.com/tork-a/rtmros_nextage/blob/7cf7d3ef1c1d24cd496dfc646c70e83565e8e854/nextage_ros_bridge/test/test_gripper.py
+- [https://github.com/tork-a/rtmros_nextage/blob/7cf7d3ef1c1d24cd496dfc646c70e83565e8e854/nextage_ros_bridge/test/test_gripper.py](https://github.com/tork-a/rtmros_nextage/blob/7cf7d3ef1c1d24cd496dfc646c70e83565e8e854/nextage_ros_bridge/test/test_gripper.py)
 
 #### 2014年8月よりも前に出荷された NEXTAGE OPEN での DIO の利用
 
@@ -865,7 +865,7 @@ $ ipython -i `rospack find nextage_ros_bridge`/script/nextage.py -- --host %HOST
 `set_hand_version` メソッドにて引数 `0.4.2` を与えて指定してください．
 このバージョン番号は固定で，変更する必要はありません．
 
-- set_hand_version: http://docs.ros.org/indigo/api/nextage_ros_bridge/html/classnextage__ros__bridge_1_1nextage__client_1_1NextageClient.html#a670568692e46cfc3f10633ad962b8616
+- set_hand_version: [http://docs.ros.org/indigo/api/nextage_ros_bridge/html/classnextage__ros__bridge_1_1nextage__client_1_1NextageClient.html#a670568692e46cfc3f10633ad962b8616](http://docs.ros.org/indigo/api/nextage_ros_bridge/html/classnextage__ros__bridge_1_1nextage__client_1_1NextageClient.html#a670568692e46cfc3f10633ad962b8616)
 
 
 ## ROS Python インタフェース
@@ -1031,7 +1031,7 @@ holds a method "goInitial".
 
 ROS の Python サンプルコード acceptancetest_ros.py は次のようになっています．
 
-- https://raw.githubusercontent.com/start-jsk/rtmros_hironx/9d7c2b1d801450b09e814b12093e1cf1986b5565/hironx_ros_bridge/src/hironx_ros_bridge/testutil/acceptancetest_ros.py
+- [https://raw.githubusercontent.com/start-jsk/rtmros_hironx/9d7c2b1d801450b09e814b12093e1cf1986b5565/hironx_ros_bridge/src/hironx_ros_bridge/testutil/acceptancetest_ros.py](https://raw.githubusercontent.com/start-jsk/rtmros_hironx/9d7c2b1d801450b09e814b12093e1cf1986b5565/hironx_ros_bridge/src/hironx_ros_bridge/testutil/acceptancetest_ros.py)
 
 ```python
 1 # -*- coding: utf-8 -*-
@@ -1110,7 +1110,7 @@ ROS の Python サンプルコード acceptancetest_ros.py は次のようにな
 ```
 
 最初に ROS_Client クラスのインスタンス化が必要ですが，
-それは上記のコードの外側，[acceptancetest_hironx.py 内](https://github.com/start-jsk/rtmros_hironx/blob/be5fb8d5a5b8339d9507f3c287edb406ca48c9c9/hironx_ros_bridge/scripts/acceptancetest_hironx.py#L103)で次のように行われています．
+それは上記のコードの外側，[acceptancetest_hironx.py 内]([https://github.com/start-jsk/rtmros_hironx/blob/be5fb8d5a5b8339d9507f3c287edb406ca48c9c9/hironx_ros_bridge/scripts/acceptancetest_hironx.py#L103](https://github.com/start-jsk/rtmros_hironx/blob/be5fb8d5a5b8339d9507f3c287edb406ca48c9c9/hironx_ros_bridge/scripts/acceptancetest_hironx.py#L103))で次のように行われています．
 
 ```python
 self._robotclient = ROS_Client()

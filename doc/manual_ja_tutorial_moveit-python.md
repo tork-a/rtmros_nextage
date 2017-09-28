@@ -55,11 +55,7 @@ $ roslaunch nextage_moveit_config moveit_planning_execution.launch  (NEXTAGE OPE
 Python から MoveIt! Commander を利用しているサンプルプログラムで，
 HIRO / NEXTAGE OPEN ロボットをどのように動作させているのかを見てみます．
 
-- https://github.com/tork-a/rtmros_nextage/blob/indigo-devel/nextage_ros_bridge/script/nextage_moveit_sample.py
-
-<!--
-- https://raw.githubusercontent.com/RyuYamamoto/rtmros_nextage/moveit_demonstration/nextage_ros_bridge/script/nextage_moveit_sample.py
--->
+- [https://github.com/tork-a/rtmros_nextage/blob/indigo-devel/nextage_ros_bridge/script/nextage_moveit_sample.py](https://github.com/tork-a/rtmros_nextage/blob/indigo-devel/nextage_ros_bridge/script/nextage_moveit_sample.py)
 
 サンプルコード全体を下に記載します．その後に各行について何をしているのかを見てみます．
 
@@ -314,7 +310,7 @@ rospy.sleep(2)
 
 ![MoveIt! Commander - Go Initial](http://wiki.ros.org/rtmros_nextage/Tutorials/Programming_Hiro_NEXTAGE_OPEN_MOVEIT?action=AttachFile&do=get&target=Initial.png)
 
-動画: "Nextage Move it! demo" https://www.youtube.com/watch?v=heKEKg3I7cQ
+動画: "Nextage Move it! demo" [https://www.youtube.com/watch?v=heKEKg3I7cQ](https://www.youtube.com/watch?v=heKEKg3I7cQ)
 
 また，MoveIt! を表示している RViz 上でもこれらの動作計画が表示されます．
 
@@ -333,7 +329,7 @@ MoveIt! Commander では更に様々なメソッドがありますので
 ROS Wiki の moveit_commander のページを見てください．
 
 - ROS Wiki - moveit_commander
-  - http://wiki.ros.org/moveit_commander
+  - [http://wiki.ros.org/moveit_commander](http://wiki.ros.org/moveit_commander)
 
 
 ## MoveIt! Python インタフェースでの両腕の動作計画
@@ -502,7 +498,7 @@ In [9]: ros.set_pose('larm', pos, rpy, task_duration=7, do_wait=True)
 
 NumPy ライブラリを利用することで位置や姿勢のベクトルを変更することができます．
 
-- NumPy: https://docs.scipy.org/doc/numpy-dev/user/quickstart.html
+- NumPy: [https://docs.scipy.org/doc/numpy-dev/user/quickstart.html](https://docs.scipy.org/doc/numpy-dev/user/quickstart.html)
 
 ```python
 In [7]: ros.set_pose('larm', list(numpy.array(pos) + numpy.array([0,0,0.1])), rpy, task_duration=7, do_wait=True)                                                                        
@@ -512,7 +508,7 @@ In [7]: ros.set_pose('larm', list(numpy.array(pos) + numpy.array([0,0,0.1])), rp
 - メモ
   - 認識プロセスによって検出されたオブジェクト姿勢からエンドエフェクタの目標姿勢を算出するために `lookupTransform` を利用することもできます．
     - 例）ar_track_alvar などを用いて AR マーカオブジェクトのカメラからの相対位置を取得した場合
-      - ar_track_alvar: http://wiki.ros.org/ar_track_alvar
+      - ar_track_alvar: [http://wiki.ros.org/ar_track_alvar](http://wiki.ros.org/ar_track_alvar)
   - 上記のコマンドでは HIRO / NEXTAGE OPEN のデフォルトのベースフレームである `/WAIST` フレームに対する相対姿勢を見ているので，必然的に Move Group の `get_current_pose` の結果と同じになります．
     - 使用目的に応じて参照フレームを変更してください．
 

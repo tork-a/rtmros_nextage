@@ -7,14 +7,14 @@
 
 - Kawada Robotics NEXTAGE - 製品仕様
   - メーカサイト
-    - http://nextage.kawada.jp/
+    - [http://nextage.kawada.jp/](http://nextage.kawada.jp/)
   - 自由度: 15軸
     - 腕6軸 x 2 : 肩 Yaw-Pitch，肘 Pitch，手首 Pitch-Roll
     - 首2軸 : 首 Yaw-Pitch
     - 腰1軸 : 腰 Yaw
   - 各関節動作仕様
-    - 角度: http://nextage.kawada.jp/specification/#specDousaTable
-    - 速度: http://nextage.kawada.jp/specification/#specHontaiTable
+    - 角度: [http://nextage.kawada.jp/specification/#specDousaTable](http://nextage.kawada.jp/specification/#specDousaTable)
+    - 速度: [http://nextage.kawada.jp/specification/#specHontaiTable](http://nextage.kawada.jp/specification/#specHontaiTable)
   - 最大可搬質量
     - 片腕 : 1.5 kg
     - 両腕 : 3.0 kg

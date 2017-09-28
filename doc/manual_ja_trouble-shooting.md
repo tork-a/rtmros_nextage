@@ -152,7 +152,7 @@ $ env | grep ROS
 ROS の rqt は開発時におけるデータの可視化に大変役立つツールセットです．
 ここでは HIRO / NEXTAGE OPEN において特に便利ないくつかのツールを紹介します．
 
-- 参考: rqt/Plugins - ROS Wiki http://wiki.ros.org/rqt/Plugins
+- 参考: rqt/Plugins - ROS Wiki [http://wiki.ros.org/rqt/Plugins](http://wiki.ros.org/rqt/Plugins)
 
 まず rqt を起動します．
 

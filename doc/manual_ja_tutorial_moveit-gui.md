@@ -130,7 +130,7 @@ MoveIt! 内に次の手順により障害物モデルファイルの読込み
 - 障害物モデルファイル
   - /opt/ros/indigo/nextage_moveit_config/models/nxo_pillar.scene
   - もしくは Catkin ワークスペース内 CATKIN_WORKSPACE/src/rtmros_nextage/nextage_moveit_config/models/nxo_pillar.scene
-  - ソースURL:  https://github.com/tork-a/rtmros_nextage/blob/indigo-devel/nextage_moveit_config/models/nxo_pillar.scene
+  - ソースURL: [https://github.com/tork-a/rtmros_nextage/blob/indigo-devel/nextage_moveit_config/models/nxo_pillar.scene](https://github.com/tork-a/rtmros_nextage/blob/indigo-devel/nextage_moveit_config/models/nxo_pillar.scene)
 
 Import From Text<br>
 
@@ -193,7 +193,7 @@ MoveIt! 内に次の手順により障害物モデルファイルの読込み
 - STL / COLLADA モデルファイル
   - /opt/ros/indigo/nextage_moveit_config/models/
   - もしくは Catkin ワークスペース内 CATKIN_WORKSPACE/src/rtmros_nextage/nextage_moveit_config/models/tsubo.*
-  - ソースURL:  https://github.com/tork-a/rtmros_nextage/blob/indigo-devel/nextage_moveit_config/models/tubo.stl OR tsubo.dae
+  - ソースURL: [https://github.com/tork-a/rtmros_nextage/blob/indigo-devel/nextage_moveit_config/models/tubo.stl](https://github.com/tork-a/rtmros_nextage/blob/indigo-devel/nextage_moveit_config/models/tubo.stl) OR tsubo.dae
 
 ![MoveIt! - Import DAE File (Adjusting Position)](images/nxo_moveit_scene-object_tsubo-dae_adjusting-pos.png)
 
