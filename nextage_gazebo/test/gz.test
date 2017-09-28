@@ -7,7 +7,7 @@
   </include>
 
   <arg name='TESTNAME_GZ' value='test_gz' />
-  <test pkg="nextage_gazebo" type="test_nxo_gz.py" test-name="$(arg TESTNAME_GZ)" time-limit="300" retry="2" />
+  <test pkg="nextage_gazebo" type="test_nxo_gz.py" test-name="$(arg TESTNAME_GZ)" time-limit="300" retry="4" />
 
   <!-- follow the tutorials on  http://wiki.ros.org/rtmros_nextage/Tutorials/Programming_Hiro_NEXTAGE_OPEN_GUI
        moveit_planning_execution.launch starts rviz so we run launch files except moviet_rviz.launch -->
@@ -21,13 +21,13 @@
   <!-- -->
 
   <test pkg="nextage_moveit_config" type="test_moveit.py" test-name="nxo_moveit"
-        time-limit="300" retry="2"
+        time-limit="300" retry="4"
         args="" />
 
   <!-- Check if cameras publish image topics. -->
   <arg name='TESTNAME_CAMERA_TOPICS' value='test_camera_topics' />
   <test pkg="rostest" type="hztest" test-name="$(arg TESTNAME_CAMERA_TOPICS)"
-        name="$(arg TESTNAME_CAMERA_TOPICS)" time-limit="120" retry="3" >
+        name="$(arg TESTNAME_CAMERA_TOPICS)" time-limit="120" retry="4" >
     <param name="topic" value="/CAMERA_HEAD_L/image_raw" />
     <param name="hz" value="30.0" />
     <!-- As long as a topic is published no matter how slow/fast, let the test
