@@ -33,6 +33,13 @@ if [ "$CI_ROS_DISTRO" == "kinetic" ]; then
     apt-get install -y python-pyassimp
     sed -i 's@load, load_mem, release, dll@load, release, dll@' /usr/lib/python2.7/dist-packages/pyassimp/core.py
     cat -n /usr/lib/python2.7/dist-packages/pyassimp/core.py
+    ## fix "A new DepthBuffer for a RenderTarget was created, but after creation" problem
+    ## http://answers.gazebosim.org/question/9395/gazebo-crashes-when-inserting-camera-in-virtual-machine-with-ubuntu-vivid-ros-jade/
+    ## https://bitbucket.org/osrf/gazebo/issues/1837/vmware-rendering-z-ordering-appears-random#comment-31756295
+    sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+    wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+    sudo apt-get update -qq
+    sudo apt-get install -qq -y gazebo7
 fi
 #######
 ## install:
@@ -62,6 +69,6 @@ if [ "$CI_ROS_DISTRO" == "kinetic" ]; then
   touch src/rtmros_nextage/nextage_calibration/CATKIN_IGNORE
 fi
 #######
-catkin run_tests
+catkin run_tests -j1 -p1
   # check test (this only works from indigo onward)
 catkin_test_results build

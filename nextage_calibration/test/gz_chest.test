@@ -13,11 +13,12 @@
 
   <arg name='TESTNAME_CAMERA_IMAGE' value='test_gazebo_image' />
   <test pkg="rostest" type="hztest" name="$(arg TESTNAME_CAMERA_IMAGE)"
-        test-name="$(arg TESTNAME_CAMERA_IMAGE)" time-limit="120" retry="3" >
+        test-name="$(arg TESTNAME_CAMERA_IMAGE)" time-limit="120" retry="4" >
     <param name="topic" value="/camera/rgb/image_raw" />
     <param name="hz" value="20.0" />
     <param name="hzerror" value="19.0" />
     <param name="test_duration" value="3.0" />
+    <param name="wait_time" value="30.0" />
   </test>
 
   <test pkg="nextage_calibration" type="test_calib_chest.py"
