@@ -12,7 +12,7 @@ ROS Indigo および HIRO，NEXTAGE OPEN のパッケージをインストール
 ```
 $ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list'
 $ sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net --recv-key0xB01FA116
-$ sudo apt-get update && sudo apt-get install ros-indigo-rtmros-nextage ros-indigo-rtmros-hironx
+$ sudo apt-get update && sudo apt-get install ros-indigo-rtmros-nextage ros-indigo-rtmros-hironx python-catkin-tools
 ```
 
 インストールの最後に setup.bash を読み込み，ROS の環境を設定します．
