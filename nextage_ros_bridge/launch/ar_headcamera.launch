@@ -14,10 +14,20 @@
           args="$(arg marker_size) $(arg max_new_marker_error) $(arg max_track_error) $(arg cam_image_topic) $(arg cam_info_topic) $(arg output_frame)" />
 
     <group if="$(arg sim)">
+        
+        <!-- Spawn models into Gazebo -->
+        <node name="spawn_sdf_cafetable" pkg="gazebo_ros" type="spawn_model" 
+              args="-file $(find nextage_gazebo)/models/cafe_table/model.sdf -sdf 
+              -x 0.65 -model Cafe_Table" />
+        <node name="spawn_sdf_armarkerbox" pkg="gazebo_ros" type="spawn_model" 
+              args="-file $(find nextage_gazebo)/models/MarkerBox-60mm/model.sdf -sdf 
+              -x 0.40 -z 1.0 -model MarkerBox-60mm" />
+        
         <node pkg="tf" type="static_transform_publisher" name="camera_head_l_link_to_frame" 
               args="0 0 0 1.57080 3.14159 1.57080 /CAMERA_HEAD_L_Link /CAMERA_HEAD_L_Link_frame 100" />
         <node pkg="tf" type="static_transform_publisher" name="camera_head_r_link_to_frame"
               args="0 0 0 1.57080 3.14159 1.57080 /CAMERA_HEAD_R_Link /CAMERA_HEAD_R_Link_frame 100" />
+        
     </group>
 
 </launch>
