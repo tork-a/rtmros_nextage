@@ -5,6 +5,7 @@
   <arg name="MODEL_FILE" default="/opt/jsk/etc/NEXTAGE/model/main.wrl" /> <!-- This shouldn't be changed unless you know what you're doing; this is the location of vrml file internal to the robot (on QNX OS). -->
   <arg name="nameserver" default="nextage" /> <!-- Host name of the QNX. -->
   <arg name="USE_SERVOCONTROLLER" default="false" />
+  <arg name="USE_HAND_JOINT_STATE_PUBLISHER" default="false"/>
 
   <env name="RTCTREE_NAMESERVERS" value="$(arg nameserver):$(arg corbaport)" />
 
@@ -15,5 +16,6 @@
     <arg name="MODEL_FILE" value="$(arg MODEL_FILE)" />
     <arg name="nameserver" value="$(arg nameserver)" />
     <arg name="USE_SERVOCONTROLLER" value="$(arg USE_SERVOCONTROLLER)" />
+    <arg name="USE_HAND_JOINT_STATE_PUBLISHER" value="$(arg USE_HAND_JOINT_STATE_PUBLISHER)"/>
   </include>
 </launch>
