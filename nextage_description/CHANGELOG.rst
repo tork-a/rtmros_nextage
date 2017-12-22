@@ -2,6 +2,9 @@
 Changelog for package nextage_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.8.1 (2017-09-28)
 ------------------
 * Add files for manuals and tutorials / Changes for Gazebo head camera emulation (`#350 <https://github.com/tork-a/rtmros_nextage/issues/350>`_)

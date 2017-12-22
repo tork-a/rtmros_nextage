@@ -2,6 +2,11 @@
 Changelog for package nextage_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* add model cafe_tabel and mod ar_headcamera.launch to spawn gazebo models in the case of sim:=true (`#354 <https://github.com/tork-a/rtmros_nextage/issues/354>`_)
+* Contributors: Yosuke Yamamoto
+
 0.8.1 (2017-09-28)
 ------------------
 * Add files for manuals and tutorials / Changes for Gazebo head camera emulation (`#350 <https://github.com/tork-a/rtmros_nextage/issues/350>`_)
