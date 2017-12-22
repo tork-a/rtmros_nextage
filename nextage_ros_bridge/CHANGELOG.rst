@@ -2,8 +2,8 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.8.3 (2017-12-22)
+------------------
 * add USE_HAND_JOINT_STATE_PUBLISHER argment, normal nextage does not need this (`#355 <https://github.com/tork-a/rtmros_nextage/issues/355>`_)
 * add model cafe_tabel and mod ar_headcamera.launch to spawn gazebo models in the case of sim:=true (`#354 <https://github.com/tork-a/rtmros_nextage/issues/354>`_)
 * Contributors: Kei Okada, Yosuke Yamamoto

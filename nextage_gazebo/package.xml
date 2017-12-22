@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>nextage_gazebo</name>
-  <version>0.8.2</version>
+  <version>0.8.3</version>
   <description>Gazebo simulation for NEXTAGE Open</description>
 
   <maintainer email="dev@opensource-robotics.tokyo.jp">TORK</maintainer>
