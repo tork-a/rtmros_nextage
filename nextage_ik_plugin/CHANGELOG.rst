@@ -2,6 +2,9 @@
 Changelog for package nextage_ik_plugin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.8.3 (2017-12-22)
 ------------------
 
