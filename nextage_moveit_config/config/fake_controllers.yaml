@@ -1,0 +1,34 @@
+controller_list:
+  - name: fake_rarm_controller
+    joints:
+      - RARM_JOINT0
+      - RARM_JOINT1
+      - RARM_JOINT2
+      - RARM_JOINT3
+      - RARM_JOINT4
+      - RARM_JOINT5
+    initial: [0, 0, 1, 0, 0, 0]      
+  - name: fake_larm_controller
+    joints:
+      - LARM_JOINT0
+      - LARM_JOINT1
+      - LARM_JOINT2
+      - LARM_JOINT3
+      - LARM_JOINT4
+      - LARM_JOINT5
+    initial: [0, 0, 1, 0, 0, 0]
+  - name: fake_head_controller
+    joints:
+      - HEAD_JOINT0
+      - HEAD_JOINT0
+    initial: [0, 0]
+  - name: fake_torso_controller
+    joints:
+      - CHEST_JOINT0
+    initial: [0]
+initial:
+  - group: right_arm
+    pose : right_arm_initial_pose
+  - group: left_arm
+    pose : left_arm_initial_pose
+    
