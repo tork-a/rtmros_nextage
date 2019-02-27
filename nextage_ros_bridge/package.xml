@@ -25,6 +25,7 @@
   <run_depend>nextage_description</run_depend>
   <run_depend>stereo_image_proc</run_depend>
   <run_depend>ueye_cam</run_depend>
+  <run_depend>ar_track_alvar</run_depend>
 
   <test_depend>rostest</test_depend>
   <export/>
