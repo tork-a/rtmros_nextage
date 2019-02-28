@@ -18,6 +18,9 @@
   <run_depend>nextage_moveit_config</run_depend>
   <run_depend>ros_controllers</run_depend>
   <test_depend>rostest</test_depend>
+
   <export>
+    <gazebo_ros gazebo_model_path="${prefix}/models" />
   </export>
+
 </package>
