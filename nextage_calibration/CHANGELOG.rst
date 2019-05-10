@@ -2,6 +2,9 @@
 Changelog for package nextage_calibration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.8.4 (2018-01-16)
 ------------------
 
