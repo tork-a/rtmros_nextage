@@ -2,8 +2,8 @@
 Changelog for package nextage_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.8.5 (2019-05-10)
+------------------
 * add ar_track_alvar dependency and gazebo model path to nextage_gazebo/models (`#362 <https://github.com/tork-a/rtmros_nextage/issues/362>`_)
 * Contributors: Kei Okada, Yamamoto Yosuke
 
