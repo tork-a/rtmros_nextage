@@ -50,6 +50,9 @@ errormsg_noros = 'No ROS Master found. Without it, you cannot use ROS from' \
                  ' this script, but can use RTM. To use ROS, do not forget' \
                  ' to run rosbridge. How to do so? --> http://wiki.ros.org/rtmros_nextage/Tutorials/Operating%20Hiro%2C%20NEXTAGE%20OPEN'
 
+# The default RTCs for Hironx
+RTC_LIST = 'seq, sh, fk, el, log'
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='hiro command line interpreters')
     parser.add_argument('--host', help='corba name server hostname')
@@ -59,6 +62,8 @@ if __name__ == '__main__':
     parser.add_argument('--dio_ver', help="Version of digital I/O. Only users "
                         "whose robot was shipped before Aug 2014 need to "
                         "define this, and the value should be '0.4.2'.")
+    parser.add_argument('--rtcs', help="RT components to activate. If nothing passed then default value will be used. Example: '{}'".format(RTC_LIST))
+
     args, unknown = parser.parse_known_args()
 
     if args.host:
@@ -69,6 +74,8 @@ if __name__ == '__main__':
         args.robot = "RobotHardware0" if args.host else "HiroNX(Robot)0"
     if not args.modelfile:
         args.modelfile = "/opt/jsk/etc/NEXTAGE/model/main.wrl" if args.host else "" 
+    if not args.rtcs:
+        args.rtcs = RTC_LIST
 
     # support old style format
     if len(unknown) >= 2:
@@ -80,7 +87,7 @@ if __name__ == '__main__':
     # them to specifically tell what robot they're using (eg. hiro, nxc).
     # This is backward compatible so that users can still keep using `nxc`.
     # See http://code.google.com/p/rtm-ros-robotics/source/detail?r=6926
-    robot.init(robotname=args.robot, url=args.modelfile)
+    robot.init(robotname=args.robot, url=args.modelfile, rtcs=args.rtcs)
 
     if args.dio_ver:
         robot.set_hand_version(args.dio_ver)

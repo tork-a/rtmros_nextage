@@ -95,7 +95,7 @@ class NextageClient(HIRONX, object):
             self.configurator_name = "gazebo(Nextage)"
         self.set_hand_version(self.HAND_VER_0_5_1)
 
-    def init(self, robotname="HiroNX(Robot)0", url=""):
+    def init(self, robotname="HiroNX(Robot)0", url="", rtcs=None):
         '''
         Calls init from its superclass, which tries to connect RTCManager,
         looks for ModelLoader, and starts necessary RTC components. Also runs
@@ -106,7 +106,7 @@ class NextageClient(HIRONX, object):
         @type url: str
         '''
         if not self.use_gazebo:
-            HIRONX.init(self, robotname=robotname, url=url)
+            HIRONX.init(self, robotname=robotname, url=url, rtcs=rtcs)
 
     def get_hand_version(self):
         '''
