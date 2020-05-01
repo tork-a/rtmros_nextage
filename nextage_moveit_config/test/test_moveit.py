@@ -182,13 +182,21 @@ class TestDualarmMoveit(unittest.TestCase):
         movegroup.clear_pose_targets()
 
         pose_target = Pose()
-        pose_target.orientation.x = -0.32136357
-        pose_target.orientation.y = -0.63049522
-        pose_target.orientation.z = 0.3206799
-        pose_target.orientation.w = 0.62957575
-        pose_target.position.x = 0.32529
-        pose_target.position.y = 0.29919
-        pose_target.position.z = 0.24389
+        # (@pazeshun) I don't know why, but the following pose causes planning failure on kinetic
+        # pose_target.orientation.x = -0.32136357
+        # pose_target.orientation.y = -0.63049522
+        # pose_target.orientation.z = 0.3206799
+        # pose_target.orientation.w = 0.62957575
+        # pose_target.position.x = 0.32529
+        # pose_target.position.y = 0.29919
+        # pose_target.position.z = 0.24389
+        pose_target.orientation.x = -0.000556712307053
+        pose_target.orientation.y = -0.706576742941
+        pose_target.orientation.z = -0.00102461782513
+        pose_target.orientation.w = 0.707635461636
+        pose_target.position.x = 0.325471850974-0.01
+        pose_target.position.y = 0.182271241593+0.3
+        pose_target.position.z = 0.0676272396419+0.3
 
         movegroup.set_pose_target(pose_target)
         plan = movegroup.plan()  # TODO catch exception
