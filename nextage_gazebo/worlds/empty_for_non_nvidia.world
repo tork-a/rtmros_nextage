@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <!-- Disable shadow to make world bright -->
+    <!-- Without activating NVIDIA GPU, world is very dark on gazebo 9 (ROS melodic) -->
+    <!-- See https://github.com/tork-a/rtmros_nextage/issues/370 -->
+    <!-- See https://bitbucket.org/osrf/gazebo/issues/2623/no-shadows-and-sun-light-with-non-nvidia -->
+    <scene>
+      <shadows>false</shadows>
+    </scene>
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+  </world>
+</sdf>
