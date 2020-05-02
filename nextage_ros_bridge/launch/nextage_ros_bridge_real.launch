@@ -5,17 +5,21 @@
   <arg name="MODEL_FILE" default="/opt/jsk/etc/NEXTAGE/model/main.wrl" /> <!-- This shouldn't be changed unless you know what you're doing; this is the location of vrml file internal to the robot (on QNX OS). -->
   <arg name="nameserver" default="nextage" /> <!-- Host name of the QNX. -->
   <arg name="USE_SERVOCONTROLLER" default="false" />
+  <arg name="USE_IMPEDANCECONTROLLER" default="false"/>
   <arg name="USE_HAND_JOINT_STATE_PUBLISHER" default="false"/>
 
   <env name="RTCTREE_NAMESERVERS" value="$(arg nameserver):$(arg corbaport)" />
 
   <include file="$(find hironx_ros_bridge)/launch/hironx_ros_bridge_real.launch" >
+    <arg name="HRPSYS_PY_PKG" default="nextage_ros_bridge"/>
+    <arg name="HRPSYS_PY_NAME" default="nextage.py"/>
     <arg name="COLLADA_FILE" value="$(arg COLLADA_FILE)" /> 
     <arg name="CONF_FILE_COLLISIONDETECT" value="$(arg CONF_FILE_COLLISIONDETECT)" />
     <arg name="corbaport" value="$(arg corbaport)" />
     <arg name="MODEL_FILE" value="$(arg MODEL_FILE)" />
     <arg name="nameserver" value="$(arg nameserver)" />
     <arg name="USE_SERVOCONTROLLER" value="$(arg USE_SERVOCONTROLLER)" />
+    <arg name="USE_IMPEDANCECONTROLLER" value="$(arg USE_IMPEDANCECONTROLLER)"/>
     <arg name="USE_HAND_JOINT_STATE_PUBLISHER" value="$(arg USE_HAND_JOINT_STATE_PUBLISHER)"/>
   </include>
 </launch>

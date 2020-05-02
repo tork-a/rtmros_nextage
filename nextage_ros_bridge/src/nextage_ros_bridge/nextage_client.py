@@ -334,7 +334,7 @@ class NextageClient(HIRONX, object):
         @return List of available components. Each element consists of a list
                  of abbreviated and full names of the component.
         '''
-        return [
+        rtclist = [
             ['seq', "SequencePlayer"],
             ['sh', "StateHolder"],
             ['fk', "ForwardKinematics"],
@@ -344,6 +344,22 @@ class NextageClient(HIRONX, object):
             ['ic', "ImpedanceController"],
             ['log', "DataLogger"]
             ]
+        if hasattr(self, 'rmfo'):
+            self.ms.load("RemoveForceSensorLinkOffset")
+            self.ms.load("AbsoluteForceSensor")
+            if "RemoveForceSensorLinkOffset" in self.ms.get_factory_names():
+                rtclist.append(['rmfo', "RemoveForceSensorLinkOffset"])
+            elif "AbsoluteForceSensor" in self.ms.get_factory_names():
+                rtclist.append(['rmfo', "AbsoluteForceSensor"])
+            else:
+                print "Component rmfo is not loadable."
+        # check if forcesensor iexists
+        if self.rh.port("lhsensor") or self.rh.port("rhsensor") :
+            print(self.configurator_name + "Setup with ImpedanceController")
+        else:
+            rtclist = [rtc for rtc in rtclist if not rtc[0] in ['ic', 'rmfo']]
+            print(self.configurator_name + "Setup without ImpedanceController")
+        return rtclist
 
     def goInitial(self, tm=7, wait=True, init_pose_type=0):
         '''
@@ -352,7 +368,19 @@ class NextageClient(HIRONX, object):
         if not init_pose_type:
             # Set the pose where eefs level with the tabletop by default.
             init_pose_type = HIRONX.INITPOS_TYPE_EVEN
-        return HIRONX.goInitial(self, tm, wait, init_pose_type)
+        ret = HIRONX.goInitial(self, tm, wait, init_pose_type)
+        if wait and self.ic and self.rmfo_svc and self.rh_svc:
+            i = 0
+            forces = self.rh_svc.getStatus().force
+            for sensor in ['rhsensor', 'lhsensor']:
+                force = forces[i]
+                (result, p) = self.rmfo_svc.getForceMomentOffsetParam(sensor)
+                p.force_offset=[force[0], force[1], force[2]]
+                p.moment_offset=[force[3], force[4], force[5]]
+                print(self.configurator_name + "Remove force offset {} with {}".format(sensor, force))
+                self.rmfo_svc.setForceMomentOffsetParam(sensor, p)
+                i = i + 1
+        return ret
 
     def readDinGroup(self, ports, dumpFlag=True):
         '''
