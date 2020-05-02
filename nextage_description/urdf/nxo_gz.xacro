@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<robot name="NextageOpen"
+       xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find nextage_description)/urdf/NextageOpen.urdf" />
+  <xacro:include filename="$(find nextage_description)/urdf/nxo_gz_camera.xacro" />
+ 
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+  <xacro:property name="jnt_head_camera_displacement_x" value="0.0175" />
+  <xacro:property name="jnt_head_camera_displacement_y" value="0.0725" />
+  <xacro:property name="jnt_head_camera_displacement_z" value="0.105" />
+  <xacro:property name="jnt_head_camera_rot_y" value="0.25" />
+  <xacro:property name="link_head_camera_rot_z" value="0.05" />
+
+  <!-- NOTE: The poses of headmount cameras are NOT precisely adjusted to
+             the 3D model nor the actual hardware config. These configs
+             are meant for a rapid prototyping only. If you need precise
+             configuration, please go ahead modify the following, then
+             (if possible) send a patch to https://github.com/tork-a/rtmros_nextage/pulls
+             so that other developers and users can use (and possible improve).
+  -->
+  <xacro:camera_joint_link_gzplugin
+         camera_name="CAMERA_HEAD_L" link_parent="HEAD_JOINT1_Link"
+         jnt_displacement_x="${jnt_head_camera_displacement_x}" jnt_displacement_y="${jnt_head_camera_displacement_y}" jnt_displacement_z="${jnt_head_camera_displacement_z}"
+         jnt_rotation_x="0" jnt_rotation_y="${jnt_head_camera_rot_y}" jnt_rotation_z="0"
+         link_displacement_x="0.0325" link_displacement_y="0" link_displacement_z="0"
+         link_rotation_x="0" link_rotation_y="${M_PI/2}" link_rotation_z="-${link_head_camera_rot_z}" />
+
+  <xacro:camera_joint_link_gzplugin
+         camera_name="CAMERA_HEAD_R" link_parent="HEAD_JOINT1_Link"
+         jnt_displacement_x="${jnt_head_camera_displacement_x}" jnt_displacement_y="-${jnt_head_camera_displacement_y}" jnt_displacement_z="${jnt_head_camera_displacement_z}"
+         jnt_rotation_x="0" jnt_rotation_y="${jnt_head_camera_rot_y}" jnt_rotation_z="0"
+         link_displacement_x="0.0325" link_displacement_y="0" link_displacement_z="0"
+         link_rotation_x="0" link_rotation_y="${M_PI/2}" link_rotation_z="${link_head_camera_rot_z}" />
+
+  <!-- TODO hand cameras can be added here with the very similar code as
+            headmount cameras. -->
+</robot>

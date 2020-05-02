@@ -3,7 +3,7 @@
        cp `rospack find hironx_moveit_config`/launch/HiroNX_moveit_controller_manager.launch 
   -->
   <arg name="moveit_controller_manager"
-       default="pr2_moveit_controller_manager/Pr2MoveItControllerManager"/>
+       default="moveit_simple_controller_manager/MoveItSimpleControllerManager"/>
   <param name="moveit_controller_manager"
          value="$(arg moveit_controller_manager)"/>
 

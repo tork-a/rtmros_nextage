@@ -1,6 +1,6 @@
 <package>
   <name>nextage_moveit_config</name>
-  <version>0.7.16</version>
+  <version>0.8.5</version>
   <description>An automatically generated package with all the configuration and launch files for using the NextageOpen with the MoveIt Motion Planning Framework.
   </description>
   <maintainer email="k-okada@jsk.t.u-tokyo.ac.jp">Kei Okada</maintainer>
@@ -25,7 +25,7 @@
   <run_depend>moveit_ros_planning_interface</run_depend>
   <run_depend>moveit_ros_visualization</run_depend>
   <run_depend>nextage_ros_bridge</run_depend>
-  <run_depend>pr2_moveit_plugins</run_depend>
+  <run_depend>moveit_simple_controller_manager</run_depend>
   <run_depend>trac_ik_kinematics_plugin</run_depend>
 
   <test_depend>rostest</test_depend>

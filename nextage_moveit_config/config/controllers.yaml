@@ -2,6 +2,7 @@ controller_manager_ns: pr2_controller_manager
 controller_list:
   - name: rarm_controller
     action_ns: follow_joint_trajectory_action
+    type: FollowJointTrajectory
     default: true
     joints:
       - RARM_JOINT0
@@ -12,6 +13,7 @@ controller_list:
       - RARM_JOINT5
   - name: larm_controller
     action_ns: follow_joint_trajectory_action
+    type: FollowJointTrajectory
     default: true
     joints:
       - LARM_JOINT0
@@ -22,10 +24,12 @@ controller_list:
       - LARM_JOINT5
   - name: head_controller
     action_ns: follow_joint_trajectory_action
+    type: FollowJointTrajectory
     joints:
       - HEAD_JOINT0
       - HEAD_JOINT1
   - name: torso_controller
     action_ns: follow_joint_trajectory_action
+    type: FollowJointTrajectory
     joints:
       - CHEST_JOINT0

@@ -50,6 +50,7 @@ class TestNxoCalib(unittest.TestCase):
         rospy.init_node('test_calib')
         self.tflistener = tf.TransformListener()
         # wait for tf
+        time.sleep(2) # need to wait to initialize listener
         while len(self.tflistener.getFrameStrings()) < 10:
             time.sleep(2) # need to wait to initialize listener
             rospy.loginfo(self.tflistener.getFrameStrings())

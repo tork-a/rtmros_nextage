@@ -2,6 +2,45 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.8.5 (2019-05-10)
+------------------
+* add ar_track_alvar dependency and gazebo model path to nextage_gazebo/models (`#362 <https://github.com/tork-a/rtmros_nextage/issues/362>`_)
+* Contributors: Kei Okada, Yosuke Yamamoto
+
+0.8.4 (2018-01-16)
+------------------
+
+0.8.3 (2017-12-22)
+------------------
+* add USE_HAND_JOINT_STATE_PUBLISHER argment, normal nextage does not need this (`#355 <https://github.com/tork-a/rtmros_nextage/issues/355>`_)
+* add model cafe_tabel and mod ar_headcamera.launch to spawn gazebo models in the case of sim:=true (`#354 <https://github.com/tork-a/rtmros_nextage/issues/354>`_)
+* Contributors: Kei Okada, Yosuke Yamamoto
+
+0.8.1 (2017-09-28)
+------------------
+* Add files for manuals and tutorials / Changes for Gazebo head camera emulation (`#350 <https://github.com/tork-a/rtmros_nextage/issues/350>`_)
+  * add nextage_moveit_sample.py of ryu yamamoto
+  * mod name CAMERA_HEAD_R/L, remove CATKIN_IGNORE (forgot to add/rm them)
+  * add AR codes, mod name CAMERA_HEAD_L/R, delete CATKIN_IGNORE
+  * Merge branch 'impr/gazebo_ueye_fixtest' of git://github.com/130s/rtmros_nextage into gazebo_ueye_fixtest
+  * [TEMP] Disable build on some pkgs for debugging purpose only. This MUST be reverted.
+  * [ros_bridge][rviz.launch] Remove elements redundant to its parent launch file.
+* Contributors: Isaac I.Y. Saito, Kei Okada, Yosuke Yamamoto
+
+0.8.0 (2017-09-07)
+------------------
+* Fix for kinetic (`#347 <https://github.com/tork-a/rtmros_nextage/issues/347>`_)
+  * fix .travis.yaml to run both indigo/kinetic with docker
+  * fix install(CODE for kintic
+* [ros_bridge] Missing dependency for using stereo vision. (`#331 <https://github.com/tork-a/rtmros_nextage/issues/331>`_ )
+  * [ros_bridge] Missing dependency for using stereo vision.
+    This dependency won't be necessary unless stereo vision is in use, but the advantage of having necessary pkg installed without the need for worrying surpasses disadvantage.
+* [ros_bridge] Fix a launch file name to appropriately indicate "older than" 315.2.7. (`#328 <https://github.com/tork-a/rtmros_nextage/issues/328>`_)
+    Hyphen here is used to indicate the file is intended for the mentioned version or larger/smaller.
+  "*version-.launch" sounds like the launch is targeted for the version or larger while in fact we wanted to mean the opposite.
+* add comments to functions in playPattern example codes (`#323 <https://github.com/tork-a/rtmros_nextage/issues/323>`_)
+* Contributors: Isaac I.Y. Saito, Kei Okada, Yosuke Yamamoto
+
 0.7.16 (2017-05-04)
 -------------------
 * [fix] Temporary revert getRTCList calling from the parent class, HIRONX `#317 <https://github.com/tork-a/rtmros_nextage/pull/317>`_

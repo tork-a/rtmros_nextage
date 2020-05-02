@@ -6,6 +6,7 @@
   <arg name="nameserver" default="nextage" /> <!-- Host name of the QNX. -->
   <arg name="USE_SERVOCONTROLLER" default="false" />
   <arg name="USE_IMPEDANCECONTROLLER" default="false"/>
+  <arg name="USE_HAND_JOINT_STATE_PUBLISHER" default="false"/>
 
   <env name="RTCTREE_NAMESERVERS" value="$(arg nameserver):$(arg corbaport)" />
 
@@ -19,5 +20,6 @@
     <arg name="nameserver" value="$(arg nameserver)" />
     <arg name="USE_SERVOCONTROLLER" value="$(arg USE_SERVOCONTROLLER)" />
     <arg name="USE_IMPEDANCECONTROLLER" value="$(arg USE_IMPEDANCECONTROLLER)"/>
+    <arg name="USE_HAND_JOINT_STATE_PUBLISHER" value="$(arg USE_HAND_JOINT_STATE_PUBLISHER)"/>
   </include>
 </launch>

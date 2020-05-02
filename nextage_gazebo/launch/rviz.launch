@@ -1,0 +1,8 @@
+<!-- Took nextage_moveit_config/launch/moveit_rviz.launch as an example. -->
+<launch> 
+  <arg name="RVIZ_FIXEDFRAME" default="WAIST" />
+  <arg name="command_args" default="-d $(find nextage_gazebo)/launch/gz.rviz --fixed-frame $(arg RVIZ_FIXEDFRAME)" />
+  <arg name="debug" default="false" doc="Passing true to `debug` allows you to run this launch on gdb."/>
+
+  <include file="$(find hironx_ros_bridge)/launch/rviz.launch" pass_all_args="true" />
+</launch>

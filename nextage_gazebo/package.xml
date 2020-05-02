@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>nextage_gazebo</name>
-  <version>0.7.16</version>
+  <version>0.8.5</version>
   <description>Gazebo simulation for NEXTAGE Open</description>
 
   <maintainer email="dev@opensource-robotics.tokyo.jp">TORK</maintainer>
@@ -11,17 +11,16 @@
   <url type="website">http://wiki.ros.org/nextage_gazebo</url>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>gazebo_ros</build_depend>
-  <build_depend>gazebo_ros_control</build_depend>
-  <build_depend>nextage_description</build_depend>
-  <build_depend>nextage_moveit_config</build_depend>
-  <build_depend>ros_controllers</build_depend>
+  <run_depend>gazebo_plugins</run_depend>
   <run_depend>gazebo_ros</run_depend>
   <run_depend>gazebo_ros_control</run_depend>
   <run_depend>nextage_description</run_depend>
   <run_depend>nextage_moveit_config</run_depend>
   <run_depend>ros_controllers</run_depend>
   <test_depend>rostest</test_depend>
+
   <export>
+    <gazebo_ros gazebo_model_path="${prefix}/models" />
   </export>
+
 </package>

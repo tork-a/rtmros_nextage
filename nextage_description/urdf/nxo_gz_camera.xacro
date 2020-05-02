@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:property name="M_PI" value="3.1415926535897931" />
+
+	<!-- Immitate two head-mount cameras, each of which are not stereo camera 
+		by themselves but are made to function as stereo by launch file https://github.com/tork-a/rtmros_nextage/blob/indigo-devel/nextage_ros_bridge/launch/nextage_ueye_stereo.launch 
+		Values in Gazebo plugin are originally copied from http://gazebosim.org/tutorials?tut=ros_gzplugins#camera 
+		and only partially tailored as of May 2017 -->
+
+	<!-- Adding camera for simulation -->
+	<xacro:macro name="camera_joint_link_gzplugin"
+		params="camera_name link_parent jnt_displacement_x jnt_displacement_y jnt_displacement_z jnt_rotation_x jnt_rotation_y jnt_rotation_z link_displacement_x link_displacement_y link_displacement_z link_rotation_x link_rotation_y link_rotation_z">
+		<joint name="${camera_name}" type="fixed">
+			<origin
+				xyz="${jnt_displacement_x} ${jnt_displacement_y} ${jnt_displacement_z}"
+				rpy="${jnt_rotation_x} ${jnt_rotation_y} ${jnt_rotation_z}" />
+			<parent link="${link_parent}" />
+			<child link="${camera_name}_Link" />
+		</joint>
+		<link name="${camera_name}_Link">
+			<visual>
+				<origin
+					xyz="${link_displacement_x} ${link_displacement_y} ${link_displacement_z}"
+					rpy="${link_rotation_x} ${link_rotation_y} ${link_rotation_z}" />
+				<geometry>
+					<cylinder length="0.01" radius="0.015" />
+				</geometry>
+				<material name="blue" />
+			</visual>
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<mass value="1" />
+				<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0"
+					izz="1.0" />
+			</inertial>
+		</link>
+		<gazebo reference="${camera_name}_Link">
+			<sensor type="camera" name="${camera_name}">
+				<update_rate>30.0</update_rate>
+				<camera name="${camera_name}">
+					<horizontal_fov>1.3962634</horizontal_fov>
+					<image>
+						<width>800</width>
+						<height>800</height>
+						<format>R8G8B8</format>
+					</image>
+					<clip>
+						<near>0.1</near>
+						<far>30</far>
+					</clip>
+					<noise>
+						<type>gaussian</type>
+						<!-- Noise is sampled independently per pixel on each frame. That pixel's 
+							noise value is added to each of its color channels, which at that point lie 
+							in the range [0,1]. -->
+						<mean>0.0</mean>
+						<stddev>0.007</stddev>
+					</noise>
+				</camera>
+				<plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+					<alwaysOn>true</alwaysOn>
+					<updateRate>0.0</updateRate>
+					<cameraName>${camera_name}</cameraName>
+					<imageTopicName>image_raw</imageTopicName>
+					<cameraInfoTopicName>camera_info</cameraInfoTopicName>
+					<frameName>${camera_name}_Link_frame</frameName>
+					<hackBaseline>0.07</hackBaseline>
+					<distortionK1>0.0</distortionK1>
+					<distortionK2>0.0</distortionK2>
+					<distortionK3>0.0</distortionK3>
+					<distortionT1>0.0</distortionT1>
+					<distortionT2>0.0</distortionT2>
+				</plugin>
+			</sensor>
+		</gazebo>
+	</xacro:macro>
+</robot>

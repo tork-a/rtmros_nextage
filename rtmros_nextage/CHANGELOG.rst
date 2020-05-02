@@ -2,6 +2,21 @@
 Changelog for package rtmros_nextage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.8.5 (2019-05-10)
+------------------
+
+0.8.4 (2018-01-16)
+------------------
+
+0.8.3 (2017-12-22)
+------------------
+
+0.8.1 (2017-09-28)
+------------------
+
+0.8.0 (2017-09-07)
+------------------
+
 0.7.16 (2017-05-04)
 -------------------
 * [fix][nextage_ros_bridge] Temporary revert getRTCList calling from the parent class, HIRONX `#317 <https://github.com/tork-a/rtmros_nextage/pull/317>`_

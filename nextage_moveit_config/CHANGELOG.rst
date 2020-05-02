@@ -2,6 +2,44 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.8.5 (2019-05-10)
+------------------
+
+0.8.4 (2018-01-16)
+------------------
+* add moveit_armarker.rviz (`#356 <https://github.com/tork-a/rtmros_nextage/issues/356>`_)
+* Contributors: Yosuke Yamamoto
+
+0.8.3 (2017-12-22)
+------------------
+
+0.8.1 (2017-09-28)
+------------------
+* Add files for manuals and tutorials / Changes for Gazebo head camera emulation (`#350 <https://github.com/tork-a/rtmros_nextage/issues/350>`_)
+  * move ar marker model files to nextage_gazebo/models from nextage_moveit_config/models
+  * add nextage_moveit_confin/models with stl/dae/scene models and ar marker box model
+  * mod name CAMERA_HEAD_R/L, remove CATKIN_IGNORE (forgot to add/rm them)
+  * Merge branch 'impr/gazebo_ueye_fixtest' of git://github.com/130s/rtmros_nextage into gazebo_ueye_fixtest
+  * [TEMP] Disable build on some pkgs for debugging purpose only. This MUST be reverted.
+* Contributors: Isaac I.Y. Saito, Kei Okada, Yosuke Yamamoto
+
+0.8.0 (2017-09-07)
+------------------
+* Fix for kinetic (`#347 <https://github.com/tork-a/rtmros_nextage/issues/347>`_)
+  *  fix .travis.yaml to run both indigo/kinetic with docker
+  * set trajectory_execution/allowed_execution_duration_scaling to 2.0, see https://answers.ros.org/question/196586/how-do-i-disable-execution_duration_monitoring/
+  * config/NextageOpen.srdf and test/test_moveit.py: including torso to botharms is not working
+  * increase set_planning_time to 30
+  * run mvgroup.go() 3 time in test/test_moveit.py (test_planandexecute)
+  * nextage_moveit_config/test/test_moveit.py: display content of plan
+  * add replanning and set_planning_time to 15
+  * increase wait_time for hztest move_group/status
+  * we need type: FollowJointTrajecory in controllers.yaml
+  * use move_group/MoveGroupExecuteTrajectoryAction instaeed of move_group/MoveGroupExecuteService
+  * use moveit_simple_controller_manager/MoveItSimpleControllerManager instead of pr2_moveit_controller_manager/Pr2MoveItControllerManager
+
+* Contributors: Kei Okada
+
 0.7.16 (2017-05-04)
 -------------------
 

@@ -2,6 +2,38 @@
 Changelog for package nextage_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.8.5 (2019-05-10)
+------------------
+* add ar_track_alvar dependency and gazebo model path to nextage_gazebo/models (`#362 <https://github.com/tork-a/rtmros_nextage/issues/362>`_)
+* Contributors: Kei Okada, Yamamoto Yosuke
+
+0.8.4 (2018-01-16)
+------------------
+
+0.8.3 (2017-12-22)
+------------------
+* add model cafe_tabel and mod ar_headcamera.launch to spawn gazebo models in the case of sim:=true (`#354 <https://github.com/tork-a/rtmros_nextage/issues/354>`_)
+* Contributors: Yosuke Yamamoto
+
+0.8.1 (2017-09-28)
+------------------
+* Add files for manuals and tutorials / Changes for Gazebo head camera emulation (`#350 <https://github.com/tork-a/rtmros_nextage/issues/350>`_)
+  * increase retry time
+  * gz.test: set verbose to launch nextage_world.launch
+  * time-limit 10 is too small for hz test
+  * move ar marker model files to nextage_gazebo/models from nextage_moveit_config/models
+  * mod name CAMERA_HEAD_R/L, remove CATKIN_IGNORE (forgot to add/rm them)
+  * [Gazebo] Missing dependency for using camera plugin.
+  * [Gazebo] Unwind the frequency test.
+    hz requirement for Gazebo sensor plugin on Travis CI needs to be generous. There's a known issue about Gazebo's sensor frequency https://bitbucket.org/osrf/gazebo/pull-requests/2502/make-sure-cameras-fps-is-strictly-applied/diff and with the lack of GPU or higher CPU, the sensor output is significantly slow on Travis CI.
+  * [gazebo] Add headmount cameras.
+  * [gazebo] Remove a redundant model file that was added by mistake in https://github.com/tork-a/rtmros_nextage/pull/223.
+  * [gazebo] Cleanup CMakeLists.txt, package.xml.
+* Contributors: Isaac Saito, Kei Okada, Yosuke Yamamoto
+
+0.8.0 (2017-09-07)
+------------------
+
 0.7.16 (2017-05-04)
 -------------------
 * [enhance] nextage_gazebo/launch/nextage_gazebo_control.launch : add --shutdown-timeout
