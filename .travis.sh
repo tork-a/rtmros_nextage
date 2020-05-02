@@ -48,7 +48,7 @@ wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
 sudo apt-get update -qq
 sudo apt-get install -qq -y python-rosdep python-catkin-tools
 sudo rosdep init
-rosdep update
+rosdep update --include-eol-distros
   # Use rosdep to install all dependencies (including ROS itself)
 rosdep install --from-paths ./ -i -y -q --rosdistro $CI_ROS_DISTRO
 ## script:
