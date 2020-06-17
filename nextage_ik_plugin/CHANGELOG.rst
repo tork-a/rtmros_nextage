@@ -2,8 +2,8 @@
 Changelog for package nextage_ik_plugin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.8.6 (2020-06-17)
+------------------
 * Merge pull request `#374 <https://github.com/tork-a/rtmros_nextage/issues/374>`_ from k-okada/fix_365
   Fix to compile on melodic
 * Fix to compile on melodic

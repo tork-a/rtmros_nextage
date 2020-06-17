@@ -2,8 +2,8 @@
 Changelog for package nextage_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.8.6 (2020-06-17)
+------------------
 * Merge pull request `#371 <https://github.com/tork-a/rtmros_nextage/issues/371>`_ from pazeshun/add-bright-world
   Add gazebo world for non-NVIDIA GPU
 * Add gazebo world for non-NVIDIA GPU
