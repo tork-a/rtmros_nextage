@@ -36,7 +36,7 @@ before_install:
   - export QT_X11_NO_MITSHM=1 # http://wiki.ros.org/docker/Tutorials/GUI
   - xhost +local:root
   # docekr setup
-  - case $CI_ROS_DISTRO in "hydro") export DISTRO=precise;; "indigo") export DISTRO=trusty;; "kinetic") export DISTRO=xenial;; "melodic" export DISTRO=bionic;; esac;
+  - case $CI_ROS_DISTRO in "hydro") export DISTRO=precise;; "indigo") export DISTRO=trusty;; "kinetic") export DISTRO=xenial;; "melodic") export DISTRO=bionic;; esac;
   - export DOCKER_IMAGE=ubuntu:$DISTRO
   - docker images
 script:
