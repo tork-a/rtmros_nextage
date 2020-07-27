@@ -45,7 +45,7 @@ fi
 ## install:
 sudo sh -c "echo \"deb ${DEB_REPOSITORY} `lsb_release -cs` main\" > /etc/apt/sources.list.d/ros-latest.list"
 if [ "$CI_ROS_DISTRO" == "melodic" ]; then
-    export DEBIAN_FRONTEND="noninteractive"
+    export DEBIAN_FRONTEND=noninteractive
     sudo apt-get install -y gnupg2
     sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 else
