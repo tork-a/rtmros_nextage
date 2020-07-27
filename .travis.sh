@@ -44,7 +44,11 @@ fi
 #######
 ## install:
 sudo sh -c "echo \"deb ${DEB_REPOSITORY} `lsb_release -cs` main\" > /etc/apt/sources.list.d/ros-latest.list"
-wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+if [ "$CI_ROS_DISTRO" == "melodic" ]; then
+    sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+else
+    wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+if
 sudo apt-get update -qq
 sudo apt-get install -qq -y python-rosdep python-catkin-tools
 sudo rosdep init
