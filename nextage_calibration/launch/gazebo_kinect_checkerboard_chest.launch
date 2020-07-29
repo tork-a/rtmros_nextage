@@ -9,7 +9,7 @@
         name="spawn_sensor_kinect"
         type="spawn_model" 
         args="-urdf -param sensor_description -model sensor_kinect
-              -reference_frame HEAD_JOINT1_Link -P 1.5708 -x -0.15 -z 0.05"
+              -reference_frame HEAD_JOINT1_Link -P 1.5708 -x 0.15 -z 0.15"
         />
 
   <node pkg="robot_state_publisher"
@@ -27,6 +27,6 @@
   <node name="spawn_checkerboard_chest" pkg="gazebo_ros" type="spawn_model"
         args="-file $(find nextage_calibration)/models/checkerboard_horizontal.urdf
         -urdf -model checkerboard_horizontal
-        -reference_frame WAIST -wait" />
+        -reference_frame WAIST" />
 
 </launch>

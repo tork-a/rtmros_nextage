@@ -44,7 +44,13 @@ fi
 #######
 ## install:
 sudo sh -c "echo \"deb ${DEB_REPOSITORY} `lsb_release -cs` main\" > /etc/apt/sources.list.d/ros-latest.list"
-wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+if [ "$CI_ROS_DISTRO" == "melodic" ]; then
+    sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq tzdata
+    sudo apt-get install -qq -y gnupg2
+    sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+else
+    wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+fi
 sudo apt-get update -qq
 sudo apt-get install -qq -y python-rosdep python-catkin-tools
 sudo rosdep init
@@ -65,9 +71,9 @@ catkin build --limit-status-rate 0.1 --no-notify -DCMAKE_BUILD_TYPE=Release
 catkin build --limit-status-rate 0.1 --no-notify --make-args tests
   # Run tests
 ####### kinteic has problem on runnning gazebo with image on headless mode????
-if [ "$CI_ROS_DISTRO" == "kinetic" ]; then
+# if [ "$CI_ROS_DISTRO" == "kinetic" ]; then
   touch src/rtmros_nextage/nextage_calibration/CATKIN_IGNORE
-fi
+# fi
 #######
 catkin run_tests -j1 -p1
   # check test (this only works from indigo onward)
