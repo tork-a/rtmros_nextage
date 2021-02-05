@@ -487,7 +487,7 @@ double IKFastKinematicsPlugin::harmonize(const std::vector<double> &ik_seed_stat
     while(solution[i] > 2*M_PI) {
       solution[i] -= 2*M_PI;
     }
-    while(solution[i] < 2*M_PI) {
+    while(solution[i] < -2*M_PI) {
       solution[i] += 2*M_PI;
     }
     dist_sqr += fabs(ik_seed_state[i] - solution[i]);
