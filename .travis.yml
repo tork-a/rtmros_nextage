@@ -12,9 +12,15 @@ env:
     - CATKIN_WS_SRC=${CATKIN_WS}/src
   matrix:
     - CI_ROS_DISTRO="indigo" DEB_REPOSITORY=http://packages.ros.org/ros/ubuntu
-    - CI_ROS_DISTRO="indigo" DEB_REPOSITORY=http://packages.ros.org/ros-testing/ubuntu
     - CI_ROS_DISTRO="kinetic" DEB_REPOSITORY=http://packages.ros.org/ros/ubuntu
-    - CI_ROS_DISTRO="kinetic" DEB_REPOSITORY=http://packages.ros.org/ros-testing/ubuntu
+    - CI_ROS_DISTRO="melodic" DEB_REPOSITORY=http://packages.ros.org/ros/ubuntu
+    - CI_ROS_DISTRO="melodic" DEB_REPOSITORY=http://packages.ros.org/ros-testing/ubuntu
+    - CI_ROS_DISTRO="noetic" DEB_REPOSITORY=http://packages.ros.org/ros/ubuntu
+    - CI_ROS_DISTRO="noetic" DEB_REPOSITORY=http://packages.ros.org/ros-testing/ubuntu
+matrix:
+  allow_failures:
+    - env: CI_ROS_DISTRO="noetic" DEB_REPOSITORY=http://packages.ros.org/ros/ubuntu
+    - env: CI_ROS_DISTRO="noetic" DEB_REPOSITORY=http://packages.ros.org/ros-testing/ubuntu
 notifications:
   email:
     recipients:
@@ -34,7 +40,7 @@ before_install:
   - export QT_X11_NO_MITSHM=1 # http://wiki.ros.org/docker/Tutorials/GUI
   - xhost +local:root
   # docekr setup
-  - case $CI_ROS_DISTRO in "hydro") export DISTRO=precise;; "indigo") export DISTRO=trusty;; "kinetic") export DISTRO=xenial;; esac;
+  - case $CI_ROS_DISTRO in "hydro") export DISTRO=precise;; "indigo") export DISTRO=trusty;; "kinetic") export DISTRO=xenial;; "melodic") export DISTRO=bionic;; "noetic") export DISTRO=focal;; esac;
   - export DOCKER_IMAGE=ubuntu:$DISTRO
   - docker images
 script:
