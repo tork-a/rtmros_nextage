@@ -2,6 +2,13 @@
 Changelog for package nextage_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.8.6 (2020-06-17)
+------------------
+* Merge pull request `#372 <https://github.com/tork-a/rtmros_nextage/issues/372>`_ from pazeshun/fix-travis
+  Fix travis by fixing rosdep and moveit test
+* Change target pose in moveit test to pass kinetic test
+* Contributors: Kei Okada, Shun Hasegawa
+
 0.8.5 (2019-05-10)
 ------------------
 

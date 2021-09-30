@@ -2,6 +2,18 @@
 Changelog for package nextage_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.8.6 (2020-06-17)
+------------------
+* Merge pull request `#371 <https://github.com/tork-a/rtmros_nextage/issues/371>`_ from pazeshun/add-bright-world
+  Add gazebo world for non-NVIDIA GPU
+* Add gazebo world for non-NVIDIA GPU
+  Without activating NVIDIA GPU, world is very dark on gazebo 9 (ROS melodic), so disable shadow to make world bright
+  See https://github.com/tork-a/rtmros_nextage/issues/370
+  See https://bitbucket.org/osrf/gazebo/issues/2623/no-shadows-and-sun-light-with-non-nvidia
+* use default instaed of value of <arg name='model'> tag
+* [nextage_gazebo/package.xml] add gazebo_model_path setting.
+* Contributors: Kei Okada, Masaki Murooka, Shun Hasegawa
+
 0.8.5 (2019-05-10)
 ------------------
 * add ar_track_alvar dependency and gazebo model path to nextage_gazebo/models (`#362 <https://github.com/tork-a/rtmros_nextage/issues/362>`_)

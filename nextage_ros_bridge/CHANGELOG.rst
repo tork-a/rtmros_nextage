@@ -2,6 +2,9 @@
 Changelog for package nextage_ros_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.8.6 (2020-06-17)
+------------------
+
 0.8.5 (2019-05-10)
 ------------------
 * add ar_track_alvar dependency and gazebo model path to nextage_gazebo/models (`#362 <https://github.com/tork-a/rtmros_nextage/issues/362>`_)
