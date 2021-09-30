@@ -11,7 +11,7 @@ echo "DISTRO=$DISTRO"
 env | grep ROS
 
 apt-get update -qq
-apt-get install -qq -y sudo wget git lsb-release
+apt-get install -qq -y sudo wget git lsb-release gnupg
 
 function error {
 ## after_failure:
@@ -43,10 +43,21 @@ if [ "$CI_ROS_DISTRO" == "kinetic" ]; then
 fi
 #######
 ## install:
+# set DEBIAN_FRONTEND=noninteractive
+echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections
 sudo sh -c "echo \"deb ${DEB_REPOSITORY} `lsb_release -cs` main\" > /etc/apt/sources.list.d/ros-latest.list"
 wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
 sudo apt-get update -qq
-sudo apt-get install -qq -y python-rosdep python-catkin-tools
+if [[ "$CI_ROS_DISTRO" ==  "noetic" ]]; then
+    sudo apt-get install -qq -y python3-rosdep python3-catkin-tools
+else
+    sudo apt-get install -qq -y python-rosdep python-catkin-tools
+fi
+if [[ "$CI_ROS_DISTRO" ==  "melodic" || "$CI_ROS_DISTRO" ==  "noetic" ]]; then
+    git clone https://github.com/turtlebot-release/turtlebot-release -b release/kinetic/turtlebot_description
+    git clone https://github.com/turtlebot-release/turtlebot_create-release -b release/kinetic/create_description
+    git clone https://github.com/yujinrobot-release/kobuki-release -b  release/kinetic/kobuki_description
+fi
 sudo rosdep init
 rosdep update --include-eol-distros
   # Use rosdep to install all dependencies (including ROS itself)
