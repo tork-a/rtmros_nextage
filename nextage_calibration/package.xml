@@ -27,7 +27,9 @@
   <run_depend>openni2_launch</run_depend>
   <run_depend>tf</run_depend>
   <run_depend>urdf</run_depend>
-  <run_depend>turtlebot_description</run_depend>  <!-- TODO This needs better solution https://github.com/tork-a/rtmros_nextage/issues/314 -->
+  <run_depend>openni_camera</run_depend>
+  <run_depend>openni_description</run_depend>
+  <run_depend>openni_launch</run_depend>
 
   <test_depend>nextage_gazebo</test_depend>
 
