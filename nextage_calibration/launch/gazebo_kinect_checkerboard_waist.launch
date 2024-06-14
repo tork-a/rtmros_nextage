@@ -2,7 +2,7 @@
 
   <param name="sensor_description"
          type="str"
-         command="$(find xacro)/xacro.py '$(find nextage_calibration)/models/sensor_kinect.xacro'"
+         command="$(find xacro)/xacro '$(find nextage_calibration)/models/sensor_kinect.xacro'"
          />
 
   <node pkg="gazebo_ros"
