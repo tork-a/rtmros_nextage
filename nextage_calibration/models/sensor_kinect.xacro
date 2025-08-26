@@ -1,8 +1,10 @@
 <robot name="sensor_kinect" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:property name="M_PI" value="3.1415926535897931" /> 
-  <xacro:include filename="$(find turtlebot_description)/urdf/sensors/kinect.urdf.xacro" />
+  <xacro:include filename="$(find openni_description)/model/kinect.urdf.xacro" />
   <link name="camera_base_link" />
-  <xacro:sensor_kinect parent="camera_base_link" />
+  <xacro:sensor_kinect parent="camera_base_link" 
+                       cam_px="0.0" cam_py="0.0" cam_pz="0.0"
+                       cam_or="0.0" cam_op="0.0" cam_oy="0.0" />
   <gazebo>
     <static>true</static>
   </gazebo>
