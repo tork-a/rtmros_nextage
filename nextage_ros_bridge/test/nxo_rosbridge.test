@@ -1,0 +1,19 @@
+<launch>
+  <arg name="CORBA_PORT" default="2809" />
+
+  <include file="$(find nextage_ros_bridge)/test/test_nextage_ros_bridge_common.launch">
+    <arg name="corbaport" value="$(arg CORBA_PORT)" />
+    <arg name="GUI" value="false" />
+  </include>
+
+  <!-- Test if hand camera topic published on sim. -->
+  <arg name='TESTNAME_HANDCAM_L' value='hz_handcamera_l' />
+  <test pkg="rostest" type="hztest" test-name="$(arg TESTNAME_HANDCAM_L)"
+        name="$(arg TESTNAME_HANDCAM_L)" time-limit="30o" retry="3" >
+    <param name="topic" value="/hand_left/image_raw" />
+    <param name="hz" value="15.0" />
+    <param name="hzerror" value="5.0" />
+    <param name="test_duration" value="5.0" />
+    <param name="wait_time" value="20.0" />
+  </test>
+</launch>

@@ -142,4 +142,5 @@ install(DIRECTORY test
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
   add_rostest(test/nxo.test)
+  add_rostest(test/nxo_rosbridge.test)
 endif()

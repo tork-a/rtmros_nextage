@@ -1,4 +1,0 @@
-model: file://@PROJECT_SOURCE_DIR@/models/@ROBOT_NAME@.dae
-exec_cxt.periodic.type: hrpExecutionContext
-exec_cxt.periodic.rate: 200
-
