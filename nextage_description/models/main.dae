@@ -6444,6 +6444,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 					</frame_origin>
 				</technique>
 			</extra>
+			<extra name="lhsensor" type="attach_sensor">
+				<technique profile="OpenRAVE">
+					<instance_sensor url="#sensor5"/>
+					<frame_origin link="kmodel1/link15">
+						<translate>0 0 0</translate>
+						<rotate>0.57737 0.57735 0.57735 2.0944</rotate>
+					</frame_origin>
+				</technique>
+			</extra>
+			<extra name="rhsensor" type="attach_sensor">
+				<technique profile="OpenRAVE">
+					<instance_sensor url="#sensor6"/>
+					<frame_origin link="kmodel1/link9">
+						<translate>0 0 0</translate>
+						<rotate>0.57737 0.57735 0.57735 2.0944</rotate>
+					</frame_origin>
+				</technique>
+			</extra>
 			<extra name="WAIST" type="attach_actuator">
 				<technique profile="OpenRAVE">
 					<instance_actuator url="#actuator1"/>
@@ -8724,6 +8742,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 				<format>uint8</format>
 				<image_dimensions>640 480 3</image_dimensions>
 				<measurement_time>0.033333</measurement_time>
+			</sensor>
+			<sensor id="sensor5" sid="0" type="base_force6d">
+				<load_range_force>-1.000000 -1.000000 -1.000000</load_range_force>
+				<load_range_torque>-1.000000 -1.000000 -1.000000</load_range_torque>
+			</sensor>
+			<sensor id="sensor6" sid="1" type="base_force6d">
+				<load_range_force>-1.000000 -1.000000 -1.000000</load_range_force>
+				<load_range_torque>-1.000000 -1.000000 -1.000000</load_range_torque>
 			</sensor>
 		</technique>
 	</extra>

@@ -134,6 +134,45 @@ class TestHironxDerivedmethodsFromHrpsys(unittest.TestCase):
         self.assertEqual(self._robot.InitialPose[3][5],
                          joint_angles[_JOINT_TESTED[0]])
 
+    def test_impedance_controller(self):
+        '''
+        Copied from hironx_ros_bridge/test/test_hironx_controller.py
+        '''
+        KINGROUP = 'rarm'
+        if not self._robot.ic or self._robot.ic.ref.get_component_profile().version < '315.3.0':
+            self.assertTrue(True)
+            return True
+        self._robot.goInitial(tm=1)
+        # this returns ret, this is a bug
+        ret = self._robot.startImpedance(KINGROUP)
+        #self.assertTrue(ret)
+        ret = self._robot.seq_svc.setWrenches([0, 0, 0, 0, 0, 0,
+                                              10, 0, 0, 0, 0, 0], 2.0)
+        #self.assertTrue(ret)
+        self._robot.seq_svc.waitInterpolation()
+        ret = self._robot.seq_svc.setWrenches([0, 0, 0, 0, 0, 0,
+                                              0, 0, 0, 0, 0, 0], 2.0)
+        #self.assertTrue(ret)
+        self._robot.seq_svc.waitInterpolation()
+        ret = self._robot.seq_svc.setWrenches([0, 0, 0, 0, 0, 0,
+                                              0, 10, 0, 0, 0, 0], 2.0)
+        #self.assertTrue(ret)
+        self._robot.seq_svc.waitInterpolation()
+        ret = self._robot.seq_svc.setWrenches([0, 0, 0, 0, 0, 0,
+                                              0, 0, 0, 0, 0, 0], 2.0)
+        #self.assertTrue(ret)
+        self._robot.seq_svc.waitInterpolation()
+        ret = self._robot.seq_svc.setWrenches([0, 0, 0, 0, 0, 0,
+                                              0, 0, 10, 0, 0, 0], 2.0)
+        #self.assertTrue(ret)
+        self._robot.seq_svc.waitInterpolation()
+        #self.assertTrue(ret)
+        ret = self._robot.stopImpedance(KINGROUP)
+        #self.assertTrue(ret)
+        # this is dummy, current simulate hiro does not have force sensor
+        # so it retunrs None
+        self.assertTrue(True)
+
 if __name__ == '__main__':
     import rostest
     rostest.rosrun(_PKG, 'test_hironx_derivedmethods',
