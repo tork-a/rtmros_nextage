@@ -95,6 +95,20 @@ class TestNextageopen(unittest.TestCase):
         self._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
         assert(self._set_relative(dz=0.0001))
 
+    def test_hrpsys_collisiondetection(self):
+        '''
+        Passing the pose that left arm collides into the right arm, so
+        this test succeeds when the command fails (, which is hopefully due
+        to CollisionDetector of hrpsys.
+        Image: https://drive.google.com/file/d/0Bw_hbVS3wTLyc1FHclFxbkcydTA/view?usp=sharing
+        '''
+        _dx_collision = -0.1
+        _dy_collision = -0.4
+        self._robot.goInitial(_GOINITIAL_TIME_MIDSPEED)
+        result = self._robot.setTargetPoseRelative(
+                _ARMGROUP_TESTED, _LINK_TESTED, _dx_collision, _dy_collision, tm=3.0)
+        self.assertFalse(result)
+
 if __name__ == '__main__':
     import rostest
     rostest.rosrun(_PKG, 'test_nxopen', TestNextageopen)
